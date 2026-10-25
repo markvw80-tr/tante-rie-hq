@@ -25,5 +25,7 @@ Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende st
 - Beantwoord: V81 (metingen alleen lokaal), V122 (zondagen 12-17 uur, 12-12 tot 21 uur). V106 aangehouden tot PIM is ingericht.
 - Open voor Mark: V95a/b Search Console valideren en exporteren, V85, V87; Bunzlau-themakopie wacht op akkoord.
 - Open bij PIM (Markdown-mailbox): gewichten Bunzlau en Blond, PIM legt Mark eerst een diff voor.
-- Volgende stap: eerste batch regels voor PIM opbouwen (minimaal 20) uit de lopende on-page-voorstellen.
+- Concept PIM: 12 regels (rooibos Festival, Inspiratie, Sinaasappel Chai), niet verstuurd; metavelden via Markdown-mailbox aan PIM.
+- Beantwoord: V83, V85 (uitvoering nog beleggen), V95a. PR tante-rie-seo#11 bevat #9 en #10.
+- Volgende stap: concept aanvullen tot minimaal 20 regels uit de lopende on-page-voorstellen.
 - Verbruik: niet gemeten; /cost is in deze cloudsessie niet beschikbaar voor het team.
