@@ -2,6 +2,14 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## PIM, 25-10-2026 (V85 en rooibossen)
+- V85: themadelen op kopie 204139036936 (llms.txt, sectiedefaults, foundingDate); homepage stond al op 2014.
+- V85 contactpagina: is paginainhoud, gaat direct live; wacht op akkoord Mark.
+- Rooibossen: Geels bevestigt rooibos bij 6405 en 5506; 6010 niet bij Geels gevonden.
+- Diff cafeïne, smaakprofiel, trektijd en kostprijs ligt bij Mark; nieuwe waarde Cafeïnevrij nodig.
+- Kostprijzen 5308 en 6086 gecorrigeerd na akkoord Mark.
+- Verbruik: niet gemeten; /cost is in deze sessie niet beschikbaar.
+
 ## PIM, 25-10-2026 (Geels-proefbatch)
 - Geels is Geels Koffie & Thee (geels1863.com); bron is de ingelogde webshop, artikelnummer = SKU.
 - Verwerkt: vijf losse theeën vergeleken; ingrediënten in de shop kloppen al met Geels.
