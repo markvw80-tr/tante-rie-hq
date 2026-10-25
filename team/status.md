@@ -2,6 +2,13 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## SEO, 25-10-2026 (opvolging PIM)
+- V85 live nagelezen via Shopify (alleen lezen): MAIN 204139036936, foundingDate en llms.txt 2014, contactpagina met telefoon en link.
+- Changelog bijgewerkt voor V85 en metavelden rooibossen (PR tante-rie-seo#12); vier PIM-berichten verwerkt.
+- Open: Rich Results Test homepage en contact (lokaal of Mark); TikTok in sameAs (@tanterie) wijkt af van V87e.
+- Concept PIM: 12 regels, nog niet verstuurd; volgende stap aanvullen tot 20.
+- Verbruik: niet gemeten; /cost niet beschikbaar in de cloudsessie.
+
 ## PIM, 25-10-2026 (V85 en rooibossen)
 - V85: themadelen op kopie 204139036936 (llms.txt, sectiedefaults, foundingDate); homepage stond al op 2014.
 - V85 volledig live 25-10: thema 204139036936 gepubliceerd door Mark, contactpagina aangepast; live gecontroleerd.
