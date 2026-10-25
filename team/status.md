@@ -4,9 +4,9 @@ Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende st
 
 ## PIM, 25-10-2026 (V85 en rooibossen)
 - V85: themadelen op kopie 204139036936 (llms.txt, sectiedefaults, foundingDate); homepage stond al op 2014.
-- V85 contactpagina: is paginainhoud, gaat direct live; wacht op akkoord Mark.
+- V85 volledig live 25-10: thema 204139036936 gepubliceerd door Mark, contactpagina aangepast; live gecontroleerd.
 - Rooibossen: Geels bevestigt rooibos bij 6405 en 5506; 6010 niet bij Geels gevonden.
-- Diff cafeïne, smaakprofiel, trektijd en kostprijs ligt bij Mark; nieuwe waarde Cafeïnevrij nodig.
+- Rooibos-diff uitgevoerd na akkoord Mark; nieuwe waarde Cafeïnevrij aangemaakt.
 - Kostprijzen 5308 en 6086 gecorrigeerd na akkoord Mark.
 - Verbruik: niet gemeten; /cost is in deze sessie niet beschikbaar.
 
