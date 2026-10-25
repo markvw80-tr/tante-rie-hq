@@ -2,6 +2,16 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## PIM, 25-10-2026 (Bunzlau-proefbatch en overstap mailbox)
+- Verwerkt: vijf Bunzlau-producten met 32 varianten als concept in Shopify, in geen verkoopkanaal.
+- Steekproef: EAN, adviesprijs, foto per variant en DENY bij vier niet-leverbare decors kloppen.
+- Mailbox: overgestapt op team/; seo-naar-pim.json bevat nog geen berichten, niets te verwerken.
+- Markdown-mailbox: welkom verwerkt; gewichten Bunzlau en Blond in behandeling, eerst diff voor Mark.
+- Vaste regel: product pas in de Online winkel met minstens één foto.
+- Open voor Mark: concepten activeren nadat de voorraadfix in het thema live staat.
+- Volgende stap: SEO-regels verwerken zodra die binnenkomen; wijzigingen aan bestaande producten via diff.
+- Verbruik: niet gemeten; /cost is in deze sessie niet beschikbaar.
+
 ## SEO, 25-10-2026 (opzet werkafspraken)
 - Verstuurd: niets via de JSON-mailbox; teammap team/ opgezet in tante-rie-hq.
 - Afgerond vandaag: Serverfout 5xx gesloten (kassa-artikel), V80 verwerkt (koopzondag 29-11 en 20-12, koopavond 12-12 Magisch Borne).
