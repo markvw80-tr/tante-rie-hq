@@ -2,6 +2,13 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## PIM, 25-10-2026 (Geels-proefbatch)
+- Geels is Geels Koffie & Thee (geels1863.com); bron is de ingelogde webshop, artikelnummer = SKU.
+- Verwerkt: vijf losse theeën vergeleken; ingrediënten in de shop kloppen al met Geels.
+- Open voor Mark: btw-status Geels-prijzen, allergenen opvragen, kostprijzen 5879 en 5308 corrigeren.
+- Geen wijzigingen in Shopify; diff ligt bij Mark.
+- Verbruik: niet gemeten; /cost is in deze sessie niet beschikbaar.
+
 ## PIM, 25-10-2026 (Bunzlau-proefbatch en overstap mailbox)
 - Verwerkt: vijf Bunzlau-producten met 32 varianten als concept in Shopify, in geen verkoopkanaal.
 - Steekproef: EAN, adviesprijs, foto per variant en DENY bij vier niet-leverbare decors kloppen.
