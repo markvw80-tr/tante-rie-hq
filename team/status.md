@@ -13,7 +13,8 @@ Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende st
 - Geels-adapter gebouwd; 120 van 142 losse theeën gekoppeld op artikelnummer, 22 horen bij een andere leverancier.
 - QA: ingrediënten kloppen inhoudelijk; 40 kostprijzen wijken af, 14 ontbreken (voorstel ligt bij Mark).
 - Doorgevoerd na akkoord Mark: cafeïnelabels, smaakprofielen en 7 omschrijvingen (99 velden, nagelezen).
-- Open voor Mark: kostprijzen/kiloprijzen (punt 1), zakgewichten 5 producten (punt 6), overige punten diff.
+- Punt 1 doorgevoerd na akkoord Mark: 54 kostprijzen, 108 kiloprijzen, zoethoutwaarschuwing (163 velden, nagelezen).
+- Open voor Mark: zakgewichten 5 producten (punt 6), overige punten diff.
 - Vaste regel: productnamen in Shopify blijven leidend.
 - Verbruik: niet gemeten; /cost is in deze sessie niet beschikbaar.
 
