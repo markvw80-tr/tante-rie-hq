@@ -308,6 +308,365 @@
           "status": "nieuw"
         }
       ]
+    },
+    {
+      "bericht_id": "seo-2026-10-26-2",
+      "datum": "2026-10-26",
+      "van": "seo",
+      "aan": "pim",
+      "status": "nieuw",
+      "regels": [
+        {
+          "product_id": "gid://shopify/Product/10772819935496",
+          "handle": "dorset-thee",
+          "veld": "seo_titel",
+          "huidige_waarde": "Dorset Thee – Groene Thee met Vanille en Citrus | Schilders Serie | Tante Rie",
+          "gewenste_waarde": "Dorset Thee – Groene thee, lemongrass en limoen | Tante Rie",
+          "reden": "Vanille onjuist, lemongrass en limoen uit ingrediënten",
+          "prioriteit": "hoog",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10769689248008",
+          "handle": "green-de-cassis",
+          "veld": "meta_description",
+          "huidige_waarde": "Green de Cassis is een frisse groene thee met het kenmerkende friszure smaakprofiel van cassis. Vol karakter. Bestel bij Tante Rie.",
+          "gewenste_waarde": "Green de Cassis is een frisse groene thee met stukjes aardbei en rode bessen, fruitig en friszuur van smaak. Los bij Tante Rie.",
+          "reden": "Cassis als ingrediënt onjuist, aardbei en rode bessen",
+          "prioriteit": "hoog",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10769689248008",
+          "handle": "green-de-cassis",
+          "veld": "seo_titel",
+          "huidige_waarde": "Green de Cassis – Groene Thee met Zwarte Bessen | Tante Rie",
+          "gewenste_waarde": "Green de Cassis – Groene thee met aardbei | Tante Rie",
+          "reden": "Zwarte bessen onjuist, aardbei en rode bessen",
+          "prioriteit": "hoog",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10769379623176",
+          "handle": "pina-colada",
+          "veld": "meta_description",
+          "huidige_waarde": "Piña Colada kruidenthee met hibiscus, ananas en kokosrasp. Tropisch, fruitig en caffeïnevrij. Ook heerlijk als iced tea. Bestel bij Tante Rie.",
+          "gewenste_waarde": "Piña Colada is een cafeïnevrije vruchtenthee met hibiscus, ananas en kokosrasp, tropisch en ook lekker als ijsthee. Los bij Tante Rie.",
+          "reden": "Categorie onjuist, spelling cafeïnevrij en ijsthee-zin",
+          "prioriteit": "hoog",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10769379623176",
+          "handle": "pina-colada",
+          "veld": "seo_titel",
+          "huidige_waarde": "Piña Colada – Tropische Kruidenthee met Ananas en Kokos | Tante Rie",
+          "gewenste_waarde": "Piña Colada – Vruchtenthee met ananas en kokos | Tante Rie",
+          "reden": "Kruidenthee onjuist, vruchtenthee volgens opdracht",
+          "prioriteit": "hoog",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10614766174472",
+          "handle": "sterke-vrouw",
+          "veld": "meta_description",
+          "huidige_waarde": "Sterke Vrouw is een cafeïnevrije kruidenthee met lavendel en citroengras. Fris en bloemig van smaak. Bestel losse thee bij Tante Rie.",
+          "gewenste_waarde": "Sterke Vrouw is een cafeïnevrije kruidenthee met zoethout, venkel, gember, kaneel en kardemom, warm en kruidig van smaak. Los bij Tante Rie.",
+          "reden": "Lavendel onjuist, kruiden uit ingrediënten",
+          "prioriteit": "hoog",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10614766174472",
+          "handle": "sterke-vrouw",
+          "veld": "seo_titel",
+          "huidige_waarde": "Sterke Vrouw – Cafeïnevrije Kruidenthee met Lavendel | Tante Rie",
+          "gewenste_waarde": "Sterke Vrouw – Kruidenthee, zoethout en gember | Tante Rie",
+          "reden": "Lavendel onjuist, zoethout en gember uit ingrediënten",
+          "prioriteit": "hoog",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10775585521928",
+          "handle": "sweet-love",
+          "veld": "meta_description",
+          "huidige_waarde": "Sweet Love is een verwennende cafeïnevrije rooibos met de zoete smaak van perzik en pudding. Heerlijk als dessertthee. Bestel bij Tante Rie.",
+          "gewenste_waarde": "Sweet Love is een melange van groene, zwarte en witte thee met suikerhartjes en de smaak van zachte perzik-pudding. Los bij Tante Rie.",
+          "reden": "Rooibos en cafeïnevrij onjuist, melange volgens opdracht",
+          "prioriteit": "hoog",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10775585521928",
+          "handle": "sweet-love",
+          "veld": "seo_titel",
+          "huidige_waarde": "Sweet Love – Feestelijke Rooibos met Perzik | Tante Rie",
+          "gewenste_waarde": "Sweet Love – Groene, zwarte en witte thee | Tante Rie",
+          "reden": "Rooibos onjuist, melange van groene, zwarte en witte thee",
+          "prioriteit": "hoog",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10614742974728",
+          "handle": "thee-van-oma",
+          "veld": "meta_description",
+          "huidige_waarde": "Thee van Oma is een cafeïnevrije rooibos met appel en kaneel. Vertrouwd en huiselijk, smaakt naar versgebakken appeltaart. Bestel bij Tante Rie.",
+          "gewenste_waarde": "Thee van Oma is een cafeïnevrije rooibos met ananas, framboos, aardbei en goudsbloembloesem, zoet en fruitig van smaak. Los bij Tante Rie.",
+          "reden": "Appel en appeltaart onjuist, fruit uit ingrediënten",
+          "prioriteit": "hoog",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10614742974728",
+          "handle": "thee-van-oma",
+          "veld": "seo_titel",
+          "huidige_waarde": "Thee van Oma – Rooibos met Appel en Kaneel | Tante Rie",
+          "gewenste_waarde": "Thee van Oma – Rooibos met ananas en framboos | Tante Rie",
+          "reden": "Appel en kaneel onjuist, fruit uit ingrediënten",
+          "prioriteit": "hoog",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10769689805064",
+          "handle": "thee-van-tante-annie",
+          "veld": "meta_description",
+          "huidige_waarde": "Thee van Tante Annie is een tropische groene thee met papaya, mango en exotische vruchten. Cafeïnearm. Bestel bij Tante Rie.",
+          "gewenste_waarde": "Thee van Tante Annie is een groene thee met rozenblaadjes, zonnebloembloesem en korenbloembloesem, licht en bloemig van smaak. Los bij Tante Rie.",
+          "reden": "Mango, papaya en cafeïnearm onjuist, bloemen uit ingrediënten",
+          "prioriteit": "hoog",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10769689805064",
+          "handle": "thee-van-tante-annie",
+          "veld": "seo_titel",
+          "huidige_waarde": "Thee van Tante Annie – Aziatische Groene Thee met Mango | Tante Rie",
+          "gewenste_waarde": "Thee van Tante Annie – Groene thee met rozen | Tante Rie",
+          "reden": "Mango onjuist, rozen uit ingrediënten; naam behouden",
+          "prioriteit": "hoog",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10775584112904",
+          "handle": "twentse-land",
+          "veld": "meta_description",
+          "huidige_waarde": "Twentse Land is een milde Earl Grey variatie met bergamot, een ode aan Twente. Evenwichtig en aromatisch. Bestel bij Tante Rie.",
+          "gewenste_waarde": "Twentse Land is een zwarte thee met peterselie en wortel, een streekmelange uit Twente, kruidig en hartig van smaak. Los bij Tante Rie.",
+          "reden": "Earl Grey en bergamot onjuist, ingrediënten genoemd",
+          "prioriteit": "hoog",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10775584112904",
+          "handle": "twentse-land",
+          "veld": "seo_titel",
+          "huidige_waarde": "Twentse Land – Milde Earl Grey met Bergamot | Tante Rie",
+          "gewenste_waarde": "Twentse Land – Zwarte thee, peterselie en wortel | Tante Rie",
+          "reden": "Earl Grey onjuist, peterselie en wortel uit ingrediënten",
+          "prioriteit": "hoog",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10772819935496",
+          "handle": "dorset-thee",
+          "veld": "tags",
+          "huidige_waarde": "cafeïnearm, citroen, groene-thee, licht",
+          "gewenste_waarde": "citroen, groene-thee, licht, limoen",
+          "reden": "Cafeïnearm weg, limoen uit ingrediënten",
+          "prioriteit": "middel",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10769689248008",
+          "handle": "green-de-cassis",
+          "veld": "tags",
+          "huidige_waarde": "bessen, cafeïnearm, cassis, friszuur, groene-thee",
+          "gewenste_waarde": "bessen, aardbei, friszuur, groene-thee",
+          "reden": "Cassis en cafeïnearm weg, aardbei uit ingrediënten",
+          "prioriteit": "middel",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10619464646920",
+          "handle": "harverwarmer",
+          "veld": "tags",
+          "huidige_waarde": "appel, cafeïnevrij, kaneel, vruchtenthee, warm, winter",
+          "gewenste_waarde": "appel, kaneel, vruchtenthee, groene-thee, warm, winter",
+          "reden": "Cafeïnevrij weg, groene thee zit in ingrediënten",
+          "prioriteit": "middel",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10775591584008",
+          "handle": "heanig-an",
+          "veld": "tags",
+          "huidige_waarde": "appel, citroen, fris, fruitig, zwarte-thee",
+          "gewenste_waarde": "appel, citroen, fris, fruitig, groene-thee, witte-thee",
+          "reden": "Type volgens opdracht: groene en witte thee",
+          "prioriteit": "middel",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10619423064328",
+          "handle": "mango-thee",
+          "veld": "tags",
+          "huidige_waarde": "cafeïnearm, groene-thee, lychee, mango, tropisch",
+          "gewenste_waarde": "zwarte-thee, lychee, mango, tropisch",
+          "reden": "Cafeïnearm vervalt, type volgens opdracht",
+          "prioriteit": "middel",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10619427193096",
+          "handle": "perzik",
+          "veld": "tags",
+          "huidige_waarde": "fruitig, perzik, zoet, zomers, zwarte-thee",
+          "gewenste_waarde": "fruitig, perzik, zoet, zomers, groene-thee",
+          "reden": "Type volgens opdracht: groene thee i.p.v. zwarte",
+          "prioriteit": "middel",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10769379623176",
+          "handle": "pina-colada",
+          "veld": "tags",
+          "huidige_waarde": "ananas, cafeïnevrij, kokos, rooibos, tropisch, zomer",
+          "gewenste_waarde": "ananas, cafeïnevrij, kokos, vruchtenthee, tropisch, zomer",
+          "reden": "Rooibos vervangen door vruchtenthee volgens opdracht",
+          "prioriteit": "middel",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10769275552008",
+          "handle": "rooibos-amaretto",
+          "veld": "tags",
+          "huidige_waarde": "amandel, cafeïnevrij, nootachtig, rooibos, zoet",
+          "gewenste_waarde": "appel, cafeïnevrij, nootachtig, rooibos, zoet",
+          "reden": "Amandel onjuist, appel uit ingrediënten",
+          "prioriteit": "middel",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10613770977544",
+          "handle": "slaap-lekker",
+          "veld": "meta_description",
+          "huidige_waarde": "Slaap Lekker is een zachte, cafeïnevrije kruidenthee met kamille en kruiden. Ideaal voor een rustig avondmoment. Ontspan en bestel nu bij Tante Rie.",
+          "gewenste_waarde": "Slaap Lekker is een cafeïnevrije kruidenthee met valeriaan, citroenmelisse, pepermunt, hop en kamille, voor de avond. Los bij Tante Rie.",
+          "reden": "Vulwoord ideaal en CTA weg, ingrediënten genoemd",
+          "prioriteit": "middel",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10613770977544",
+          "handle": "slaap-lekker",
+          "veld": "tags",
+          "huidige_waarde": "avond, cafeïnevrij, kamille, kruidenthee, lavendel, rustgevend",
+          "gewenste_waarde": "avond, cafeïnevrij, kamille, kruidenthee, pepermunt, rustgevend",
+          "reden": "Lavendel weg, pepermunt uit ingrediënten",
+          "prioriteit": "middel",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10614766174472",
+          "handle": "sterke-vrouw",
+          "veld": "tags",
+          "huidige_waarde": "cafeïnevrij, energie, kruidenthee, kruidig, lavendel",
+          "gewenste_waarde": "cafeïnevrij, kruidenthee, kruidig, gember, zoethout",
+          "reden": "Energie en lavendel weg, gember en zoethout",
+          "prioriteit": "middel",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10775585521928",
+          "handle": "sweet-love",
+          "veld": "tags",
+          "huidige_waarde": "cafeïnevrij, dessert, perzik, rooibos, zoet",
+          "gewenste_waarde": "dessert, perzik, groene-thee, zwarte-thee, witte-thee, zoet",
+          "reden": "Rooibos en cafeïnevrij weg, thee-soorten uit opdracht",
+          "prioriteit": "middel",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10775589683464",
+          "handle": "thee-der-wijsheid-bio",
+          "veld": "tags",
+          "huidige_waarde": "bessen, biologisch, cafeïnearm, fruitig, groene-thee",
+          "gewenste_waarde": "biologisch, citroengras, sinaasappel, fruitig, zwarte-thee",
+          "reden": "Type volgens opdracht, cafeïnearm vervalt",
+          "prioriteit": "middel",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10614742974728",
+          "handle": "thee-van-oma",
+          "veld": "tags",
+          "huidige_waarde": "appel, cafeïnevrij, kaneel, rooibos, winter, zoet",
+          "gewenste_waarde": "ananas, framboos, aardbei, cafeïnevrij, rooibos, zoet",
+          "reden": "Appel, kaneel en winter weg, fruit uit ingrediënten",
+          "prioriteit": "middel",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10769689805064",
+          "handle": "thee-van-tante-annie",
+          "veld": "tags",
+          "huidige_waarde": "cafeïnearm, groene-thee, mango, papaya, tropisch",
+          "gewenste_waarde": "groene-thee, bloemig, roos",
+          "reden": "Mango en papaya weg, bloemig uit ingrediënten",
+          "prioriteit": "middel",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10775584112904",
+          "handle": "twentse-land",
+          "veld": "tags",
+          "huidige_waarde": "bergamot, earl-grey, streekthee, twenthe, zwarte-thee",
+          "gewenste_waarde": "streekthee, twenthe, zwarte-thee, kruidig",
+          "reden": "Earl Grey en bergamot weg, kruidig uit opdracht",
+          "prioriteit": "middel",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10772837695752",
+          "handle": "vergeet-me-niet",
+          "veld": "tags",
+          "huidige_waarde": "bloemig, framboos, romantisch, vanille, zwarte-thee",
+          "gewenste_waarde": "bloemig, framboos, romantisch, bramen, zwarte-thee",
+          "reden": "Vanille weg, bramen volgens opdracht",
+          "prioriteit": "middel",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10709771649288",
+          "handle": "zoete-verleiding",
+          "veld": "tags",
+          "huidige_waarde": "bloemig, feestelijk, lotus, roos, voc, zwarte-thee",
+          "gewenste_waarde": "bloemig, feestelijk, roos, voc, groene-thee, witte-thee",
+          "reden": "Type volgens opdracht: groene en witte thee",
+          "prioriteit": "middel",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10619464646920",
+          "handle": "harverwarmer",
+          "veld": "meta_description",
+          "huidige_waarde": "Hartverwarmer is een winterse melange van groene thee met appel, ananas, kardemom en kaneel. Warm, fruitig en kleurrijk. Perfect voor koude dagen. Bestel bij Tante Rie.",
+          "gewenste_waarde": "Hartverwarmer is een warme, fruitige en kleurrijke winterse melange van groene thee met appel, ananas, kardemom en kaneel. Bij Tante Rie.",
+          "reden": "Vulwoord Perfect en CTA Bestel verwijderd",
+          "prioriteit": "laag",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10769275552008",
+          "handle": "rooibos-amaretto",
+          "veld": "meta_description",
+          "huidige_waarde": "Rooibos Amaretto is een milde, caþïnevrije rooibos met een verrassende appel-amaretto smaak. Zacht, rond en verwennend. Bestel losse rooibos bij Tante Rie.",
+          "gewenste_waarde": "Rooibos Amaretto is een milde, cafeïnevrije rooibos met een verrassende appel-amaretto smaak, zacht, rond en verwennend. Los bij Tante Rie.",
+          "reden": "Typfout cafeïnevrije hersteld, eindigt op Los bij",
+          "prioriteit": "laag",
+          "status": "nieuw"
+        }
+      ]
     }
   ]
 }

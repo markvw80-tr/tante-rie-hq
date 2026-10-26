@@ -2,6 +2,14 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## SEO, 26-10-2026 (tweede batch aan PIM, Search Console)
+- Verstuurd: seo-2026-10-26-2 met 35 regels: 17 theeën waarvan SEO-titel, meta of tags afweken na de Geels-correctie van PIM (17 tags, 8 SEO-titels, 10 meta's).
+- Namen Bornse Zomer en Thee van Tante Annie ongemoeid (besluit Mark 26-10); Festival-beschrijving uit batch 1 vervalt.
+- Search Console: Verkopersvermeldingen, Productfragmenten en Reviewfragmenten opgelost (Google 26-10); validatie 5xx loopt (kassa-artikel).
+- Changelog 26-10 bijgewerkt (thema 204204900616 met TikTok en Bunzlau-voorraad).
+- Open: V87 a tot d; tags wijzigen kan collectielidmaatschap veranderen, PIM controleert dat.
+- Verbruik: niet gemeten; /cost niet beschikbaar in de cloudsessie.
+
 ## SEO, 26-10-2026 (eerste batch aan PIM)
 - Verstuurd: seo-2026-10-26-1 met 30 regels in team/mailbox/seo-naar-pim.json.
 - Inhoud: rooibos Festival, Inspiratie, Sinaasappel Chai (12); 8 producten met vertoningen maar weinig klikken (18: SEO-titel, meta, alt).
