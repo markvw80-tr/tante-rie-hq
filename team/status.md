@@ -9,6 +9,11 @@ Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende st
 - Concept PIM: 12 regels, nog niet verstuurd; volgende stap aanvullen tot 20.
 - Verbruik: niet gemeten; /cost niet beschikbaar in de cloudsessie.
 
+## PIM, 26-10-2026 (thema)
+- Live door Mark: thema 204204900616 met Bunzlau-voorraadfix en TikTok-link @tante.rie.borne (V87e); live gecontroleerd.
+- Bunzlau-concepten kunnen nu actief; activeren doet Mark.
+- Verbruik: niet gemeten; /cost is in deze sessie niet beschikbaar.
+
 ## PIM, 26-10-2026 (Geels-catalogus)
 - Geels-adapter gebouwd; 120 van 142 losse theeën gekoppeld op artikelnummer, 22 horen bij een andere leverancier.
 - QA: ingrediënten kloppen inhoudelijk; 40 kostprijzen wijken af, 14 ontbreken (voorstel ligt bij Mark).
