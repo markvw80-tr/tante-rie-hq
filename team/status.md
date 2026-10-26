@@ -9,6 +9,14 @@ Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende st
 - Concept PIM: 12 regels, nog niet verstuurd; volgende stap aanvullen tot 20.
 - Verbruik: niet gemeten; /cost niet beschikbaar in de cloudsessie.
 
+## PIM, 26-10-2026 (Geels-catalogus)
+- Geels-adapter gebouwd; 120 van 142 losse theeën gekoppeld op artikelnummer, 22 horen bij een andere leverancier.
+- QA: ingrediënten kloppen inhoudelijk; 40 kostprijzen wijken af, 14 ontbreken (voorstel ligt bij Mark).
+- Doorgevoerd na akkoord Mark: cafeïnelabels, smaakprofielen en 7 omschrijvingen (99 velden, nagelezen).
+- Open voor Mark: kostprijzen/kiloprijzen (punt 1), zakgewichten 5 producten (punt 6), overige punten diff.
+- Vaste regel: productnamen in Shopify blijven leidend.
+- Verbruik: niet gemeten; /cost is in deze sessie niet beschikbaar.
+
 ## PIM, 25-10-2026 (V85 en rooibossen)
 - V85: themadelen op kopie 204139036936 (llms.txt, sectiedefaults, foundingDate); homepage stond al op 2014.
 - V85 volledig live 25-10: thema 204139036936 gepubliceerd door Mark, contactpagina aangepast; live gecontroleerd.
