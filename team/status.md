@@ -2,6 +2,14 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## SEO, 26-10-2026 (eerste batch aan PIM)
+- Verstuurd: seo-2026-10-26-1 met 30 regels in team/mailbox/seo-naar-pim.json.
+- Inhoud: rooibos Festival, Inspiratie, Sinaasappel Chai (12); 8 producten met vertoningen maar weinig klikken (18: SEO-titel, meta, alt).
+- Selectie per script uit GSC 90 dagen (tot 18-10): positie 3 tot 20, CTR onder 2 procent; ruwe data in team/data/seo/.
+- Open: TikTok-themakopie 204160762120 nog niet gepubliceerd; V87 a tot d; V95b.
+- Volgende stap: PIM legt de diff aan Mark voor; SEO controleert na uitvoering.
+- Verbruik: niet gemeten; /cost niet beschikbaar in de cloudsessie.
+
 ## SEO, 25-10-2026 (opvolging PIM)
 - V85 live nagelezen via Shopify (alleen lezen): MAIN 204139036936, foundingDate en llms.txt 2014, contactpagina met telefoon en link.
 - Changelog bijgewerkt voor V85 en metavelden rooibossen (PR tante-rie-seo#12); vier PIM-berichten verwerkt.

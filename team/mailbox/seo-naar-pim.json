@@ -1,3 +1,313 @@
 {
-  "berichten": []
+  "berichten": [
+    {
+      "bericht_id": "seo-2026-10-26-1",
+      "datum": "2026-10-26",
+      "van": "seo",
+      "aan": "pim",
+      "status": "nieuw",
+      "regels": [
+        {
+          "product_id": "gid://shopify/Product/10760784249096",
+          "handle": "cactus-vijg",
+          "veld": "seo_titel",
+          "huidige_waarde": "Groene Thee Cactus Vijg - Licht & Subtiel Fruitig | Tante Rie",
+          "gewenste_waarde": "Cactus thee, groene thee met cactusvijg | Tante Rie",
+          "reden": "Zoekwoord cactus thee ontbreekt in titel",
+          "prioriteit": "hoog",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10775591878920",
+          "handle": "festival",
+          "veld": "beschrijving",
+          "huidige_waarde": "<p>Festival is een <a href=\"/collections/zwarte-thee\">zwarte thee</a> met mango en sinaasappelschil. Mango geeft een tropische zoetheid, sinaasappelschil een frisse citrusnoot.</p>\n<p>Bekijk meer <a href=\"/collections/zwarte-thee\">zwarte theeën</a>.</p>\n<p><strong>Ingrediënten:</strong> <span>Rooibos, stukjes mango (mango, suiker, zuurteregelaar: citroenzuur), kardemom, aroma, goudsbloembloesem, rozenblaadjes, natuurlijk sinaasappelaroma.</span></p>\n<p><strong>Zetadvies:</strong> 95°C · 3–5 minuten · 1 theelepel per 250 ml</p>",
+          "gewenste_waarde": "<p>Festival bouwt op <a href=\"/collections/rooibos\">rooibos</a>, dus je kunt hem de hele dag inschenken. Mangostukjes geven een zoete, tropische smaak, kardemom een lichte kruidigheid en sinaasappel een frisse citrusnoot. Rozenblaadjes en goudsbloem maken het blad kleurrijk.</p>\n<p>Bekijk meer <a href=\"/collections/rooibos\">rooibostheeën</a>.</p>\n<p><strong>Ingrediënten:</strong> <span>Rooibos, stukjes mango (mango, suiker, zuurteregelaar: citroenzuur), kardemom, aroma, goudsbloembloesem, rozenblaadjes, natuurlijk sinaasappelaroma.</span></p>\n<p><strong>Zetadvies:</strong> 95°C · 5–8 minuten · 1 theelepel per 250 ml</p>",
+          "reden": "Beschrijving noemt zwarte thee en verwijst naar zwarte theeën",
+          "prioriteit": "hoog",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10775591878920",
+          "handle": "festival",
+          "veld": "meta_description",
+          "huidige_waarde": "Festival is een zonnige zwarte thee met mango en sinaasappel. Tropisch en vrolijk van karakter. Bestel losse thee bij Tante Rie.",
+          "gewenste_waarde": "Festival is een zonnige cafeïnevrije rooibos met mango en sinaasappel. Tropisch en vrolijk van karakter. Bestel losse rooibos bij Tante Rie.",
+          "reden": "Meta noemt zwarte thee; product is cafeïnevrije rooibos",
+          "prioriteit": "hoog",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10775591878920",
+          "handle": "festival",
+          "veld": "seo_titel",
+          "huidige_waarde": "Festival – Zwarte Thee met Mango en Sinaasappel | Tante Rie",
+          "gewenste_waarde": "Festival – Rooibos met Mango en Sinaasappel | Tante Rie",
+          "reden": "Titel noemt zwarte thee; product is rooibos",
+          "prioriteit": "hoog",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10775591878920",
+          "handle": "festival",
+          "veld": "tags",
+          "huidige_waarde": "feestelijk, fruitig, mango, sinaasappel, tropisch, zwarte-thee",
+          "gewenste_waarde": "feestelijk, fruitig, mango, sinaasappel, tropisch, rooibos, cafeïnevrij",
+          "reden": "Tags zwarte-thee passen niet bij rooibos",
+          "prioriteit": "hoog",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10619433287944",
+          "handle": "inspiratie",
+          "veld": "tags",
+          "huidige_waarde": "bloemig, cafeïnearm, citroen, groene-thee, mango, roos",
+          "gewenste_waarde": "bloemig, cafeïnevrij, citroen, rooibos, mango, roos",
+          "reden": "Tags groene-thee en cafeïnearm gecorrigeerd naar rooibos",
+          "prioriteit": "hoog",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/12039138607368",
+          "handle": "mazagran-a-hug-in-a-mug",
+          "veld": "seo_titel",
+          "huidige_waarde": "Mazagran A Hug In A Mug | Tante Rie",
+          "gewenste_waarde": "Hug in a Mug Blond Amsterdam mazagran | Tante Rie",
+          "reden": "Zoekwoord hug in a mug blond amsterdam ontbreekt in titel",
+          "prioriteit": "hoog",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/12039138345224",
+          "handle": "mazagran-liefste-juf",
+          "veld": "seo_titel",
+          "huidige_waarde": "Mazagran liefste juf | Tante Rie",
+          "gewenste_waarde": "Blond Amsterdam mazagran Liefste juf | Tante Rie",
+          "reden": "Zoekwoord juf blond amsterdam ontbreekt in titel",
+          "prioriteit": "hoog",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/11976811643144",
+          "handle": "rice-l",
+          "veld": "seo_titel",
+          "huidige_waarde": "Rice L | Tante Rie",
+          "gewenste_waarde": "Rice beker L: alfabetbeker letter L | Tante Rie",
+          "reden": "Zoekwoord rice beker l ontbreekt in titel",
+          "prioriteit": "hoog",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/11976811741448",
+          "handle": "rice-m",
+          "veld": "seo_titel",
+          "huidige_waarde": "Rice M | Tante Rie",
+          "gewenste_waarde": "Rice beker M: alfabetbeker letter M | Tante Rie",
+          "reden": "Zoekwoord rice beker m ontbreekt in titel",
+          "prioriteit": "hoog",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10614797205768",
+          "handle": "sinaasappel-chai",
+          "veld": "meta_description",
+          "huidige_waarde": "Sinaasappel Chai is een krachtige zwarte chai met sinaasappel, gember en aromatische chai-specerijen. Vol, pittig en verwarmend. Bestel bij Tante Rie.",
+          "gewenste_waarde": "Sinaasappel Chai is een cafeïnevrije rooibos met sinaasappel, gember en chai-specerijen. Vol, pittig en verwarmend. Bestel losse rooibos bij Tante Rie.",
+          "reden": "Meta noemt zwarte chai; product is cafeïnevrije rooibos",
+          "prioriteit": "hoog",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10614797205768",
+          "handle": "sinaasappel-chai",
+          "veld": "seo_titel",
+          "huidige_waarde": "Sinaasappel Chai – Pittige Zwarte Chai met Sinaasappel | Tante Rie",
+          "gewenste_waarde": "Sinaasappel Chai – Rooibos met Gember en Kruiden | Tante Rie",
+          "reden": "Titel noemt zwarte chai; product is rooibos",
+          "prioriteit": "hoog",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10614797205768",
+          "handle": "sinaasappel-chai",
+          "veld": "tags",
+          "huidige_waarde": "chai, gember, kruidig, pittig, sinaasappel, zwarte-thee",
+          "gewenste_waarde": "chai, gember, kruidig, pittig, sinaasappel, rooibos, cafeïnevrij",
+          "reden": "Tags zwarte-thee vervangen; cafeïnevrij toegevoegd",
+          "prioriteit": "hoog",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10613772812552",
+          "handle": "sterrenmunt",
+          "veld": "seo_titel",
+          "huidige_waarde": "Sterrenmunt – Kruidige Kruidenthee met Munt | Tante Rie",
+          "gewenste_waarde": "Sterrenmunt thee: kruidenthee met anijs en munt | Tante Rie",
+          "reden": "Zoekwoord wat is sterrenmunt ontbreekt in titel",
+          "prioriteit": "hoog",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/12053385412872",
+          "handle": "theelepel-lang-goud-of-zilver",
+          "veld": "seo_titel",
+          "huidige_waarde": "Theelepel lang - goud of zilver | Tante Rie",
+          "gewenste_waarde": "Theelepel goud of zilver, lang met S-krul | Tante Rie",
+          "reden": "Zoekwoord theelepel goud ontbreekt in titel",
+          "prioriteit": "hoog",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/11966533796104",
+          "handle": "waterfles-delfts-blauw",
+          "veld": "seo_titel",
+          "huidige_waarde": "Waterfles Delfts Blauw | Tante Rie",
+          "gewenste_waarde": "Waterfles Delfts blauw van Heinen | Tante Rie",
+          "reden": "Zoekwoord waterfles delfts blauw; kapitalisatie titel aangepast",
+          "prioriteit": "hoog",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10760784249096",
+          "handle": "cactus-vijg",
+          "veld": "meta_description",
+          "huidige_waarde": "Frisse groene thee met zachte vijgensmaak. Licht, subtiel fruitig en verfijnd in balans. Proef Cactus Vijg en bestel eenvoudig online bij Tante Rie.",
+          "gewenste_waarde": "Cactus thee is groene thee met cactusvijgaroma en goudsbloembloesem. Zoet en sappig, zet 2 tot 3 minuten op 75 graden. Bij Tante Rie.",
+          "reden": "Vulwoorden in meta; zoekwoorden cactus thee en cactusvijg mist",
+          "prioriteit": "middel",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10775591878920",
+          "handle": "festival",
+          "veld": "alt_tekst",
+          "huidige_waarde": "Festival losse kruidenthee van Tante Rie",
+          "gewenste_waarde": "Festival losse rooibos van Tante Rie",
+          "reden": "Alt-tekst noemt kruidenthee; product is rooibos",
+          "prioriteit": "middel",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10619433287944",
+          "handle": "inspiratie",
+          "veld": "alt_tekst",
+          "huidige_waarde": "Inspiratie losse kruidenthee van Tante Rie",
+          "gewenste_waarde": "Inspiratie losse rooibos van Tante Rie",
+          "reden": "Alt-tekst noemt kruidenthee; product is rooibos",
+          "prioriteit": "middel",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/12039138607368",
+          "handle": "mazagran-a-hug-in-a-mug",
+          "veld": "meta_description",
+          "huidige_waarde": "Mazagran A Hug In A Mug bij Tante Rie. Soms heeft iemand behoefte aan een knuffel, wil je iemand bedanken of een hart onder de riem steken, dan is on",
+          "gewenste_waarde": "Hug in a Mug van Blond Amsterdam: XL mazagran met teksten als sending you a smile en thinking of you, om iemand te bedanken. Bij Tante Rie in Borne.",
+          "reden": "Meta mist zoekwoord en bevat afgekapte zin",
+          "prioriteit": "middel",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/11976811643144",
+          "handle": "rice-l",
+          "veld": "meta_description",
+          "huidige_waarde": "Rice L bij Tante Rie in Borne. Met zorg uitgekozen en verpakt. Bestel eenvoudig online en geniet thuis.",
+          "gewenste_waarde": "Rice beker L van melamine: alfabetbeker met de letter L voor dranken of als opbergbakje. Niet geschikt voor de magnetron. Bij Tante Rie in Borne.",
+          "reden": "Vulwoorden in meta; zoekwoord rice beker l mist",
+          "prioriteit": "middel",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/11976811741448",
+          "handle": "rice-m",
+          "veld": "meta_description",
+          "huidige_waarde": "Rice M bij Tante Rie in Borne. Met zorg uitgekozen en verpakt. Bestel eenvoudig online en geniet thuis.",
+          "gewenste_waarde": "Rice beker M van melamine: alfabetbeker met letter M voor koffie, thee of sap of als pennenbak. Niet geschikt voor de magnetron. Bij Tante Rie in Borne.",
+          "reden": "Vulwoorden in meta; zoekwoord rice beker m mist",
+          "prioriteit": "middel",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10614797205768",
+          "handle": "sinaasappel-chai",
+          "veld": "alt_tekst",
+          "huidige_waarde": "Sinaasappel Chai losse zwarte thee van Tante Rie",
+          "gewenste_waarde": "Sinaasappel Chai losse rooibos van Tante Rie",
+          "reden": "Alt-tekst noemt zwarte thee; product is rooibos",
+          "prioriteit": "middel",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10614797205768",
+          "handle": "sinaasappel-chai",
+          "veld": "alt_tekst",
+          "huidige_waarde": "Sinaasappel Chai losse zwarte thee in het zakje van Tante Rie",
+          "gewenste_waarde": "Sinaasappel Chai losse rooibos in het zakje van Tante Rie",
+          "reden": "Alt-tekst noemt zwarte thee; product is rooibos",
+          "prioriteit": "middel",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/10613772812552",
+          "handle": "sterrenmunt",
+          "veld": "meta_description",
+          "huidige_waarde": "Sterrenmunt is een kruidige, cafeïnevrije kruidenthee met anijs, venkel en munt. Verwarmend én fris van smaak. Ontdek ’m nu bij Tante Rie.",
+          "gewenste_waarde": "Sterrenmunt is een cafeïnevrije kruidenthee met venkel, anijs, zoethout en pepermunt. Warm en licht kruidig van smaak. Bij Tante Rie.",
+          "reden": "Vulwoorden en 'én' in meta; zoekwoord wat is sterrenmunt mist",
+          "prioriteit": "middel",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/11966533796104",
+          "handle": "waterfles-delfts-blauw",
+          "veld": "meta_description",
+          "huidige_waarde": "Waterfles Delfts Blauw bij Tante Rie in Borne. Met zorg uitgekozen en verpakt. Bestel eenvoudig online en geniet thuis.",
+          "gewenste_waarde": "Thermosfles van Heinen met een Delfts blauwe bloemenschildering: een waterfles en drinkfles in Delfts blauw. Bij Tante Rie in Borne.",
+          "reden": "Vulwoorden in meta; zoekwoord waterfles delfts blauw mist",
+          "prioriteit": "middel",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/12039138607368",
+          "handle": "mazagran-a-hug-in-a-mug",
+          "veld": "alt_tekst",
+          "huidige_waarde": "201790",
+          "gewenste_waarde": "Blond Amsterdam mazagran Hug in a Mug",
+          "reden": "Alt-tekst is alleen een code, geen beschrijving",
+          "prioriteit": "laag",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/11976811643144",
+          "handle": "rice-l",
+          "veld": "alt_tekst",
+          "huidige_waarde": "MELCU-ALPSTARL",
+          "gewenste_waarde": "Rice alfabetbeker letter L van melamine",
+          "reden": "Alt-tekst is oude code, beschrijving ontbreekt",
+          "prioriteit": "laag",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/11976811643144",
+          "handle": "rice-l",
+          "veld": "alt_tekst",
+          "huidige_waarde": "MELCU-ALPFLOL",
+          "gewenste_waarde": "Rice alfabetbeker letter L van melamine",
+          "reden": "Alt-tekst is oude code, beschrijving ontbreekt",
+          "prioriteit": "laag",
+          "status": "nieuw"
+        },
+        {
+          "product_id": "gid://shopify/Product/11976811741448",
+          "handle": "rice-m",
+          "veld": "alt_tekst",
+          "huidige_waarde": "MELCU-ALPFLOM",
+          "gewenste_waarde": "Rice alfabetbeker letter M van melamine",
+          "reden": "Alt-tekst is oude code, beschrijving ontbreekt",
+          "prioriteit": "laag",
+          "status": "nieuw"
+        }
+      ]
+    }
+  ]
 }
