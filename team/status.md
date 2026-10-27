@@ -2,6 +2,14 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## PIM, 27-10-2026 (Rice-opschoning)
+- 92 losse dubbele alfabetbekers zonder voorraad gearchiveerd; 12 met voorraad blijven. Moederartikelen Rice A t/m Z intact.
+- Rice K: Groen K wordt Donker grijs K (MELCU-ALPKB2). 6ZFUNI per stuk, kostprijs 3,27.
+- Gewicht in gram voor 138 Rice-varianten uit het B2B-portaal.
+- 5 kerstartikelen op 0,00 naar DRAFT tot prijs bekend.
+- Open: lepel-SKU's, gewichten voor artikelen buiten het portaal, adviesprijs kerst.
+- Verbruik: niet gemeten.
+
 ## SEO, 26-10-2026 (tweede batch aan PIM, Search Console)
 - Verstuurd: seo-2026-10-26-2 met 35 regels: 17 theeën waarvan SEO-titel, meta of tags afweken na de Geels-correctie van PIM (17 tags, 8 SEO-titels, 10 meta's).
 - Namen Bornse Zomer en Thee van Tante Annie ongemoeid (besluit Mark 26-10); Festival-beschrijving uit batch 1 vervalt.
