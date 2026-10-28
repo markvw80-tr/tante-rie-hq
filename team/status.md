@@ -2,6 +2,12 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## Design, 28-10-2026 (ronde 4, besluiten Mark)
+- Thema 204338659592 (ronde 1 t/m 4): DM Sans, zwarte pilknoppen (ook Afrekenen), cart-drawer opent na toevoegen, snelbetaalknoppen lager. Live 204204900616 ongewijzigd; Mark publiceert.
+- Gecontroleerd op 6 productsjablonen en desktop: geen overflow, knoppen met label.
+- Open voor Mark: checkout-vakje nieuwsbrief staat vooraf aangevinkt (Shopify-instelling, niet thema).
+- Verbruik: niet gemeten.
+
 ## Design, 28-10-2026 (ronde 3, snelheid)
 - Ronde 3 op ontwikkelthema 204337217800 (bevat ronde 1, 2 en 3): collectiehero en kaartfoto's responsief, footer-contrast naar AA. Gedrosselde LCP zwarte thee 6,2 naar 5,3 s; echte gebruikers (CrUX) zijn al snel (LCP 1,4 s).
 - Voor SEO: Judge.me laadt ongeveer 25 CSS-bestanden op de productpagina; vragen om afstemming voordat Design iets uitstelt.
