@@ -2,6 +2,12 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## Design, 28-10-2026 (ronde 3, snelheid)
+- Ronde 3 op ontwikkelthema 204337217800 (bevat ronde 1, 2 en 3): collectiehero en kaartfoto's responsief, footer-contrast naar AA. Gedrosselde LCP zwarte thee 6,2 naar 5,3 s; echte gebruikers (CrUX) zijn al snel (LCP 1,4 s).
+- Voor SEO: Judge.me laadt ongeveer 25 CSS-bestanden op de productpagina; vragen om afstemming voordat Design iets uitstelt.
+- Winkel zit op het maximum van 20 thema's; Mark besluit welke oude thema's weg mogen.
+- Verbruik: niet gemeten.
+
 ## Design, 28-10-2026 (ronde 2)
 - Ronde 2 op ontwikkelthema 204342395144 (bevat ronde 1 en USP-balkfix): collecties in twee kolommen op mobiel (zwarte thee 28.845 naar 14.081 px), productpagina met prijs en toevoegen eerder. Alleen weergavevolgorde, koppen en markup ongewijzigd.
 - Live 204204900616 ongewijzigd; Mark kijkt en publiceert.
