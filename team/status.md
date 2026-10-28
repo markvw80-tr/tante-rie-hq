@@ -2,6 +2,14 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## Design, 28-10-2026 (opzet team en test)
+- Team Design opgezet in ~/Tante Rie Design (CLAUDE.md, stijlgids, vijf agents; start met Design Lead en Theme Developer). Nog geen GitHub-repo.
+- Mailbox: team design toegevoegd aan scripts/mailbox.py (branch design-team-mailbox in tante-rie-seo, nog te mergen) en mailbox/design/ op main.
+- Test: H2 boven productraster /collections/zwarte-thee op ontwikkelthema 204337217800; live 204204900616 ongewijzigd. SEO-eis gesimuleerd; echte SEO-bevestiging nodig.
+- Open: 10 open punten in stijlgids/tante-rie/stijlgids.md (o.a. Inter tegenover DM Sans, knopstijlen).
+- Volgende stap: Mark kijkt naar PR/branch en de preview; SEO leest testbericht na.
+- Verbruik: niet gemeten.
+
 ## PIM, 28-10-2026 (SEO-batches 26-10)
 - seo-2026-10-26-1 en -2 verwerkt: 64 regels uitgevoerd na akkoord Mark (SEO-titels, meta's, tags, alt-teksten bij 28 producten).
 - Festival-beschrijving afgewezen (ingetrokken door SEO).
