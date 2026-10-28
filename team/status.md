@@ -5,7 +5,7 @@ Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende st
 ## Design, 28-10-2026 (ronde 2)
 - Ronde 2 op ontwikkelthema 204342395144 (bevat ronde 1 en USP-balkfix): collecties in twee kolommen op mobiel (zwarte thee 28.845 naar 14.081 px), productpagina met prijs en toevoegen eerder. Alleen weergavevolgorde, koppen en markup ongewijzigd.
 - Live 204204900616 ongewijzigd; Mark kijkt en publiceert.
-- Open: productfoto op mobiel kleiner (keuze Mark), snelheid (ronde 3), warenwagen en checkout beoordelen.
+- Open: productfoto op mobiel kleiner (keuze Mark), snelheid (ronde 3), winkelwagen en checkout beoordelen.
 - Verbruik: niet gemeten.
 
 ## Design, 28-10-2026 (designreview en ronde 1)
