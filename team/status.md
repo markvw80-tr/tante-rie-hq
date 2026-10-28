@@ -2,6 +2,12 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## Design, 28-10-2026 (ronde 2)
+- Ronde 2 op ontwikkelthema 204342395144 (bevat ronde 1 en USP-balkfix): collecties in twee kolommen op mobiel (zwarte thee 28.845 naar 14.081 px), productpagina met prijs en toevoegen eerder. Alleen weergavevolgorde, koppen en markup ongewijzigd.
+- Live 204204900616 ongewijzigd; Mark kijkt en publiceert.
+- Open: productfoto op mobiel kleiner (keuze Mark), snelheid (ronde 3), warenwagen en checkout beoordelen.
+- Verbruik: niet gemeten.
+
 ## Design, 28-10-2026 (designreview en ronde 1)
 - Designreview webshop mobiel eerst: opdrachten/2026-10-28-review-webshop.md in tante-rie-design (mobiel 74 procent van GSC-klikken).
 - Ronde 1 gebouwd op ontwikkelthema 204338659592: toevoegen-knoppen mobiel hersteld, zwevende winkelwagen weg op productpagina, aanraakdoelen 44 px, labels 12 px. Live 204204900616 ongewijzigd.
