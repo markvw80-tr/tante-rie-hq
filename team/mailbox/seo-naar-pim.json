@@ -5,7 +5,7 @@
       "datum": "2026-10-26",
       "van": "seo",
       "aan": "pim",
-      "status": "in_behandeling",
+      "status": "verwerkt",
       "regels": [
         {
           "product_id": "gid://shopify/Product/10760784249096",
@@ -15,8 +15,8 @@
           "gewenste_waarde": "Cactus thee, groene thee met cactusvijg | Tante Rie",
           "reden": "Zoekwoord cactus thee ontbreekt in titel",
           "prioriteit": "hoog",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10775591878920",
@@ -37,8 +37,8 @@
           "gewenste_waarde": "Festival is een zonnige cafeïnevrije rooibos met mango en sinaasappel. Tropisch en vrolijk van karakter. Bestel losse rooibos bij Tante Rie.",
           "reden": "Meta noemt zwarte thee; product is cafeïnevrije rooibos",
           "prioriteit": "hoog",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10775591878920",
@@ -48,8 +48,8 @@
           "gewenste_waarde": "Festival – Rooibos met Mango en Sinaasappel | Tante Rie",
           "reden": "Titel noemt zwarte thee; product is rooibos",
           "prioriteit": "hoog",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10775591878920",
@@ -59,8 +59,8 @@
           "gewenste_waarde": "feestelijk, fruitig, mango, sinaasappel, tropisch, rooibos, cafeïnevrij",
           "reden": "Tags zwarte-thee passen niet bij rooibos",
           "prioriteit": "hoog",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10619433287944",
@@ -70,8 +70,8 @@
           "gewenste_waarde": "bloemig, cafeïnevrij, citroen, rooibos, mango, roos",
           "reden": "Tags groene-thee en cafeïnearm gecorrigeerd naar rooibos",
           "prioriteit": "hoog",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/12039138607368",
@@ -81,8 +81,8 @@
           "gewenste_waarde": "Hug in a Mug Blond Amsterdam mazagran | Tante Rie",
           "reden": "Zoekwoord hug in a mug blond amsterdam ontbreekt in titel",
           "prioriteit": "hoog",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/12039138345224",
@@ -92,8 +92,8 @@
           "gewenste_waarde": "Blond Amsterdam mazagran Liefste juf | Tante Rie",
           "reden": "Zoekwoord juf blond amsterdam ontbreekt in titel",
           "prioriteit": "hoog",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/11976811643144",
@@ -103,8 +103,8 @@
           "gewenste_waarde": "Rice beker L: alfabetbeker letter L | Tante Rie",
           "reden": "Zoekwoord rice beker l ontbreekt in titel",
           "prioriteit": "hoog",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/11976811741448",
@@ -114,8 +114,8 @@
           "gewenste_waarde": "Rice beker M: alfabetbeker letter M | Tante Rie",
           "reden": "Zoekwoord rice beker m ontbreekt in titel",
           "prioriteit": "hoog",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10614797205768",
@@ -125,8 +125,8 @@
           "gewenste_waarde": "Sinaasappel Chai is een cafeïnevrije rooibos met sinaasappel, gember en chai-specerijen. Vol, pittig en verwarmend. Bestel losse rooibos bij Tante Rie.",
           "reden": "Meta noemt zwarte chai; product is cafeïnevrije rooibos",
           "prioriteit": "hoog",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10614797205768",
@@ -136,8 +136,8 @@
           "gewenste_waarde": "Sinaasappel Chai – Rooibos met Gember en Kruiden | Tante Rie",
           "reden": "Titel noemt zwarte chai; product is rooibos",
           "prioriteit": "hoog",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10614797205768",
@@ -147,8 +147,8 @@
           "gewenste_waarde": "chai, gember, kruidig, pittig, sinaasappel, rooibos, cafeïnevrij",
           "reden": "Tags zwarte-thee vervangen; cafeïnevrij toegevoegd",
           "prioriteit": "hoog",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10613772812552",
@@ -158,8 +158,8 @@
           "gewenste_waarde": "Sterrenmunt thee: kruidenthee met anijs en munt | Tante Rie",
           "reden": "Zoekwoord wat is sterrenmunt ontbreekt in titel",
           "prioriteit": "hoog",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/12053385412872",
@@ -169,8 +169,8 @@
           "gewenste_waarde": "Theelepel goud of zilver, lang met S-krul | Tante Rie",
           "reden": "Zoekwoord theelepel goud ontbreekt in titel",
           "prioriteit": "hoog",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/11966533796104",
@@ -180,8 +180,8 @@
           "gewenste_waarde": "Waterfles Delfts blauw van Heinen | Tante Rie",
           "reden": "Zoekwoord waterfles delfts blauw; kapitalisatie titel aangepast",
           "prioriteit": "hoog",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10760784249096",
@@ -191,8 +191,8 @@
           "gewenste_waarde": "Cactus thee is groene thee met cactusvijgaroma en goudsbloembloesem. Zoet en sappig, zet 2 tot 3 minuten op 75 graden. Bij Tante Rie.",
           "reden": "Vulwoorden in meta; zoekwoorden cactus thee en cactusvijg mist",
           "prioriteit": "middel",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10775591878920",
@@ -202,8 +202,8 @@
           "gewenste_waarde": "Festival losse rooibos van Tante Rie",
           "reden": "Alt-tekst noemt kruidenthee; product is rooibos",
           "prioriteit": "middel",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10619433287944",
@@ -213,8 +213,8 @@
           "gewenste_waarde": "Inspiratie losse rooibos van Tante Rie",
           "reden": "Alt-tekst noemt kruidenthee; product is rooibos",
           "prioriteit": "middel",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/12039138607368",
@@ -224,8 +224,8 @@
           "gewenste_waarde": "Hug in a Mug van Blond Amsterdam: XL mazagran met teksten als sending you a smile en thinking of you, om iemand te bedanken. Bij Tante Rie in Borne.",
           "reden": "Meta mist zoekwoord en bevat afgekapte zin",
           "prioriteit": "middel",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/11976811643144",
@@ -235,8 +235,8 @@
           "gewenste_waarde": "Rice beker L van melamine: alfabetbeker met de letter L voor dranken of als opbergbakje. Niet geschikt voor de magnetron. Bij Tante Rie in Borne.",
           "reden": "Vulwoorden in meta; zoekwoord rice beker l mist",
           "prioriteit": "middel",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/11976811741448",
@@ -246,8 +246,8 @@
           "gewenste_waarde": "Rice beker M van melamine: alfabetbeker met letter M voor koffie, thee of sap of als pennenbak. Niet geschikt voor de magnetron. Bij Tante Rie in Borne.",
           "reden": "Vulwoorden in meta; zoekwoord rice beker m mist",
           "prioriteit": "middel",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10614797205768",
@@ -257,8 +257,8 @@
           "gewenste_waarde": "Sinaasappel Chai losse rooibos van Tante Rie",
           "reden": "Alt-tekst noemt zwarte thee; product is rooibos",
           "prioriteit": "middel",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10614797205768",
@@ -268,8 +268,8 @@
           "gewenste_waarde": "Sinaasappel Chai losse rooibos in het zakje van Tante Rie",
           "reden": "Alt-tekst noemt zwarte thee; product is rooibos",
           "prioriteit": "middel",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10613772812552",
@@ -279,8 +279,8 @@
           "gewenste_waarde": "Sterrenmunt is een cafeïnevrije kruidenthee met venkel, anijs, zoethout en pepermunt. Warm en licht kruidig van smaak. Bij Tante Rie.",
           "reden": "Vulwoorden en 'én' in meta; zoekwoord wat is sterrenmunt mist",
           "prioriteit": "middel",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/11966533796104",
@@ -290,8 +290,8 @@
           "gewenste_waarde": "Thermosfles van Heinen met een Delfts blauwe bloemenschildering: een waterfles en drinkfles in Delfts blauw. Bij Tante Rie in Borne.",
           "reden": "Vulwoorden in meta; zoekwoord waterfles delfts blauw mist",
           "prioriteit": "middel",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/12039138607368",
@@ -301,8 +301,8 @@
           "gewenste_waarde": "Blond Amsterdam mazagran Hug in a Mug",
           "reden": "Alt-tekst is alleen een code, geen beschrijving",
           "prioriteit": "laag",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/11976811643144",
@@ -312,8 +312,8 @@
           "gewenste_waarde": "Rice alfabetbeker letter L van melamine",
           "reden": "Alt-tekst is oude code, beschrijving ontbreekt",
           "prioriteit": "laag",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/11976811643144",
@@ -323,8 +323,8 @@
           "gewenste_waarde": "Rice alfabetbeker letter L van melamine",
           "reden": "Alt-tekst is oude code, beschrijving ontbreekt",
           "prioriteit": "laag",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/11976811741448",
@@ -334,8 +334,8 @@
           "gewenste_waarde": "Rice alfabetbeker letter M van melamine",
           "reden": "Alt-tekst is oude code, beschrijving ontbreekt",
           "prioriteit": "laag",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         }
       ]
     },
@@ -344,7 +344,7 @@
       "datum": "2026-10-26",
       "van": "seo",
       "aan": "pim",
-      "status": "in_behandeling",
+      "status": "verwerkt",
       "regels": [
         {
           "product_id": "gid://shopify/Product/10772819935496",
@@ -354,8 +354,8 @@
           "gewenste_waarde": "Dorset Thee – Groene thee, lemongrass en limoen | Tante Rie",
           "reden": "Vanille onjuist, lemongrass en limoen uit ingrediënten",
           "prioriteit": "hoog",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10769689248008",
@@ -365,8 +365,8 @@
           "gewenste_waarde": "Green de Cassis is een frisse groene thee met stukjes aardbei en rode bessen, fruitig en friszuur van smaak. Los bij Tante Rie.",
           "reden": "Cassis als ingrediënt onjuist, aardbei en rode bessen",
           "prioriteit": "hoog",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10769689248008",
@@ -376,8 +376,8 @@
           "gewenste_waarde": "Green de Cassis – Groene thee met aardbei | Tante Rie",
           "reden": "Zwarte bessen onjuist, aardbei en rode bessen",
           "prioriteit": "hoog",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10769379623176",
@@ -387,8 +387,8 @@
           "gewenste_waarde": "Piña Colada is een cafeïnevrije vruchtenthee met hibiscus, ananas en kokosrasp, tropisch en ook lekker als ijsthee. Los bij Tante Rie.",
           "reden": "Categorie onjuist, spelling cafeïnevrij en ijsthee-zin",
           "prioriteit": "hoog",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10769379623176",
@@ -398,8 +398,8 @@
           "gewenste_waarde": "Piña Colada – Vruchtenthee met ananas en kokos | Tante Rie",
           "reden": "Kruidenthee onjuist, vruchtenthee volgens opdracht",
           "prioriteit": "hoog",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10614766174472",
@@ -409,8 +409,8 @@
           "gewenste_waarde": "Sterke Vrouw is een cafeïnevrije kruidenthee met zoethout, venkel, gember, kaneel en kardemom, warm en kruidig van smaak. Los bij Tante Rie.",
           "reden": "Lavendel onjuist, kruiden uit ingrediënten",
           "prioriteit": "hoog",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10614766174472",
@@ -420,8 +420,8 @@
           "gewenste_waarde": "Sterke Vrouw – Kruidenthee, zoethout en gember | Tante Rie",
           "reden": "Lavendel onjuist, zoethout en gember uit ingrediënten",
           "prioriteit": "hoog",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10775585521928",
@@ -431,8 +431,8 @@
           "gewenste_waarde": "Sweet Love is een melange van groene, zwarte en witte thee met suikerhartjes en de smaak van zachte perzik-pudding. Los bij Tante Rie.",
           "reden": "Rooibos en cafeïnevrij onjuist, melange volgens opdracht",
           "prioriteit": "hoog",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10775585521928",
@@ -442,8 +442,8 @@
           "gewenste_waarde": "Sweet Love – Groene, zwarte en witte thee | Tante Rie",
           "reden": "Rooibos onjuist, melange van groene, zwarte en witte thee",
           "prioriteit": "hoog",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10614742974728",
@@ -453,8 +453,8 @@
           "gewenste_waarde": "Thee van Oma is een cafeïnevrije rooibos met ananas, framboos, aardbei en goudsbloembloesem, zoet en fruitig van smaak. Los bij Tante Rie.",
           "reden": "Appel en appeltaart onjuist, fruit uit ingrediënten",
           "prioriteit": "hoog",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10614742974728",
@@ -464,8 +464,8 @@
           "gewenste_waarde": "Thee van Oma – Rooibos met ananas en framboos | Tante Rie",
           "reden": "Appel en kaneel onjuist, fruit uit ingrediënten",
           "prioriteit": "hoog",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10769689805064",
@@ -475,8 +475,8 @@
           "gewenste_waarde": "Thee van Tante Annie is een groene thee met rozenblaadjes, zonnebloembloesem en korenbloembloesem, licht en bloemig van smaak. Los bij Tante Rie.",
           "reden": "Mango, papaya en cafeïnearm onjuist, bloemen uit ingrediënten",
           "prioriteit": "hoog",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10769689805064",
@@ -486,8 +486,8 @@
           "gewenste_waarde": "Thee van Tante Annie – Groene thee met rozen | Tante Rie",
           "reden": "Mango onjuist, rozen uit ingrediënten; naam behouden",
           "prioriteit": "hoog",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10775584112904",
@@ -497,8 +497,8 @@
           "gewenste_waarde": "Twentse Land is een zwarte thee met peterselie en wortel, een streekmelange uit Twente, kruidig en hartig van smaak. Los bij Tante Rie.",
           "reden": "Earl Grey en bergamot onjuist, ingrediënten genoemd",
           "prioriteit": "hoog",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10775584112904",
@@ -508,8 +508,8 @@
           "gewenste_waarde": "Twentse Land – Zwarte thee, peterselie en wortel | Tante Rie",
           "reden": "Earl Grey onjuist, peterselie en wortel uit ingrediënten",
           "prioriteit": "hoog",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10772819935496",
@@ -519,8 +519,8 @@
           "gewenste_waarde": "citroen, groene-thee, licht, limoen",
           "reden": "Cafeïnearm weg, limoen uit ingrediënten",
           "prioriteit": "middel",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10769689248008",
@@ -530,8 +530,8 @@
           "gewenste_waarde": "bessen, aardbei, friszuur, groene-thee",
           "reden": "Cassis en cafeïnearm weg, aardbei uit ingrediënten",
           "prioriteit": "middel",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10619464646920",
@@ -541,8 +541,8 @@
           "gewenste_waarde": "appel, kaneel, vruchtenthee, groene-thee, warm, winter",
           "reden": "Cafeïnevrij weg, groene thee zit in ingrediënten",
           "prioriteit": "middel",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10775591584008",
@@ -552,8 +552,8 @@
           "gewenste_waarde": "appel, citroen, fris, fruitig, groene-thee, witte-thee",
           "reden": "Type volgens opdracht: groene en witte thee",
           "prioriteit": "middel",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10619423064328",
@@ -563,8 +563,8 @@
           "gewenste_waarde": "zwarte-thee, lychee, mango, tropisch",
           "reden": "Cafeïnearm vervalt, type volgens opdracht",
           "prioriteit": "middel",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10619427193096",
@@ -574,8 +574,8 @@
           "gewenste_waarde": "fruitig, perzik, zoet, zomers, groene-thee",
           "reden": "Type volgens opdracht: groene thee i.p.v. zwarte",
           "prioriteit": "middel",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10769379623176",
@@ -585,8 +585,8 @@
           "gewenste_waarde": "ananas, cafeïnevrij, kokos, vruchtenthee, tropisch, zomer",
           "reden": "Rooibos vervangen door vruchtenthee volgens opdracht",
           "prioriteit": "middel",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10769275552008",
@@ -596,8 +596,8 @@
           "gewenste_waarde": "appel, cafeïnevrij, nootachtig, rooibos, zoet",
           "reden": "Amandel onjuist, appel uit ingrediënten",
           "prioriteit": "middel",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10613770977544",
@@ -607,8 +607,8 @@
           "gewenste_waarde": "Slaap Lekker is een cafeïnevrije kruidenthee met valeriaan, citroenmelisse, pepermunt, hop en kamille, voor de avond. Los bij Tante Rie.",
           "reden": "Vulwoord ideaal en CTA weg, ingrediënten genoemd",
           "prioriteit": "middel",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10613770977544",
@@ -618,8 +618,8 @@
           "gewenste_waarde": "avond, cafeïnevrij, kamille, kruidenthee, pepermunt, rustgevend",
           "reden": "Lavendel weg, pepermunt uit ingrediënten",
           "prioriteit": "middel",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10614766174472",
@@ -629,8 +629,8 @@
           "gewenste_waarde": "cafeïnevrij, kruidenthee, kruidig, gember, zoethout",
           "reden": "Energie en lavendel weg, gember en zoethout",
           "prioriteit": "middel",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10775585521928",
@@ -640,8 +640,8 @@
           "gewenste_waarde": "dessert, perzik, groene-thee, zwarte-thee, witte-thee, zoet",
           "reden": "Rooibos en cafeïnevrij weg, thee-soorten uit opdracht",
           "prioriteit": "middel",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10775589683464",
@@ -651,8 +651,8 @@
           "gewenste_waarde": "biologisch, citroengras, sinaasappel, fruitig, zwarte-thee",
           "reden": "Type volgens opdracht, cafeïnearm vervalt",
           "prioriteit": "middel",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10614742974728",
@@ -662,8 +662,8 @@
           "gewenste_waarde": "ananas, framboos, aardbei, cafeïnevrij, rooibos, zoet",
           "reden": "Appel, kaneel en winter weg, fruit uit ingrediënten",
           "prioriteit": "middel",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10769689805064",
@@ -673,8 +673,8 @@
           "gewenste_waarde": "groene-thee, bloemig, roos",
           "reden": "Mango en papaya weg, bloemig uit ingrediënten",
           "prioriteit": "middel",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10775584112904",
@@ -684,8 +684,8 @@
           "gewenste_waarde": "streekthee, twenthe, zwarte-thee, kruidig",
           "reden": "Earl Grey en bergamot weg, kruidig uit opdracht",
           "prioriteit": "middel",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10772837695752",
@@ -695,8 +695,8 @@
           "gewenste_waarde": "bloemig, framboos, romantisch, bramen, zwarte-thee",
           "reden": "Vanille weg, bramen volgens opdracht",
           "prioriteit": "middel",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10709771649288",
@@ -706,8 +706,8 @@
           "gewenste_waarde": "bloemig, feestelijk, roos, voc, groene-thee, witte-thee",
           "reden": "Type volgens opdracht: groene en witte thee",
           "prioriteit": "middel",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10619464646920",
@@ -717,8 +717,8 @@
           "gewenste_waarde": "Hartverwarmer is een warme, fruitige en kleurrijke winterse melange van groene thee met appel, ananas, kardemom en kaneel. Bij Tante Rie.",
           "reden": "Vulwoord Perfect en CTA Bestel verwijderd",
           "prioriteit": "laag",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         },
         {
           "product_id": "gid://shopify/Product/10769275552008",
@@ -728,8 +728,8 @@
           "gewenste_waarde": "Rooibos Amaretto is een milde, cafeïnevrije rooibos met een verrassende appel-amaretto smaak, zacht, rond en verwennend. Los bij Tante Rie.",
           "reden": "Typfout cafeïnevrije hersteld, eindigt op Los bij",
           "prioriteit": "laag",
-          "status": "in_behandeling",
-          "resultaat": "Diff bij Mark ter goedkeuring 28-10"
+          "status": "uitgevoerd",
+          "resultaat": "Uitgevoerd 28-10 na akkoord Mark"
         }
       ]
     }

@@ -2,6 +2,14 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## PIM, 28-10-2026 (SEO-batches 26-10)
+- seo-2026-10-26-1 en -2 verwerkt: 64 regels uitgevoerd na akkoord Mark (SEO-titels, meta's, tags, alt-teksten bij 28 producten).
+- Festival-beschrijving afgewezen (ingetrokken door SEO).
+- Ingrediënten in nieuwe teksten gecontroleerd tegen metafield en Geels-brondata: klopt.
+- Collecties: geen enkele collectie filtert op tags; theecollecties zijn handmatig, dus geen verschuivingen.
+- Kanttekening: Cactus Vijg-meta noemt cactusvijgaroma, bron zegt alleen aroma.
+- Verbruik: niet gemeten.
+
 ## PIM, 27-10-2026 (Rice-opschoning)
 - 92 losse dubbele alfabetbekers zonder voorraad gearchiveerd; 12 met voorraad blijven. Moederartikelen Rice A t/m Z intact.
 - Rice K: Groen K wordt Donker grijs K (MELCU-ALPKB2). 6ZFUNI per stuk, kostprijs 3,27.
