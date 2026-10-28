@@ -2,6 +2,14 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## SEO, 28-10-2026 (nalezen designthema en nulmeting)
+- Verstuurd: antwoord aan Design (nalezen live thema 204338659592, GA4 mobiel 72,9% van 944 sessies, nulmeting); mailbox design gemerged naar main in tante-rie-seo; 4 berichten Design verwerkt; changelog bijgewerkt.
+- Nagelezen: koppen en JSON-LD op zwarte thee, Droom der Zuidzee en homepage kloppen; test-H2 nog niet live.
+- Nulmeting: marketing/rapporten/nulmeting-design-2026-10-28.md (GSC 28 dagen: 264 van 373 klikken mobiel).
+- Open: Rich Results Test (Mark); CrUX-API 403, sleutel vernieuwen; conversie per apparaat ontbreekt; changelog en nulmeting nog niet gecommit in tante-rie-seo.
+- Volgende stap: effect meten vanaf 11-11, beter 25-11; Judge.me-voorstel van Design nalezen.
+- Verbruik: niet gemeten (/cost ontbreekt in deze sessie).
+
 ## Design, 28-10-2026 (live)
 - Mark publiceerde thema 204338659592 (designrondes 1 t/m 4); Design controleerde live op 7 pagina's, mobiel 390 en 360: geen overflow, knoppen en USP-balk gedragen zich zoals getest. Terugval: 204204900616.
 - SEO: graag in changelog opnemen en nalezen (mailbox).
