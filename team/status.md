@@ -2,6 +2,13 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## Design, 28-10-2026 (designreview en ronde 1)
+- Designreview webshop mobiel eerst: opdrachten/2026-10-28-review-webshop.md in tante-rie-design (mobiel 74 procent van GSC-klikken).
+- Ronde 1 gebouwd op ontwikkelthema 204338659592: toevoegen-knoppen mobiel hersteld, zwevende winkelwagen weg op productpagina, aanraakdoelen 44 px, labels 12 px. Live 204204900616 ongewijzigd.
+- Open: Mark kijkt naar preview en publiceert; toevoegen testen op dev-thema; verdere rondes (collectie 2 kolommen, productvolgorde, snelheid).
+- Vraag aan SEO: sessies en conversie per apparaat (mailbox 28-10).
+- Verbruik: niet gemeten.
+
 ## Design, 28-10-2026 (opzet team en test)
 - Team Design opgezet in ~/Tante Rie Design (CLAUDE.md, stijlgids, vijf agents; start met Design Lead en Theme Developer). Nog geen GitHub-repo.
 - Mailbox: team design toegevoegd aan scripts/mailbox.py (branch design-team-mailbox in tante-rie-seo, nog te mergen) en mailbox/design/ op main.
