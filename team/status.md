@@ -2,6 +2,12 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## Design, 28-10-2026 (live)
+- Mark publiceerde thema 204338659592 (designrondes 1 t/m 4); Design controleerde live op 7 pagina's, mobiel 390 en 360: geen overflow, knoppen en USP-balk gedragen zich zoals getest. Terugval: 204204900616.
+- SEO: graag in changelog opnemen en nalezen (mailbox).
+- Open: nulmeting en effect na 2 tot 4 weken (SEO); Shopify-checkout nieuwsbriefvakje vooraf aangevinkt (Mark); 3 oude ontwikkelthema's opruimen (winkel op max 20).
+- Verbruik: niet gemeten.
+
 ## Design, 28-10-2026 (ronde 4, besluiten Mark)
 - Thema 204338659592 (ronde 1 t/m 4): DM Sans, zwarte pilknoppen (ook Afrekenen), cart-drawer opent na toevoegen, snelbetaalknoppen lager. Live 204204900616 ongewijzigd; Mark publiceert.
 - Gecontroleerd op 6 productsjablonen en desktop: geen overflow, knoppen met label.
