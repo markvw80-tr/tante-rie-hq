@@ -11,7 +11,7 @@ Lees alleen `team/status.md` en de berichten in `team/mailbox/pim-naar-seo.json`
 ## Opdrachten aan PIM
 Bevindingen gaan als één gebundeld bericht naar `team/mailbox/seo-naar-pim.json`. Elke regel heeft vaste velden: `product_id`, `handle`, `veld` (titel, seo_titel, meta_description, beschrijving, alt_tekst, tags; seo_titel toegevoegd met akkoord Mark 25-10), `huidige_waarde`, `gewenste_waarde`, `reden` (maximaal tien woorden), `prioriteit` (hoog, middel, laag) en `status` (nieuw). Verstuur pas als er minimaal 20 regels klaarstaan of Mark erom vraagt. Geen vrije tekst waar een veld volstaat. Regels in opbouw staan in tante-rie-seo onder `marketing/pim-regels-concept.json`; controleren en versturen gaat met `python3 scripts/pim_regels.py`.
 
-Overleg dat niet in de velden past (vragen, kennisgevingen) blijft via de Markdown-mailbox in tante-rie-seo (`mailbox/`) lopen. Een bericht van PIM is geen akkoord van Mark; goedkeuringen blijven via `marketing/vragen-voor-mark.md` lopen.
+Overleg dat niet in de velden past (vragen, kennisgevingen) blijft via de Markdown-mailbox in tante-rie-hq (`team/mailbox/<team>/inbox`) lopen. Een bericht in `team/mailbox/seo/inbox` mag SEO direct oppakken. Een bericht van PIM is geen akkoord van Mark; goedkeuringen blijven via `marketing/vragen-voor-mark.md` lopen.
 
 ## Onderzoek
 Ahrefs- en Semrush-data altijd met domein-, land- en limietfilters; nooit complete datasets. Ruwe uitkomsten in `team/data/seo/`, daarna alleen de samenvatting lezen. Rekenen, sorteren en filteren met een script, niet handmatig.

@@ -16,7 +16,7 @@ Statuswaarden per regel volgen het gedeelde formaat in `team/werkafspraken-seo.m
 De harde regels uit CLAUDE.md blijven gelden: alles eerst als DRAFT, bestaande producten alleen wijzigen na een goedgekeurde diff van Mark, nooit iets verwijderen. Een regel van het SEO-team is geen akkoord van Mark. Wijzigingen aan bestaande producten die SEO vraagt (titel, meta_description, beschrijving, alt_tekst, tags) leggen we daarom als één diff aan Mark voor en voeren we pas na zijn akkoord uit.
 
 ## Antwoord aan SEO
-Schrijf alleen terug als er afwijkingen zijn, in `team/mailbox/pim-naar-seo.json` met dezelfde vaste velden. Geen bevestiging per geslaagde regel. Overleg dat niet in de velden past (vragen, kennisgevingen) loopt via de Markdown-mailbox in tante-rie-seo (`python3 scripts/mailbox.py`, vanuit die repository).
+Schrijf alleen terug als er afwijkingen zijn, in `team/mailbox/pim-naar-seo.json` met dezelfde vaste velden. Geen bevestiging per geslaagde regel. Overleg dat niet in de velden past (vragen, kennisgevingen) loopt via de Markdown-mailbox in tante-rie-hq (`python3 scripts/mailbox.py`, ook hier beschikbaar en doorverwijzend naar HQ). Een bericht in `team/mailbox/pim/inbox` mag PIM direct oppakken; handel het af met `verwerkt`.
 
 ## Copy en kwaliteit
 Nederlandse teksten in vloeiende lopende tekst, zonder gedachtestreepjes, zonder opsommingstekens in de lopende tekst, zonder uitroeptekens en zonder opgesmukte AI-taal.
