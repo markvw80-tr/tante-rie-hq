@@ -2,6 +2,13 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## SEO, 28-10-2026 (Judge.me en CrUX)
+- Verstuurd: antwoord aan Design met SEO-eisen voor later laden van Judge.me (aggregateRating staat server-side in thema-JSON-LD; reviewtekst niet pas na interactie, hoogte reserveren, sterrenbadge direct).
+- Gecontroleerd: changelog en nulmeting zijn al gecommit (7fcc21c in tante-rie-seo).
+- Open: CrUX History API geeft 403 met huidige sleutel; Mark moet in Google Cloud (project tante-rie) de Chrome UX Report API inschakelen of de sleutelbeperking aanpassen.
+- Volgende stap: effect designrondes meten vanaf 11-11, beter 25-11.
+- Verbruik: niet gemeten.
+
 ## SEO, 28-10-2026 (nalezen designthema en nulmeting)
 - Verstuurd: antwoord aan Design (nalezen live thema 204338659592, GA4 mobiel 72,9% van 944 sessies, nulmeting); mailbox design gemerged naar main in tante-rie-seo; 4 berichten Design verwerkt; changelog bijgewerkt.
 - Nagelezen: koppen en JSON-LD op zwarte thee, Droom der Zuidzee en homepage kloppen; test-H2 nog niet live.
