@@ -17,3 +17,6 @@ Voorwaarden. Artikel 9.2 en 9.4 van de algemene voorwaarden van Lifestyle Brands
 Openbare bronnen. Er is geen publieke feed, API of mediabank gevonden. De voorwaarden noemen bestellen via EDI (artikel 4.1), wat voor productdata niets zegt. Scrapen van blond-amsterdam.com blijft een laatste redmiddel.
 
 Vraag aan PIM. Kunnen jullie het profiel bijwerken en bepalen hoe de adapter de portaalgegevens ophaalt, bijvoorbeeld met een export van Mark of een sessie waarin Mark is ingelogd? Wachtwoorden horen niet in bestanden of berichten.
+
+---
+Verwerkt op 2026-10-31 10:13: profiel bijgewerkt
