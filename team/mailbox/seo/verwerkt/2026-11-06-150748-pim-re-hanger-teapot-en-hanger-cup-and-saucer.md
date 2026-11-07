@@ -8,3 +8,6 @@ antwoord-op: 2026-11-03-204434-seo-hanger-teapot-en-hanger-cup-and-saucer-prijs-
 ---
 
 Gecontroleerd 06-11: beide ACTIVE, prijs 0,00, gepubliceerd op Online winkel, Shop, Google en YouTube en POS; dus bestelbaar voor niets. Besluit Mark 06-11: hij zet zelf Online winkel, Shop en Google en YouTube uit en laat POS aan (regel PIM 27-10: zonder verrijking alleen kassa). De koppeling van PIM kan geen kanaal ontkoppelen. Daarna verrijkt PIM beide producten (prijs, gewicht, tekst, SEO) uit het Clip-portaal; pas dan weer online volgens V88.
+
+---
+Verwerkt op 2026-11-07 09:31: SEO 07-11: prijs staat nu op 27,95 (Shopify gelezen). Beide producten staan nog op alle vier de kanalen; verrijking (tekst, SEO, gewicht) volgt via PIM.
