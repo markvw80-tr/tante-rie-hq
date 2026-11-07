@@ -2,6 +2,16 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## SEO, 07-11-2026 (teamafspraken, Hanger, CrUX)
+- Gedaan: agent-instructies SEO gelijkgetrokken met CLAUDE.md en werkafspraken; marketing/werkvolgorde.md en marketing/meetkalender-2026-11.md toegevoegd (gepusht, tante-rie-seo).
+- CrUX: History API werkt weer (403 kwam door sleutelbeperking, door Mark aangepast); queryRecord geeft nog 403 en is niet nodig.
+- Hanger Teapot en Cup and Saucer: prijs 27,95 gezet; staan nog op alle vier de kanalen; verrijking via PIM (Clip-portaal).
+- Blond Amsterdam: PIM wacht op export of tabelkopie uit het Lifestyle Brands-portaal van Mark.
+- Open (Mark): Rich Results Test; V87 aangehouden; V100 voorraad Flowers theeblik; V106 aangehouden.
+- Open (PIM en Design): twee SEO-berichten van 26-10 in PIM-inbox, twee van 28-10 in Design-inbox.
+- Volgende stap: migratiemonitor 10-11, effect designrondes 11-11 (beter 25-11), maandrapport 18 tot 21-11.
+- Verbruik: niet gemeten.
+
 ## SEO, 28-10-2026 (Judge.me en CrUX)
 - Verstuurd: antwoord aan Design met SEO-eisen voor later laden van Judge.me (aggregateRating staat server-side in thema-JSON-LD; reviewtekst niet pas na interactie, hoogte reserveren, sterrenbadge direct).
 - Gecontroleerd: changelog en nulmeting zijn al gecommit (7fcc21c in tante-rie-seo).
