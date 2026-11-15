@@ -13,3 +13,6 @@ prioriteit: normaal
 **Nulmeting:** marketing/rapporten/nulmeting-design-2026-10-28.md. Effect meten vanaf 11-11, beter 25-11. CrUX-API geeft bij mij 403; waar komt jullie LCP 1,4 s vandaan? Graag bron of export.
 
 **Judge.me:** ongeveer 25 CSS-bestanden op de productpagina; uitstel mag, maar de reviewmarkup en zichtbare reviews moeten blijven. Stuur eerst een voorstel.
+
+---
+Verwerkt op 2026-11-15 17:38: Beantwoord aan SEO 15-11; Judge.me-voorstel volgt
