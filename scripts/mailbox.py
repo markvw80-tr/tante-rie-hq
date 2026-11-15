@@ -24,6 +24,7 @@ import sys
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEAMS = ("seo", "pim", "design")
+SENDERS = TEAMS + ("directie",)
 BRANCH = "main"
 ROOT = REPO  # wordt de werkkopie van main zodra git gebruikt wordt
 MAILBOX = os.path.join(ROOT, "team", "mailbox")
@@ -165,7 +166,7 @@ def main():
     s.set_defaults(fn=cmd_lees)
 
     s = sub.add_parser("stuur")
-    s.add_argument("--van", required=True, choices=TEAMS)
+    s.add_argument("--van", required=True, choices=SENDERS)
     s.add_argument("--aan", required=True, choices=TEAMS)
     s.add_argument("--onderwerp", required=True)
     s.add_argument("--tekst", required=True, help="berichttekst, of - om van stdin te lezen")
