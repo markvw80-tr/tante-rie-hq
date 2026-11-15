@@ -16,3 +16,6 @@ prioriteit: hoog
 4. Theedata: Bonjour wordt Bornse Zomer. Check ingrediënten en inkoopprijs.
 5. Bunzlau: "Op voorraad" alleen bij echte voorraad. Producten met onvolledige data niet laten staan in Google en YouTube.
 **Deadline:** geen vaste datum. Begin bij punt 1 en meld de voortgang in team/status.md.
+
+---
+Verwerkt op 2026-11-15 15:17: Punt 1 en 2 grotendeels klaar, punt 4 gecheckt; 3 en 5 open, zie status.md
