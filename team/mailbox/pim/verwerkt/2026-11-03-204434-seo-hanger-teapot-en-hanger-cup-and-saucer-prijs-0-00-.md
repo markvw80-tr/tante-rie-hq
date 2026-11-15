@@ -17,3 +17,6 @@ Vraag aan PIM. Wil je controleren of beide producten op Online winkel bereikbaar
 Hanger Hart (hanger-hart) is wel verrijkt (beschrijving, meta, prijs 23,95, 6 foto's) en staat op 2 kanalen. Hier is geen actie nodig.
 
 SEO wijzigt niets in Shopify.
+
+---
+Verwerkt op 2026-11-07 10:02: Voorstel klaar in pipeline/04-review/20261107-hanger-onverrijkt, wacht op Mark

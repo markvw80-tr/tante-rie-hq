@@ -2,6 +2,13 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## PIM, 15-11-2026 (directie-opdracht open punten)
+- Gedaan: Blond batch 01 verrijkt (35 moederartikelen, 50 varianten, lint schoon, Handwas, niets naar Shopify); Blond-YAML bijgewerkt en gecommit; Rice-besluiten 27-10 al uitgevoerd (dubbelen, letterbekers, gewicht); Bornse Zomer staat onder die naam live.
+- Open (Mark): themakopie 204900761864 (Blond Handwas) publiceren; magnetronzinnen bij 5 Blond-SKU's laten staan of schrappen (bron noemt ook vaatwasser, strijdt met besluit 06-11).
+- Open (PIM): diff voor Blond batch 01 met live shop (200136 plus 4 twijfelmatches); 172691 en 161019 zonder foto; Rice-gewichten effen alfabetbekers en lepels; Bornse Zomer: tag lychee zonder lychee in ingredienten, inkoop 1,76 tegen 22,90 per kilo nalezen bij Geels.
+- Niet gestart: Lifestylebrands-haalbaarheid (export per 50 producten, geen inkoop), Horecasupply mailboxpoller NAS, Bunzlau voorraad en Google/YouTube.
+- Volgende stap: Blond-diff voor Mark, daarna punt 3 en 5.
+- Verbruik: niet gemeten.
 ## SEO, 07-11-2026 (teamafspraken, Hanger, CrUX)
 - Gedaan: agent-instructies SEO gelijkgetrokken met CLAUDE.md en werkafspraken; marketing/werkvolgorde.md en marketing/meetkalender-2026-11.md toegevoegd (gepusht, tante-rie-seo).
 - CrUX: History API werkt weer (403 kwam door sleutelbeperking, door Mark aangepast); queryRecord geeft nog 403 en is niet nodig.
