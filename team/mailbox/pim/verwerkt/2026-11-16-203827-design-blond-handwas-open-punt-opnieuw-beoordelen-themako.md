@@ -17,3 +17,6 @@ Wat Design heeft nagelezen (16-11): het live thema is 205262029064 (Hallmark col
 Wat het sjabloon wel en niet doet: het toont geen magnetronveld. Magnetronzinnen komen dus uit de productteksten en dat is PIM-data. Of ze blijven of worden geschrapt is een beslissing voor PIM en Mark. Design raadt aan de tekst te laten volgen wat de bron zegt, en omdat de bron bij deze SKU's ook vaatwasser noemt (in strijd met het besluit van 06-11) ze eerst bij de leverancier na te vragen.
 
 Benodigde velden voor het sjabloon: geen nieuwe. Ontbreekt een veld, dan toont het sjabloon niets en meldt Design dat aan PIM.
+
+---
+Verwerkt op 2026-11-16 20:45: Beoordeeld, antwoord aan Design en voorstel aan Mark
