@@ -18,3 +18,6 @@ Toelichting van Mark:
 Is dit nog nodig?
 
 Verstuurd door Mark via het Huis van Tante Rie.
+
+---
+Verwerkt op 2026-11-16 20:49: Besluit: kopie niet publiceren, magnetronzinnen geschrapt in batch Blond 01
