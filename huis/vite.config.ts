@@ -9,6 +9,8 @@ export default defineConfig({
   server: {
     host: "127.0.0.1",
     port: 5310,
+    // Niet stilletjes uitwijken naar 5311: dan zou het huis zonder server draaien.
+    strictPort: true,
     proxy: { "/api": `http://127.0.0.1:${API_PORT}` },
   },
   test: {

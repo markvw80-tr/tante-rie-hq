@@ -118,6 +118,17 @@ const server = createServer(async (req, res) => {
   return statisch(req, res);
 });
 
+server.on("error", (e: NodeJS.ErrnoException) => {
+  if (e.code === "EADDRINUSE") {
+    console.error(
+      `[huis] Poort ${API_PORT} is al bezet: het huis draait waarschijnlijk al in een ander venster.\n` +
+        `[huis] Open http://${HOST}:${WEB_PORT} of stop het andere exemplaar (Ctrl+C) en start opnieuw.`,
+    );
+    process.exit(1);
+  }
+  throw e;
+});
+
 server.listen(API_PORT, HOST, () => {
   console.log(`[huis] luistert op http://${HOST}:${API_PORT} (alleen deze Mac)`);
   console.log(`[huis] hq: ${HQ}, post uit ${mailboxMap(HQ)}${GEEN_GIT ? ", zandbak zonder git" : ""}`);
