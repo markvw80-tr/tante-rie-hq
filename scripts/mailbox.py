@@ -11,6 +11,7 @@ Gebruik:
   python3 scripts/mailbox.py lijst seo                 # ongelezen berichten voor het SEO-team (ook pim, design)
   python3 scripts/mailbox.py lees <bestand>            # één bericht tonen
   python3 scripts/mailbox.py stuur --van seo --aan pim --onderwerp "..." --tekst "..."
+                                                       # --van mark: bericht van Mark zelf (akkoord of opdracht)
         [--antwoord-op <bestand>] [--prioriteit hoog|normaal|laag]
   python3 scripts/mailbox.py verwerkt <bestand> [--notitie "..."]
   python3 scripts/mailbox.py --geen-git ...            # zonder pull/commit/push (testen)
@@ -24,7 +25,7 @@ import sys
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEAMS = ("seo", "pim", "design")
-SENDERS = TEAMS + ("directie",)
+SENDERS = TEAMS + ("directie", "mark")  # mark: besluit of opdracht van Mark zelf, via het Huis
 BRANCH = "main"
 ROOT = REPO  # wordt de werkkopie van main zodra git gebruikt wordt
 MAILBOX = os.path.join(ROOT, "team", "mailbox")
@@ -110,6 +111,9 @@ def cmd_lees(a):
 
 
 def cmd_stuur(a):
+    if a.van == "mark" and os.environ.get("TANTE_RIE_HUIS") != "1":
+        sys.exit("Afzender mark is alleen voor Mark zelf, via het Huis van Tante Rie. "
+                 "Een team of de directie verstuurt nooit namens Mark.")
     if a.van == a.aan:
         sys.exit("Afzender en ontvanger zijn hetzelfde team.")
     tekst = a.tekst
