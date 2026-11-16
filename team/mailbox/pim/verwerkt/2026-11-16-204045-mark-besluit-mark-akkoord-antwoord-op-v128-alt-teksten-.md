@@ -14,3 +14,6 @@ Akkoord van Mark op dit agendapunt van de directie:
 > Antwoord op V128 (alt-teksten) en V129 (Merchant Center) zodat SEO de regels naar PIM kan sturen.
 
 Verstuurd door Mark via het Huis van Tante Rie.
+
+---
+Verwerkt op 2026-11-16 20:49: Akkoord doorgegeven aan SEO, wacht op regels
