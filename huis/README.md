@@ -72,6 +72,11 @@ Geweigerd krijgt de agent terug met jouw notitie. Zonder antwoord binnen 30 minu
 | `POST /api/runs/:id/stop` | stoppen |
 | `POST /api/runs/:id/poort` | poortvraag beantwoorden (`verzoekId`, `toestaan`, `notitie`) |
 
+## Post: ophalen en archief
+
+- **Ophalen:** de server haalt elke 5 minuten de post van `origin/main` op (via `mailbox.py lijst`, dat alleen fetcht en leest). Onderaan het huis staat wanneer dat voor het laatst gebeurde; **Post ophalen** doet het direct. In de zandbak (`HUIS_GEEN_GIT=1`) staat het automatisch ophalen uit.
+- **Archief:** in de Post-tab van een kamer kies je Lopend of Archief. Afgehandelde gesprekken (niets meer in een inbox) archiveer je per stuk of allemaal tegelijk, en haal je met **Terughalen** weer terug. Komt er een nieuw bericht in een gearchiveerd gesprek, dan staat het vanzelf weer bij Lopend. Het archief is alleen jouw overzicht: het staat in `huis/data/archief.json` (niet in git) en de mailbox van de teams blijft onveranderd.
+
 ## Starten
 
 ```bash

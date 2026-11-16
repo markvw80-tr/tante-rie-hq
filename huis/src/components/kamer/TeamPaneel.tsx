@@ -22,9 +22,9 @@ type Tab = "overzicht" | "post" | "werk" | "agents";
 export function TeamPaneel({ team, agenda, drempel, bijgewerkt, runs, onTerug }: Props) {
   const [tab, setTab] = useState<Tab>("overzicht");
   const { open: schrijf } = useSchrijven();
-  const { werk, fout } = useTeamWerk(team.id, bijgewerkt);
+  const { werk, fout, opnieuw } = useTeamWerk(team.id, bijgewerkt);
   const laatste = team.id === "directie" ? "Laatste agenda" : "Laatste statusblok";
-  const openGesprekken = werk?.gesprekken.filter((g) => g.open).length ?? 0;
+  const openGesprekken = werk?.gesprekken.filter((g) => g.open && !g.gearchiveerd).length ?? 0;
   const documenten = werk?.bronnen.reduce((n, b) => n + b.totaal, 0);
 
   const tabs: ReadonlyArray<readonly [Tab, string]> = [
@@ -64,7 +64,7 @@ export function TeamPaneel({ team, agenda, drempel, bijgewerkt, runs, onTerug }:
 
       {fout && tab !== "overzicht" && tab !== "agents" && <p className="signaal">Werk van dit team laden mislukt: {fout}</p>}
       {tab === "overzicht" && <OverzichtTab team={team} agenda={agenda} />}
-      {tab === "post" && <PostTab gesprekken={werk?.gesprekken ?? null} team={team.id} drempel={drempel} />}
+      {tab === "post" && <PostTab gesprekken={werk?.gesprekken ?? null} team={team.id} drempel={drempel} onGewijzigd={opnieuw} />}
       {tab === "werk" && <WerkTab werk={werk} />}
       {tab === "agents" && <AgentsTab team={team} runs={runs} />}
     </div>

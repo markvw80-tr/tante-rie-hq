@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import type { TeamId, TeamWerk } from "../shared/types.ts";
 import { haalJson } from "./lezer/verwijzing.ts";
 
@@ -6,6 +6,8 @@ import { haalJson } from "./lezer/verwijzing.ts";
 export function useTeamWerk(team: TeamId, ververs: Date | null) {
   const [werk, setWerk] = useState<TeamWerk | null>(null);
   const [fout, setFout] = useState<string | null>(null);
+  const [teller, setTeller] = useState(0);
+  const opnieuw = useCallback(() => setTeller((t) => t + 1), []);
 
   useEffect(() => {
     let actief = true;
@@ -19,7 +21,7 @@ export function useTeamWerk(team: TeamId, ververs: Date | null) {
     return () => {
       actief = false;
     };
-  }, [team, ververs]);
+  }, [team, ververs, teller]);
 
-  return { werk: werk?.team === team ? werk : null, fout };
+  return { werk: werk?.team === team ? werk : null, fout, opnieuw };
 }

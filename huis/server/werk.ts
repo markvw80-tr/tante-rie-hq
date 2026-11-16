@@ -1,6 +1,7 @@
 import path from "node:path";
 import type { BatchInhoud, Bericht, DocInfo, DocumentInhoud, MailboxTeam, TeamWerk, WerkBronInfo } from "../shared/types.ts";
 import type { Bron } from "./bron.ts";
+import { pasArchiefToe, type Archief } from "./archief.ts";
 import { PIPELINE_FASES, type TeamConfig } from "./config.ts";
 import { docInfo, filterBestanden, isVeiligeNaam, titelUitMarkdown } from "./parsers/documenten.ts";
 import { bouwGesprekken } from "./parsers/gesprekken.ts";
@@ -33,7 +34,7 @@ export async function alleBerichten(bron: Bron, mailbox: string, vandaag: string
   return per.flat();
 }
 
-export async function teamWerk(bron: Bron, mailbox: string, team: TeamConfig, vandaag: string): Promise<TeamWerk> {
+export async function teamWerk(bron: Bron, mailbox: string, team: TeamConfig, vandaag: string, archief: Archief = {}): Promise<TeamWerk> {
   const [bronnen, berichten] = await Promise.all([
     Promise.all(
       WERKBRONNEN[team.id].map(async (cfg): Promise<WerkBronInfo> => {
@@ -44,7 +45,7 @@ export async function teamWerk(bron: Bron, mailbox: string, team: TeamConfig, va
     alleBerichten(bron, mailbox, vandaag),
   ]);
   const vanTeam = berichten.filter((b) => b.van === team.id || b.aan === team.id);
-  return { team: team.id, bronnen, gesprekken: bouwGesprekken(vanTeam) };
+  return { team: team.id, bronnen, gesprekken: pasArchiefToe(bouwGesprekken(vanTeam), archief) };
 }
 
 async function leesBestand(bron: Bron, pad: string, bestand: string, herkomst: string): Promise<DocumentInhoud | null> {

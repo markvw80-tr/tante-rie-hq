@@ -42,3 +42,5 @@ export const TEAMS: ReadonlyArray<readonly [MailboxTeam, string]> = [
   ["pim", "PIM (theekelder)"],
   ["design", "Design (atelier)"],
 ];
+
+export const archiefActie = (actie: "archiveer" | "terug", ids: readonly string[]) => post<{ aantal: number }>("/api/archief", { actie, ids });

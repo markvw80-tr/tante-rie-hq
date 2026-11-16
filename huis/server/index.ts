@@ -7,6 +7,8 @@ import { schijfBron } from "./bron.ts";
 import { API_PORT, GEEN_GIT, HOST, HQ, mailboxMap, TEAMS, WEB_PORT } from "./config.ts";
 import { vandaagIso } from "./parsers/datum.ts";
 import { mailboxPostbode } from "./postbode.ts";
+import { schijfArchief } from "./archief.ts";
+import { Ophaler } from "./ophaler.ts";
 import { behandel, behandelPost, type Omgeving } from "./routes.ts";
 import { RunBeheer } from "./regie/beheer.ts";
 import { schijfOpslag } from "./regie/opslag.ts";
@@ -24,8 +26,11 @@ const TYPES: Record<string, string> = {
 const postbode = mailboxPostbode(HQ, GEEN_GIT);
 const regie = new RunBeheer(sdkStarter, schijfOpslag(path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "runs")));
 const HARTSLAG_MS = 20_000;
+const OPHAAL_MS = 5 * 60_000;
+const archief = schijfArchief(path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "data", "archief.json"));
+const ophaler = new Ophaler(postbode, GEEN_GIT ? null : OPHAAL_MS);
 
-const omgeving = (): Omgeving => ({ bron: schijfBron, hq: HQ, mailbox: mailboxMap(HQ), teams: TEAMS, vandaag: vandaagIso(), postbode, regie });
+const omgeving = (): Omgeving => ({ bron: schijfBron, hq: HQ, mailbox: mailboxMap(HQ), teams: TEAMS, vandaag: vandaagIso(), postbode, regie, archief, ophaler });
 
 function json(res: ServerResponse, status: number, body: unknown): void {
   res.writeHead(status, { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store" });
@@ -130,6 +135,7 @@ server.on("error", (e: NodeJS.ErrnoException) => {
 });
 
 server.listen(API_PORT, HOST, () => {
+  ophaler.start();
   console.log(`[huis] luistert op http://${HOST}:${API_PORT} (alleen deze Mac)`);
   console.log(`[huis] hq: ${HQ}, post uit ${mailboxMap(HQ)}${GEEN_GIT ? ", zandbak zonder git" : ""}`);
 });

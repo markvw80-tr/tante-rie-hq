@@ -12,7 +12,9 @@ export function magSchrijven(headers: IncomingHttpHeaders, poorten: readonly num
   const toegestaan = new Set(poorten.flatMap((p) => [`127.0.0.1:${p}`, `localhost:${p}`]));
   if (!headers.host || !toegestaan.has(headers.host)) return "Onbekende host";
   const origin = headers.origin;
-  if (origin && !toegestaan.has(origin.replace(/^http:\/\//, ""))) return "Onbekende herkomst";
+  if (origin && !toegestaan.has(origin.replace(/^http:\/\//, ""))) {
+    return `Schrijven kan alleen vanuit het huis op http://127.0.0.1:${poorten.at(-1)} (deze pagina komt van ${origin}).`;
+  }
   if (headers[HUIS_HEADER] !== HUIS_WAARDE) return "Verzoek komt niet uit het huis";
   if (!String(headers["content-type"] ?? "").startsWith("application/json")) return "Verwacht JSON";
   const lengte = Number(headers["content-length"] ?? 0);

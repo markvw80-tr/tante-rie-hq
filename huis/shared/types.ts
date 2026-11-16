@@ -112,6 +112,13 @@ export interface HuisStand {
   readonly besluiten: readonly Besluit[];
   readonly jsonMailbox: readonly JsonMailbox[];
   readonly runs?: readonly RunSamenvatting[];
+  readonly post?: PostStand;
+}
+
+export interface PostStand {
+  readonly opgehaald: string | null;
+  readonly fout: string | null;
+  readonly automatischMinuten: number | null;
 }
 
 /* Fase 2: kamerdetails */
@@ -136,6 +143,7 @@ export interface Gesprek {
   readonly berichten: readonly Bericht[];
   readonly laatsteDatum: string;
   readonly open: boolean;
+  readonly gearchiveerd: boolean;
 }
 
 export interface TeamWerk {

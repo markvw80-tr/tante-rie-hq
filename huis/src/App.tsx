@@ -13,6 +13,7 @@ import { TEAM_KLEUR, langeDatum } from "./teamKleur.ts";
 import { useHuis } from "./useHuis.ts";
 import { useVolledigScherm } from "./useVolledigScherm.ts";
 import { VolledigKnop } from "./components/VolledigKnop.tsx";
+import type { PostStand } from "../shared/types.ts";
 
 export function App() {
   const { huis, fout, laadt, bijgewerkt, ververs } = useHuis();
@@ -157,6 +158,7 @@ export function App() {
       {!volledig && (
       <footer className="voet">
         Klik een kamer voor post, werk en agents · ververst elke minuut
+        {huis.post && <PostRegel stand={huis.post} />}
         {bijgewerkt && ` · bijgewerkt ${bijgewerkt.toLocaleTimeString("nl-NL", { hour: "2-digit", minute: "2-digit" })}`} ·{" "}
         <button className="terug" onClick={ververs}>
           Nu verversen
@@ -176,4 +178,13 @@ export function App() {
     </RegieProvider>
     </SchrijfProvider>
   );
+}
+
+const tijdstip = (iso: string) => new Date(iso).toLocaleTimeString("nl-NL", { hour: "2-digit", minute: "2-digit" });
+
+/** Wanneer de post van origin/main voor het laatst is opgehaald, en of dat automatisch gebeurt. */
+function PostRegel({ stand }: { readonly stand: PostStand }) {
+  if (stand.fout) return <span className="post-fout"> · post ophalen mislukt: {stand.fout}</span>;
+  const auto = stand.automatischMinuten ? `, automatisch elke ${stand.automatischMinuten} min` : "";
+  return <span> · post {stand.opgehaald ? `opgehaald om ${tijdstip(stand.opgehaald)}` : "nog niet opgehaald"}{auto}</span>;
 }

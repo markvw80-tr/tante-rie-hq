@@ -39,5 +39,6 @@ function maakGesprek(id: string, lijst: readonly Bericht[], opNaam: ReadonlyMap<
     berichten,
     laatsteDatum: datumUitNaam(laatste.bestand) ?? laatste.datum,
     open: berichten.some((b) => b.map === "inbox"),
+    gearchiveerd: false,
   };
 }

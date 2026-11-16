@@ -3,6 +3,10 @@ import type { TeamConfig } from "./config.ts";
 import { besluitBericht } from "./besluiten.ts";
 import { bouwHuis } from "./huis.ts";
 import type { Postbode } from "./postbode.ts";
+import { archiveer, haalTerug, type ArchiefOpslag } from "./archief.ts";
+import type { Ophaler } from "./ophaler.ts";
+import { bouwGesprekken } from "./parsers/gesprekken.ts";
+import { isVeiligeNaam } from "./parsers/documenten.ts";
 import type { RunBeheer } from "./regie/beheer.ts";
 import { behandelRunGet, behandelRunPost } from "./regie/routes.ts";
 import { valideerBesluit, valideerOpdracht } from "./verzoek.ts";
@@ -21,6 +25,8 @@ export interface Omgeving {
   readonly vandaag: string;
   readonly postbode: Postbode;
   readonly regie?: RunBeheer;
+  readonly archief?: ArchiefOpslag;
+  readonly ophaler?: Ophaler;
 }
 
 const NIET_GEVONDEN: Antwoord = { status: 404, body: { fout: "Niet gevonden" } };
@@ -46,7 +52,7 @@ export async function behandel(pad: string, params: URLSearchParams, omg: Omgevi
   try {
     if (pad === "/api/huis") {
       const huis = await bouwHuis(omg.bron, omg.hq, omg.teams, omg.vandaag, omg.mailbox);
-      return { status: 200, body: { ...huis, runs: omg.regie?.lijst().slice(0, 20) ?? [] } };
+      return { status: 200, body: { ...huis, runs: omg.regie?.lijst().slice(0, 20) ?? [], post: omg.ophaler?.stand() } };
     }
     if (omg.regie && pad.startsWith("/api/runs")) {
       const antwoord = behandelRunGet(pad, omg.regie);
@@ -54,7 +60,7 @@ export async function behandel(pad: string, params: URLSearchParams, omg: Omgevi
     }
 
     const teamMatch = /^\/api\/team\/([a-z]+)$/.exec(pad);
-    if (teamMatch) return { status: 200, body: await teamWerk(omg.bron, omg.mailbox, zoekTeam(omg, teamMatch[1]), omg.vandaag) };
+    if (teamMatch) return { status: 200, body: await teamWerk(omg.bron, omg.mailbox, zoekTeam(omg, teamMatch[1]), omg.vandaag, omg.archief?.lees()) };
 
     if (pad === "/api/document") {
       const [team, bron, bestand] = verplicht(params, "team", "bron", "bestand");
@@ -110,8 +116,9 @@ export async function behandelPost(pad: string, body: unknown, omg: Omgeving): P
       const antwoord = await behandelRunPost(pad, body, omg.regie, omg.bron, omg.teams);
       if (antwoord) return antwoord;
     }
+    if (pad === "/api/archief") return await archiefActie(body, omg);
     if (pad === "/api/post-ophalen") {
-      await omg.postbode.ophalen();
+      await (omg.ophaler ? omg.ophaler.haalNu() : omg.postbode.ophalen());
       return { status: 200, body: { ok: true } };
     }
     return { status: 404, body: { fout: "Onbekend adres" } };
@@ -119,4 +126,24 @@ export async function behandelPost(pad: string, body: unknown, omg: Omgeving): P
     if (e instanceof OngeldigVerzoek) return { status: 400, body: { fout: e.message } };
     throw e;
   }
+}
+
+const MAX_IDS = 500;
+
+/** Archiveren of terughalen van gesprekken. Alleen bestaande, afgehandelde gesprekken gaan het archief in. */
+async function archiefActie(body: unknown, omg: Omgeving): Promise<Antwoord> {
+  if (!omg.archief) return { status: 404, body: { fout: "Archief is niet beschikbaar" } };
+  const b = (typeof body === "object" && body !== null ? body : {}) as { actie?: unknown; ids?: unknown };
+  if (b.actie !== "archiveer" && b.actie !== "terug") throw new OngeldigVerzoek("Actie is archiveer of terug");
+  if (!Array.isArray(b.ids) || b.ids.length === 0 || b.ids.length > MAX_IDS) throw new OngeldigVerzoek(`Geef 1 tot ${MAX_IDS} gesprekken op`);
+  const ids = b.ids.map(String);
+  if (!ids.every((id) => isVeiligeNaam(id, ".md"))) throw new OngeldigVerzoek("Ongeldig gesprek");
+
+  const huidig = omg.archief.lees();
+  const uitkomst =
+    b.actie === "terug"
+      ? haalTerug(huidig, ids)
+      : archiveer(huidig, bouwGesprekken(await alleBerichten(omg.bron, omg.mailbox, omg.vandaag)), ids, new Date().toISOString());
+  omg.archief.schrijf(uitkomst.archief);
+  return { status: 200, body: { aantal: uitkomst.aantal } };
 }
