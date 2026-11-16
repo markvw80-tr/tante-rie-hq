@@ -11,6 +11,8 @@ import { TEAM_LABEL } from "./teamKleur.ts";
 import { ToonbankPaneel } from "./components/ToonbankPaneel.tsx";
 import { TEAM_KLEUR, langeDatum } from "./teamKleur.ts";
 import { useHuis } from "./useHuis.ts";
+import { useVolledigScherm } from "./useVolledigScherm.ts";
+import { VolledigKnop } from "./components/VolledigKnop.tsx";
 
 export function App() {
   const { huis, fout, laadt, bijgewerkt, ververs } = useHuis();
@@ -18,6 +20,17 @@ export function App() {
   const paneelRef = useRef<HTMLDivElement>(null);
   const [melding, setMelding] = useState<string | null>(null);
   const [ophalen, setOphalen] = useState(false);
+  const { aan: volledig, zet: zetVolledig } = useVolledigScherm();
+  const [ladeOpen, setLadeOpen] = useState(false);
+  // Pas animeren nadat de lade een keer open is geweest, anders schuift hij zichtbaar weg bij het aanzetten.
+  const [ladeBeweegt, setLadeBeweegt] = useState(false);
+
+  useEffect(() => {
+    if (!volledig) {
+      setLadeOpen(false);
+      setLadeBeweegt(false);
+    }
+  }, [volledig]);
 
   useEffect(() => {
     if (!melding) return;
@@ -48,6 +61,12 @@ export function App() {
 
   const kies = (plek: Plek) => {
     setGekozen(plek);
+    // In volledig scherm opent een kamer als lade over het huis.
+    if (volledig) {
+      setLadeBeweegt(true);
+      setLadeOpen(true);
+      return;
+    }
     // Op een smal scherm staat het paneel onder het huis: breng het in beeld.
     if (window.matchMedia("(max-width: 980px)").matches) {
       requestAnimationFrame(() => paneelRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }));
@@ -73,7 +92,7 @@ export function App() {
     <SchrijfProvider onVerstuurd={naVersturen}>
     <RegieProvider>
     <LezerProvider>
-    <main className="app">
+    <main className={volledig ? "app volledig" : "app"}>
       <header className="kop">
         <div>
           <div className="datum">{langeDatum(huis.vandaag)}</div>
@@ -87,6 +106,11 @@ export function App() {
           <span className="tag">{huis.besluiten.filter((b) => !b.antwoord).length} besluiten voor jou</span>
           {aanHetWerk > 0 && <span className="tag werkt">{aanHetWerk} aan het werk</span>}
           {wachtOpJou > 0 && <span className="tag let-op">{wachtOpJou} agent wacht op jou</span>}
+          {volledig && (
+            <button type="button" className="tag tag-knop" onClick={() => kies("toonbank")}>
+              Naar de toonbank
+            </button>
+          )}
           {achterstand.map((t) => (
             <span key={t.id} className="tag let-op">
               {t.naam}: {t.signalen[0]}
@@ -99,6 +123,7 @@ export function App() {
 
       <div className="indeling">
         <div className="huis-kader">
+          <VolledigKnop aan={volledig} onWissel={() => zetVolledig(!volledig)} />
           <Huis huis={huis} gekozen={gekozen} onKies={kies} />
           <div className="legenda">
             {huis.teams.map((t) => (
@@ -109,7 +134,16 @@ export function App() {
             <span style={{ ["--c" as string]: "#b9b2a3" }}>Post ouder dan {huis.drempelDagen} dagen</span>
           </div>
         </div>
-        <div ref={paneelRef}>
+        <div
+          ref={paneelRef}
+          className={volledig ? `lade${ladeOpen ? " open" : ""}${ladeBeweegt ? " beweegt" : ""}` : undefined}
+          aria-hidden={volledig && !ladeOpen ? true : undefined}
+        >
+          {volledig && (
+            <button type="button" className="terug lade-sluit" onClick={() => setLadeOpen(false)}>
+              Terug naar het huis
+            </button>
+          )}
           {team ? (
             <TeamPaneel team={team} agenda={huis.agenda} drempel={huis.drempelDagen} bijgewerkt={bijgewerkt} runs={huis.runs ?? []} onTerug={() => setGekozen("toonbank")} />
           ) : (
@@ -118,8 +152,9 @@ export function App() {
         </div>
       </div>
 
-      {huis.doelen && <Doelen doelen={huis.doelen} />}
+      {!volledig && huis.doelen && <Doelen doelen={huis.doelen} />}
 
+      {!volledig && (
       <footer className="voet">
         Klik een kamer voor post, werk en agents · ververst elke minuut
         {bijgewerkt && ` · bijgewerkt ${bijgewerkt.toLocaleTimeString("nl-NL", { hour: "2-digit", minute: "2-digit" })}`} ·{" "}
@@ -130,6 +165,7 @@ export function App() {
           {ophalen ? "Post ophalen..." : "Post ophalen"}
         </button>
       </footer>
+      )}
       {melding && (
         <div className="toast" role="status">
           {melding}

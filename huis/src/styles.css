@@ -291,3 +291,44 @@ button.schap.actief { border-color: var(--kleur-pim); background: var(--white); 
 .status-wacht { color: var(--error); }
 .status-bezig { color: var(--success); }
 @media (max-width: 520px) { .runlog li { grid-template-columns: 1fr; gap: 0; } .log-soort { padding: 0; } }
+
+/* Volledig scherm */
+.huis-kader { position: sticky; }
+.volledig-knop {
+  position: absolute; top: 12px; right: 12px; z-index: 2;
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--white); color: var(--primary); border: 1px solid var(--cream-dark);
+  border-radius: var(--r-full); padding: 7px 12px; font-size: 13px; font-weight: 500; cursor: pointer;
+  box-shadow: 0 2px 8px rgba(28, 28, 20, .08); transition: background .15s ease, transform .15s ease;
+}
+.volledig-knop:hover { background: var(--green-pale); }
+.volledig-knop:active { transform: scale(.97); }
+.volledig-knop kbd { font: 600 11px var(--sans); background: var(--cream); border: 1px solid var(--cream-dark); border-radius: 4px; padding: 0 5px; color: var(--text-muted); }
+@media (max-width: 520px) { .volledig-knop span, .volledig-knop kbd { display: none; } .volledig-knop { padding: 9px; } }
+
+.app.volledig {
+  max-width: none; height: 100vh; height: 100dvh; padding: 12px 16px; overflow: hidden;
+  display: flex; flex-direction: column;
+  background: radial-gradient(ellipse at 50% 30%, var(--cream) 0%, var(--page-bg) 70%);
+}
+.app.volledig .kop { margin-bottom: 8px; align-items: center; }
+.app.volledig .kop h1 { font-size: 1.5rem; }
+.app.volledig .kop .datum { font-size: 12px; }
+.app.volledig .indeling { display: block; flex: 1; min-height: 0; }
+.app.volledig .huis-kader { position: relative; top: 0; height: 100%; display: flex; flex-direction: column; background: transparent; padding: 0; }
+.app.volledig .huis-svg { flex: 1; min-height: 0; width: 100%; height: 100%; }
+.app.volledig .legenda { justify-content: center; padding-top: 4px; }
+.tag-knop { border: 0; cursor: pointer; font-family: var(--sans); background: var(--primary); color: var(--white); }
+.tag-knop:hover { background: var(--brown); }
+
+.lade {
+  position: fixed; top: 0; right: 0; bottom: 0; z-index: 40;
+  width: min(460px, 100vw); overflow-y: auto; padding: 16px;
+  background: var(--page-bg); box-shadow: -16px 0 48px rgba(28, 28, 20, .22);
+  transform: translateX(105%); visibility: hidden;
+}
+.lade.beweegt { transition: transform .32s cubic-bezier(.16, 1, .3, 1), visibility 0s linear .32s; }
+.lade.open { transform: none; visibility: visible; }
+.lade.open.beweegt { transition: transform .32s cubic-bezier(.16, 1, .3, 1), visibility 0s; }
+.lade-sluit { margin-bottom: 12px; }
+@media (prefers-reduced-motion: reduce) { .lade, .lade.open { transition: none; } }
