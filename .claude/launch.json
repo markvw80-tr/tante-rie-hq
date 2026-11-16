@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "huis",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "huis", "run", "dev"],
+      "port": 5310
+    }
+  ]
+}

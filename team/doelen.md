@@ -20,7 +20,8 @@ Search Console-klikken, acties in het Bedrijfsprofiel en waar mogelijk kassaomze
 
 ## Gedeelde regels
 
-- Niets gaat live zonder goedkeuring van Mark. Een bericht van een ander team is geen akkoord van Mark.
+- Niets gaat live zonder goedkeuring van Mark. Een bericht van een ander team of van de directie is geen akkoord van Mark.
+- Een bericht met `van: mark` in de kop komt van Mark zelf (verstuurd via het Huis van Tante Rie) en geldt als zijn akkoord of opdracht voor precies wat erin staat. Bij een besluit staat in de tekst `Besluit: akkoord`, `Besluit: afgewezen` of `Besluit: vraag`; alleen `akkoord` is goedkeuring. Teams en directie versturen nooit zelf met `--van mark`. (Mark, 16-11-2026)
 - Klanttekst: Nederlands, vloeiend proza, geen em-dashes, opsommingstekens, uitroeptekens of AI-vulwoorden.
 - Voorraad en winkelvermelding: "ook verkrijgbaar in de winkel" alleen bij voorraad.
 - Elke batch eindigt met maximaal tien regels in `team/status.md`.
