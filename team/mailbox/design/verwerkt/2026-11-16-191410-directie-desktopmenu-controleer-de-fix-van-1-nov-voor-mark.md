@@ -17,3 +17,6 @@ prioriteit: normaal
 5. Stuur de preview-URL mee, zodat Mark het zelf kan bekijken.
 6. Leg de samenvatting vast in team/status.md.
 **Deadline:** Geen vaste datum. Dit hoort bij punt 4 van de opdracht van 15-11. Niets gaat live zonder akkoord van Mark.
+
+---
+Verwerkt op 2026-11-17 08:16: Fix van 1 nov (assets/tr-menu.css, assets/tr-menu-close.js) staat al op live thema 205262029064, bestanden gelijk aan live (17-11). Geen aparte themakopie nodig; samenvatting in status.md.
