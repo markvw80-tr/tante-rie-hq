@@ -14,3 +14,6 @@ Akkoord van Mark op dit agendapunt van de directie:
 > Desktopmenu (fix 1 nov, alleen op themakopie) naar live. De Bunzlau-voorraadfix is al live sinds 26-10 (thema 204204900616) en vervalt hier.
 
 Verstuurd door Mark via het Huis van Tante Rie.
+
+---
+Verwerkt op 2026-11-17 08:16: Akkoord genoteerd. Niets te publiceren: menufix staat al op live 205262029064 (bestanden gelijk, gecontroleerd 17-11). Design publiceert nooit zelf.
