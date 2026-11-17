@@ -1,4 +1,4 @@
-import type { BesluitKeuze, MailboxTeam } from "../../shared/types.ts";
+import type { AutomaatStand, BesluitKeuze, MailboxTeam } from "../../shared/types.ts";
 
 export interface Concept {
   readonly aan: MailboxTeam | null;
@@ -44,3 +44,5 @@ export const TEAMS: ReadonlyArray<readonly [MailboxTeam, string]> = [
 ];
 
 export const archiefActie = (actie: "archiveer" | "terug", ids: readonly string[]) => post<{ aantal: number }>("/api/archief", { actie, ids });
+
+export const zetAutomaat = (aan: boolean, budgetUsd: number) => post<AutomaatStand>("/api/automaat", { aan, budgetUsd });

@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
 import { EventEmitter } from "node:events";
-import type { PoortVerzoek, RunDetail, RunRegel, RunStatus, RunSamenvatting, TeamId } from "../../shared/types.ts";
+import type { PoortVerzoek, RunBron, RunDetail, RunRegel, RunStatus, RunSamenvatting, TeamId } from "../../shared/types.ts";
 import { beoordeel, samenvatting } from "./poort.ts";
 import { vertaal } from "./vertaal.ts";
 
@@ -27,6 +27,7 @@ export interface StartVerzoek {
   readonly agent: string;
   readonly opdracht: string;
   readonly budgetUsd: number;
+  readonly bron?: RunBron;
 }
 
 interface Lopend {
@@ -81,10 +82,12 @@ export class RunBeheer extends EventEmitter {
       laatsteRegel: "Wordt gestart...",
       regels: [],
       resultaat: null,
+      bron: v.bron ?? "mark",
     };
     const lopend: Lopend = { run, stop: new AbortController(), wachtend: null };
     this.runs.set(run.id, lopend);
-    this.voegToe(lopend, [{ t: nu, soort: "systeem", tekst: `Opdracht van Mark aan ${v.agent}: ${v.opdracht}` }]);
+    const kop = v.bron === "huis" ? `Automatisch gestart door het Huis (nieuwe post) voor ${v.agent}` : `Opdracht van Mark aan ${v.agent}`;
+    this.voegToe(lopend, [{ t: nu, soort: "systeem", tekst: `${kop}: ${v.opdracht}` }]);
     void this.draai(lopend, v);
     return samenvat(run);
   }

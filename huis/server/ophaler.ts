@@ -6,6 +6,7 @@ export class Ophaler {
   private opgehaald: string | null = null;
   private fout: string | null = null;
   private timer: ReturnType<typeof setInterval> | null = null;
+  private na: (() => Promise<void>) | null = null;
 
   constructor(
     private readonly postbode: Postbode,
@@ -18,6 +19,11 @@ export class Ophaler {
     this.timer = setInterval(() => void this.haalNu().catch(() => undefined), this.intervalMs);
     this.timer.unref?.();
     void this.haalNu().catch(() => undefined);
+  }
+
+  /** Wat er na elke geslaagde ophaalbeurt moet gebeuren (de automaat). Een fout daarin laat het ophalen niet mislukken. */
+  naOphalen(fn: () => Promise<void>): void {
+    this.na = fn;
   }
 
   stop(): void {
@@ -35,6 +41,7 @@ export class Ophaler {
       console.error("[huis] post ophalen mislukt:", e);
       throw e;
     }
+    if (this.na) void this.na().catch((e) => console.error("[huis] na het ophalen mislukt:", e));
   }
 
   stand(): PostStand {

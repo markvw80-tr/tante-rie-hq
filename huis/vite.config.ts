@@ -11,10 +11,11 @@ export default defineConfig({
     port: 5310,
     // Niet stilletjes uitwijken naar 5311: dan zou het huis zonder server draaien.
     strictPort: true,
-    proxy: { "/api": `http://127.0.0.1:${API_PORT}` },
+    // changeOrigin uit: de server moet de echte Host zien (tegen DNS-rebinding en voor Tailscale).
+    proxy: { "/api": { target: `http://127.0.0.1:${API_PORT}`, changeOrigin: false } },
   },
   test: {
     include: ["server/**/*.test.ts"],
-    coverage: { include: ["server/parsers/**", "server/huis.ts", "server/werk.ts", "server/routes.ts", "server/besluiten.ts", "server/verzoek.ts", "server/beveiliging.ts", "server/postbode.ts", "server/regie/beheer.ts", "server/regie/poort.ts", "server/regie/vertaal.ts", "server/archief.ts", "server/ophaler.ts"] },
+    coverage: { include: ["server/parsers/**", "server/huis.ts", "server/werk.ts", "server/routes.ts", "server/besluiten.ts", "server/verzoek.ts", "server/beveiliging.ts", "server/postbode.ts", "server/regie/beheer.ts", "server/regie/poort.ts", "server/regie/vertaal.ts", "server/archief.ts", "server/ophaler.ts", "server/automaat.ts", "server/tailscale.ts"] },
   },
 });

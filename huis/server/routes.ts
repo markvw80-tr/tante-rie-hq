@@ -5,6 +5,8 @@ import { bouwHuis } from "./huis.ts";
 import type { Postbode } from "./postbode.ts";
 import { archiveer, haalTerug, type ArchiefOpslag } from "./archief.ts";
 import type { Ophaler } from "./ophaler.ts";
+import type { Automaat } from "./automaat.ts";
+import { BUDGETTEN } from "./regie/routes.ts";
 import { bouwGesprekken } from "./parsers/gesprekken.ts";
 import { isVeiligeNaam } from "./parsers/documenten.ts";
 import type { RunBeheer } from "./regie/beheer.ts";
@@ -27,6 +29,8 @@ export interface Omgeving {
   readonly regie?: RunBeheer;
   readonly archief?: ArchiefOpslag;
   readonly ophaler?: Ophaler;
+  readonly automaat?: Automaat;
+  readonly opAfstand?: string | null;
 }
 
 const NIET_GEVONDEN: Antwoord = { status: 404, body: { fout: "Niet gevonden" } };
@@ -52,7 +56,7 @@ export async function behandel(pad: string, params: URLSearchParams, omg: Omgevi
   try {
     if (pad === "/api/huis") {
       const huis = await bouwHuis(omg.bron, omg.hq, omg.teams, omg.vandaag, omg.mailbox);
-      return { status: 200, body: { ...huis, runs: omg.regie?.lijst().slice(0, 20) ?? [], post: omg.ophaler?.stand() } };
+      return { status: 200, body: { ...huis, runs: omg.regie?.lijst().slice(0, 20) ?? [], post: omg.ophaler?.stand(), automaat: omg.automaat?.stand(), opAfstand: omg.opAfstand ?? null } };
     }
     if (omg.regie && pad.startsWith("/api/runs")) {
       const antwoord = behandelRunGet(pad, omg.regie);
@@ -117,6 +121,7 @@ export async function behandelPost(pad: string, body: unknown, omg: Omgeving): P
       if (antwoord) return antwoord;
     }
     if (pad === "/api/archief") return await archiefActie(body, omg);
+    if (pad === "/api/automaat" && omg.automaat) return automaatActie(body, omg.automaat);
     if (pad === "/api/post-ophalen") {
       await (omg.ophaler ? omg.ophaler.haalNu() : omg.postbode.ophalen());
       return { status: 200, body: { ok: true } };
@@ -126,6 +131,18 @@ export async function behandelPost(pad: string, body: unknown, omg: Omgeving): P
     if (e instanceof OngeldigVerzoek) return { status: 400, body: { fout: e.message } };
     throw e;
   }
+}
+
+/** Automatisch oppakken aan of uit, met een budget per run uit de vaste lijst. Aanzetten kijkt meteen in de inboxen. */
+function automaatActie(body: unknown, automaat: Automaat): Antwoord {
+  if (!body || typeof body !== "object" || Array.isArray(body)) throw new OngeldigVerzoek("Verwacht een JSON-object");
+  const { aan, budgetUsd } = body as Record<string, unknown>;
+  if (typeof aan !== "boolean") throw new OngeldigVerzoek("Verwacht aan: true of false");
+  const budget = BUDGETTEN.find((b) => b === budgetUsd);
+  if (budget === undefined) throw new OngeldigVerzoek(`Budget is een van ${BUDGETTEN.join(", ")} dollar`);
+  const stand = automaat.zet(aan, budget);
+  if (aan) void automaat.controleer().catch((e) => console.error("[huis] automaat mislukt:", e));
+  return { status: 200, body: stand };
 }
 
 const MAX_IDS = 500;

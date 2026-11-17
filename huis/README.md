@@ -77,6 +77,29 @@ Geweigerd krijgt de agent terug met jouw notitie. Zonder antwoord binnen 30 minu
 - **Ophalen:** de server haalt elke 5 minuten de post van `origin/main` op (via `mailbox.py lijst`, dat alleen fetcht en leest). Onderaan het huis staat wanneer dat voor het laatst gebeurde; **Post ophalen** doet het direct. In de zandbak (`HUIS_GEEN_GIT=1`) staat het automatisch ophalen uit.
 - **Archief:** in de Post-tab van een kamer kies je Lopend of Archief. Afgehandelde gesprekken (niets meer in een inbox) archiveer je per stuk of allemaal tegelijk, en haal je met **Terughalen** weer terug. Komt er een nieuw bericht in een gearchiveerd gesprek, dan staat het vanzelf weer bij Lopend. Het archief is alleen jouw overzicht: het staat in `huis/data/archief.json` (niet in git) en de mailbox van de teams blijft onveranderd.
 
+## Post automatisch laten oppakken
+
+Op de toonbank staat de kaart **Post automatisch laten oppakken**, standaard uit. Staat hij aan, dan kijkt het huis na elke keer post ophalen (elke 5 minuten) in de inboxen van SEO, PIM en Design. Ligt er post waarvoor het team nog niet gestart is, dan start het huis de lead van dat team: `seo-lead`, `pim-orchestrator` of `design-lead`. De opdracht noemt de nieuwe berichten en zegt erbij dat het een automatische start is en geen opdracht van Mark.
+
+- **Grenzen:** geen start als dat team al werkt; nooit meer dan 3 agents tegelijk; hooguit 8 automatische starts per 24 uur; per team minstens 60 minuten tussen twee automatische starts. Het budget per run kies je op de kaart ($0,50 tot $5).
+- **Geen herhaling:** post die na een run in de inbox blijft staan (bijvoorbeeld omdat hij op Mark wacht), start het team geen tweede keer. Alleen nieuwe berichten doen dat.
+- **De poort blijft:** live acties en acties die toestemming vragen wachten ook bij een automatische run op jou. Zo'n run staat in de regie met het label *automatisch*.
+- Instelling en geschiedenis staan in `huis/data/automaat.json` (niet in git). In de zandbak (`HUIS_GEEN_GIT=1`) wordt er niet automatisch opgehaald, dus ook niet automatisch gestart.
+
+## Buiten de deur via Tailscale
+
+Het huis luistert alleen op 127.0.0.1. Van buiten kom je er alleen bij via `tailscale serve`, dat het huis op een https-adres in je eigen Tailscale-netwerk zet. Funnel (openbaar internet) gebruik je hier niet.
+
+1. Installeer Tailscale op de Mac en log in met hetzelfde account als op je telefoon.
+2. Zet het huis in je tailnet (de opdracht blijft staan, ook na een herstart):
+   ```bash
+   /Applications/Tailscale.app/Contents/MacOS/Tailscale serve --bg 5310
+   ```
+   Bij `npm start` (productie) gebruik je poort 4310. Vraagt Tailscale om HTTPS-certificaten aan te zetten, volg dan de link.
+3. Open op je telefoon het adres dat Tailscale noemt (`https://<mac>.<tailnet>.ts.net`). Het staat ook onderaan in het huis.
+
+Toegang: het huis kijkt elke minuut met `tailscale status --json` welk account op de Mac is ingelogd. Via Tailscale mag alleen dat account lezen en schrijven; daarvoor gebruikt het huis de header `Tailscale-User-Login` die `tailscale serve` meestuurt. Andere accounts in je tailnet en apparaten zonder gebruiker (tags) krijgen een 403. Lukt de herkenning niet, dan kun je host en account vast zetten met `HUIS_TAILSCALE_HOST` en `HUIS_TAILSCALE_LOGIN`. Uitzetten: `tailscale serve --https=443 off`. De Mac moet aan staan en het huis moet draaien.
+
 ## Starten
 
 ```bash

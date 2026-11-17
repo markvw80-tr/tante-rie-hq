@@ -4,8 +4,9 @@ import { WachtOpJou } from "../regie/WachtOpJou.tsx";
 import { useSchrijven } from "../schrijven/SchrijfContext.tsx";
 import { korteDatum } from "../teamKleur.ts";
 import { AgendaKaart } from "./AgendaKaart.tsx";
+import { AutomaatKaart } from "./AutomaatKaart.tsx";
 
-export function ToonbankPaneel({ huis }: { readonly huis: HuisStand }) {
+export function ToonbankPaneel({ huis, onGewijzigd }: { readonly huis: HuisStand; readonly onGewijzigd: () => void }) {
   const { open: schrijf } = useSchrijven();
   const open = huis.besluiten.filter((b) => !b.antwoord);
   const beantwoord = huis.besluiten.filter((b) => b.antwoord);
@@ -34,6 +35,8 @@ export function ToonbankPaneel({ huis }: { readonly huis: HuisStand }) {
           Opdracht geven
         </button>
       </section>
+
+      {huis.automaat && <AutomaatKaart stand={huis.automaat} onGewijzigd={onGewijzigd} />}
 
       {huis.agenda && <AgendaKaart agenda={huis.agenda} zonderMark />}
 

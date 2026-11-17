@@ -293,7 +293,8 @@ button.schap.actief { border-color: var(--kleur-pim); background: var(--white); 
 @media (max-width: 520px) { .runlog li { grid-template-columns: 1fr; gap: 0; } .log-soort { padding: 0; } }
 
 /* Volledig scherm */
-.huis-kader { position: sticky; }
+/* Op smalle schermen staat het huis gewoon boven het paneel: relatief (voor de knop), niet sticky. */
+@media (max-width: 980px) { .huis-kader { position: relative; top: 0; } }
 .volledig-knop {
   position: absolute; top: 12px; right: 12px; z-index: 2;
   display: inline-flex; align-items: center; gap: 8px;
@@ -346,3 +347,17 @@ button.schap.actief { border-color: var(--kleur-pim); background: var(--white); 
 .archief-knop:hover, .archief-knop:focus-visible { opacity: 1; color: var(--primary); border-color: var(--brown-light); }
 .gesprek.gearchiveerd .gesprek-titel { color: var(--text-muted); }
 .voet .post-fout { color: var(--error); }
+
+/* Automatisch oppakken */
+.automaat.aan { box-shadow: inset 4px 0 0 var(--success); }
+.automaat .prioriteit { margin-top: 10px; flex-wrap: wrap; }
+.automaat-stand { margin: 10px 0 0; }
+.schakelaar { display: inline-flex; align-items: center; gap: 8px; font-size: 13.5px; font-weight: 500; cursor: pointer; }
+.schakelaar input { appearance: none; width: 40px; height: 22px; border-radius: var(--r-full); background: var(--cream-dark); position: relative; cursor: pointer; margin: 0; transition: background .2s; }
+.schakelaar input::after { content: ""; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; border-radius: 50%; background: var(--white); transition: transform .2s; }
+.schakelaar input:checked { background: var(--success); }
+.schakelaar input:checked::after { transform: translateX(18px); }
+.schakelaar input:focus-visible { outline: 2px solid var(--brown); outline-offset: 2px; }
+.schakelaar input:disabled { opacity: .5; cursor: wait; }
+.auto-tag { margin-left: 6px; background: var(--cream); color: var(--brown); font-size: 11px; padding: 2px 8px; }
+@media (prefers-reduced-motion: reduce) { .schakelaar input, .schakelaar input::after { transition: none; } }

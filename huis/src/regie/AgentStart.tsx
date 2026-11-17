@@ -27,6 +27,7 @@ export function AgentStart({ team, agentBestand, agentNaam, runs }: Props) {
     return (
       <div className={`agent-run ${lopend.status}`}>
         <span className="pulse" aria-hidden="true" /> {STATUS_TEKST[lopend.status]}
+        {lopend.bron === "huis" && <span className="tag auto-tag">automatisch</span>}
         <button className="doclink" onClick={() => meekijken(lopend.id)}>
           Meekijken
         </button>

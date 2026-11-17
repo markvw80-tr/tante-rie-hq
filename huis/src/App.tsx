@@ -148,7 +148,7 @@ export function App() {
           {team ? (
             <TeamPaneel team={team} agenda={huis.agenda} drempel={huis.drempelDagen} bijgewerkt={bijgewerkt} runs={huis.runs ?? []} onTerug={() => setGekozen("toonbank")} />
           ) : (
-            <ToonbankPaneel huis={huis} />
+            <ToonbankPaneel huis={huis} onGewijzigd={ververs} />
           )}
         </div>
       </div>
@@ -159,6 +159,12 @@ export function App() {
       <footer className="voet">
         Klik een kamer voor post, werk en agents · ververst elke minuut
         {huis.post && <PostRegel stand={huis.post} />}
+        {huis.opAfstand && (
+          <>
+            {" · op afstand via Tailscale: "}
+            <a href={huis.opAfstand}>{huis.opAfstand.replace(/^https:\/\//, "")}</a>
+          </>
+        )}
         {bijgewerkt && ` · bijgewerkt ${bijgewerkt.toLocaleTimeString("nl-NL", { hour: "2-digit", minute: "2-digit" })}`} ·{" "}
         <button className="terug" onClick={ververs}>
           Nu verversen

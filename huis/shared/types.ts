@@ -113,6 +113,19 @@ export interface HuisStand {
   readonly jsonMailbox: readonly JsonMailbox[];
   readonly runs?: readonly RunSamenvatting[];
   readonly post?: PostStand;
+  readonly automaat?: AutomaatStand;
+  /** Het Tailscale-adres waarop het huis ook buiten de deur te openen is, als tailscale serve aanstaat. */
+  readonly opAfstand?: string | null;
+}
+
+/** Het huis start zelf de lead van een team als er nieuwe post in de inbox ligt. */
+export interface AutomaatStand {
+  readonly aan: boolean;
+  readonly budgetUsd: number;
+  readonly maxPerDag: number;
+  readonly startsLaatsteDag: number;
+  readonly rustMinuten: number;
+  readonly melding: string | null;
 }
 
 export interface PostStand {
@@ -201,7 +214,11 @@ export interface RunSamenvatting {
   readonly budgetUsd: number;
   readonly poort: PoortVerzoek | null;
   readonly laatsteRegel: string;
+  /** Wie de run startte: Mark zelf of het huis bij nieuwe post. Ontbreekt bij oude runs (Mark). */
+  readonly bron?: RunBron;
 }
+
+export type RunBron = "mark" | "huis";
 
 export interface RunDetail extends RunSamenvatting {
   readonly regels: readonly RunRegel[];

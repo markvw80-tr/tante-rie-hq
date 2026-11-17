@@ -29,6 +29,7 @@ export function WachtOpJou({ runs }: { readonly runs: readonly RunSamenvatting[]
               <button className="doclink" onClick={() => meekijken(r.id)}>
                 {r.agent} · {TEAM_LABEL[r.team]}
               </button>
+              {r.bron === "huis" && <span className="tag auto-tag">automatisch</span>}
               <span className="onder">
                 <span className="pulse" aria-hidden="true" /> {STATUS_TEKST[r.status]}
               </span>
