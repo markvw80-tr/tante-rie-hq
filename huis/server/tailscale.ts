@@ -50,10 +50,11 @@ export function uitOmgeving(env: NodeJS.ProcessEnv): TailscaleInfo | null {
 
 type Lezer = (args: readonly string[]) => Promise<unknown>;
 
+/** Zoekt de cli bij elke aanroep opnieuw: Tailscale kan na het starten van het huis zijn geïnstalleerd. */
 function cliLezer(): Lezer {
-  const cli = KANDIDATEN.find((p) => existsSync(p)) ?? "tailscale";
   return (args) =>
     new Promise((resolve, reject) => {
+      const cli = KANDIDATEN.find((p) => existsSync(p)) ?? "tailscale";
       execFile(cli, [...args], { timeout: TIMEOUT_MS }, (fout, stdout) => {
         if (fout) return reject(fout);
         try {
