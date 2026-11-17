@@ -18,3 +18,6 @@ Toelichting van Mark:
 Schrap maar
 
 Verstuurd door Mark via het Huis van Tante Rie.
+
+---
+Verwerkt op 2026-11-17 08:26: Uitgevoerd in verrijkte Blond-batch 01 (commit 93b6a7b), gecontroleerd 17-11. Restpunt: 7 live Blond-beschrijvingen noemen magnetron nog, diff nodig.
