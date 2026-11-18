@@ -115,6 +115,8 @@ export interface HuisStand {
   readonly post?: PostStand;
   readonly automaat?: AutomaatStand;
   readonly kosten?: KostenOverzicht;
+  /** Toestemmingsvragen van agents automatisch goedkeuren (live acties nooit). */
+  readonly autoGoedkeuring?: boolean;
   /** Het Tailscale-adres waarop het huis ook buiten de deur te openen is, als tailscale serve aanstaat. */
   readonly opAfstand?: string | null;
 }

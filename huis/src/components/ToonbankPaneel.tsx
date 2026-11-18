@@ -5,6 +5,7 @@ import { useSchrijven } from "../schrijven/SchrijfContext.tsx";
 import { korteDatum } from "../teamKleur.ts";
 import { AgendaKaart } from "./AgendaKaart.tsx";
 import { AutomaatKaart } from "./AutomaatKaart.tsx";
+import { GoedkeuringKaart } from "./GoedkeuringKaart.tsx";
 import { KostenKaart } from "./KostenKaart.tsx";
 
 export function ToonbankPaneel({ huis, onGewijzigd }: { readonly huis: HuisStand; readonly onGewijzigd: () => void }) {
@@ -38,6 +39,8 @@ export function ToonbankPaneel({ huis, onGewijzigd }: { readonly huis: HuisStand
       </section>
 
       {huis.automaat && <AutomaatKaart stand={huis.automaat} onGewijzigd={onGewijzigd} />}
+
+      {huis.autoGoedkeuring !== undefined && <GoedkeuringKaart aan={huis.autoGoedkeuring} onGewijzigd={onGewijzigd} />}
 
       {huis.kosten && <KostenKaart kosten={huis.kosten} />}
 

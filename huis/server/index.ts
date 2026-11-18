@@ -15,6 +15,7 @@ import { parseBericht } from "./parsers/mailbox.ts";
 import { parseAgent } from "./parsers/agents.ts";
 import { behandel, behandelPost, type Omgeving } from "./routes.ts";
 import { RunBeheer } from "./regie/beheer.ts";
+import { schijfGoedkeuring } from "./regie/goedkeuring.ts";
 import { schijfOpslag } from "./regie/opslag.ts";
 import { runId } from "./regie/routes.ts";
 import { sdkStarter } from "./regie/sdkStarter.ts";
@@ -28,7 +29,12 @@ const TYPES: Record<string, string> = {
   ".svg": "image/svg+xml",
 };
 const postbode = mailboxPostbode(HQ, GEEN_GIT);
-const regie = new RunBeheer(sdkStarter, schijfOpslag(path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "runs")));
+const regie = new RunBeheer(
+  sdkStarter,
+  schijfOpslag(path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "runs")),
+  undefined,
+  schijfGoedkeuring(path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "data", "goedkeuring.json")),
+);
 const HARTSLAG_MS = 20_000;
 const OPHAAL_MS = 5 * 60_000;
 const archief = schijfArchief(path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "data", "archief.json"));

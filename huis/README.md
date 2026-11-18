@@ -66,6 +66,8 @@ In de Agents-tab van elke kamer zet je een agent aan het werk met een opdracht e
 
 Teamruns laden alleen de project- en lokale instellingen van het team, niet je persoonlijke `~/.claude` (eigen regels, plugins en hooks).
 
+**Toestemming automatisch geven.** Met de schakelaar op de toonbank gaan vragen van de soort *toestemming* direct door; ze komen alleen in het logboek van de run. Aanzetten keurt ook vragen goed die al wachten. Live acties vallen hier nooit onder en wachten altijd op Mark. De stand staat in `huis/data/goedkeuring.json` (niet in git), `POST /api/regie/goedkeuring` met `{ "aan": true|false }`.
+
 Geweigerd krijgt de agent terug met jouw notitie. Zonder antwoord binnen 30 minuten is het geweigerd. Agents krijgen `TANTE_RIE_HUIS` nooit mee, dus ze kunnen geen berichten als Mark versturen.
 
 | Endpoint | Wat |
