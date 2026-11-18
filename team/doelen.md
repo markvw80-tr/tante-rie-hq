@@ -8,6 +8,10 @@ Hoger scoren in Google en daarmee meer organische bezoekers en verkoop voor tant
 
 Prioriteit (Mark, 21 en 23-10-2026): eerst 70 procent winkel in Borne (lokale SEO: Bedrijfsprofiel, theewinkelpagina, Borne en Twente; product- en collectiepagina's als etalage), 30 procent webshop. Vanaf maand 2 groeit het webshopdeel, het einddoel is meer webshopverkoop. Geen SEO-werk aan /pages/zakelijk.
 
+## Hoofddoel
+
+Jaarlijks meer winst (Mark, 18-11-2026). Meetpunten: nettowinst per maand en per jaar uit e-boekhouden (`scripts/eboekhouden_winst.py`), brutowinst en marge per kanaal (winkel en webshop) uit Shopify. Zolang een deel van de omzet geen kostprijs heeft, is de brutowinst uit Shopify te laag; zie `team/directie/nulmeting-winst-2026-11.md`. Een streefwaarde voor de winst is nog niet vastgesteld; die kiest Mark.
+
 ## Meetpunten
 
 Search Console-klikken, acties in het Bedrijfsprofiel en waar mogelijk kassaomzet (bron: CLAUDE.md van tante-rie-seo). Metingen komen uit Search Console, Ahrefs of Semrush, niet uit aannames. Streefwaarden zijn nog niet vastgesteld: zie `marketing/vragen-voor-mark.md` in tante-rie-seo en vraag Mark; verzin ze niet.
