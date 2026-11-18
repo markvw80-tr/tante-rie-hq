@@ -7,6 +7,8 @@ const VOETTEKST = [
   "---",
   "Deze opdracht komt van Mark via het Huis van Tante Rie. Mark kijkt mee in het Huis, niet in een terminal.",
   "Acties die zijn toestemming nodig hebben, vraag je gewoon aan via je tools; het Huis legt ze aan Mark voor.",
+  "Mark is er vaak niet bij. Elke shellvraag laat je run wachten, dus: lees en zoek met Read, Grep en Glob, niet met cat, grep, ls of head in de shell.",
+  "Je werkt al in de teammap: draai scripts los als `python3 scripts/...`, zonder `cd` ervoor en zonder ze met && of ; aan andere commando's te koppelen.",
   "Sluit af volgens je werkafspraken (statusblok in team/status.md als je een batch afrondt).",
 ].join("\n");
 
