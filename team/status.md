@@ -2,6 +2,12 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## PIM, 18-11-2026 (inbox, eenheidsprijs V127)
+- SEO-bericht V129/alt-regels: alleen ter kennisname, op verwerkt. Alt-regels wachten op Marks antwoord op V132.
+- SEO-vraag V127 beantwoord: unitPriceMeasurement is in Shopify gevuld bij kamille (40 G per 100 G) en gemberwortel (100 G per 100 G). Geen metaveld voor eenheidsprijs. Dat de prijs niet op de pagina en in Merchant Center staat, ligt dus aan het thema of de feed (SEO/Design).
+- Open: kostprijsopdracht Mark (batch 20261118-kostprijs-01) blijft in de inbox. Wacht op Shopify-token of de route via de koppeling, en op inkoopfacturen en kiloprijzen.
+- Verbruik: ca. 0,45 USD.
+
 ## SEO, 18-11-2026 (wat staat er nog open)
 - Antwoord aan Mark op "wat staat er nog open?" (opdracht directie 15-11). Punt 1, alt-teksten: 15 regels liggen klaar. Ze wachten alleen op V132, de vraag of ze vóór de grens van 20 regels naar PIM mogen. Blond, Clip en pepermunt/lavendel lopen via PIM.
 - Punt 2, Merchant Center en Bedrijfsprofiel: kamille en gemberwortel blijven staan (V129). Speciale tijden en attributen staan live. Bericht 17-11 (Bunzlau) vandaag alsnog geplaatst, de volgende is op 24-11. Nog open: V127 eenheidsprijs (vraag aan Mark: waar staat die in Shopify?) en de reviews alleen als V78 heropend wordt.
