@@ -34,7 +34,8 @@ describe("automatisch goedkeuren", () => {
   test("live acties wachten altijd op Mark, ook met de schakelaar aan", async () => {
     const beheer = new RunBeheer(
       nepStarter(async function* (t, signal) {
-        await t("mcp__shop__update-product", { id: 1 }, { signal });
+        yield { type: "assistant", message: { content: [{ type: "text", text: "Ik zet de kostprijs van Rooibos op 3,20." }] } };
+        await t("mcp__shop__update-product", { id: 1, status: "ACTIVE" }, { signal });
         yield { type: "result", subtype: "success", is_error: false, total_cost_usd: 0, result: "ok" };
       }),
       geheugenOpslag(),
@@ -43,7 +44,10 @@ describe("automatisch goedkeuren", () => {
     );
     const run = beheer.start(verzoek);
     await wacht();
-    expect(beheer.detail(run.id)).toMatchObject({ status: "wacht", poort: { soort: "live" } });
+    expect(beheer.detail(run.id)).toMatchObject({
+      status: "wacht",
+      poort: { soort: "live", uitleg: { kop: "Wijzigt een product in Shopify" }, agentZegt: "Ik zet de kostprijs van Rooibos op 3,20." },
+    });
     beheer.stop(run.id);
   });
 

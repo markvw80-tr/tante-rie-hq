@@ -3,6 +3,7 @@ import { EventEmitter } from "node:events";
 import type { PoortVerzoek, RunBron, RunDetail, RunRegel, RunStatus, RunSamenvatting, TeamId } from "../../shared/types.ts";
 import { geheugenGoedkeuring, type GoedkeuringOpslag } from "./goedkeuring.ts";
 import { beoordeel, samenvatting, type Beoordeling } from "./poort.ts";
+import { legUit } from "./uitleg.ts";
 import { vertaal } from "./vertaal.ts";
 
 export const MAX_ACTIEF = 3;
@@ -166,7 +167,7 @@ export class RunBeheer extends EventEmitter {
       l.rij = new Promise<void>((r) => (vrijgeven = r));
       try {
         await vorige;
-        return await this.vraagMark(l, tool, invoer, oordeel, signal);
+        return await this.vraagMark(l, tool, invoer, oordeel, signal, repo);
       } finally {
         vrijgeven();
       }
@@ -174,7 +175,7 @@ export class RunBeheer extends EventEmitter {
   }
 
   /** Legt één poortvraag op de toonbank en wacht op Mark (of op stoppen of de wachttijd). */
-  private async vraagMark(l: Lopend, tool: string, invoer: Record<string, unknown>, oordeel: Exclude<Beoordeling, { soort: "veilig" }>, signal: AbortSignal): Promise<{ toestaan: boolean; bericht: string }> {
+  private async vraagMark(l: Lopend, tool: string, invoer: Record<string, unknown>, oordeel: Exclude<Beoordeling, { soort: "veilig" }>, signal: AbortSignal, repo: string): Promise<{ toestaan: boolean; bericht: string }> {
     if (signal.aborted || EINDSTATUS.has(l.run.status)) return { toestaan: false, bericht: "Run afgebroken." };
     const verzoek: PoortVerzoek = {
       id: randomUUID(),
@@ -184,6 +185,8 @@ export class RunBeheer extends EventEmitter {
       invoer: JSON.stringify(invoer, null, 2).slice(0, 4000),
       reden: oordeel.reden,
       sinds: this.klok().toISOString(),
+      uitleg: legUit(tool, invoer, repo),
+      agentZegt: [...l.run.regels].reverse().find((r) => r.soort === "tekst")?.tekst.slice(0, 600),
     };
     this.voegToe(l, [this.regel("poort", `${oordeel.soort === "live" ? "LIVE, wacht op Mark" : "Wacht op toestemming"}: ${verzoek.samenvatting}`)]);
     this.zet(l, { status: "wacht", poort: verzoek });

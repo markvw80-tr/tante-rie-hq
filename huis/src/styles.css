@@ -370,3 +370,15 @@ button.schap.actief { border-color: var(--kleur-pim); background: var(--white); 
 .kosten-stip { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
 .kosten-budget { color: var(--error); font-size: 12.5px; }
 @media (max-width: 480px) { .kosten-tabel th:nth-child(3), .kosten-tabel td:nth-child(3) { display: none; } }
+
+/* Poortvraag: uitleg in gewone taal en wat er verandert */
+.poort-actie { margin: 0; font-size: 1.1rem; font-weight: 600; line-height: 1.35; overflow-wrap: anywhere; }
+.poort-punten { margin: 0; padding-left: 18px; font-size: 14px; }
+.poort-punten li { margin: 2px 0; }
+.poort-agent { margin: 0; padding: 8px 12px; border-left: 3px solid var(--brown-light); background: rgba(255, 255, 255, 0.6); border-radius: var(--r-sm); font-size: 14px; display: grid; gap: 2px; }
+.poort-agent .onder { font-size: 12px; }
+.poort-wijziging { margin: 0; display: grid; gap: 4px; }
+.poort-wijziging figcaption { font-size: 12.5px; color: var(--text-muted); font-weight: 600; }
+.poort-wijziging pre { margin: 0; max-height: 320px; overflow: auto; background: var(--white); border: 1px solid var(--cream-dark); border-radius: var(--r-sm); padding: 8px 10px; font: 12.5px/1.45 ui-monospace, Menlo, monospace; white-space: pre-wrap; overflow-wrap: anywhere; }
+.poort-wijziging .weg { display: block; background: var(--error-bg); color: var(--error); }
+.poort-wijziging .erbij { display: block; background: var(--success-bg); color: var(--success); }

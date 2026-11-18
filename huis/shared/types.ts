@@ -195,6 +195,21 @@ export interface RunRegel {
   readonly tekst: string;
 }
 
+/** Een gewijzigd bestand of tekstblok in een poortvraag: regels voor en na. */
+export interface PoortWijziging {
+  readonly bestand: string;
+  readonly voor: readonly string[];
+  readonly na: readonly string[];
+  readonly nieuw: boolean;
+}
+
+/** Uitleg in gewone taal: wat er gebeurt, met details en eventueel de regels die veranderen. */
+export interface PoortUitleg {
+  readonly kop: string;
+  readonly punten: readonly string[];
+  readonly wijzigingen: readonly PoortWijziging[];
+}
+
 export interface PoortVerzoek {
   readonly id: string;
   readonly soort: PoortSoort;
@@ -203,6 +218,9 @@ export interface PoortVerzoek {
   readonly invoer: string;
   readonly reden: string;
   readonly sinds: string;
+  readonly uitleg?: PoortUitleg;
+  /** Wat de agent vlak voor deze vraag schreef, als reden. */
+  readonly agentZegt?: string;
 }
 
 export interface RunSamenvatting {
