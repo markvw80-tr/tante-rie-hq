@@ -18,3 +18,6 @@ Toelichting van Mark:
 Gratis parkeergarage is correct. Is er nog steeds geen eenheidsprijs? Die staan namelijk wel in Shopify.
 
 Verstuurd door Mark via het Huis van Tante Rie.
+
+---
+Verwerkt op 2026-11-18 21:45: Gratis parkeergarage klopt, beschrijving blijft. Eenheidsprijsvraag beantwoord in V127 (update 18-11).
