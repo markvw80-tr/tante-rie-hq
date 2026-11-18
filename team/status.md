@@ -2,6 +2,11 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## PIM, 19-11-2026 (inbox, V127 afgerond)
+- SEO-bericht Re V127: ter kennisname, op verwerkt. Shopify-kant van V127 is af; thema bij Design, feed bij Mark. Geen PIM-actie meer.
+- Open: kostprijsopdracht Mark (batch 20261118-kostprijs-01) blijft in de inbox. Wacht op Shopify-token of de route via de koppeling, en op inkoopfacturen en kiloprijzen.
+- Verbruik: ca. 0,30 USD.
+
 ## SEO, 19-11-2026 (inbox, eenheidsprijs V127)
 - Inbox: besluit Mark (geen open besluiten) ter kennisname op verwerkt. PIM-antwoord V127 beantwoord en op verwerkt.
 - V127: Shopify-bron is in orde (eenheidsprijs gevuld bij kamille en gemberwortel). Themakant (unit_price op productpagina) als laag-prioriteitsverzoek naar Design. Feedkant (regel in Merchant Center) blijft open bij Mark, vraag V127 bijgewerkt.
