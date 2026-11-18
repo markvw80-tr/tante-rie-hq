@@ -2,6 +2,28 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## Design, 17-11-2026 (inbox, desktopmenu, Blond)
+- Desktopmenu (directie 16-11, besluit Mark 483019d07a): de fix van 1 nov raakt assets/tr-menu.css en assets/tr-menu-close.js (hover-open en sluiten). Beide bestanden zijn gelijk aan live thema 205262029064 "Hallmark collecties preview 2026-11-11" (gecontroleerd 17-11). Er bestaat geen aparte themakopie: de fix staat al live, er valt niets te publiceren. Op 16-11 klapte het menu op tanterie.nl bij 1440 px open en dicht bij hover. Mobiel heeft een eigen menu en de wijziging zit alleen in de desktop-hover; mobiel is niet opnieuw getest.
+- Blond Handwas: PIM en Design zijn het eens, themakopie 204900761864 niet publiceren (die zou latere wijzigingen terugzetten). Het besluit over de magnetronzinnen (PIM-data) ligt bij Mark.
+- Opdracht 15-11: punt 1 (SEO-berichten) is klaar en punt 4 is live. Open blijven punt 2, Kies decor (op telefoonbreedte overlapt de prijs de knop tot 63 px, fix nog niet gebouwd), punt 3 (USP-balk glitch) en punt 5 (review mobiel, oude thema's opruimen, repo naar GitHub).
+- Volgende stap: ontwikkelthema voor punt 2 en punt 3, daarna preview aan Mark.
+- Verbruik: niet gemeten.
+
+## SEO, 17-11-2026 (inbox automatische start)
+- Gelezen: besluit Mark 3cea6ee8b0 (gratis parkeergarage klopt, vraag over eenheidsprijs V127) en PIM-bericht over V128/V129.
+- Niet gedaan: deze sessie had geen shell, dus geen mailbox.py, geen pim_regels.py en geen Shopify-check. Alle vier berichten staan nog in de inbox.
+- Open (SEO): eenheidsprijs V127 nakijken in Shopify en Merchant Center (unit_price op varianten, wordt die in de feed en op de productpagina getoond?), antwoord aan Mark.
+- Open (SEO): 5 extra alt-regels erbij, dan `pim_regels.py stuur`; V129-uitkomst als pad aan PIM melden.
+- Open: directie-opdracht 15-11 en Design-bericht LCP/Judge.me lezen en afhandelen.
+- Volgende stap: nieuwe sessie met shell. Verbruik: ca. 0,50 USD, budget op.
+
+## SEO, 15-11-2026 (directie-opdracht open SEO-punten)
+- Gedaan: (1) alt-audit 447 online producten, 25 lege alt, 12 SKU-codes, 2 onjuist (marketing/onpage/audit-alt-teksten-2026-11-15.md, V128); (2) Merchant API werkt weer, kamille en gemberwortel zijn goedgekeurd en actief op Google (V129); (3) Keyword Planner werkt weer via scripts/zoekvolumes.py, volumes tot en met oktober; (4) eerste effectmeting GSC: klikken 226 naar 240, positie beter (marketing/rapporten/effect-design-2026-11-15.md).
+- Bedrijfsprofiel (alleen gelezen): speciale tijden 29-11, 12-12 en 20-12 ontbreken, geen berichten geplaatst, 33 reviews onbeantwoord; voorstel autoriteit/voorstel-bedrijfsprofiel-opschoning-2026-11-15.md.
+- Gedaan 15-11: V130 speciale tijden en V131 b-d (creditcard, Online bestellen-knop, gratis parkeerplaats) live in Bedrijfsprofiel, teruggelezen. V128 akkoord: 15 alt-regels in concept (review loopt, 5 regels tekort voor versturen). V129 laten staan. Berichten 17-11, 24-11, 1-12, 8-12 beoordeeld door kwaliteitsredacteur, plaatsing op de dag zelf via gbp_schrijf.py. V91 afgehandeld 16-11 (Anke verwijderd door Nikkie). Open (Mark): V127 eenheidsprijs. Open (PIM/Mark): lavendel-foto toont venkelachtig zaad, pepermunt-alt wacht op ingrediëntcheck.
+- Open (SEO): concept-alt voor 15 producten toetsen aan foto en kwaliteitsredacteur; berichten herplannen na V131.
+- Volgende stap: antwoord Mark op V128 en V129, dan regels naar PIM; maandrapport 18 tot 21-11, effect beoordelen 25-11.
+- Verbruik: niet gemeten.
 ## PIM, 15-11-2026 (directie-opdracht open punten)
 - Gedaan: Blond batch 01 verrijkt (35 moederartikelen, 50 varianten, lint schoon, Handwas, niets naar Shopify); Blond-YAML bijgewerkt en gecommit; Rice-besluiten 27-10 al uitgevoerd (dubbelen, letterbekers, gewicht); Bornse Zomer staat onder die naam live.
 - Open (Mark): themakopie 204900761864 (Blond Handwas) publiceren; magnetronzinnen bij 5 Blond-SKU's laten staan of schrappen (bron noemt ook vaatwasser, strijdt met besluit 06-11).
