@@ -10,7 +10,7 @@ Prioriteit (Mark, 21 en 23-10-2026): eerst 70 procent winkel in Borne (lokale SE
 
 ## Hoofddoel
 
-Jaarlijks meer winst (Mark, 18-11-2026). Meetpunten: nettowinst per maand en per jaar uit e-boekhouden (`scripts/eboekhouden_winst.py`), brutowinst en marge per kanaal (winkel en webshop) uit Shopify. Zolang een deel van de omzet geen kostprijs heeft, is de brutowinst uit Shopify te laag; zie `team/directie/nulmeting-winst-2026-11.md`. Een streefwaarde voor de winst is nog niet vastgesteld; die kiest Mark.
+Jaarlijks meer winst (Mark, 18-11-2026). Meetpunten: nettowinst per maand en per jaar uit e-boekhouden (`scripts/eboekhouden_winst.py`), brutowinst en marge per kanaal (winkel en webshop) uit Shopify. Zolang een deel van de omzet geen kostprijs heeft, is de brutowinst uit Shopify te laag; zie `team/directie/nulmeting-winst-2026-11.md`. De huidige onderneming begon begin 2026 (Mark, 18-11-2026): 2026 is het basisjaar en de vergelijking per jaar begint met 2027 tegenover 2026. Januari tot en met mei 2026 waren aanloopmaanden voor de opening van de winkel in juni. Een streefwaarde voor de winst is nog niet vastgesteld; die kiest Mark.
 
 ## Meetpunten
 
