@@ -2,6 +2,13 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## SEO, 19-11-2026 (inbox, eenheidsprijs V127)
+- Inbox: besluit Mark (geen open besluiten) ter kennisname op verwerkt. PIM-antwoord V127 beantwoord en op verwerkt.
+- V127: Shopify-bron is in orde (eenheidsprijs gevuld bij kamille en gemberwortel). Themakant (unit_price op productpagina) als laag-prioriteitsverzoek naar Design. Feedkant (regel in Merchant Center) blijft open bij Mark, vraag V127 bijgewerkt.
+- Open: directie-opdracht 15-11 blijft in de inbox tot V132 (alt-regels) beantwoord is en het maandrapport klaar is (deadline 21-11).
+- Volgende stap: maandrapport (analist) vóór 21-11.
+- Verbruik: ca. 0,40 USD.
+
 ## Design, 18-11-2026 (open designpunten)
 - Opdracht Mark 18-11 en directie 15-11 nagelopen. Punt 1 klaar, punt 4 live. Repo tante-rie-design staat gelijk aan GitHub (main = origin/main), dat deel van punt 5 is klaar.
 - Geblokkeerd: de Shopify CLI reageert niet (theme list hangt meer dan 2 minuten, vermoedelijk verlopen login). Zonder CLI geen verse werkkopie, geen ontwikkelthema en geen themalijst.
