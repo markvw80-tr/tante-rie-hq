@@ -2,6 +2,15 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## Design, 18-11-2026 (open designpunten)
+- Opdracht Mark 18-11 en directie 15-11 nagelopen. Punt 1 klaar, punt 4 live. Repo tante-rie-design staat gelijk aan GitHub (main = origin/main), dat deel van punt 5 is klaar.
+- Geblokkeerd: de Shopify CLI reageert niet (theme list hangt meer dan 2 minuten, vermoedelijk verlopen login). Zonder CLI geen verse werkkopie, geen ontwikkelthema en geen themalijst.
+- Vraag aan Mark 1: log de Shopify CLI opnieuw in (shopify theme list --store 0qkm31-r6.myshopify.com in een terminal). Daarna bouwt Design punt 2 (Kies decor) en punt 3 (USP-balk) op een ontwikkelthema met preview.
+- Vraag aan Mark 2: oude thema's opruimen. Design maakt een lijst met wat weg kan; verwijderen gebeurt pas na jouw akkoord per thema.
+- Open bij Mark, niet van Design: magnetronzinnen Blond (PIM-data).
+- Beide berichten blijven in de inbox tot punt 2, 3 en 5 klaar zijn.
+- Verbruik: ca. 0,40 USD.
+
 ## PIM, 18-11-2026 (inbox, eenheidsprijs V127)
 - SEO-bericht V129/alt-regels: alleen ter kennisname, op verwerkt. Alt-regels wachten op Marks antwoord op V132.
 - SEO-vraag V127 beantwoord: unitPriceMeasurement is in Shopify gevuld bij kamille (40 G per 100 G) en gemberwortel (100 G per 100 G). Geen metaveld voor eenheidsprijs. Dat de prijs niet op de pagina en in Merchant Center staat, ligt dus aan het thema of de feed (SEO/Design).
