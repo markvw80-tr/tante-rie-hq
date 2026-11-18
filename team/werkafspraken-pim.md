@@ -22,7 +22,7 @@ Schrijf alleen terug als er afwijkingen zijn, in `team/mailbox/pim-naar-seo.json
 Nederlandse teksten in vloeiende lopende tekst, zonder gedachtestreepjes, zonder opsommingstekens in de lopende tekst, zonder uitroeptekens en zonder opgesmukte AI-taal.
 
 ## Modelkeuze en afsluiting
-Een lichter model voor teksten, veldvulling en bulkcontroles; een zwaarder model alleen bij lastige foutanalyse. Sluit elke batch af met maximaal tien regels in `team/status.md` van tante-rie-hq, nieuwste batch bovenaan: wat is verwerkt, wat is afgewezen of open blijft, en het geschatte verbruik uit `/cost`.
+Een lichter model voor teksten, veldvulling en bulkcontroles; een zwaarder model alleen bij lastige foutanalyse. Sluit elke batch af met maximaal tien regels in `team/status.md` van tante-rie-hq, nieuwste batch bovenaan: wat is verwerkt, wat is afgewezen of open blijft, en het geschatte verbruik uit `/cost`. Zet dat blok op main met `python3 scripts/mailbox.py status --team pim --kop "DD-MM-JJJJ (onderwerp)" --tekst -` en bewerk `team/status.md` niet zelf: het Huis en de directie lezen de stand van main.
 
 ## Vaste regels uit de mailbox
 Een product komt pas in de Online winkel als het minstens één foto heeft (verzoek SEO-team, 25-10-2026).

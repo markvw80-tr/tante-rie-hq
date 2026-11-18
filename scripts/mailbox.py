@@ -14,6 +14,7 @@ Gebruik:
                                                        # --van mark: bericht van Mark zelf (akkoord of opdracht)
         [--antwoord-op <bestand>] [--prioriteit hoog|normaal|laag]
   python3 scripts/mailbox.py verwerkt <bestand> [--notitie "..."]
+  python3 scripts/mailbox.py status --team seo --kop "18-11-2026 (onderwerp)" --tekst -   # statusblok op main
   python3 scripts/mailbox.py --geen-git ...            # zonder pull/commit/push (testen)
 """
 import argparse
@@ -156,6 +157,48 @@ def cmd_verwerkt(a):
     print("Verplaatst naar " + os.path.relpath(doel, ROOT))
 
 
+STATUS_LABEL = {"seo": "SEO", "pim": "PIM", "design": "Design", "directie": "Directie"}
+MAX_STATUSREGELS = 10
+
+
+def statusblok_invoegen(pad, blok):
+    """Zet het blok bovenaan in team/status.md, direct na de inleiding (nieuwste bovenaan)."""
+    with open(pad, encoding="utf-8") as f:
+        tekst = f.read()
+    m = re.search(r"^## ", tekst, re.M)
+    plek = m.start() if m else len(tekst)
+    voor = tekst[:plek].rstrip("\n") + "\n\n"
+    with open(pad, "w", encoding="utf-8") as f:
+        f.write(voor + blok + "\n" + tekst[plek:])
+
+
+def cmd_status(a):
+    tekst = sys.stdin.read() if a.tekst == "-" else a.tekst
+    regels = [r.rstrip() for r in tekst.strip().splitlines() if r.strip()]
+    if not regels:
+        sys.exit("Een statusblok zonder regels heeft geen zin.")
+    if len(regels) > MAX_STATUSREGELS:
+        sys.exit("Een statusblok heeft maximaal %d regels (nu %d)." % (MAX_STATUSREGELS, len(regels)))
+    regels = [r if r.startswith("- ") else "- " + r.lstrip("-* ") for r in regels]
+    blok = "## %s, %s\n%s\n" % (STATUS_LABEL[a.team], a.kop.strip(), "\n".join(regels))
+    rel = os.path.join("team", "status.md")
+    if a.geen_git:
+        statusblok_invoegen(os.path.join(ROOT, rel), blok)
+        print(blok)
+        return
+    # Bij een gelijktijdige push opnieuw beginnen vanaf origin/main, zodat er nooit een rebase-conflict blijft staan.
+    for poging in range(3):
+        if poging:
+            ophalen()
+        statusblok_invoegen(os.path.join(ROOT, rel), blok)
+        git("add", "--", rel)
+        git("commit", "-m", "status: %s, %s" % (STATUS_LABEL[a.team], a.kop.strip()), "--", rel)
+        if git("push", "origin", "HEAD:" + BRANCH, check=False).returncode == 0:
+            print("Statusblok op main gezet:\n" + blok)
+            return
+    raise RuntimeError("push van het statusblok naar " + BRANCH + " mislukt; probeer later opnieuw")
+
+
 def main():
     p = argparse.ArgumentParser(description="Mailbox tussen SEO-, PIM- en Design-team")
     p.add_argument("--geen-git", action="store_true", help="geen pull, commit of push")
@@ -177,6 +220,12 @@ def main():
     s.add_argument("--antwoord-op")
     s.add_argument("--prioriteit", default="normaal", choices=("hoog", "normaal", "laag"))
     s.set_defaults(fn=cmd_stuur)
+
+    s = sub.add_parser("status", help="statusblok bovenaan team/status.md op main zetten")
+    s.add_argument("--team", required=True, choices=tuple(STATUS_LABEL))
+    s.add_argument("--kop", required=True, help='datum en onderwerp, bv. "18-11-2026 (inbox)"')
+    s.add_argument("--tekst", required=True, help="maximaal 10 regels, of - om van stdin te lezen")
+    s.set_defaults(fn=cmd_status)
 
     s = sub.add_parser("verwerkt")
     s.add_argument("bestand")

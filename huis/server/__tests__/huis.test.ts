@@ -39,6 +39,21 @@ const bron = geheugenBron(
 );
 
 describe("bouwHuis", () => {
+  test("status, agenda en doelen komen uit dezelfde stand als de post (origin/main)", async () => {
+    const MAIN = "/hq/.git/mailbox-main";
+    const tweeStanden = geheugenBron({
+      "/hq/team/status.md": "# Status\n## SEO, 01-11-2026 (lokaal oud)\n- oud\n",
+      "/hq/team/directie/agenda-2026-11-16.md": "# Lokaal\n",
+      [`${MAIN}/team/status.md`]: "# Status\n## SEO, 18-11-2026 (van main)\n- nieuw\n",
+      [`${MAIN}/team/doelen.md`]: "# Doelen van main\n",
+      [`${MAIN}/team/directie/agenda-2026-11-18.md`]: "# Agenda uit de cloud\n",
+    });
+    const huis = await bouwHuis(tweeStanden, HQ, TEAMS, "2026-11-18", `${MAIN}/team/mailbox`);
+    expect(huis.agenda?.datum).toBe("2026-11-18");
+    expect(JSON.stringify(huis.doelen)).toContain("Doelen van main");
+    expect(JSON.stringify(huis.teams.find((t) => t.id === "seo")?.statusHistorie[0])).toContain("van main");
+  });
+
   test("bouwt per team agents, mailbox, status en stemming", async () => {
     const huis = await bouwHuis(bron, HQ, TEAMS, "2026-11-16");
     const [directie, seo, pim] = huis.teams;

@@ -17,7 +17,7 @@ Overleg dat niet in de velden past (vragen, kennisgevingen) blijft via de Markdo
 Ahrefs- en Semrush-data altijd met domein-, land- en limietfilters; nooit complete datasets. Ruwe uitkomsten in `team/data/seo/`, daarna alleen de samenvatting lezen. Rekenen, sorteren en filteren met een script, niet handmatig.
 
 ## Modelkeuze en afsluiting
-Een lichter model voor het opstellen van de regels, een zwaarder model alleen voor strategie en zoekintentieanalyse. Elke batch sluit af met maximaal tien regels in `team/status.md`: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik uit /cost.
+Een lichter model voor het opstellen van de regels, een zwaarder model alleen voor strategie en zoekintentieanalyse. Elke batch sluit af met maximaal tien regels in `team/status.md`: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik uit /cost. Zet dat blok op main met `python3 scripts/mailbox.py status --team seo --kop "DD-MM-JJJJ (onderwerp)" --tekst -` en bewerk `team/status.md` niet zelf: het Huis en de directie lezen de stand van main.
 
 ## Formaat mailbox
 ```json

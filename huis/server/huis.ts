@@ -18,6 +18,8 @@ const STATUS_HISTORIE = 8;
 interface Context {
   readonly bron: Bron;
   readonly hq: string;
+  /** Root van de gedeelde stand: de werkkopie van origin/main als de post daar vandaan komt, anders hq. */
+  readonly gedeeld: string;
   readonly mailbox: string;
   readonly vandaag: string;
 }
@@ -29,9 +31,11 @@ export async function bouwHuis(
   vandaag: string,
   mailbox: string = path.join(hq, "team/mailbox"),
 ): Promise<HuisStand> {
-  const ctx: Context = { bron, hq, mailbox, vandaag };
+  // Status, agenda en doelen uit dezelfde stand als de post: teams en de directie-routine zetten ze op main.
+  const gedeeld = path.resolve(mailbox, "..", "..");
+  const ctx: Context = { bron, hq, gedeeld, mailbox, vandaag };
   const [statusTekst, agenda, doelen, jsonMailbox, antwoorden] = await Promise.all([
-    bron.lees(path.join(hq, "team/status.md")),
+    bron.lees(path.join(gedeeld, "team/status.md")),
     leesAgenda(ctx),
     leesDoc(ctx, "team/doelen.md"),
     Promise.all(["seo-naar-pim", "pim-naar-seo"].map((n) => leesJsonMailbox(ctx, n))),
@@ -139,7 +143,7 @@ async function leesPipeline(ctx: Context, repo: string): Promise<PipelineFase[]>
 }
 
 async function leesAgenda(ctx: Context): Promise<Agenda | null> {
-  const map = path.join(ctx.hq, "team/directie");
+  const map = path.join(ctx.gedeeld, "team/directie");
   const agendas = (await ctx.bron.bestanden(map, ".md")).filter((n) => n.startsWith("agenda-"));
   const laatste = agendas.at(-1);
   if (!laatste) return null;
@@ -150,7 +154,7 @@ async function leesAgenda(ctx: Context): Promise<Agenda | null> {
 }
 
 async function leesDoc(ctx: Context, relatief: string): Promise<MdDocument | null> {
-  const tekst = await ctx.bron.lees(path.join(ctx.hq, relatief));
+  const tekst = await ctx.bron.lees(path.join(ctx.gedeeld, relatief));
   return tekst === null ? null : parseMarkdown(tekst);
 }
 
