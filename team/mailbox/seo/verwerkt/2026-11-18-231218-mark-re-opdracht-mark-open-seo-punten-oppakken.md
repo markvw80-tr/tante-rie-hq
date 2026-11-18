@@ -8,3 +8,6 @@ antwoord-op: 2026-11-15-125447-directie-opdracht-mark-open-seo-punten-oppakken.m
 ---
 
 Wat staat hier nog daadwerkelijk open?
+
+---
+Verwerkt op 2026-11-18 23:18: Beantwoord in statusblok SEO 18-11 (mailbox kan niet naar Mark sturen)
