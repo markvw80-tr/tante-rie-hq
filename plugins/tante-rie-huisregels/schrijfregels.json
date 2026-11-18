@@ -1,0 +1,7 @@
+{
+  "_uitleg": "Eén bron voor de schrijfregels van klanttekst bij Tante Rie. Gebruikt door de tekstlint-hook van deze plugin en door scripts/lint_nl_copy.py van PIM.",
+  "vulwoorden": ["ontdek", "geniet van", "perfect voor elk moment", "de ultieme", "unieke combinatie", "kortom", "al met al", "of je nu", "laat je verrassen", "must-have", "in de wereld van", "dit product"],
+  "gedachtestrepen": ["—", "–", " - "],
+  "maxTekens": { "title_nl": 70, "seo_title": 60, "meta_description": 155 },
+  "productvelden": ["title_nl", "description_html_nl", "seo_title", "meta_description", "image_alt_nl"]
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "tante-rie",
+  "description": "Gedeelde plugins voor de teams van Tante Rie (SEO, PIM, Design en directie).",
+  "owner": { "name": "Tante Rie" },
+  "plugins": [
+    {
+      "name": "tante-rie-huisregels",
+      "description": "Gedeelde werkwijze en schrijfregels voor alle teams van Tante Rie, met een tekstlint op klanttekst.",
+      "source": "./plugins/tante-rie-huisregels",
+      "category": "productivity"
+    }
+  ]
+}

@@ -14,6 +14,7 @@ export const WERKBRONNEN: Record<TeamId, readonly WerkBronConfig[]> = {
     { id: "agendas", label: "Agenda's", map: "team/directie", patroon: /^agenda-/ },
     { id: "werkafspraken", label: "Werkafspraken", map: "team", patroon: /^werkafspraken-/ },
     { id: "status", label: "Status alle teams", map: "team", bestand: "status.md" },
+    { id: "statusarchief", label: "Archief statusblokken", map: "team", bestand: "status-archief.md" },
   ],
   seo: [
     { id: "rapporten", label: "Rapporten", map: "marketing/rapporten" },

@@ -172,6 +172,48 @@ def statusblok_invoegen(pad, blok):
         f.write(voor + blok + "\n" + tekst[plek:])
 
 
+ARCHIEF_NA_DAGEN = 14
+STATUSKOP = re.compile(r"^## (\w+), (\d{2})-(\d{2})-(\d{4})", re.M)
+
+
+def archiveer_oude_blokken(root, vandaag=None):
+    """Verplaatst statusblokken ouder dan ARCHIEF_NA_DAGEN naar team/status-archief.md.
+    Het nieuwste blok van elk team blijft altijd staan. Geeft de gewijzigde paden terug."""
+    vandaag = vandaag or datetime.date.today()
+    pad = os.path.join(root, "team", "status.md")
+    with open(pad, encoding="utf-8") as f:
+        tekst = f.read()
+    koppen = list(STATUSKOP.finditer(tekst))
+    if not koppen:
+        return []
+    kop_tekst = tekst[:koppen[0].start()]
+    blokken = [tekst[k.start():(koppen[i + 1].start() if i + 1 < len(koppen) else len(tekst))] for i, k in enumerate(koppen)]
+    houden, weg, gezien = [], [], set()
+    for k, blok in zip(koppen, blokken):
+        team = k.group(1)
+        try:
+            datum = datetime.date(int(k.group(4)), int(k.group(3)), int(k.group(2)))
+        except ValueError:
+            datum = vandaag
+        oud = (vandaag - datum).days > ARCHIEF_NA_DAGEN
+        (weg if oud and team in gezien else houden).append(blok)
+        gezien.add(team)
+    if not weg:
+        return []
+    with open(pad, "w", encoding="utf-8") as f:
+        f.write(kop_tekst + "".join(houden).rstrip("\n") + "\n")
+    archief = os.path.join(root, "team", "status-archief.md")
+    bestaand = ""
+    if os.path.exists(archief):
+        with open(archief, encoding="utf-8") as f:
+            bestaand = f.read()
+    kop = "# Archief statusblokken Tante Rie\n\nBlokken ouder dan %d dagen uit team/status.md, nieuwste bovenaan.\n\n" % ARCHIEF_NA_DAGEN
+    oude_inhoud = bestaand.split("\n\n", 2)[2] if bestaand.startswith("# Archief") and bestaand.count("\n\n") >= 2 else bestaand
+    with open(archief, "w", encoding="utf-8") as f:
+        f.write(kop + "".join(b if b.endswith("\n") else b + "\n" for b in weg) + oude_inhoud)
+    return [os.path.join("team", "status.md"), os.path.join("team", "status-archief.md")]
+
+
 def cmd_status(a):
     tekst = sys.stdin.read() if a.tekst == "-" else a.tekst
     regels = [r.rstrip() for r in tekst.strip().splitlines() if r.strip()]
@@ -184,6 +226,7 @@ def cmd_status(a):
     rel = os.path.join("team", "status.md")
     if a.geen_git:
         statusblok_invoegen(os.path.join(ROOT, rel), blok)
+        archiveer_oude_blokken(ROOT)
         print(blok)
         return
     # Bij een gelijktijdige push opnieuw beginnen vanaf origin/main, zodat er nooit een rebase-conflict blijft staan.
@@ -191,8 +234,9 @@ def cmd_status(a):
         if poging:
             ophalen()
         statusblok_invoegen(os.path.join(ROOT, rel), blok)
-        git("add", "--", rel)
-        git("commit", "-m", "status: %s, %s" % (STATUS_LABEL[a.team], a.kop.strip()), "--", rel)
+        paden = sorted({rel, *archiveer_oude_blokken(ROOT)})
+        git("add", "--", *paden)
+        git("commit", "-m", "status: %s, %s" % (STATUS_LABEL[a.team], a.kop.strip()), "--", *paden)
         if git("push", "origin", "HEAD:" + BRANCH, check=False).returncode == 0:
             print("Statusblok op main gezet:\n" + blok)
             return
