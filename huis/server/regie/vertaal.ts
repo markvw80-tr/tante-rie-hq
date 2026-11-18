@@ -9,6 +9,7 @@ export interface Afloop {
   readonly kostenUsd: number | null;
   readonly resultaat: string | null;
   readonly fouten: readonly string[];
+  readonly budgetOp: boolean;
 }
 
 /** Zet een bericht uit de Agent SDK om naar logregels. Onbekende soorten worden overgeslagen. */
@@ -39,8 +40,14 @@ export function vertaal(bericht: unknown, nu: string): { regels: RunRegel[]; afl
     const kosten = typeof bericht.total_cost_usd === "number" ? bericht.total_cost_usd : null;
     const fouten = Array.isArray(bericht.errors) ? bericht.errors.map(String) : [];
     const resultaat = typeof bericht.result === "string" ? bericht.result : null;
-    const tekst = gelukt ? "Klaar." : `Gestopt: ${String(bericht.subtype)}${fouten.length ? ` (${fouten.join("; ")})` : ""}`;
-    return { regels: [regel(gelukt ? "systeem" : "fout", tekst)], afloop: { gelukt, kostenUsd: kosten, resultaat, fouten } };
+    const budgetOp = bericht.subtype === "error_max_budget_usd";
+    const bedrag = kosten !== null ? ` ($${kosten.toFixed(2)})` : "";
+    const tekst = gelukt
+      ? "Klaar."
+      : budgetOp
+        ? `Gestopt: budget op${bedrag}. Het werk is waarschijnlijk niet af.`
+        : `Gestopt: ${String(bericht.subtype)}${fouten.length ? ` (${fouten.join("; ")})` : ""}`;
+    return { regels: [regel(gelukt ? "systeem" : "fout", tekst)], afloop: { gelukt, kostenUsd: kosten, resultaat, fouten, budgetOp } };
   }
   return { regels: [], afloop: null };
 }

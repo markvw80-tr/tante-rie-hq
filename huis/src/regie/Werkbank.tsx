@@ -67,7 +67,7 @@ export function Werkbank({ id, onSluit }: { readonly id: string; readonly onSlui
         {run && (
           <>
             <dl className="lezer-meta">
-              <div><dt>status</dt><dd className={`status-${run.status}`}>{STATUS_TEKST[run.status]}</dd></div>
+              <div><dt>status</dt><dd className={`status-${run.status}`}>{STATUS_TEKST[run.status]}{run.budgetOp ? ", budget op" : ""}</dd></div>
               <div><dt>budget</dt><dd>{euro(run.budgetUsd)}</dd></div>
               <div><dt>gestart door</dt><dd>{run.bron === "huis" ? "het huis (nieuwe post)" : "Mark"}</dd></div>
               <div><dt>kosten</dt><dd>{euro(run.kostenUsd)}</dd></div>

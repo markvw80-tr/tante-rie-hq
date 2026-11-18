@@ -114,6 +114,7 @@ export interface HuisStand {
   readonly runs?: readonly RunSamenvatting[];
   readonly post?: PostStand;
   readonly automaat?: AutomaatStand;
+  readonly kosten?: KostenOverzicht;
   /** Het Tailscale-adres waarop het huis ook buiten de deur te openen is, als tailscale serve aanstaat. */
   readonly opAfstand?: string | null;
 }
@@ -216,6 +217,26 @@ export interface RunSamenvatting {
   readonly laatsteRegel: string;
   /** Wie de run startte: Mark zelf of het huis bij nieuwe post. Ontbreekt bij oude runs (Mark). */
   readonly bron?: RunBron;
+  /** De run stopte omdat het budget op was. */
+  readonly budgetOp?: boolean;
+}
+
+/** Kosten van de agents per team, uit de werkbonnen van het huis. */
+export interface KostenTeam {
+  readonly team: TeamId;
+  readonly weekUsd: number;
+  readonly maandUsd: number;
+  readonly runsWeek: number;
+  readonly budgetOpWeek: number;
+  readonly automatischWeekUsd: number;
+}
+
+export interface KostenOverzicht {
+  readonly teams: readonly KostenTeam[];
+  readonly weekUsd: number;
+  readonly maandUsd: number;
+  /** Runs van de afgelopen week zonder bekend bedrag (gestopt of onderbroken voordat de SDK een bedrag gaf). */
+  readonly zonderKostenWeek: number;
 }
 
 export type RunBron = "mark" | "huis";

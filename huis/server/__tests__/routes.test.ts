@@ -93,4 +93,12 @@ describe("routes", () => {
     expect((await vraag("/api/iets")).status).toBe(404);
     expect((await vraag("/api/huis")).status).toBe(200);
   });
+
+  test("huis geeft het kostenoverzicht van de runs mee", async () => {
+    const gisteren = new Date(Date.now() - 86_400_000).toISOString();
+    const regie = { lijst: () => [{ id: "r1", team: "seo", agent: "seo-lead", opdracht: "o", status: "klaar", gestart: gisteren, geeindigd: null, kostenUsd: 0.4, budgetUsd: 1, poort: null, laatsteRegel: "" }] };
+    const antwoord = await behandel("/api/huis", new URLSearchParams(), { ...omg, regie: regie as unknown as Omgeving["regie"] });
+    expect((antwoord.body as { kosten: { weekUsd: number } }).kosten.weekUsd).toBeCloseTo(0.4);
+    expect(((await vraag("/api/huis")).body as { kosten?: unknown }).kosten).toBeUndefined();
+  });
 });

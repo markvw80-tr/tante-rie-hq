@@ -57,8 +57,10 @@ describe("vertaal", () => {
     const u = vertaal({ type: "user", message: { content: [{ type: "tool_result", is_error: true, content: [{ type: "text", text: "nee" }] }] } }, nu);
     expect(u.regels[0]).toMatchObject({ soort: "fout", tekst: "nee" });
     const r = vertaal({ type: "result", subtype: "success", is_error: false, total_cost_usd: 0.12, result: "Klaar met diff." }, nu);
-    expect(r.afloop).toEqual({ gelukt: true, kostenUsd: 0.12, resultaat: "Klaar met diff.", fouten: [] });
-    expect(vertaal({ type: "result", subtype: "error_max_budget_usd", is_error: true, errors: ["budget"] }, nu).afloop?.gelukt).toBe(false);
+    expect(r.afloop).toEqual({ gelukt: true, kostenUsd: 0.12, resultaat: "Klaar met diff.", fouten: [], budgetOp: false });
+    const budget = vertaal({ type: "result", subtype: "error_max_budget_usd", is_error: true, errors: ["budget"], total_cost_usd: 0.51 }, nu);
+    expect(budget.afloop).toMatchObject({ gelukt: false, budgetOp: true, kostenUsd: 0.51 });
+    expect(budget.regels[0].tekst).toContain("budget");
     expect(vertaal("onzin", nu).regels).toEqual([]);
   });
 });
@@ -112,6 +114,19 @@ describe("RunBeheer", () => {
     const klaar = beheer.detail(run.id)!;
     expect(klaar.status).toBe("klaar");
     expect(klaar.regels.some((r) => r.soort === "besluit" && r.tekst.startsWith("Geweigerd"))).toBe(true);
+  });
+
+  test("run die op budget stopt krijgt de vlag budgetOp", async () => {
+    const beheer = new RunBeheer(
+      nepStarter(async function* () {
+        yield { type: "result", subtype: "error_max_budget_usd", is_error: true, total_cost_usd: 0.5 };
+      }),
+      geheugenOpslag(),
+    );
+    const run = beheer.start(verzoek);
+    await wacht();
+    expect(beheer.detail(run.id)).toMatchObject({ status: "fout", budgetOp: true, kostenUsd: 0.5 });
+    expect(beheer.lijst()[0].budgetOp).toBe(true);
   });
 
   test("twee poortvragen tegelijk komen na elkaar op de toonbank, geen van beide raakt zoek", async () => {

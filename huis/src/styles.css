@@ -361,3 +361,12 @@ button.schap.actief { border-color: var(--kleur-pim); background: var(--white); 
 .schakelaar input:disabled { opacity: .5; cursor: wait; }
 .auto-tag { margin-left: 6px; background: var(--cream); color: var(--brown); font-size: 11px; padding: 2px 8px; }
 @media (prefers-reduced-motion: reduce) { .schakelaar input, .schakelaar input::after { transition: none; } }
+
+/* Kosten van de agents */
+.kosten-tabel { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; margin-top: 6px; }
+.kosten-tabel th, .kosten-tabel td { text-align: right; padding: 6px 4px; border-bottom: 1px solid var(--cream-dark); }
+.kosten-tabel th:first-child, .kosten-tabel thead th:first-child { text-align: left; }
+.kosten-tabel thead th { font-weight: 600; color: var(--text-muted); font-size: 12.5px; }
+.kosten-stip { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+.kosten-budget { color: var(--error); font-size: 12.5px; }
+@media (max-width: 480px) { .kosten-tabel th:nth-child(3), .kosten-tabel td:nth-child(3) { display: none; } }

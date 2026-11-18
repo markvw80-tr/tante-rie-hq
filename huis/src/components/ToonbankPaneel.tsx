@@ -5,6 +5,7 @@ import { useSchrijven } from "../schrijven/SchrijfContext.tsx";
 import { korteDatum } from "../teamKleur.ts";
 import { AgendaKaart } from "./AgendaKaart.tsx";
 import { AutomaatKaart } from "./AutomaatKaart.tsx";
+import { KostenKaart } from "./KostenKaart.tsx";
 
 export function ToonbankPaneel({ huis, onGewijzigd }: { readonly huis: HuisStand; readonly onGewijzigd: () => void }) {
   const { open: schrijf } = useSchrijven();
@@ -37,6 +38,8 @@ export function ToonbankPaneel({ huis, onGewijzigd }: { readonly huis: HuisStand
       </section>
 
       {huis.automaat && <AutomaatKaart stand={huis.automaat} onGewijzigd={onGewijzigd} />}
+
+      {huis.kosten && <KostenKaart kosten={huis.kosten} />}
 
       {huis.agenda && <AgendaKaart agenda={huis.agenda} zonderMark />}
 

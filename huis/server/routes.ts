@@ -13,6 +13,7 @@ import type { RunBeheer } from "./regie/beheer.ts";
 import { behandelRunGet, behandelRunPost } from "./regie/routes.ts";
 import { valideerBesluit, valideerOpdracht } from "./verzoek.ts";
 import { alleBerichten, batchInhoud, leesAgent, leesBatchDocument, leesBericht, leesWerkDocument, OngeldigVerzoek, teamWerk } from "./werk.ts";
+import { kostenOverzicht } from "./regie/kosten.ts";
 
 export interface Antwoord {
   readonly status: number;
@@ -56,7 +57,7 @@ export async function behandel(pad: string, params: URLSearchParams, omg: Omgevi
   try {
     if (pad === "/api/huis") {
       const huis = await bouwHuis(omg.bron, omg.hq, omg.teams, omg.vandaag, omg.mailbox);
-      return { status: 200, body: { ...huis, runs: omg.regie?.lijst().slice(0, 20) ?? [], post: omg.ophaler?.stand(), automaat: omg.automaat?.stand(), opAfstand: omg.opAfstand ?? null } };
+      return { status: 200, body: { ...huis, runs: omg.regie?.lijst().slice(0, 20) ?? [], post: omg.ophaler?.stand(), automaat: omg.automaat?.stand(), kosten: omg.regie ? kostenOverzicht(omg.regie.lijst(), new Date()) : undefined, opAfstand: omg.opAfstand ?? null } };
     }
     if (omg.regie && pad.startsWith("/api/runs")) {
       const antwoord = behandelRunGet(pad, omg.regie);

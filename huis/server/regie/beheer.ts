@@ -116,7 +116,7 @@ export class RunBeheer extends EventEmitter {
         const { regels, afloop } = vertaal(bericht, this.klok().toISOString());
         this.voegToe(l, regels);
         if (afloop) {
-          this.zet(l, { status: afloop.gelukt ? "klaar" : "fout", kostenUsd: afloop.kostenUsd, resultaat: afloop.resultaat, geeindigd: this.klok().toISOString() });
+          this.zet(l, { status: afloop.gelukt ? "klaar" : "fout", kostenUsd: afloop.kostenUsd, resultaat: afloop.resultaat, budgetOp: afloop.budgetOp, geeindigd: this.klok().toISOString() });
         }
       }
       if (!EINDSTATUS.has(l.run.status)) this.zet(l, { status: "klaar", geeindigd: this.klok().toISOString() });
