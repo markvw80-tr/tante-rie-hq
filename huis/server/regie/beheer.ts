@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { EventEmitter } from "node:events";
 import type { PoortVerzoek, RunBron, RunDetail, RunRegel, RunStatus, RunSamenvatting, TeamId } from "../../shared/types.ts";
-import { beoordeel, samenvatting } from "./poort.ts";
+import { beoordeel, samenvatting, type Beoordeling } from "./poort.ts";
 import { vertaal } from "./vertaal.ts";
 
 export const MAX_ACTIEF = 3;
@@ -34,6 +34,8 @@ interface Lopend {
   run: RunDetail;
   readonly stop: AbortController;
   wachtend: { readonly verzoek: PoortVerzoek; readonly klaar: (toestaan: boolean, notitie: string) => void } | null;
+  /** Poortvragen van één run komen na elkaar op de toonbank (er is één wachtplek per run). */
+  rij: Promise<void>;
 }
 
 export class RegieFout extends Error {}
@@ -46,7 +48,7 @@ export class RunBeheer extends EventEmitter {
     super();
     for (const oud of opslag.laadAlle()) {
       const run = EINDSTATUS.has(oud.status) ? oud : { ...oud, status: "onderbroken" as const, poort: null };
-      this.runs.set(run.id, { run, stop: new AbortController(), wachtend: null });
+      this.runs.set(run.id, { run, stop: new AbortController(), wachtend: null, rij: Promise.resolve() });
     }
   }
 
@@ -84,7 +86,7 @@ export class RunBeheer extends EventEmitter {
       resultaat: null,
       bron: v.bron ?? "mark",
     };
-    const lopend: Lopend = { run, stop: new AbortController(), wachtend: null };
+    const lopend: Lopend = { run, stop: new AbortController(), wachtend: null, rij: Promise.resolve() };
     this.runs.set(run.id, lopend);
     const kop = v.bron === "huis" ? `Automatisch gestart door het Huis (nieuwe post) voor ${v.agent}` : `Opdracht van Mark aan ${v.agent}`;
     this.voegToe(lopend, [{ t: nu, soort: "systeem", tekst: `${kop}: ${v.opdracht}` }]);
@@ -132,37 +134,51 @@ export class RunBeheer extends EventEmitter {
       const oordeel = beoordeel(tool, invoer, repo, hookReden);
       if (oordeel.soort === "veilig") return { toestaan: true, bericht: "" };
 
-      const verzoek: PoortVerzoek = {
-        id: randomUUID(),
-        soort: oordeel.soort,
-        tool,
-        samenvatting: samenvatting(tool, invoer),
-        invoer: JSON.stringify(invoer, null, 2).slice(0, 4000),
-        reden: oordeel.reden,
-        sinds: this.klok().toISOString(),
-      };
-      this.voegToe(l, [this.regel("poort", `${oordeel.soort === "live" ? "LIVE, wacht op Mark" : "Wacht op toestemming"}: ${verzoek.samenvatting}`)]);
-      this.zet(l, { status: "wacht", poort: verzoek });
+      const vorige = l.rij;
+      let vrijgeven = () => {};
+      l.rij = new Promise<void>((r) => (vrijgeven = r));
+      try {
+        await vorige;
+        return await this.vraagMark(l, tool, invoer, oordeel, signal);
+      } finally {
+        vrijgeven();
+      }
+    };
+  }
 
-      const besluit = await new Promise<{ toestaan: boolean; notitie: string }>((resolve) => {
-        const klaar = (toestaan: boolean, notitie: string) => {
-          clearTimeout(timer);
-          signal.removeEventListener("abort", afgebroken);
-          l.wachtend = null;
-          resolve({ toestaan, notitie });
-        };
-        const afgebroken = () => klaar(false, "Run afgebroken.");
-        const timer = setTimeout(() => klaar(false, "Geen antwoord van Mark binnen 30 minuten."), POORT_WACHTTIJD_MS);
-        signal.addEventListener("abort", afgebroken, { once: true });
-        l.wachtend = { verzoek, klaar };
-      });
+  /** Legt één poortvraag op de toonbank en wacht op Mark (of op stoppen of de wachttijd). */
+  private async vraagMark(l: Lopend, tool: string, invoer: Record<string, unknown>, oordeel: Exclude<Beoordeling, { soort: "veilig" }>, signal: AbortSignal): Promise<{ toestaan: boolean; bericht: string }> {
+    if (signal.aborted || EINDSTATUS.has(l.run.status)) return { toestaan: false, bericht: "Run afgebroken." };
+    const verzoek: PoortVerzoek = {
+      id: randomUUID(),
+      soort: oordeel.soort,
+      tool,
+      samenvatting: samenvatting(tool, invoer),
+      invoer: JSON.stringify(invoer, null, 2).slice(0, 4000),
+      reden: oordeel.reden,
+      sinds: this.klok().toISOString(),
+    };
+    this.voegToe(l, [this.regel("poort", `${oordeel.soort === "live" ? "LIVE, wacht op Mark" : "Wacht op toestemming"}: ${verzoek.samenvatting}`)]);
+    this.zet(l, { status: "wacht", poort: verzoek });
 
-      if (!EINDSTATUS.has(l.run.status)) this.zet(l, { status: "bezig", poort: null });
-      this.voegToe(l, [this.regel("besluit", `${besluit.toestaan ? "Toegestaan" : "Geweigerd"} door Mark${besluit.notitie ? `: ${besluit.notitie}` : ""}`)]);
-      return {
-        toestaan: besluit.toestaan,
-        bericht: besluit.toestaan ? "" : `Mark heeft dit geweigerd via het Huis.${besluit.notitie ? ` Toelichting: ${besluit.notitie}` : ""} Ga niet om deze weigering heen; meld het in je afsluiting.`,
+    const besluit = await new Promise<{ toestaan: boolean; notitie: string }>((resolve) => {
+      const klaar = (toestaan: boolean, notitie: string) => {
+        clearTimeout(timer);
+        signal.removeEventListener("abort", afgebroken);
+        l.wachtend = null;
+        resolve({ toestaan, notitie });
       };
+      const afgebroken = () => klaar(false, "Run afgebroken.");
+      const timer = setTimeout(() => klaar(false, "Geen antwoord van Mark binnen 30 minuten."), POORT_WACHTTIJD_MS);
+      signal.addEventListener("abort", afgebroken, { once: true });
+      l.wachtend = { verzoek, klaar };
+    });
+
+    if (!EINDSTATUS.has(l.run.status)) this.zet(l, { status: "bezig", poort: null });
+    this.voegToe(l, [this.regel("besluit", `${besluit.toestaan ? "Toegestaan" : "Geweigerd"} door Mark${besluit.notitie ? `: ${besluit.notitie}` : ""}`)]);
+    return {
+      toestaan: besluit.toestaan,
+      bericht: besluit.toestaan ? "" : `Mark heeft dit geweigerd via het Huis.${besluit.notitie ? ` Toelichting: ${besluit.notitie}` : ""} Ga niet om deze weigering heen; meld het in je afsluiting.`,
     };
   }
 

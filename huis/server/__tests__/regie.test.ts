@@ -15,6 +15,15 @@ describe("poort", () => {
     ["Bash", { command: "shopify theme publish --theme 123" }, "live"],
     ["Bash", { command: "git push origin main" }, "live"],
     ["Bash", { command: "python3 scripts/gbp_schrijf.py --post" }, "live"],
+    ["Bash", { command: "python3 scripts/gbp_schrijf.sh" }, "live"],
+    ["Bash", { command: "python3 -m scripts.gbp_schrijf --post" }, "live"],
+    ["Bash", { command: "git -C . push origin main" }, "live"],
+    ["Bash", { command: "git -c x=y push" }, "live"],
+    ["Bash", { command: "curl -s -d 'a=1' https://x" }, "live"],
+    ["Bash", { command: "curl --request POST https://x" }, "live"],
+    ["Bash", { command: "gh api -X POST repos/x/y/issues" }, "live"],
+    ["Bash", { command: "gh api repos/x/y" }, "toestemming"],
+    ["Bash", { command: "curl -s https://x" }, "toestemming"],
     ["Bash", { command: "npm test" }, "toestemming"],
     ["WebFetch", { url: "https://x" }, "toestemming"],
     ["Read", { file_path: "/etc/hosts" }, "veilig"],
@@ -103,6 +112,33 @@ describe("RunBeheer", () => {
     const klaar = beheer.detail(run.id)!;
     expect(klaar.status).toBe("klaar");
     expect(klaar.regels.some((r) => r.soort === "besluit" && r.tekst.startsWith("Geweigerd"))).toBe(true);
+  });
+
+  test("twee poortvragen tegelijk komen na elkaar op de toonbank, geen van beide raakt zoek", async () => {
+    const uitkomsten: boolean[] = [];
+    const beheer = new RunBeheer(
+      nepStarter(async function* (t, signal) {
+        const [a, b] = await Promise.all([
+          t("mcp__shop__update-product", { id: 1 }, { signal }),
+          t("mcp__shop__update-product", { id: 2 }, { signal }),
+        ]);
+        uitkomsten.push(a.toestaan, b.toestaan);
+        yield { type: "result", subtype: "success", is_error: false, total_cost_usd: 0, result: "ok" };
+      }),
+      geheugenOpslag(),
+    );
+    const run = beheer.start(verzoek);
+    await wacht();
+    const eerste = beheer.detail(run.id)!.poort!;
+    expect(eerste.invoer).toContain('"id": 1');
+    beheer.beslis(run.id, eerste.id, true, "");
+    await wacht();
+    const tweede = beheer.detail(run.id)!.poort!;
+    expect(tweede.invoer).toContain('"id": 2');
+    beheer.beslis(run.id, tweede.id, false, "");
+    await wacht();
+    expect(uitkomsten).toEqual([true, false]);
+    expect(beheer.detail(run.id)!.status).toBe("klaar");
   });
 
   test("stoppen tijdens een poortvraag weigert en zet de run op gestopt", async () => {

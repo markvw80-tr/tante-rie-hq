@@ -6,8 +6,17 @@ export type Beoordeling = { readonly soort: "veilig" } | { readonly soort: Poort
 /** Schrijfacties naar Shopify, het thema of andere buitenwereld: altijd langs Mark. */
 const LIVE_TOOL =
   /(graphql_mutation|update-product|create-product|bulk-update-product-status|set-inventory|update-collection|create-collection|add-to-collection|create-discount|theme_publish|theme_commit|publish-digital-product|social-media-post-(create|update|delete)|send_message|__reply$|__forward$|create_draft|trash_|_delete$|-delete$|management-.*-(create|update|delete|add))/i;
-const LIVE_BASH =
-  /(shopify\s+theme\s+(publish|push)|\bgit\s+push\b|curl\b[^|]*-X\s*(POST|PUT|PATCH|DELETE)|scripts\/[\w-]*(schrijf|publice|publish|push|activeer)[\w-]*\.py)/i;
+const SCHRIJFWOORD = "(schrijf|publice|publish|push|activeer)";
+const LIVE_BASH = new RegExp(
+  [
+    String.raw`shopify\s+theme\s+(publish|push)`,
+    String.raw`\bgit\b[^;&|\n]*\bpush\b`,
+    String.raw`\bcurl\b[^|;&\n]*(-X\s*(POST|PUT|PATCH|DELETE)|--request\s+(POST|PUT|PATCH|DELETE)|\s(-d|--data[\w-]*|-F|--form)\b)`,
+    String.raw`\bgh\s+api\b[^|;&\n]*(\s-X\s|--method|\s-f\s|\s-F\s|--field|--raw-field|--input)`,
+    String.raw`scripts[\/.][\w.-]*${SCHRIJFWOORD}`,
+  ].join("|"),
+  "i",
+);
 const MUTATIE = /^\s*mutation\b/m;
 const HOOK_LIVE = /(shopify|publice|live|thema|ACTIVE|verkoopkanaal)/i;
 const LEZEN = new Set(["Read", "Glob", "Grep", "LS", "TodoWrite", "WebSearch", "Agent", "Task"]);

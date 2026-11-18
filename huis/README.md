@@ -62,6 +62,10 @@ In de Agents-tab van elke kamer zet je een agent aan het werk met een opdracht e
 | toestemming | Bash buiten de allowlist, schrijven buiten de teammap, WebFetch | de run wacht; Mark beslist op de toonbank |
 | live | Shopify-mutaties en product-tools, thema publiceren of pushen, `git push`, scripts die schrijven of publiceren, elke vraag van een poort-hook van een team | de run wacht; Toestaan werkt pas na een extra vinkje |
 
+**Ook wat het team al toestaat.** Een SDK-hook (`server/regie/poortHook.ts`) draait vóór elke tool-aanroep, dus ook vóór wat in de instellingen van het team op de allowlist staat. Live acties komen altijd op de toonbank. Staat er in de teamrepo een script dat nieuw of gewijzigd is (ook verstopt met `assume-unchanged`), dan vraagt elk shellcommando eerst toestemming, net als een commando dat een script buiten de repo draait. Zo kan een agent niet zelf code schrijven en die via een ruime regel als `python3 scripts/*` of een import laten draaien. Commit een script om dit op te heffen. Gaat er in de controle iets mis, dan weigert de hook. Poortvragen van één run komen na elkaar op de toonbank.
+
+Teamruns laden alleen de project- en lokale instellingen van het team, niet je persoonlijke `~/.claude` (eigen regels, plugins en hooks).
+
 Geweigerd krijgt de agent terug met jouw notitie. Zonder antwoord binnen 30 minuten is het geweigerd. Agents krijgen `TANTE_RIE_HUIS` nooit mee, dus ze kunnen geen berichten als Mark versturen.
 
 | Endpoint | Wat |
