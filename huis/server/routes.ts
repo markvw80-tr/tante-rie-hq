@@ -57,7 +57,7 @@ export async function behandel(pad: string, params: URLSearchParams, omg: Omgevi
   try {
     if (pad === "/api/huis") {
       const huis = await bouwHuis(omg.bron, omg.hq, omg.teams, omg.vandaag, omg.mailbox);
-      return { status: 200, body: { ...huis, runs: omg.regie?.lijst().slice(0, 20) ?? [], post: omg.ophaler?.stand(), automaat: omg.automaat?.stand(), kosten: omg.regie ? kostenOverzicht(omg.regie.lijst(), new Date()) : undefined, opAfstand: omg.opAfstand ?? null } };
+      return { status: 200, body: { ...huis, runs: omg.regie?.lijst().slice(0, 20) ?? [], post: omg.ophaler?.stand(), automaat: omg.automaat?.stand(), kosten: omg.regie ? kostenOverzicht(omg.regie.lijst(), new Date()) : undefined, autoGoedkeuring: omg.regie?.autoGoedkeuring(), opAfstand: omg.opAfstand ?? null } };
     }
     if (omg.regie && pad.startsWith("/api/runs")) {
       const antwoord = behandelRunGet(pad, omg.regie);
@@ -123,6 +123,7 @@ export async function behandelPost(pad: string, body: unknown, omg: Omgeving): P
     }
     if (pad === "/api/archief") return await archiefActie(body, omg);
     if (pad === "/api/automaat" && omg.automaat) return automaatActie(body, omg.automaat);
+    if (pad === "/api/regie/goedkeuring" && omg.regie) return goedkeuringActie(body, omg.regie);
     if (pad === "/api/post-ophalen") {
       await (omg.ophaler ? omg.ophaler.haalNu() : omg.postbode.ophalen());
       return { status: 200, body: { ok: true } };
@@ -144,6 +145,14 @@ function automaatActie(body: unknown, automaat: Automaat): Antwoord {
   const stand = automaat.zet(aan, budget);
   if (aan) void automaat.controleer().catch((e) => console.error("[huis] automaat mislukt:", e));
   return { status: 200, body: stand };
+}
+
+/** Toestemmingsvragen automatisch goedkeuren aan of uit. Live acties blijven altijd op Mark wachten. */
+function goedkeuringActie(body: unknown, regie: NonNullable<Omgeving["regie"]>): Antwoord {
+  if (!body || typeof body !== "object" || Array.isArray(body)) throw new OngeldigVerzoek("Verwacht een JSON-object");
+  const { aan } = body as Record<string, unknown>;
+  if (typeof aan !== "boolean") throw new OngeldigVerzoek("Verwacht aan: true of false");
+  return { status: 200, body: { aan: regie.zetAutoGoedkeuring(aan) } };
 }
 
 const MAX_IDS = 500;

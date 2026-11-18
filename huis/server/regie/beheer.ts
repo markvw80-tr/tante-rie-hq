@@ -1,6 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { EventEmitter } from "node:events";
 import type { PoortVerzoek, RunBron, RunDetail, RunRegel, RunStatus, RunSamenvatting, TeamId } from "../../shared/types.ts";
+import { geheugenGoedkeuring, type GoedkeuringOpslag } from "./goedkeuring.ts";
 import { beoordeel, samenvatting, type Beoordeling } from "./poort.ts";
 import { vertaal } from "./vertaal.ts";
 
@@ -44,7 +45,12 @@ export class RegieFout extends Error {}
 export class RunBeheer extends EventEmitter {
   private readonly runs = new Map<string, Lopend>();
 
-  constructor(private readonly starter: Starter, private readonly opslag: Opslag, private readonly klok: () => Date = () => new Date()) {
+  constructor(
+    private readonly starter: Starter,
+    private readonly opslag: Opslag,
+    private readonly klok: () => Date = () => new Date(),
+    private readonly goedkeuring: GoedkeuringOpslag = geheugenGoedkeuring(),
+  ) {
     super();
     for (const oud of opslag.laadAlle()) {
       const run = EINDSTATUS.has(oud.status) ? oud : { ...oud, status: "onderbroken" as const, poort: null };
@@ -103,6 +109,23 @@ export class RunBeheer extends EventEmitter {
     this.voegToe(l, [this.regel("systeem", "Gestopt door Mark.")]);
   }
 
+  /** Staat automatisch goedkeuren van toestemmingsvragen aan? Live acties vallen daar nooit onder. */
+  autoGoedkeuring(): boolean {
+    return this.goedkeuring.lees();
+  }
+
+  /** Zet de schakelaar. Aanzetten keurt ook de toestemmingsvragen goed die nu al wachten; live vragen blijven staan. */
+  zetAutoGoedkeuring(aan: boolean): boolean {
+    this.goedkeuring.schrijf(aan);
+    if (aan) {
+      for (const l of this.runs.values()) {
+        if (l.wachtend?.verzoek.soort === "toestemming") l.wachtend.klaar(true, "automatisch goedgekeurd (schakelaar aangezet)");
+      }
+    }
+    this.emit("wijziging");
+    return this.autoGoedkeuring();
+  }
+
   beslis(id: string, verzoekId: string, toestaan: boolean, notitie: string): void {
     const l = this.runs.get(id);
     if (!l?.wachtend || l.wachtend.verzoek.id !== verzoekId) throw new RegieFout("Er wacht hier geen vraag (meer).");
@@ -133,6 +156,10 @@ export class RunBeheer extends EventEmitter {
     return async (tool, invoer, { signal, hookReden }) => {
       const oordeel = beoordeel(tool, invoer, repo, hookReden);
       if (oordeel.soort === "veilig") return { toestaan: true, bericht: "" };
+      if (oordeel.soort === "toestemming" && this.goedkeuring.lees()) {
+        this.voegToe(l, [this.regel("besluit", `Automatisch goedgekeurd: ${samenvatting(tool, invoer)}`)]);
+        return { toestaan: true, bericht: "" };
+      }
 
       const vorige = l.rij;
       let vrijgeven = () => {};
