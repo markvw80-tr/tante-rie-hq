@@ -2,6 +2,14 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## Design, 19-11-2026 (besluiten CLI-login en oude thema's)
+- Inbox gelezen: twee besluiten van Mark (CLI-login en oude thema's opruimen), beide akkoord.
+- CLI-login opnieuw gestart. De CLI wacht op bevestiging met nieuwe apparaatcode NWGZ-HHCQ via https://accounts.shopify.com/activate-with-code?device_code%5Buser_code%5D=NWGZ-HHCQ (de eerdere code VBRP-CRPR is vervallen). Het wachtende commando loopt nog ca. 30 minuten.
+- Oude thema's: de lijst maakt Design zodra de themalijst binnen is. Er wordt niets verwijderd zonder akkoord van Mark per thema.
+- Geblokkeerd op Mark: de code hierboven bevestigen, of zelf in een terminal shopify theme list --store 0qkm31-r6.myshopify.com draaien.
+- In de inbox blijven: directie 15-11, Mark 18-11 en beide besluiten, tot de themalijst, Kies decor en de USP-balk klaar zijn.
+- Verbruik: ca. 0,25 USD.
+
 ## SEO, 19-11-2026 (inbox, besluiten V127 en V132)
 - V132: akkoord Mark verwerkt. 15 alt-regels als bericht seo-2026-11-19-1 naar PIM; PIM voert pas uit na diff en akkoord Mark. V132 stond wel in vragen-voor-mark.md maar was niet gepusht; nu staat het online, met antwoord.
 - V127: akkoord Mark verwerkt. Mark maakt de feedregel zelf in Merchant Center (zijn login); de stappen staan bij V127. SEO leest daarna terug via de Merchant API.
