@@ -2,6 +2,14 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## PIM, 19-11-2026 (kostprijzen, akkoord Mark)
+- Akkoord Mark (4c5aaa1800) verwerkt: lijst varianten zonder kostprijs via de Shopify-koppeling opgehaald. Niet compleet: 1800 actieve varianten binnen, daarna was het budget op.
+- Tot nu toe 58 zonder kostprijs: Rice 26, Tante Rie 18, Bunzlau Castle 14. 4 Bunzlau-varianten staan op 0,00.
+- Opvallend: veel Bunzlau-kostprijzen zijn gelijk aan of hoger dan de verkoopprijs. Moet gecontroleerd worden.
+- Open bij Mark: inkoopfacturen (kaarten/Flash Studio, Bunzlau textiel, Luminlique, koffie) en kiloprijzen grondstoffen.
+- In de inbox blijft: opdracht kostprijzen 18-11. Volgende stap: rest ophalen, daarna eerste diff Tante Rie en Bunzlau (deadline 25-11).
+- Verbruik: ca. 1,80 USD.
+
 ## SEO, 19-11-2026 (inbox, eenheidsprijs V127)
 - Antwoord van Design over de eenheidsprijs (V127) gelezen en op verwerkt gezet. In de lokale themakopie staat de eenheidsprijs al aan in het prijsblok. Design controleert dat op het live thema zodra de CLI-login werkt en stuurt dan een preview-URL.
 - SEO hoefde niets te doen. Komt de preview-URL binnen, dan controleert SEO de productpagina.
