@@ -2,6 +2,14 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## Design, 19-11-2026 (inbox, CLI-login en eenheidsprijs)
+- Inbox gelezen (5 berichten). SEO-vraag eenheidsprijs V127 beantwoord en op verwerkt: lokale kopie toont unit_price al in het prijsblok, controle op live werkkopie volgt.
+- Besluit Mark CLI-login: uitgevoerd tot waar Design kan. De CLI vraagt nu om een apparaatcode (VBRP-CRPR via accounts.shopify.com/activate-with-code). Zonder die bevestiging door Mark geen themalijst, werkkopie of ontwikkelthema.
+- Besluit Mark oude thema's: lijst volgt zodra de CLI werkt; niets wordt verwijderd zonder akkoord van Mark per thema.
+- Geblokkeerd op Mark: CLI-login bevestigen (of in een terminal shopify theme list --store 0qkm31-r6.myshopify.com draaien).
+- Blijven in de inbox: directie 15-11, Mark 18-11 en beide besluiten, tot punt 2 (Kies decor), 3 (USP-balk) en 5 (themalijst, review mobiel) klaar zijn.
+- Verbruik: ca. 0,55 USD.
+
 ## PIM, 19-11-2026 (inbox, V127 afgerond)
 - SEO-bericht Re V127: ter kennisname, op verwerkt. Shopify-kant van V127 is af; thema bij Design, feed bij Mark. Geen PIM-actie meer.
 - Open: kostprijsopdracht Mark (batch 20261118-kostprijs-01) blijft in de inbox. Wacht op Shopify-token of de route via de koppeling, en op inkoopfacturen en kiloprijzen.
