@@ -5,7 +5,7 @@ import { bouwHuis } from "./huis.ts";
 import type { Postbode } from "./postbode.ts";
 import { archiveer, haalTerug, type ArchiefOpslag } from "./archief.ts";
 import type { Ophaler } from "./ophaler.ts";
-import type { Automaat } from "./automaat.ts";
+import { DAGLIMIETEN, type Automaat } from "./automaat.ts";
 import { BUDGETTEN } from "./regie/routes.ts";
 import { bouwGesprekken } from "./parsers/gesprekken.ts";
 import { isVeiligeNaam } from "./parsers/documenten.ts";
@@ -138,11 +138,13 @@ export async function behandelPost(pad: string, body: unknown, omg: Omgeving): P
 /** Automatisch oppakken aan of uit, met een budget per run uit de vaste lijst. Aanzetten kijkt meteen in de inboxen. */
 function automaatActie(body: unknown, automaat: Automaat): Antwoord {
   if (!body || typeof body !== "object" || Array.isArray(body)) throw new OngeldigVerzoek("Verwacht een JSON-object");
-  const { aan, budgetUsd } = body as Record<string, unknown>;
+  const { aan, budgetUsd, maxPerDag } = body as Record<string, unknown>;
   if (typeof aan !== "boolean") throw new OngeldigVerzoek("Verwacht aan: true of false");
   const budget = BUDGETTEN.find((b) => b === budgetUsd);
   if (budget === undefined) throw new OngeldigVerzoek(`Budget is een van ${BUDGETTEN.join(", ")} dollar`);
-  const stand = automaat.zet(aan, budget);
+  const limiet = maxPerDag === undefined ? undefined : DAGLIMIETEN.find((d) => d === maxPerDag);
+  if (maxPerDag !== undefined && limiet === undefined) throw new OngeldigVerzoek(`Daglimiet is een van ${DAGLIMIETEN.join(", ")}`);
+  const stand = automaat.zet(aan, budget, limiet);
   if (aan) void automaat.controleer().catch((e) => console.error("[huis] automaat mislukt:", e));
   return { status: 200, body: stand };
 }

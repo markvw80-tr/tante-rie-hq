@@ -1,6 +1,8 @@
 import { useState } from "react";
 import type { AutomaatStand } from "../../shared/types.ts";
 import { BUDGETTEN } from "../regie/api.ts";
+
+const DAGLIMIETEN = [4, 8, 12, 20] as const;
 import { zetAutomaat } from "../schrijven/api.ts";
 
 type Props = {
@@ -13,11 +15,11 @@ export function AutomaatKaart({ stand, onGewijzigd }: Props) {
   const [bezig, setBezig] = useState(false);
   const [fout, setFout] = useState<string | null>(null);
 
-  const zet = async (aan: boolean, budgetUsd: number) => {
+  const zet = async (aan: boolean, budgetUsd: number, maxPerDag?: number) => {
     setBezig(true);
     setFout(null);
     try {
-      await zetAutomaat(aan, budgetUsd);
+      await zetAutomaat(aan, budgetUsd, maxPerDag);
       onGewijzigd();
     } catch (e) {
       setFout((e as Error).message);
@@ -44,6 +46,14 @@ export function AutomaatKaart({ stand, onGewijzigd }: Props) {
         {BUDGETTEN.map((b) => (
           <label key={b}>
             <input type="radio" name="automaat-budget" checked={stand.budgetUsd === b} onChange={() => void zet(stand.aan, b)} /> ${b}
+          </label>
+        ))}
+      </fieldset>
+      <fieldset className="prioriteit" disabled={bezig}>
+        <legend>Maximaal aantal automatische starts per 24 uur</legend>
+        {DAGLIMIETEN.map((d) => (
+          <label key={d}>
+            <input type="radio" name="automaat-daglimiet" checked={stand.maxPerDag === d} onChange={() => void zet(stand.aan, stand.budgetUsd, d)} /> {d}
           </label>
         ))}
       </fieldset>

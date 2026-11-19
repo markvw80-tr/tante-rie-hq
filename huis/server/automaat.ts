@@ -7,6 +7,8 @@ import { MAX_ACTIEF, RegieFout, type StartVerzoek } from "./regie/beheer.ts";
 export const POST_LEADS: Readonly<Record<MailboxTeam, string>> = { seo: "seo-lead", design: "design-lead", pim: "pim-orchestrator" };
 export const POST_TEAMS: readonly MailboxTeam[] = ["seo", "pim", "design"];
 export const MAX_PER_DAG = 8;
+/** Keuzes voor het maximale aantal automatische starts per 24 uur. */
+export const DAGLIMIETEN = [4, 8, 12, 20] as const;
 export const RUST_MINUTEN = 60;
 export const STANDAARD_BUDGET = 1;
 const DAG_MS = 24 * 60 * 60_000;
@@ -22,6 +24,8 @@ export interface AutoStart {
 export interface AutomaatInstelling {
   readonly aan: boolean;
   readonly budgetUsd: number;
+  /** Hoeveel automatische starts er per 24 uur mogen (een van DAGLIMIETEN). */
+  readonly maxPerDag: number;
   /** Inboxberichten waarvoor het huis het team al eens heeft gestart. Die starten geen nieuwe run. */
   readonly behandeld: Readonly<Partial<Record<MailboxTeam, readonly string[]>>>;
   readonly starts: readonly AutoStart[];
@@ -40,7 +44,7 @@ export interface AutomaatDeps {
   readonly klok?: () => Date;
 }
 
-export const LEGE_INSTELLING: AutomaatInstelling = { aan: false, budgetUsd: STANDAARD_BUDGET, behandeld: {}, starts: [] };
+export const LEGE_INSTELLING: AutomaatInstelling = { aan: false, budgetUsd: STANDAARD_BUDGET, maxPerDag: MAX_PER_DAG, behandeld: {}, starts: [] };
 
 const tijdstip = (d: Date) => d.toLocaleTimeString("nl-NL", { hour: "2-digit", minute: "2-digit" });
 
@@ -78,16 +82,16 @@ export class Automaat {
     return {
       aan: i.aan,
       budgetUsd: i.budgetUsd,
-      maxPerDag: MAX_PER_DAG,
+      maxPerDag: this.deps.opslag.lees().maxPerDag,
       startsLaatsteDag: this.recent(i).length,
       rustMinuten: RUST_MINUTEN,
       melding: i.aan ? this.melding : null,
     };
   }
 
-  zet(aan: boolean, budgetUsd: number): AutomaatStand {
+  zet(aan: boolean, budgetUsd: number, maxPerDag?: number): AutomaatStand {
     const huidig = this.deps.opslag.lees();
-    this.deps.opslag.schrijf({ ...huidig, aan, budgetUsd });
+    this.deps.opslag.schrijf({ ...huidig, aan, budgetUsd, maxPerDag: maxPerDag ?? huidig.maxPerDag });
     this.melding = aan ? "Aan. Na elke keer post ophalen kijkt het huis in de inboxen." : null;
     return this.stand();
   }
@@ -125,7 +129,7 @@ export class Automaat {
     const actief = this.deps.regie.actief();
     if (actief.some((r) => r.team === team)) return this.wacht(`${naam} is al aan het werk; de nieuwe post wacht tot die run klaar is.`, true);
     if (actief.length >= MAX_ACTIEF) return this.wacht(`Er draaien al ${MAX_ACTIEF} agents; nieuwe post voor ${naam} wacht.`, false);
-    if (this.recent(huidig).length >= MAX_PER_DAG) return this.wacht(`Daglimiet bereikt: ${MAX_PER_DAG} automatische starts in 24 uur. Nieuwe post wacht.`, false);
+    if (this.recent(huidig).length >= huidig.maxPerDag) return this.wacht(`Daglimiet bereikt: ${huidig.maxPerDag} automatische starts in 24 uur. Nieuwe post wacht.`, false);
     const nu = this.klok();
     const vorige = [...huidig.starts].reverse().find((s) => s.team === team);
     const vrij = vorige ? new Date(vorige.tijd).getTime() + RUST_MINUTEN * 60_000 : 0;
@@ -187,6 +191,7 @@ export function geldigeInstelling(x: unknown): AutomaatInstelling {
   return {
     aan: o.aan === true,
     budgetUsd: typeof o.budgetUsd === "number" && o.budgetUsd > 0 ? o.budgetUsd : STANDAARD_BUDGET,
+    maxPerDag: DAGLIMIETEN.find((d) => d === o.maxPerDag) ?? MAX_PER_DAG,
     behandeld,
     starts: Array.isArray(o.starts) ? o.starts.filter(isStart) : [],
   };

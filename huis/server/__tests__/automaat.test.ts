@@ -3,7 +3,7 @@ import os from "node:os";
 import path from "node:path";
 import { afterAll, describe, expect, test, vi } from "vitest";
 import type { Bericht, MailboxTeam, RunSamenvatting } from "../../shared/types.ts";
-import { Automaat, geheugenAutomaat, LEGE_INSTELLING, MAX_PER_DAG, opdrachtVoor, schijfAutomaat, type AutomaatInstelling } from "../automaat.ts";
+import { Automaat, geheugenAutomaat, geldigeInstelling, LEGE_INSTELLING, MAX_PER_DAG, opdrachtVoor, schijfAutomaat, type AutomaatInstelling } from "../automaat.ts";
 import { Ophaler } from "../ophaler.ts";
 import { RegieFout, type StartVerzoek } from "../regie/beheer.ts";
 import type { Postbode } from "../postbode.ts";
@@ -97,6 +97,19 @@ describe("automaat", () => {
     expect(automaat.stand().melding).toContain("Daglimiet");
   });
 
+  test("daglimiet is instelbaar: met 12 per dag mag een negende start", async () => {
+    const oud = Array.from({ length: MAX_PER_DAG }, (_, i) => ({ team: "design" as const, tijd: new Date(NU.getTime() - (i + 2) * 60 * 60_000).toISOString(), runId: `d${i}` }));
+    const { automaat, starts } = opzet({ seo: [bericht("a.md")] }, { starts: oud, maxPerDag: 12 });
+    await automaat.controleer();
+    expect(starts).toHaveLength(1);
+    expect(automaat.stand()).toMatchObject({ maxPerDag: 12, startsLaatsteDag: 9 });
+  });
+
+  test("onbekende daglimiet in het bestand valt terug op de standaard", () => {
+    expect(geldigeInstelling({ aan: true, maxPerDag: 7 }).maxPerDag).toBe(MAX_PER_DAG);
+    expect(geldigeInstelling({ aan: true, maxPerDag: 20 }).maxPerDag).toBe(20);
+  });
+
   test("berichten die het team zelf verstuurde tellen niet, en afgehandelde namen worden opgeruimd", async () => {
     const { automaat, starts, opslag } = opzet({ seo: [bericht("eigen.md", "seo")] }, { behandeld: { seo: ["weg.md"] } });
     await automaat.controleer();
@@ -146,14 +159,14 @@ describe("automaat opslag", () => {
     const bestand = path.join(map, "sub", "automaat.json");
     const opslag = schijfAutomaat(bestand);
     expect(opslag.lees()).toEqual(LEGE_INSTELLING);
-    const instelling: AutomaatInstelling = { aan: true, budgetUsd: 2, behandeld: { seo: ["a.md"] }, starts: [{ team: "pim", tijd: NU.toISOString(), runId: "r1" }] };
+    const instelling: AutomaatInstelling = { aan: true, budgetUsd: 2, maxPerDag: 12, behandeld: { seo: ["a.md"] }, starts: [{ team: "pim", tijd: NU.toISOString(), runId: "r1" }] };
     opslag.schrijf(instelling);
     expect(opslag.lees()).toEqual(instelling);
     writeFileSync(bestand, "{kapot");
     vi.spyOn(console, "error").mockImplementationOnce(() => undefined);
     expect(opslag.lees().aan).toBe(false);
     writeFileSync(bestand, JSON.stringify({ aan: "ja", budgetUsd: -1, behandeld: { seo: ["a.md", 3], onbekend: ["x"] }, starts: [{ team: "boef" }] }));
-    expect(opslag.lees()).toEqual({ aan: false, budgetUsd: 1, behandeld: { seo: ["a.md"] }, starts: [] });
+    expect(opslag.lees()).toEqual({ aan: false, budgetUsd: 1, maxPerDag: 8, behandeld: { seo: ["a.md"] }, starts: [] });
   });
 });
 
@@ -178,7 +191,10 @@ describe("automaat in het huis", () => {
     expect((await behandelPost("/api/automaat", { aan: true, budgetUsd: 3 }, omg)).status).toBe(400);
     expect((await behandelPost("/api/automaat", [], omg)).status).toBe(400);
     const goed = await behandelPost("/api/automaat", { aan: true, budgetUsd: 0.5 }, omg);
-    expect(goed).toMatchObject({ status: 200, body: { aan: true, budgetUsd: 0.5 } });
+    expect(goed).toMatchObject({ status: 200, body: { aan: true, budgetUsd: 0.5, maxPerDag: 8 } });
+    expect((await behandelPost("/api/automaat", { aan: true, budgetUsd: 0.5, maxPerDag: 7 }, omg)).status).toBe(400);
+    expect(await behandelPost("/api/automaat", { aan: true, budgetUsd: 0.5, maxPerDag: 12 }, omg)).toMatchObject({ status: 200, body: { maxPerDag: 12 } });
+    expect(await behandelPost("/api/automaat", { aan: true, budgetUsd: 1 }, omg)).toMatchObject({ status: 200, body: { maxPerDag: 12 } });
     await new Promise((r) => setTimeout(r, 0));
     expect(starts.map((s) => s.team)).toEqual(["design"]);
   });
