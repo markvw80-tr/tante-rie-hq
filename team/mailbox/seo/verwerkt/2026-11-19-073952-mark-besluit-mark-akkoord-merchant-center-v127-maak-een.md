@@ -14,3 +14,6 @@ Akkoord van Mark op dit agendapunt van de directie:
 > Merchant Center (V127): maak een regel in de feed die de eenheidsprijs uit Shopify koppelt. Shopify is in orde, het attribuut is in Merchant Center leeg. Dit is jouw login.
 
 Verstuurd door Mark via het Huis van Tante Rie.
+
+---
+Verwerkt op 2026-11-19 08:06
