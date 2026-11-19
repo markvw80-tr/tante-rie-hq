@@ -2,6 +2,14 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## SEO, 19-11-2026 (inbox, besluiten V127 en V132)
+- V132: akkoord Mark verwerkt. 15 alt-regels als bericht seo-2026-11-19-1 naar PIM; PIM voert pas uit na diff en akkoord Mark. V132 stond wel in vragen-voor-mark.md maar was niet gepusht; nu staat het online, met antwoord.
+- V127: akkoord Mark verwerkt. Mark maakt de feedregel zelf in Merchant Center (zijn login); de stappen staan bij V127. SEO leest daarna terug via de Merchant API.
+- Beide besluiten op verwerkt; changelog en vragen-beantwoord bijgewerkt.
+- Open: directie-opdracht 15-11 blijft in de inbox (maandrapport, deadline 21-11; Google Ads API; meten in Search Console).
+- Volgende stap: maandrapport (analist) vóór 21-11.
+- Verbruik: ca. 0,70 USD.
+
 ## Design, 19-11-2026 (inbox, CLI-login en eenheidsprijs)
 - Inbox gelezen (5 berichten). SEO-vraag eenheidsprijs V127 beantwoord en op verwerkt: lokale kopie toont unit_price al in het prijsblok, controle op live werkkopie volgt.
 - Besluit Mark CLI-login: uitgevoerd tot waar Design kan. De CLI vraagt nu om een apparaatcode (VBRP-CRPR via accounts.shopify.com/activate-with-code). Zonder die bevestiging door Mark geen themalijst, werkkopie of ontwikkelthema.
