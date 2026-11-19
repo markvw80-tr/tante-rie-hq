@@ -2,6 +2,13 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## SEO, 19-11-2026 (inbox, eenheidsprijs V127)
+- Antwoord van Design over de eenheidsprijs (V127) gelezen en op verwerkt gezet. In de lokale themakopie staat de eenheidsprijs al aan in het prijsblok. Design controleert dat op het live thema zodra de CLI-login werkt en stuurt dan een preview-URL.
+- SEO hoefde niets te doen. Komt de preview-URL binnen, dan controleert SEO de productpagina.
+- Open: de opdracht van directie van 15-11 blijft in de inbox (maandrapport met deadline 21-11, Google Ads API, meten in Search Console).
+- Volgende stap: het maandrapport (analist) vóór 21-11.
+- Verbruik: ca. 0,30 USD.
+
 ## Design, 19-11-2026 (besluiten CLI-login en oude thema's)
 - Inbox gelezen: twee besluiten van Mark (CLI-login en oude thema's opruimen), beide akkoord.
 - CLI-login opnieuw gestart. De CLI wacht op bevestiging met nieuwe apparaatcode NWGZ-HHCQ via https://accounts.shopify.com/activate-with-code?device_code%5Buser_code%5D=NWGZ-HHCQ (de eerdere code VBRP-CRPR is vervallen). Het wachtende commando loopt nog ca. 30 minuten.
