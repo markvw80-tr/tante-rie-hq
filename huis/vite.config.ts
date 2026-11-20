@@ -16,6 +16,6 @@ export default defineConfig({
   },
   test: {
     include: ["server/**/*.test.ts"],
-    coverage: { include: ["server/parsers/**", "server/huis.ts", "server/werk.ts", "server/routes.ts", "server/besluiten.ts", "server/verzoek.ts", "server/beveiliging.ts", "server/postbode.ts", "server/regie/beheer.ts", "server/regie/poort.ts", "server/regie/vertaal.ts", "server/archief.ts", "server/ophaler.ts", "server/automaat.ts", "server/tailscale.ts"] },
+    coverage: { include: ["server/parsers/**", "server/huis.ts", "server/werk.ts", "server/routes.ts", "server/besluiten.ts", "server/verzoek.ts", "server/beveiliging.ts", "server/postbode.ts", "server/regie/beheer.ts", "server/regie/poort.ts", "server/regie/vertaal.ts", "server/archief.ts", "server/ophaler.ts", "server/automaat.ts", "server/tailscale.ts", "server/toegang.ts"] },
   },
 });

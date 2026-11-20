@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { RegieFout, RunBeheer, type Starter, type Toestemming } from "../regie/beheer.ts";
+import { AlleenMark, RegieFout, RunBeheer, type Starter, type Toestemming } from "../regie/beheer.ts";
 import { geheugenOpslag } from "../regie/opslag.ts";
 import { beoordeel, binnenRepo } from "../regie/poort.ts";
 import { vertaal } from "../regie/vertaal.ts";
@@ -199,5 +199,54 @@ describe("RunBeheer", () => {
     opslag.bewaar({ ...kapot.detail(run.id)!, id: "oud", status: "bezig" });
     const herstart = new RunBeheer(nepStarter(async function* () {}), opslag);
     expect(herstart.detail("oud")?.status).toBe("onderbroken");
+  });
+});
+
+describe("Nikkie in de regie", () => {
+  test("Nikkie start een run als zichzelf en mag een live actie weigeren, niet goedkeuren", async () => {
+    let antwoord: { toestaan: boolean; bericht: string } | null = null;
+    const beheer = new RunBeheer(
+      nepStarter(async function* (t, signal) {
+        antwoord = await t("mcp__shop__update-product", { id: 1 }, { signal });
+        yield { type: "result", subtype: "success", is_error: false, total_cost_usd: 0.01, result: "" };
+      }),
+      geheugenOpslag(),
+    );
+    const run = beheer.start({ ...verzoek, bron: "nikkie" });
+    await wacht();
+    const d = beheer.detail(run.id)!;
+    expect(d.bron).toBe("nikkie");
+    expect(d.regels[0].tekst).toMatch(/^Opdracht van Nikkie aan shopify-publisher/);
+    expect(() => beheer.beslis(run.id, d.poort!.id, true, "", "nikkie")).toThrow(AlleenMark);
+    expect(beheer.detail(run.id)!.status).toBe("wacht");
+
+    beheer.beslis(run.id, d.poort!.id, false, "Liever niet", "nikkie");
+    await wacht();
+    expect(antwoord).toMatchObject({ toestaan: false });
+    expect(antwoord!.bericht).toMatch(/^Nikkie heeft dit geweigerd/);
+    expect(beheer.detail(run.id)!.regels.some((r) => r.tekst === "Geweigerd door Nikkie: Liever niet")).toBe(true);
+  });
+
+  test("Nikkie keurt een toestemmingsvraag goed en stopt een run; het logboek noemt haar", async () => {
+    let gestopt = false;
+    const beheer = new RunBeheer(
+      nepStarter(async function* (t, signal) {
+        await t("Bash", { command: "curl https://example.com" }, { signal });
+        await new Promise<void>((r) => signal.addEventListener("abort", () => ((gestopt = true), r()), { once: true }));
+      }),
+      geheugenOpslag(),
+    );
+    const run = beheer.start(verzoek);
+    await wacht();
+    const poort = beheer.detail(run.id)!.poort!;
+    expect(poort.soort).toBe("toestemming");
+    beheer.beslis(run.id, poort.id, true, "", "nikkie");
+    await wacht();
+    beheer.stop(run.id, "nikkie");
+    await wacht();
+    const tekst = beheer.detail(run.id)!.regels.map((r) => r.tekst);
+    expect(tekst).toContain("Toegestaan door Nikkie");
+    expect(tekst).toContain("Gestopt door Nikkie.");
+    expect(gestopt).toBe(true);
   });
 });

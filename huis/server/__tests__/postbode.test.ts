@@ -44,6 +44,17 @@ describe("mailboxPostbode met het echte mailbox.py (zonder git)", () => {
     expect(readdirSync(path.join(zandbak, "team/mailbox/seo/inbox"))).toEqual([]);
   });
 
+  test("schrijft een bericht van nikkie via het huis, en mailbox.py weigert nikkie daarbuiten", async () => {
+    const postbode = mailboxPostbode(zandbak, true);
+    const { bestand } = await postbode.stuur({ van: "nikkie", aan: "design", onderwerp: "Kleur van de knop", tekst: "Kan dit warmer?", prioriteit: "normaal", antwoordOp: null });
+    expect(readFileSync(path.join(zandbak, "team/mailbox/design/inbox", bestand), "utf8")).toContain("van: nikkie\naan: design");
+    const env = { ...process.env };
+    delete env.TANTE_RIE_HUIS;
+    const r = spawnSync("python3", [path.join(zandbak, "scripts", "mailbox.py"), "--geen-git", "stuur", "--van", "nikkie", "--aan", "seo", "--onderwerp", "Nep", "--tekst", "x"], { env, encoding: "utf8" });
+    expect(r.status).not.toBe(0);
+    expect(r.stderr).toContain("alleen voor Nikkie zelf");
+  });
+
   test("foutmelding van mailbox.py komt terug als fout", async () => {
     const postbode = mailboxPostbode(path.join(zandbak, "bestaat-niet"), true);
     await expect(postbode.stuur({ aan: "pim", onderwerp: "Test", tekst: "x", prioriteit: "normaal", antwoordOp: null })).rejects.toThrow();

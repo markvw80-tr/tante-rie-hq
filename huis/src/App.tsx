@@ -14,6 +14,7 @@ import { useHuis } from "./useHuis.ts";
 import { useVolledigScherm } from "./useVolledigScherm.ts";
 import { VolledigKnop } from "./components/VolledigKnop.tsx";
 import type { PostStand } from "../shared/types.ts";
+import { IkContext } from "./ik.ts";
 
 export function App() {
   const { huis, fout, laadt, bijgewerkt, ververs } = useHuis();
@@ -90,6 +91,7 @@ export function App() {
   const wachtOpJou = (huis.runs ?? []).filter((r) => r.status === "wacht").length;
 
   return (
+    <IkContext.Provider value={huis.ik ?? "mark"}>
     <SchrijfProvider onVerstuurd={naVersturen}>
     <RegieProvider>
     <LezerProvider>
@@ -102,6 +104,7 @@ export function App() {
           </h1>
         </div>
         <div className="tellers">
+          {huis.ik === "nikkie" && <span className="tag ik-tag">Ingelogd als Nikkie</span>}
           <span className="tag">{agents} agents in 4 kamers</span>
           <span className="tag">{ongelezen} berichten onderweg</span>
           <span className="tag">{huis.besluiten.filter((b) => !b.antwoord).length} besluiten voor jou</span>
@@ -183,6 +186,7 @@ export function App() {
     </LezerProvider>
     </RegieProvider>
     </SchrijfProvider>
+    </IkContext.Provider>
   );
 }
 

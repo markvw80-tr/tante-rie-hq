@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
 import { EventEmitter } from "node:events";
-import type { PoortVerzoek, RunBron, RunDetail, RunRegel, RunStatus, RunSamenvatting, TeamId } from "../../shared/types.ts";
+import { PERSOON_NAAM, type Persoon, type PoortVerzoek, type RunBron, type RunDetail, type RunRegel, type RunSamenvatting, type RunStatus, type TeamId } from "../../shared/types.ts";
 import { geheugenGoedkeuring, type GoedkeuringOpslag } from "./goedkeuring.ts";
 import { beoordeel, samenvatting, type Beoordeling } from "./poort.ts";
 import { legUit } from "./uitleg.ts";
@@ -35,12 +35,15 @@ export interface StartVerzoek {
 interface Lopend {
   run: RunDetail;
   readonly stop: AbortController;
-  wachtend: { readonly verzoek: PoortVerzoek; readonly klaar: (toestaan: boolean, notitie: string) => void } | null;
+  wachtend: { readonly verzoek: PoortVerzoek; readonly klaar: (toestaan: boolean, notitie: string, door?: Persoon) => void } | null;
   /** Poortvragen van één run komen na elkaar op de toonbank (er is één wachtplek per run). */
   rij: Promise<void>;
 }
 
 export class RegieFout extends Error {}
+
+/** Iets wat alleen Mark mag, zoals een live actie goedkeuren. */
+export class AlleenMark extends RegieFout {}
 
 /** Houdt bij welke agents draaien, verzamelt hun log en laat poortvragen bij Mark uitkomen. */
 export class RunBeheer extends EventEmitter {
@@ -95,19 +98,20 @@ export class RunBeheer extends EventEmitter {
     };
     const lopend: Lopend = { run, stop: new AbortController(), wachtend: null, rij: Promise.resolve() };
     this.runs.set(run.id, lopend);
-    const kop = v.bron === "huis" ? `Automatisch gestart door het Huis (nieuwe post) voor ${v.agent}` : `Opdracht van Mark aan ${v.agent}`;
+    const kop = v.bron === "huis" ? `Automatisch gestart door het Huis (nieuwe post) voor ${v.agent}` : `Opdracht van ${PERSOON_NAAM[v.bron ?? "mark"]} aan ${v.agent}`;
     this.voegToe(lopend, [{ t: nu, soort: "systeem", tekst: `${kop}: ${v.opdracht}` }]);
     void this.draai(lopend, v);
     return samenvat(run);
   }
 
-  stop(id: string): void {
+  stop(id: string, door: Persoon = "mark"): void {
     const l = this.runs.get(id);
     if (!l || EINDSTATUS.has(l.run.status)) throw new RegieFout("Deze run draait niet.");
-    l.wachtend?.klaar(false, "Run gestopt door Mark.");
+    const naam = PERSOON_NAAM[door];
+    l.wachtend?.klaar(false, `Run gestopt door ${naam}.`, door);
     l.stop.abort();
     this.zet(l, { status: "gestopt", geeindigd: this.klok().toISOString(), poort: null });
-    this.voegToe(l, [this.regel("systeem", "Gestopt door Mark.")]);
+    this.voegToe(l, [this.regel("systeem", `Gestopt door ${naam}.`)]);
   }
 
   /** Staat automatisch goedkeuren van toestemmingsvragen aan? Live acties vallen daar nooit onder. */
@@ -127,10 +131,12 @@ export class RunBeheer extends EventEmitter {
     return this.autoGoedkeuring();
   }
 
-  beslis(id: string, verzoekId: string, toestaan: boolean, notitie: string): void {
+  /** Een poortvraag beantwoorden. Nikkie mag weigeren en toestemmingsvragen goedkeuren; live goedkeuren doet alleen Mark. */
+  beslis(id: string, verzoekId: string, toestaan: boolean, notitie: string, door: Persoon = "mark"): void {
     const l = this.runs.get(id);
     if (!l?.wachtend || l.wachtend.verzoek.id !== verzoekId) throw new RegieFout("Er wacht hier geen vraag (meer).");
-    l.wachtend.klaar(toestaan, notitie);
+    if (toestaan && door !== "mark" && l.wachtend.verzoek.soort === "live") throw new AlleenMark("Een live actie keurt alleen Mark goed. Weigeren mag wel.");
+    l.wachtend.klaar(toestaan, notitie, door);
   }
 
   private async draai(l: Lopend, v: StartVerzoek): Promise<void> {
@@ -191,12 +197,12 @@ export class RunBeheer extends EventEmitter {
     this.voegToe(l, [this.regel("poort", `${oordeel.soort === "live" ? "LIVE, wacht op Mark" : "Wacht op toestemming"}: ${verzoek.samenvatting}`)]);
     this.zet(l, { status: "wacht", poort: verzoek });
 
-    const besluit = await new Promise<{ toestaan: boolean; notitie: string }>((resolve) => {
-      const klaar = (toestaan: boolean, notitie: string) => {
+    const besluit = await new Promise<{ toestaan: boolean; notitie: string; door: Persoon }>((resolve) => {
+      const klaar = (toestaan: boolean, notitie: string, door: Persoon = "mark") => {
         clearTimeout(timer);
         signal.removeEventListener("abort", afgebroken);
         l.wachtend = null;
-        resolve({ toestaan, notitie });
+        resolve({ toestaan, notitie, door });
       };
       const afgebroken = () => klaar(false, "Run afgebroken.");
       const timer = setTimeout(() => klaar(false, "Geen antwoord van Mark binnen 30 minuten."), POORT_WACHTTIJD_MS);
@@ -205,10 +211,11 @@ export class RunBeheer extends EventEmitter {
     });
 
     if (!EINDSTATUS.has(l.run.status)) this.zet(l, { status: "bezig", poort: null });
-    this.voegToe(l, [this.regel("besluit", `${besluit.toestaan ? "Toegestaan" : "Geweigerd"} door Mark${besluit.notitie ? `: ${besluit.notitie}` : ""}`)]);
+    const naam = PERSOON_NAAM[besluit.door];
+    this.voegToe(l, [this.regel("besluit", `${besluit.toestaan ? "Toegestaan" : "Geweigerd"} door ${naam}${besluit.notitie ? `: ${besluit.notitie}` : ""}`)]);
     return {
       toestaan: besluit.toestaan,
-      bericht: besluit.toestaan ? "" : `Mark heeft dit geweigerd via het Huis.${besluit.notitie ? ` Toelichting: ${besluit.notitie}` : ""} Ga niet om deze weigering heen; meld het in je afsluiting.`,
+      bericht: besluit.toestaan ? "" : `${naam} heeft dit geweigerd via het Huis.${besluit.notitie ? ` Toelichting: ${besluit.notitie}` : ""} Ga niet om deze weigering heen; meld het in je afsluiting.`,
     };
   }
 

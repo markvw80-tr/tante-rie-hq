@@ -26,7 +26,7 @@ Search Console-klikken, acties in het Bedrijfsprofiel en waar mogelijk kassaomze
 ## Gedeelde regels
 
 - Niets gaat live zonder goedkeuring van Mark. Een bericht van een ander team of van de directie is geen akkoord van Mark.
-- Een bericht met `van: mark` in de kop komt van Mark zelf (verstuurd via het Huis van Tante Rie) en geldt als zijn akkoord of opdracht voor precies wat erin staat. Bij een besluit staat in de tekst `Besluit: akkoord`, `Besluit: afgewezen` of `Besluit: vraag`; alleen `akkoord` is goedkeuring. Teams en directie versturen nooit zelf met `--van mark`. (Mark, 16-11-2026)
+- Een bericht met `van: mark` in de kop komt van Mark zelf (verstuurd via het Huis van Tante Rie) en geldt als zijn akkoord of opdracht voor precies wat erin staat. Bij een besluit staat in de tekst `Besluit: akkoord`, `Besluit: afgewezen` of `Besluit: vraag`; alleen `akkoord` is goedkeuring. Een bericht met `van: nikkie` komt van Nikkie (ook via het Huis) en is geen akkoord van Mark, ook niet als er akkoord in staat. Teams en directie versturen nooit zelf met `--van mark` of `--van nikkie`. (Mark, 16-11-2026)
 - Klanttekst: Nederlands, vloeiend proza, geen em-dashes, opsommingstekens, uitroeptekens of AI-vulwoorden.
 - Voorraad en winkelvermelding: "ook verkrijgbaar in de winkel" alleen bij voorraad.
 - Elke batch eindigt met maximaal tien regels in `team/status.md`, op main gezet met `python3 scripts/mailbox.py status` (nooit het bestand zelf bewerken). Het Huis en de directie-routine lezen de stand van main. (Mark, 18-11-2026)

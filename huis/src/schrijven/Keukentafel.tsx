@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
-import type { MailboxTeam } from "../../shared/types.ts";
+import { PERSOON_NAAM, type MailboxTeam } from "../../shared/types.ts";
+import { useIk } from "../ik.ts";
 import { TEAMS, stuurOpdracht, type Concept, type Verstuurd } from "./api.ts";
 
 interface Props {
@@ -13,6 +14,7 @@ const MAX_TEKST = 8000;
 
 /** Opdracht of antwoord van Mark aan een team. Eerst schrijven, dan controleren, dan pas versturen. */
 export function Keukentafel({ begin, onKlaar, onAnnuleer }: Props) {
+  const ik = useIk();
   const [concept, setConcept] = useState<Concept>(begin);
   const [stap, setStap] = useState<"schrijven" | "controleren">("schrijven");
   const [bezig, setBezig] = useState(false);
@@ -81,7 +83,7 @@ export function Keukentafel({ begin, onKlaar, onAnnuleer }: Props) {
   return (
     <form className="keukentafel" onSubmit={controleer}>
       <div className="onder">Keukentafel</div>
-      <h2>{concept.antwoordOp ? "Antwoord van Mark" : "Opdracht van Mark"}</h2>
+      <h2>{`${concept.antwoordOp ? "Antwoord" : "Opdracht"} van ${PERSOON_NAAM[ik]}`}</h2>
       <label>
         Aan
         <select ref={eerste} value={concept.aan ?? ""} onChange={(e) => zet("aan", (e.target.value || null) as MailboxTeam | null)} required>

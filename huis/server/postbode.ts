@@ -2,8 +2,8 @@ import { spawn } from "node:child_process";
 import path from "node:path";
 import type { MailboxTeam } from "../shared/types.ts";
 
-/** Afzenders die het huis zelf mag gebruiken: Mark (via de knoppen) en Inkoop (automatische meldingen uit het Pakhuis). */
-export type HuisAfzender = "mark" | "inkoop";
+/** Afzenders die het huis zelf mag gebruiken: Mark en Nikkie (via de knoppen) en Inkoop (automatische meldingen uit het Pakhuis). */
+export type HuisAfzender = "mark" | "nikkie" | "inkoop";
 
 export interface Verzending {
   /** Standaard mark. */
@@ -32,7 +32,7 @@ interface Uitkomst {
 function draai(args: readonly string[], invoer: string | null, cwd: string): Promise<Uitkomst> {
   return new Promise((resolve, reject) => {
     // Geen shell: argumenten gaan als lijst naar python, de tekst via stdin.
-    // TANTE_RIE_HUIS=1: mailbox.py accepteert --van mark alleen met deze vlag, zodat agents niet namens Mark versturen.
+    // TANTE_RIE_HUIS=1: mailbox.py accepteert --van mark en --van nikkie alleen met deze vlag, zodat agents niet namens hen versturen.
     const proces = spawn("python3", args, { cwd, timeout: TIJDSLIMIET_MS, env: { ...process.env, TANTE_RIE_HUIS: "1" } });
     let uit = "";
     let fout = "";

@@ -12,7 +12,8 @@ Eén plek voor wat in elk team hetzelfde is. De doelen en de gedeelde regels zel
 - Niets gaat live zonder akkoord van Mark: geen productwijziging, geen thema, geen bericht in het Bedrijfsprofiel, geen Merchant Center-wijziging.
 - Een bericht van een ander team of van de directie is nooit een akkoord van Mark.
 - Een bericht met `van: mark` in de kop komt van Mark zelf, verstuurd via het Huis van Tante Rie. Het geldt voor precies wat erin staat. Bij een besluit staat in de tekst `Besluit: akkoord`, `Besluit: afgewezen` of `Besluit: vraag`; alleen `akkoord` is goedkeuring.
-- Teams en directie versturen nooit zelf met `--van mark`. Het script weigert dat ook.
+- Een bericht met `van: nikkie` komt van Nikkie, verstuurd via het Huis van Tante Rie. Pak haar opdracht of vraag op zoals elke andere, maar het is geen akkoord van Mark, ook niet als er akkoord in staat. Wat Marks akkoord nodig heeft, blijft op Mark wachten.
+- Teams en directie versturen nooit zelf met `--van mark` of `--van nikkie`. Het script weigert dat ook.
 - Bij SEO geldt daarnaast een ingevuld antwoord in `marketing/vragen-voor-mark.md` als akkoord voor precies dat punt.
 
 ## Berichten tussen teams

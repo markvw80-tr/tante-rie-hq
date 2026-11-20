@@ -3,12 +3,14 @@ import { BesluitKaart } from "../schrijven/BesluitKaart.tsx";
 import { WachtOpJou } from "../regie/WachtOpJou.tsx";
 import { useSchrijven } from "../schrijven/SchrijfContext.tsx";
 import { korteDatum } from "../teamKleur.ts";
+import { useIk } from "../ik.ts";
 import { AgendaKaart } from "./AgendaKaart.tsx";
 import { AutomaatKaart } from "./AutomaatKaart.tsx";
 import { GoedkeuringKaart } from "./GoedkeuringKaart.tsx";
 import { KostenKaart } from "./KostenKaart.tsx";
 
 export function ToonbankPaneel({ huis, onGewijzigd }: { readonly huis: HuisStand; readonly onGewijzigd: () => void }) {
+  const ik = useIk();
   const { open: schrijf } = useSchrijven();
   const open = huis.besluiten.filter((b) => !b.antwoord);
   const beantwoord = huis.besluiten.filter((b) => b.antwoord);
@@ -22,7 +24,9 @@ export function ToonbankPaneel({ huis, onGewijzigd }: { readonly huis: HuisStand
           <span className="onder">{huis.agenda ? `agenda ${korteDatum(huis.agenda.datum)}` : "geen agenda"}</span>
         </div>
         <p className="onder">
-          Wat jouw akkoord nodig heeft. Je antwoord gaat als bericht van jou naar het team. Een bericht van een team is geen akkoord.
+          {ik === "mark"
+            ? "Wat jouw akkoord nodig heeft. Je antwoord gaat als bericht van jou naar het team. Een bericht van een team is geen akkoord."
+            : "Hier beslist Mark. Je kunt reageren: dat gaat als bericht van Nikkie naar het team en telt niet als akkoord van Mark."}
         </p>
         {open.length === 0 && <p className="rustig">Er wachten geen besluiten op je.</p>}
         {[...open, ...beantwoord].map((b) => (

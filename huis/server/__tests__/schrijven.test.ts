@@ -135,3 +135,36 @@ describe("behandelPost", () => {
     expect((await behandelPost("/api/post-ophalen", {}, omg)).status).toBe(200);
   });
 });
+
+describe("Nikkie schrijft als zichzelf", () => {
+  test("opdracht van Nikkie gaat als van: nikkie", async () => {
+    const { omg, verzonden } = opzet();
+    const r = await behandelPost("/api/opdracht", { aan: "seo", onderwerp: "Foto's lavendel", tekst: "Kun je dit bekijken?" }, { ...omg, persoon: "nikkie" });
+    expect(r.status).toBe(201);
+    expect(verzonden[0]).toMatchObject({ van: "nikkie", aan: "seo" });
+  });
+
+  test("een reactie van Nikkie op een besluit is geen besluit: geen Besluit-regels, normale prioriteit", async () => {
+    const { omg, verzonden } = opzet();
+    const r = await behandelPost("/api/besluit", { id: PUBLICEREN, keuze: "akkoord" }, { ...omg, persoon: "nikkie" });
+    expect(r.status).toBe(201);
+    expect(verzonden[0]).toMatchObject({ van: "nikkie", aan: "pim", prioriteit: "normaal" });
+    expect(verzonden[0].onderwerp).toMatch(/^Reactie Nikkie \(geen besluit\): akkoord/);
+    expect(verzonden[0].tekst).not.toMatch(/^Besluit/m);
+    expect(verzonden[0].tekst).toContain("geen besluit en geen akkoord van Mark");
+  });
+
+  test("een besluit van Mark blijft open als alleen Nikkie reageerde", async () => {
+    const { bron } = opzet({
+      "/hq/team/mailbox/pim/inbox/2026-11-16-120000-nikkie-reactie.md": `---\nvan: nikkie\naan: pim\n---\n\n${besluitBericht({ id: PUBLICEREN, tekst: "Themakopie publiceren, ja of nee", team: "pim", antwoord: null }, "akkoord", "", "nikkie").tekst}`,
+    });
+    const huis = await bouwHuis(bron, "/hq", [], "2026-11-16", "/hq/team/mailbox");
+    expect(huis.besluiten.find((b) => b.id === PUBLICEREN)?.antwoord).toBeNull();
+  });
+
+  test("zonder persoon is het Mark, en de huisstand zegt wie er kijkt", async () => {
+    const { omg, verzonden } = opzet();
+    await behandelPost("/api/opdracht", { aan: "seo", onderwerp: "Kijk naar lavendel", tekst: "Graag vandaag." }, omg);
+    expect(verzonden[0].van).toBe("mark");
+  });
+});

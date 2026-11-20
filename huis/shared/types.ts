@@ -156,6 +156,8 @@ export interface HuisStand {
   readonly autoGoedkeuring?: boolean;
   /** Het Tailscale-adres waarop het huis ook buiten de deur te openen is, als tailscale serve aanstaat. */
   readonly opAfstand?: string | null;
+  /** Wie deze pagina nu bekijkt: Mark (ook op de Mac zelf) of Nikkie via Tailscale. */
+  readonly ik?: Persoon;
   /** Stand van het Pakhuis uit de inkoop-app; null als die niet bereikbaar of niet ingesteld is. */
   readonly pakhuis?: PakhuisStand | null;
 }
@@ -298,7 +300,11 @@ export interface KostenOverzicht {
   readonly zonderKostenWeek: number;
 }
 
-export type RunBron = "mark" | "huis";
+export type RunBron = Persoon | "huis";
+
+/** Wie het huis gebruikt. Mark is de eigenaar; alleen zijn berichten en goedkeuringen gelden als akkoord. */
+export type Persoon = "mark" | "nikkie";
+export const PERSOON_NAAM: Readonly<Record<Persoon, string>> = { mark: "Mark", nikkie: "Nikkie" };
 
 export interface RunDetail extends RunSamenvatting {
   readonly regels: readonly RunRegel[];

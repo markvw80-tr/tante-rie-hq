@@ -2,7 +2,9 @@ import { createServer, type IncomingMessage, type ServerResponse } from "node:ht
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { magLezen, magSchrijven, MAX_BODY } from "./beveiliging.ts";
+import { herkomst, schrijver, MAX_BODY } from "./beveiliging.ts";
+import { schijfToegang } from "./toegang.ts";
+import type { Persoon } from "../shared/types.ts";
 import { TailscaleWacht } from "./tailscale.ts";
 import { schijfBron } from "./bron.ts";
 import { API_PORT, GEEN_GIT, HOST, HQ, mailboxMap, PAKHUIS_TOKEN, PAKHUIS_URL, TEAMS, WEB_PORT } from "./config.ts";
@@ -76,7 +78,8 @@ const meldAanPim = () =>
     ?.controleer()
     .then((n) => n && console.log(`[huis] ${n} nieuw(e) artikel(en) gemeld aan PIM`))
     .catch((e) => console.error("[huis] melden nieuwe artikelen aan PIM mislukt:", e));
-const omgeving = (): Omgeving => ({ bron: schijfBron, hq: HQ, mailbox: mailboxMap(HQ), teams: TEAMS, vandaag: vandaagIso(), postbode, regie, archief, ophaler, automaat, opAfstand: tailscale.opAfstand(), pakhuis });
+const toegang = schijfToegang(path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "data", "toegang.json"));
+const omgeving = (persoon: Persoon = "mark"): Omgeving => ({ persoon, bron: schijfBron, hq: HQ, mailbox: mailboxMap(HQ), teams: TEAMS, vandaag: vandaagIso(), postbode, regie, archief, ophaler, automaat, opAfstand: tailscale.opAfstand(), pakhuis });
 
 function json(res: ServerResponse, status: number, body: unknown): void {
   res.writeHead(status, { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store" });
@@ -110,7 +113,7 @@ async function statisch(req: IncomingMessage, res: ServerResponse): Promise<void
 }
 
 async function schrijf(req: IncomingMessage, res: ServerResponse, pad: string): Promise<void> {
-  const geweigerd = magSchrijven(req.headers, PORTEN, tailscale.huidig());
+  const { fout: geweigerd, persoon } = schrijver(req.headers, PORTEN, tailscale.huidig(), toegang());
   if (geweigerd) return json(res, 403, { fout: geweigerd });
   let body: unknown;
   try {
@@ -119,7 +122,7 @@ async function schrijf(req: IncomingMessage, res: ServerResponse, pad: string): 
     return json(res, 400, { fout: "Ongeldige JSON" });
   }
   try {
-    const antwoord = await behandelPost(pad, body, omgeving());
+    const antwoord = await behandelPost(pad, body, omgeving(persoon ?? "mark"));
     return json(res, antwoord.status, antwoord.body);
   } catch (e) {
     console.error(`[huis] ${pad} mislukt:`, e);
@@ -156,12 +159,13 @@ const server = createServer(async (req, res) => {
   const url = new URL(req.url ?? "/", "http://huis");
   if (req.method === "POST" && url.pathname.startsWith("/api/")) return schrijf(req, res, url.pathname);
   if (req.method !== "GET") return json(res, 405, { fout: "Niet toegestaan" });
-  const nietLezen = magLezen(req.headers, PORTEN, tailscale.huidig());
+  const lezer = herkomst(req.headers, PORTEN, tailscale.huidig(), toegang());
+  const nietLezen = lezer.fout;
   if (nietLezen) return json(res, 403, { fout: nietLezen });
   if (url.pathname.endsWith("/stream") && url.pathname.startsWith("/api/runs/")) return stroom(req, res, url.pathname);
   if (url.pathname.startsWith("/api/")) {
     try {
-      const antwoord = await behandel(url.pathname, url.searchParams, omgeving());
+      const antwoord = await behandel(url.pathname, url.searchParams, omgeving(lezer.persoon ?? "mark"));
       return json(res, antwoord.status, antwoord.body);
     } catch (e) {
       console.error(`[huis] ${url.pathname} mislukt:`, e);

@@ -1,5 +1,9 @@
 import { describe, expect, test } from "vitest";
-import { magLezen, magSchrijven } from "../beveiliging.ts";
+import { herkomst, magLezen, magSchrijven } from "../beveiliging.ts";
+import { GEEN_EXTRA, geldigeToegang, schijfToegang } from "../toegang.ts";
+import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import os from "node:os";
+import path from "node:path";
 import { leesServe, leesStatus, TailscaleWacht, uitOmgeving, type TailscaleInfo } from "../tailscale.ts";
 
 const TS: TailscaleInfo = { host: "mac-van-mark.tail1234.ts.net", login: "mark@example.com" };
@@ -79,7 +83,7 @@ describe("toegang via Tailscale", () => {
 
   test("ook als serve de Host naar localhost herschrijft, telt de Tailscale-identiteit", () => {
     expect(magSchrijven({ ...viaTs, host: "127.0.0.1:5310" }, POORTEN, TS)).toBeNull();
-    expect(magSchrijven({ ...viaTs, host: "127.0.0.1:5310", "tailscale-user-login": "iemand@anders.nl" }, POORTEN, TS)).toMatch(/Alleen het Tailscale-account van Mark/);
+    expect(magSchrijven({ ...viaTs, host: "127.0.0.1:5310", "tailscale-user-login": "iemand@anders.nl" }, POORTEN, TS)).toMatch(/geen toegang tot het huis/);
   });
 
   test.each([
@@ -101,5 +105,42 @@ describe("toegang via Tailscale", () => {
     expect(magLezen({ host: "127.0.0.1:5310" }, POORTEN, TS)).toBeNull();
     expect(magSchrijven({ host: "localhost:4310", origin: "http://localhost:5310", "x-huis": "mark", "content-type": "application/json" }, POORTEN, TS)).toBeNull();
     expect(magLezen({ host: "kwaadwillend.example" }, POORTEN, TS)).toBe("Onbekende host");
+  });
+});
+
+describe("Nikkie via Tailscale", () => {
+  const NIKKIE = { nikkie: "nikkie@example.com" };
+  const viaTs = { host: TS.host, origin: `https://${TS.host}`, "x-huis": "mark", "content-type": "application/json" };
+
+  test("het huis herkent Mark en Nikkie aan hun Tailscale-account; de Mac zelf is Mark", () => {
+    expect(herkomst({ ...viaTs, "tailscale-user-login": "Nikkie@Example.com" }, POORTEN, TS, NIKKIE)).toEqual({ fout: null, persoon: "nikkie" });
+    expect(herkomst({ ...viaTs, "tailscale-user-login": "mark@example.com" }, POORTEN, TS, NIKKIE)).toEqual({ fout: null, persoon: "mark" });
+    expect(herkomst({ host: "127.0.0.1:5310" }, POORTEN, TS, NIKKIE)).toEqual({ fout: null, persoon: "mark" });
+    expect(magSchrijven({ ...viaTs, "tailscale-user-login": "nikkie@example.com" }, POORTEN, TS, NIKKIE)).toBeNull();
+  });
+
+  test("zonder toegangsbestand komt Nikkie er niet in, net als een onbekend account", () => {
+    expect(magLezen({ ...viaTs, "tailscale-user-login": "nikkie@example.com" }, POORTEN, TS, GEEN_EXTRA)).toMatch(/geen toegang/);
+    expect(magLezen({ ...viaTs, "tailscale-user-login": "iemand@anders.nl" }, POORTEN, TS, NIKKIE)).toMatch(/geen toegang/);
+  });
+
+  test("toegangsbestand: geldig, ontbrekend of kapot", () => {
+    const map = mkdtempSync(path.join(os.tmpdir(), "toegang-"));
+    try {
+      const bestand = path.join(map, "toegang.json");
+      const lees = schijfToegang(bestand);
+      expect(lees()).toEqual(GEEN_EXTRA);
+      writeFileSync(bestand, JSON.stringify({ nikkie: " Nikkie@Example.com " }));
+      expect(lees()).toEqual({ nikkie: "nikkie@example.com" });
+      writeFileSync(bestand, "{kapot");
+      const fout = console.error;
+      console.error = () => undefined;
+      expect(lees()).toEqual(GEEN_EXTRA);
+      console.error = fout;
+    } finally {
+      rmSync(map, { recursive: true, force: true });
+    }
+    expect(geldigeToegang({ nikkie: "geen mail" })).toEqual(GEEN_EXTRA);
+    expect(geldigeToegang([])).toEqual(GEEN_EXTRA);
   });
 });

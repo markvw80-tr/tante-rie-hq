@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
 import path from "node:path";
-import type { Besluit, BesluitAntwoord, BesluitKeuze } from "../shared/types.ts";
+import type { Besluit, BesluitAntwoord, BesluitKeuze, Persoon } from "../shared/types.ts";
 import type { Bron } from "./bron.ts";
 import type { AgendaBesluit } from "./parsers/markdown.ts";
 import { alleBerichten } from "./werk.ts";
@@ -29,8 +29,9 @@ export function metAntwoorden(besluiten: readonly AgendaBesluit[], antwoorden: R
  * Stelt het bericht op dat Mark naar een team stuurt. De server bouwt de tekst zelf uit de agendaregel,
  * zodat de browser alleen een keuze en een toelichting meegeeft.
  */
-export function besluitBericht(besluit: Besluit, keuze: BesluitKeuze, toelichting: string): { onderwerp: string; tekst: string } {
+export function besluitBericht(besluit: Besluit, keuze: BesluitKeuze, toelichting: string, door: Persoon = "mark"): { onderwerp: string; tekst: string } {
   const kort = besluit.tekst.length > 70 ? `${besluit.tekst.slice(0, 67).trimEnd()}...` : besluit.tekst;
+  if (door === "nikkie") return reactieNikkie(besluit, keuze, toelichting, kort);
   const onderwerp = `Besluit Mark: ${KEUZE_TEKST[keuze].toLowerCase()}, ${kort}`.slice(0, MAX_ONDERWERP).replace(/^-+/, "");
   const regels = [
     `Besluit: ${keuze}`,
@@ -42,6 +43,24 @@ export function besluitBericht(besluit: Besluit, keuze: BesluitKeuze, toelichtin
   ];
   if (toelichting.trim()) regels.push("", "Toelichting van Mark:", "", toelichting.trim());
   regels.push("", "Verstuurd door Mark via het Huis van Tante Rie.");
+  return { onderwerp, tekst: regels.join("\n") };
+}
+
+/**
+ * Nikkie kan reageren op een agendapunt, maar beslist niet: haar bericht heeft geen Besluit- of Besluit-id-regel,
+ * zodat het huis en de teams het nooit als akkoord van Mark lezen. Het punt blijft open tot Mark beslist.
+ */
+function reactieNikkie(besluit: Besluit, keuze: BesluitKeuze, toelichting: string, kort: string): { onderwerp: string; tekst: string } {
+  const onderwerp = `Reactie Nikkie (geen besluit): ${KEUZE_TEKST[keuze].toLowerCase()}, ${kort}`.slice(0, MAX_ONDERWERP);
+  const regels = [
+    `Reactie van Nikkie op dit agendapunt van de directie: ${KEUZE_TEKST[keuze].toLowerCase()}.`,
+    "",
+    `> ${besluit.tekst}`,
+    "",
+    "Dit is geen besluit en geen akkoord van Mark. Het agendapunt blijft open tot Mark zelf beslist.",
+  ];
+  if (toelichting.trim()) regels.push("", "Toelichting van Nikkie:", "", toelichting.trim());
+  regels.push("", "Verstuurd door Nikkie via het Huis van Tante Rie.");
   return { onderwerp, tekst: regels.join("\n") };
 }
 

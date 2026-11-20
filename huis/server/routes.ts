@@ -4,7 +4,7 @@ import { besluitBericht } from "./besluiten.ts";
 import { bouwHuis, stemmingVoor } from "./huis.ts";
 import { DREMPEL_DAGEN } from "./config.ts";
 import { pakhuisSignalen, type PakhuisBron } from "./pakhuis.ts";
-import type { HuisStand } from "../shared/types.ts";
+import type { HuisStand, Persoon } from "../shared/types.ts";
 import type { Postbode } from "./postbode.ts";
 import { archiveer, haalTerug, type ArchiefOpslag } from "./archief.ts";
 import type { Ophaler } from "./ophaler.ts";
@@ -36,6 +36,8 @@ export interface Omgeving {
   readonly automaat?: Automaat;
   readonly opAfstand?: string | null;
   readonly pakhuis?: PakhuisBron;
+  /** Wie dit verzoek doet. Ontbreekt: Mark (de Mac zelf). Alleen Marks berichten gelden als zijn akkoord. */
+  readonly persoon?: Persoon;
 }
 
 const NIET_GEVONDEN: Antwoord = { status: 404, body: { fout: "Niet gevonden" } };
@@ -61,7 +63,7 @@ export async function behandel(pad: string, params: URLSearchParams, omg: Omgevi
   try {
     if (pad === "/api/huis") {
       const huis = await metPakhuis(await bouwHuis(omg.bron, omg.hq, omg.teams, omg.vandaag, omg.mailbox), omg.pakhuis);
-      return { status: 200, body: { ...huis, runs: omg.regie?.lijst().slice(0, 20) ?? [], post: omg.ophaler?.stand(), automaat: omg.automaat?.stand(), kosten: omg.regie ? kostenOverzicht(omg.regie.lijst(), new Date()) : undefined, autoGoedkeuring: omg.regie?.autoGoedkeuring(), opAfstand: omg.opAfstand ?? null } };
+      return { status: 200, body: { ...huis, runs: omg.regie?.lijst().slice(0, 20) ?? [], post: omg.ophaler?.stand(), automaat: omg.automaat?.stand(), kosten: omg.regie ? kostenOverzicht(omg.regie.lijst(), new Date()) : undefined, autoGoedkeuring: omg.regie?.autoGoedkeuring(), opAfstand: omg.opAfstand ?? null, ik: omg.persoon ?? "mark" } };
     }
     if (omg.regie && pad.startsWith("/api/runs")) {
       const antwoord = behandelRunGet(pad, omg.regie);
@@ -98,7 +100,7 @@ export async function behandel(pad: string, params: URLSearchParams, omg: Omgevi
   }
 }
 
-/** Schrijfroutes. Alleen berichten van Mark via mailbox.py; de server stelt besluitberichten zelf op. */
+/** Schrijfroutes. Berichten gaan via mailbox.py als van Mark of van Nikkie (wie het verzoek doet); de server stelt besluitberichten zelf op. */
 export async function behandelPost(pad: string, body: unknown, omg: Omgeving): Promise<Antwoord> {
   try {
     if (pad === "/api/opdracht") {
@@ -107,7 +109,7 @@ export async function behandelPost(pad: string, body: unknown, omg: Omgeving): P
         const bestaat = (await alleBerichten(omg.bron, omg.mailbox, omg.vandaag)).some((b) => b.bestand === verzending.antwoordOp);
         if (!bestaat) throw new OngeldigVerzoek("Het bericht waarop je antwoordt bestaat niet");
       }
-      const { bestand } = await omg.postbode.stuur(verzending);
+      const { bestand } = await omg.postbode.stuur({ ...verzending, van: omg.persoon ?? "mark" });
       meldPost(omg);
       return { status: 201, body: { bestand, aan: verzending.aan } };
     }
@@ -118,13 +120,14 @@ export async function behandelPost(pad: string, body: unknown, omg: Omgeving): P
       if (!besluit) return { status: 404, body: { fout: "Dit besluit staat niet (meer) op de agenda" } };
       const team = besluit.team && besluit.team !== "directie" ? besluit.team : verzoek.aan;
       if (!team) throw new OngeldigVerzoek("Kies naar welk team dit besluit gaat");
-      const { onderwerp, tekst } = besluitBericht(besluit, verzoek.keuze, verzoek.toelichting);
-      const { bestand } = await omg.postbode.stuur({ aan: team, onderwerp, tekst, prioriteit: "hoog", antwoordOp: null });
+      const door = omg.persoon ?? "mark";
+      const { onderwerp, tekst } = besluitBericht(besluit, verzoek.keuze, verzoek.toelichting, door);
+      const { bestand } = await omg.postbode.stuur({ van: door, aan: team, onderwerp, tekst, prioriteit: door === "mark" ? "hoog" : "normaal", antwoordOp: null });
       meldPost(omg);
       return { status: 201, body: { bestand, aan: team } };
     }
     if (omg.regie && pad.startsWith("/api/runs")) {
-      const antwoord = await behandelRunPost(pad, body, omg.regie, omg.bron, omg.teams);
+      const antwoord = await behandelRunPost(pad, body, omg.regie, omg.bron, omg.teams, omg.persoon ?? "mark");
       if (antwoord) return antwoord;
     }
     if (pad === "/api/archief") return await archiefActie(body, omg);

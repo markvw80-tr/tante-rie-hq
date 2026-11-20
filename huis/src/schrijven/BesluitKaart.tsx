@@ -3,11 +3,13 @@ import type { Besluit, BesluitKeuze, MailboxTeam } from "../../shared/types.ts";
 import { TEAM_KLEUR, TEAM_LABEL, korteDatum } from "../teamKleur.ts";
 import { TEAMS, stuurBesluit } from "./api.ts";
 import { useSchrijven } from "./SchrijfContext.tsx";
+import { useIk } from "../ik.ts";
 
 const KEUZE_LABEL: Record<BesluitKeuze, string> = { akkoord: "Akkoord", afgewezen: "Niet akkoord", vraag: "Vraag terug" };
 const KEUZE_KLASSE: Record<BesluitKeuze, string> = { akkoord: "goed", afgewezen: "nee", vraag: "vraag" };
 
 export function BesluitKaart({ besluit, nummer }: { readonly besluit: Besluit; readonly nummer: number }) {
+  const ik = useIk();
   const [keuze, setKeuze] = useState<BesluitKeuze | null>(null);
   const [toelichting, setToelichting] = useState("");
   const [aan, setAan] = useState<MailboxTeam | null>(null);
@@ -82,7 +84,9 @@ export function BesluitKaart({ besluit, nummer }: { readonly besluit: Besluit; r
               <textarea rows={3} value={toelichting} maxLength={4000} onChange={(e) => setToelichting(e.target.value)} autoFocus />
             </label>
             <p className="onder">
-              {KEUZE_LABEL[keuze]} gaat als bericht van jou, met hoge prioriteit, naar {ontvanger ? TEAM_LABEL[ontvanger] : "het gekozen team"}.
+              {ik === "mark"
+                ? `${KEUZE_LABEL[keuze]} gaat als bericht van jou, met hoge prioriteit, naar ${ontvanger ? TEAM_LABEL[ontvanger] : "het gekozen team"}.`
+                : `Je reactie gaat als bericht van Nikkie naar ${ontvanger ? TEAM_LABEL[ontvanger] : "het gekozen team"}. Het is geen besluit van Mark: het punt blijft open tot Mark beslist.`}
             </p>
             {fout && <p className="signaal">{fout}</p>}
             <div className="knoppen">

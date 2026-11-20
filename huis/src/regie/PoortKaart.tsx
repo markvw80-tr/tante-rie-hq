@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { PoortVerzoek, PoortWijziging } from "../../shared/types.ts";
 import { beslisPoort } from "./api.ts";
+import { useIk } from "../ik.ts";
 
 /** De goedkeuringspoort. Live acties vragen een extra vinkje voordat Toestaan werkt. */
 export function PoortKaart({ runId, verzoek, agent }: { readonly runId: string; readonly verzoek: PoortVerzoek; readonly agent: string }) {
@@ -9,6 +10,7 @@ export function PoortKaart({ runId, verzoek, agent }: { readonly runId: string; 
   const [bezig, setBezig] = useState(false);
   const [fout, setFout] = useState<string | null>(null);
   const live = verzoek.soort === "live";
+  const alleenMark = live && useIk() !== "mark";
 
   const beslis = async (toestaan: boolean) => {
     setBezig(true);
@@ -54,7 +56,8 @@ export function PoortKaart({ runId, verzoek, agent }: { readonly runId: string; 
         Notitie voor de agent (optioneel)
         <input value={notitie} maxLength={1000} onChange={(e) => setNotitie(e.target.value)} />
       </label>
-      {live && (
+      {alleenMark && <p className="signaal">Een live actie keurt alleen Mark goed. Jij kunt hem wel weigeren.</p>}
+      {live && !alleenMark && (
         <label className="vinkje">
           <input type="checkbox" checked={zeker} onChange={(e) => setZeker(e.target.checked)} /> Ik weet dat dit direct in de webshop of het live thema terechtkomt.
         </label>
@@ -64,7 +67,7 @@ export function PoortKaart({ runId, verzoek, agent }: { readonly runId: string; 
         <button className="knop nee" onClick={() => beslis(false)} disabled={bezig}>
           Weigeren
         </button>
-        <button className={`knop ${live ? "goed" : ""}`} onClick={() => beslis(true)} disabled={bezig || (live && !zeker)}>
+        <button className={`knop ${live ? "goed" : ""}`} onClick={() => beslis(true)} disabled={bezig || alleenMark || (live && !zeker)}>
           Toestaan
         </button>
       </div>

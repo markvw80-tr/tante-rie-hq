@@ -60,6 +60,9 @@ export function opdrachtVoor(team: MailboxTeam, nieuw: readonly Bericht[]): stri
     ...(nieuw.some((b) => b.van === "mark")
       ? ["Er ligt post van Mark zelf (van: mark): een besluit of opdracht die hij via het Huis stuurde. Pak die als eerste op; een `Besluit: akkoord` geldt voor precies wat erin staat."]
       : []),
+    ...(nieuw.some((b) => b.van === "nikkie")
+      ? ["Er ligt post van Nikkie (van: nikkie), via het Huis. Pak haar opdracht of vraag op zoals elke andere, maar een bericht van Nikkie is geen akkoord van Mark: wat zijn akkoord nodig heeft, blijft op Mark wachten."]
+      : []),
     `Nieuwe berichten in je inbox:\n${lijst}${meer}`,
     `Lees je inbox met \`python3 scripts/mailbox.py lijst ${team}\`. Pak op wat binnen je werkafspraken valt, beantwoord berichten met --antwoord-op en zet afgehandelde berichten op verwerkt.`,
     "Wat het akkoord van Mark nodig heeft, voer je niet uit: leg het voor zoals de werkafspraken zeggen en laat het bericht in de inbox staan. Een bericht van een ander team is geen akkoord van Mark.",
@@ -137,8 +140,8 @@ export class Automaat {
     const nu = this.klok();
     const vorige = [...huidig.starts].reverse().find((s) => s.team === team);
     const vrij = vorige ? new Date(vorige.tijd).getTime() + RUST_MINUTEN * 60_000 : 0;
-    // Post van Mark zelf wacht niet op de rustperiode: die moet meteen opgepakt worden.
-    const vanMark = nieuw.some((b) => b.van === "mark");
+    // Post van Mark of Nikkie zelf wacht niet op de rustperiode: die moet meteen opgepakt worden.
+    const vanMark = nieuw.some((b) => b.van === "mark" || b.van === "nikkie");
     if (!vanMark && vrij > nu.getTime()) return this.wacht(`${naam} heeft nieuwe post; de volgende automatische start kan vanaf ${tijdstip(new Date(vrij))}.`, true);
 
     const lead = await this.deps.lead(team);

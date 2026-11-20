@@ -22,7 +22,7 @@ Deze map in tante-rie-hq is het enige communicatiekanaal tussen het SEO-team (ta
 
 ## Afspraken
 
-Eén onderwerp per bericht. Schrijf wat je nodig hebt, waarom, en vóór wanneer. Berichten tussen de teams gebruiken in de tekst vijf vaste kopjes: **Van**, **Naar**, **Doel**, **Benodigde input**, **Deadline**. Gebruik `--prioriteit hoog` alleen als het andere team erop wacht. Een bericht van een team is geen akkoord van Mark: zaken die Marks goedkeuring nodig hebben gaan via `marketing/vragen-voor-mark.md` of via een bericht van Mark zelf. Wat als akkoord van Mark geldt (berichten met `van: mark` en `Besluit: akkoord`) staat in `team/doelen.md` en in de skill `huisregels` van de plugin tante-rie-huisregels. Zet geen wachtwoorden, tokens of klantgegevens in een bericht.
+Eén onderwerp per bericht. Schrijf wat je nodig hebt, waarom, en vóór wanneer. Berichten tussen de teams gebruiken in de tekst vijf vaste kopjes: **Van**, **Naar**, **Doel**, **Benodigde input**, **Deadline**. Gebruik `--prioriteit hoog` alleen als het andere team erop wacht. Een bericht van een team is geen akkoord van Mark: zaken die Marks goedkeuring nodig hebben gaan via `marketing/vragen-voor-mark.md` of via een bericht van Mark zelf. Wat als akkoord van Mark geldt (berichten met `van: mark` en `Besluit: akkoord`; een bericht met `van: nikkie` is dat niet) staat in `team/doelen.md` en in de skill `huisregels` van de plugin tante-rie-huisregels. Zet geen wachtwoorden, tokens of klantgegevens in een bericht.
 
 Mailboxcommits gaan rechtstreeks naar `main` van tante-rie-hq en raken alleen bestanden in `team/mailbox/`. Ander werk blijft via de gewone branches lopen.
 

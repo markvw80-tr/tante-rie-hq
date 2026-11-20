@@ -104,7 +104,22 @@ Het huis luistert alleen op 127.0.0.1. Van buiten kom je er alleen bij via `tail
    Bij `npm start` (productie) gebruik je poort 4310. Vraagt Tailscale om HTTPS-certificaten aan te zetten, volg dan de link.
 3. Open op je telefoon het adres dat Tailscale noemt (`https://<mac>.<tailnet>.ts.net`). Het staat ook onderaan in het huis.
 
-Toegang: het huis kijkt elke minuut met `tailscale status --json` welk account op de Mac is ingelogd. Via Tailscale mag alleen dat account lezen en schrijven; daarvoor gebruikt het huis de header `Tailscale-User-Login` die `tailscale serve` meestuurt. Andere accounts in je tailnet en apparaten zonder gebruiker (tags) krijgen een 403. Lukt de herkenning niet, dan kun je host en account vast zetten met `HUIS_TAILSCALE_HOST` en `HUIS_TAILSCALE_LOGIN`. Uitzetten: `tailscale serve --https=443 off`. De Mac moet aan staan en het huis moet draaien.
+Toegang: het huis kijkt elke minuut met `tailscale status --json` welk account op de Mac is ingelogd. Via Tailscale mag alleen dat account lezen en schrijven; daarvoor gebruikt het huis de header `Tailscale-User-Login` die `tailscale serve` meestuurt. Andere accounts in je tailnet en apparaten zonder gebruiker (tags) krijgen een 403. Lukt de herkenning niet, dan kun je host en account vast zetten met `HUIS_TAILSCALE_HOST` en `HUIS_TAILSCALE_LOGIN`. Uitzetten: `tailscale serve --https=443 off`.
+
+### Nikkie
+
+Nikkie heeft een eigen Tailscale-account. Deel de Mac met haar (Tailscale-beheer, Machines, `macbook-pro`, Share) en zet haar account in `huis/data/toegang.json` (niet in git):
+
+```json
+{ "nikkie": "haar-tailscale-login@voorbeeld.nl" }
+```
+
+Het huis leest dit bestand bij elk verzoek; herstarten hoeft niet. Nikkie ziet bovenin "Ingelogd als Nikkie" en kan alles, maar als zichzelf:
+
+- Opdrachten en antwoorden gaan als `van: nikkie`. Volgens de huisregels is dat geen akkoord van Mark.
+- Op een besluit kan ze reageren. Dat bericht heeft geen `Besluit:`- of `Besluit-id:`-regel, dus het besluit blijft open tot Mark beslist.
+- Agents starten en stoppen, toestemmingsvragen beantwoorden, de schakelaars en het archief: mag, en het logboek noemt haar.
+- Een **live actie** goedkeuren doet alleen Mark (Niets gaat live zonder Mark). Weigeren mag Nikkie wel. De Mac moet aan staan en het huis moet draaien.
 
 ## Starten
 

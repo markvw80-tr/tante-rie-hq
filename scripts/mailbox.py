@@ -12,6 +12,7 @@ Gebruik:
   python3 scripts/mailbox.py lees <bestand>            # één bericht tonen
   python3 scripts/mailbox.py stuur --van seo --aan pim --onderwerp "..." --tekst "..."
                                                        # --van mark: bericht van Mark zelf (akkoord of opdracht)
+                                                       # --van nikkie: bericht van Nikkie via het Huis (geen akkoord van Mark)
         [--antwoord-op <bestand>] [--prioriteit hoog|normaal|laag]
   python3 scripts/mailbox.py verwerkt <bestand> [--notitie "..."]
   python3 scripts/mailbox.py status --team seo --kop "18-11-2026 (onderwerp)" --tekst -   # statusblok op main
@@ -26,7 +27,7 @@ import sys
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEAMS = ("seo", "pim", "design", "inkoop")
-SENDERS = TEAMS + ("directie", "mark")  # mark: besluit of opdracht van Mark zelf, via het Huis
+SENDERS = TEAMS + ("directie", "mark", "nikkie")  # mark en nikkie: alleen via het Huis; alleen mark geldt als akkoord van Mark
 BRANCH = "main"
 ROOT = REPO  # wordt de werkkopie van main zodra git gebruikt wordt
 MAILBOX = os.path.join(ROOT, "team", "mailbox")
@@ -112,9 +113,9 @@ def cmd_lees(a):
 
 
 def cmd_stuur(a):
-    if a.van == "mark" and os.environ.get("TANTE_RIE_HUIS") != "1":
-        sys.exit("Afzender mark is alleen voor Mark zelf, via het Huis van Tante Rie. "
-                 "Een team of de directie verstuurt nooit namens Mark.")
+    if a.van in ("mark", "nikkie") and os.environ.get("TANTE_RIE_HUIS") != "1":
+        sys.exit("Afzender %s is alleen voor %s zelf, via het Huis van Tante Rie. "
+                 "Een team of de directie verstuurt nooit namens Mark of Nikkie." % (a.van, a.van.capitalize()))
     if a.van == a.aan:
         sys.exit("Afzender en ontvanger zijn hetzelfde team.")
     tekst = a.tekst
