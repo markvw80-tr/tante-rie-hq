@@ -18,3 +18,6 @@ Toelichting van Mark:
 In Shopify zijn eenheidsprijzen niet gevuld. Alleen de “prijs”. Is de eenheidsprijs nodig voor merchant center?
 
 Verstuurd door Mark via het Huis van Tante Rie.
+
+---
+Verwerkt op 2026-11-20 11:51: Beantwoord bij V127: eenheidsprijs niet nodig voor Merchant Center, feedregel mag vervallen; vervolgkeuze productpagina als V134

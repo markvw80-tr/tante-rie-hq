@@ -2,6 +2,15 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## SEO, 20-11-2026 (V127 beantwoord, maandrapport november)
+- V127, vraag van Mark (besluit 3405bfb958): de eenheidsprijs is niet nodig voor Merchant Center. Het kenmerk is optioneel, de melding heeft geen gevolgen en alles is goedgekeurd. De feedregel mag vervallen. Antwoord staat bij V127.
+- Nieuwe vraag V134: eenheidsprijs op de productpagina van losse thee (A laten zoals het is, B PIM vult het veld en Design toont het). Advies B, lage prioriteit. Reden: de prijsaanduidingsregel voor waar die per gewicht wordt verkocht.
+- Maandrapport november klaar: marketing/rapporten/maandrapport-2026-11.md. GSC 28 dagen: 452 klikken tegen 389 (+16%), vertoningen -19%, CTR 3,08% tegen 2,16%. Winkelpagina's Borne blijven achter (3 klikken).
+- Directie-opdracht 15-11 verwerkt: alle vier punten af. "Pak de taken op" verwerkt: sinds 19-11 geen nieuwe antwoorden in het vragenbestand.
+- Open bij Mark: V133 (handle Passionfruit Martini Cake), V134, alt-diff bij PIM.
+- Volgende stap: lokale winkelpagina's Borne aanpakken (zwakste punt in het rapport), na V133 de Watertwist-kopieën.
+- Verbruik: ca. 1,15 USD.
+
 ## SEO, 20-11-2026 (antwoord PIM over kopie-handle)
 - PIM-bericht alt-teksten seo-2026-11-19-1 verwerkt: de diff ligt bij PIM en wacht op akkoord van Mark, SEO hoeft niets te doen.
 - Vraag van PIM beantwoord: pineut-cake-pouchbag-lemon-poppy-cake-kopie is geen dubbel product maar de Passionfruit Martini Cake met een verkeerde handle. 0 klikken, weinig vertoningen, geen redirect.

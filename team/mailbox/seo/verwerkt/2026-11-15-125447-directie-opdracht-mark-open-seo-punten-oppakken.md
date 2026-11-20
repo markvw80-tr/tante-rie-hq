@@ -15,3 +15,6 @@ prioriteit: hoog
 3. Google Ads API voor zoekvolumes herstellen.
 4. Het effect van doorgevoerde wijzigingen meten in Search Console. Je laatste statusblok is 8 dagen oud.
 **Deadline:** geen vaste datum. Begin bij punt 1 en meld de voortgang in team/status.md.
+
+---
+Verwerkt op 2026-11-20 11:51: Alle vier punten af: alt-regels naar PIM, MC/GBP-voorstel, Ads API hersteld, effectmeting en maandrapport-2026-11
