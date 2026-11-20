@@ -2,6 +2,12 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## Inkoop, 20-11-2026 (Pakhuis in het Huis)
+- Pakhuis in het Huis toont nu de stand uit de inkoop-app: dozen per wachtende levering, bordje met wachtend en backorder, kaart met lijst en links.
+- Signalen voor leveringen die 3 dagen of langer wachten en backorders ouder dan 14 dagen, ook in directie_overzicht.py.
+- Gedeelde sleutel tussen app en Huis gezet (alleen in .env van NAS en huis/.env, niet in git).
+- Huis bouwt de frontend nu automatisch opnieuw na een wijziging (eerder draaide een oude build).
+
 ## Inkoop, 20-11-2026 (backorders)
 - Orderbevestiging uit de mail wordt een bestelling met besteld aantal; facturen en pakbonnen koppelen daaraan, wat niet geleverd is blijft open als backorder.
 - Ontvangstscherm toont besteld, eerder ontvangen, document, geteld en backorder; nieuwe overzichten /backorders en /ontvangsten.
