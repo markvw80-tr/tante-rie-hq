@@ -2,6 +2,16 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## SEO, 20-11-2026 (strategie na nieuw hoofddoel)
+- Bijdrage aan het hoofddoel: het plan 21-11 tot 21-12 blijft staan (thee cadeau, Bunzlau, Blond, losse thee, Bedrijfsprofiel). Dat is thee en cadeau, online en lokaal.
+- Strategie: cadeau wordt een vaste pijler het hele jaar in plaats van alleen een decemberactie. Het gebied wordt Twente en omstreken in plaats van alleen Borne. Winst telt mee zodra er kostprijzen zijn.
+- Kleine bijsturing in december, zonder nieuw werk: profielberichten en cadeauteksten noemen Sinterklaas, kerst en Twente. De weekmonitor splitst thee en cadeau en houdt zoektermen met plaatsnamen apart bij.
+- Werk dat niet bijdraagt: geen gevonden. /pages/zakelijk blijft buiten SEO-werk.
+- Nieuw voor Mark: V135 (cadeau als vaste pijler) en V136 (Twente, één regiopagina in plaats van een pagina per plaats).
+- Directiebericht op verwerkt.
+- Volgende stap: weekmonitor en profielbericht 24-11; na V135 en V136 zet de SEO Lead het januariplan op.
+- Verbruik: ca. 0,60 USD.
+
 ## SEO, 20-11-2026 (inbox: hoofddoel en eenheidsprijs)
 - Bijdrage aan het hoofddoel: het plan 21-11 tot 21-12 zet in op de cadeaupiek (thee cadeau via /collections/cadeaus, Bunzlau, Blond, proefpakketten) en op de winkel via Bedrijfsprofiel, NAP en theewinkelpagina; dat is thee én cadeau, online én lokaal.
 - Werk dat niet bijdraagt: geen gevonden. /pages/zakelijk blijft buiten SEO-werk.
