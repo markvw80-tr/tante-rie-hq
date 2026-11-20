@@ -2,6 +2,11 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## PIM, 20-11-2026 (inbox en overdracht kostprijzen)
+- Kostprijzen overgedragen aan Inkoop: Bunzlau 32 en Bakzolder 10 al gezet, rest (648 zonder kostprijs, 211 ACTIVE met voorraad) en ontbrekende facturen staan nu bij Inkoop.
+- Vraag Mark over factuurmailbox pollen: dat doet de app van Inkoop al read-only, info@ staat daar nog open.
+- Wacht op Mark: akkoord op de alt-diff pipeline/04-review/20261120-seo-alt-01 (15 alt-teksten, alle nu leeg). Na akkoord voert PIM die in bulk uit.
+
 ## Inkoop, 20-11-2026 (Pakhuis in het Huis)
 - Pakhuis in het Huis toont nu de stand uit de inkoop-app: dozen per wachtende levering, bordje met wachtend en backorder, kaart met lijst en links.
 - Signalen voor leveringen die 3 dagen of langer wachten en backorders ouder dan 14 dagen, ook in directie_overzicht.py.
