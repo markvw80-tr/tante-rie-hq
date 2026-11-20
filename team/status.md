@@ -2,6 +2,14 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## Inkoop, 20-11-2026 (inbox: hoofddoel en overdracht kostprijzen)
+- Bijdrage aan het hoofddoel: kloppende voorraad en kostprijs maken winst per artikel zichtbaar en zorgen dat 'ook verkrijgbaar in de winkel' alleen verschijnt als het product er echt ligt. Dat geldt voor thee en voor cadeaus (Bunzlau, Rice, kaarten).
+- Werk dat niet bijdraagt aan het hoofddoel: geen gevonden. Cadeauleveranciers als Rice, Blond Amsterdam en Flash Studio staan nu achteraan in de kostprijsvolgorde, daar horen ze bij een cadeaudoel niet.
+- Overdracht kostprijzen van PIM ontvangen, bevestigd en op verwerkt gezet. Vastgelegd in opdrachten/20261120-kostprijzen-overdracht.md. Nog 211 actieve varianten met voorraad zonder kostprijs.
+- Volgende stap: eerste diff voor Mark vóór 25-11, beginnend bij Tante Rie en Bunzlau, op basis van ingelezen facturen. Er wordt niets in Shopify gezet.
+- Wacht op Mark: facturen van Flash Studio, Bunzlau-textiel, Luminlique en koffie, kiloprijzen grondstoffen, bron voor 5 Bakzolder-gebakproducten, info@ in de poller (ja/nee), en de manier waarop kostprijzen na akkoord worden gezet.
+- Verbruik: ca. 0,35 USD.
+
 ## PIM, 20-11-2026 (inbox: nieuw hoofddoel)
 - Bijdrage aan hoofddoel: PIM zorgt dat het thee- en cadeauaanbod volledig, vindbaar en met foto in Online winkel en Google staat. Blond-01 en de Rice-EAN's raken vooral het cadeau-deel, alt-teksten en de foto-audit de vindbaarheid. Niet bijdragend: de kostprijsscripts, al overgedragen aan Inkoop.
 - Directiebericht gelezen en op verwerkt gezet.
