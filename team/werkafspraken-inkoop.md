@@ -13,7 +13,7 @@ Inkoop gebruikt de Markdown-mailbox in tante-rie-hq (`team/mailbox/<team>/inbox`
 
 ## Overdracht
 PIM naar Inkoop: de factuur-intake en de kostprijzen gaan over van PIM naar Inkoop. Het script `mail_facturen.py` en de kostprijsscripts in tante-rie-pim blijven voorlopig staan, maar worden niet verder uitgebouwd. PIM meldt aan Inkoop als een SKU in Shopify wordt gewijzigd, samengevoegd of opgeheven, omdat de matching van facturen daarop leunt.
-Inkoop naar PIM: een nieuw artikel van een leverancier maakt Inkoop alleen als basisartikel aan (SKU, kostprijs, EAN, verpakking, als concept) en meldt het daarna aan PIM met leverancier en factuuromschrijving. Titel, tekst, foto, categorie en publicatie blijven bij PIM.
+Inkoop naar PIM: staat er op een inkooporder, orderbevestiging of levering een artikel dat niet in Shopify staat, dan meldt Inkoop dat aan PIM. Dat gaat automatisch: het Pakhuis in het Huis stuurt per nieuw artikel één keer een bericht van Inkoop aan PIM, met SKU, omschrijving van de leverancier, leverancier, document, aantal en inkoopprijs. PIM maakt het artikel aan en verrijkt het (titel, tekst, foto, categorie, publicatie), met precies die SKU en via de gewone route: diff naar Mark, pas na akkoord in Shopify. De kostprijs zet de inkoop-app bij het afvinken. Zolang het artikel niet in Shopify staat, kan de levering niet worden bijgeboekt. Inkoop maakt zelf geen artikelen aan.
 Inkoop naar Design: Design toont "ook verkrijgbaar in de winkel" alleen bij voorraad. Verandert de voorraadlogica (bijvoorbeeld een andere locatie of een nieuwe status), dan meldt Inkoop dat aan Design.
 Inkoop en SEO: geen vaste overdracht. Vraagt SEO naar beschikbaarheid of levertijden, dan levert Inkoop de gegevens uit de app.
 

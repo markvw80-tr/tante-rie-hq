@@ -118,11 +118,24 @@ export interface PakhuisWachtend {
   readonly regels: number;
 }
 
+/** Artikel op een open bestelling of levering dat niet in Shopify staat. PIM maakt het aan en verrijkt het. */
+export interface PakhuisNieuwArtikel {
+  readonly sku: string;
+  readonly omschrijving: string;
+  readonly leverancier: string;
+  readonly document: string;
+  readonly confirmationId: string;
+  readonly aantal: number;
+  readonly inkoopprijs: number;
+  readonly sinds: string;
+}
+
 export interface PakhuisStand {
   readonly bijgewerkt: string;
   readonly wachtend: readonly PakhuisWachtend[];
   readonly backorder: { readonly bestellingen: number; readonly stuks: number; readonly oudste: { readonly poNumber: string; readonly leverancier: string; readonly dagen: number } | null };
   readonly ontvangsten: ReadonlyArray<{ readonly wanneer: string; readonly leverancier: string; readonly document: string; readonly stuks: number }>;
+  readonly nieuweArtikelen: readonly PakhuisNieuwArtikel[];
   /** Basisadres van de app, voor links naar het ontvangstscherm. */
   readonly appUrl: string;
 }

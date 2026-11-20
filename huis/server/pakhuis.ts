@@ -4,7 +4,10 @@ import type { PakhuisStand } from "../shared/types.ts";
 
 export const BACKORDER_SIGNAAL_DAGEN = 14;
 const CACHE_MS = 60_000;
-const TIMEOUT_MS = 4_000;
+const TIMEOUT_MS = 6_000;
+export const MAX_NIEUWE_ARTIKELEN = 50;
+/** Tekst uit de app komt in een mailboxbericht terecht: geen regeleinden of markdown-koppen. */
+const enkeleRegel = (t: string) => t.replace(/[\r\n]+/g, " ").replace(/^[#>\-*\s]+/, "").trim();
 
 /** Controleert de vorm van het antwoord; alles wat niet klopt wordt weggegooid in plaats van doorgegeven. */
 export function leesStand(ruw: unknown, appUrl: string): PakhuisStand | null {
@@ -37,6 +40,19 @@ export function leesStand(ruw: unknown, appUrl: string): PakhuisStand | null {
     ontvangsten: o.ontvangsten
       .filter((r): r is Record<string, unknown> => !!r && typeof r === "object")
       .map((r) => ({ wanneer: tekst(r.wanneer), leverancier: tekst(r.leverancier, "Onbekend"), document: tekst(r.document), stuks: getal(r.stuks) })),
+    nieuweArtikelen: (Array.isArray(o.nieuweArtikelen) ? o.nieuweArtikelen : [])
+      .filter((a): a is Record<string, unknown> => !!a && typeof a === "object" && typeof (a as Record<string, unknown>).sku === "string" && (a as Record<string, unknown>).sku !== "")
+      .slice(0, MAX_NIEUWE_ARTIKELEN)
+      .map((a) => ({
+        sku: enkeleRegel(tekst(a.sku)),
+        omschrijving: enkeleRegel(tekst(a.omschrijving, tekst(a.sku))),
+        leverancier: enkeleRegel(tekst(a.leverancier, "Onbekend")),
+        document: enkeleRegel(tekst(a.document, "zonder nummer")),
+        confirmationId: tekst(a.confirmationId).replace(/[^A-Za-z0-9_-]/g, ""),
+        aantal: getal(a.aantal),
+        inkoopprijs: getal(a.inkoopprijs),
+        sinds: tekst(a.sinds),
+      })),
   };
 }
 
@@ -49,6 +65,8 @@ export function pakhuisSignalen(stand: PakhuisStand | null, drempelDagen: number
   if (oud.length) signalen.push(`${oud.length} ${oud.length === 1 ? "levering wacht" : "leveringen wachten"} ${drempelDagen} dagen of langer op afvinken`);
   const o = stand.backorder.oudste;
   if (o && o.dagen >= BACKORDER_SIGNAAL_DAGEN) signalen.push(`Backorder ${o.poNumber} van ${o.leverancier} staat al ${o.dagen} dagen open`);
+  const n = stand.nieuweArtikelen.length;
+  if (n) signalen.push(`${n} ${n === 1 ? "artikel staat" : "artikelen staan"} op een bestelling of levering maar niet in Shopify (werk voor PIM)`);
   return signalen;
 }
 

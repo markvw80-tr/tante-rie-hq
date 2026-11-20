@@ -22,6 +22,14 @@ describe("leesStand", () => {
     expect(leesStand({ fout: "Niet gevonden" }, "x")).toBeNull();
     expect(leesStand(null, "x")).toBeNull();
   });
+  test("neemt nieuwe artikelen over en maakt tekst veilig voor een bericht", () => {
+    const s = leesStand({ ...ruw, nieuweArtikelen: [{ sku: "GE-1", omschrijving: "# Kop\nregel twee", leverancier: "Geels", document: "VO1", confirmationId: "c/1", aantal: 2, inkoopprijs: 3 }, { sku: "" }, null] }, "x");
+    expect(s?.nieuweArtikelen).toHaveLength(1);
+    expect(s?.nieuweArtikelen[0]).toMatchObject({ sku: "GE-1", omschrijving: "Kop regel twee", confirmationId: "c1" });
+  });
+  test("oude app zonder nieuweArtikelen geeft een lege lijst", () => {
+    expect(leesStand(ruw, "x")?.nieuweArtikelen).toEqual([]);
+  });
   test("maakt een id veilig voor in een link", () => {
     const s = leesStand({ ...ruw, wachtend: [{ ...ruw.wachtend[0], id: "abc/../x?y" }] }, "x");
     expect(s?.wachtend[0].id).toBe("abcxy");

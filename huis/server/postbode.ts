@@ -2,7 +2,12 @@ import { spawn } from "node:child_process";
 import path from "node:path";
 import type { MailboxTeam } from "../shared/types.ts";
 
+/** Afzenders die het huis zelf mag gebruiken: Mark (via de knoppen) en Inkoop (automatische meldingen uit het Pakhuis). */
+export type HuisAfzender = "mark" | "inkoop";
+
 export interface Verzending {
+  /** Standaard mark. */
+  readonly van?: HuisAfzender;
   readonly aan: MailboxTeam;
   readonly onderwerp: string;
   readonly tekst: string;
@@ -54,7 +59,7 @@ export function mailboxPostbode(hq: string, geenGit: boolean): Postbode {
   return {
     stuur: (v) =>
       opDeBeurt(async () => {
-        const args = [...basis, "stuur", "--van", "mark", "--aan", v.aan, "--onderwerp", v.onderwerp, "--tekst", "-", "--prioriteit", v.prioriteit];
+        const args = [...basis, "stuur", "--van", v.van ?? "mark", "--aan", v.aan, "--onderwerp", v.onderwerp, "--tekst", "-", "--prioriteit", v.prioriteit];
         if (v.antwoordOp) args.push("--antwoord-op", v.antwoordOp);
         const r = await draai(args, v.tekst, hq);
         const m = /Verstuurd: (\S+\.md)/.exec(r.uit);
