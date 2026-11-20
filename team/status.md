@@ -2,6 +2,15 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## SEO, 20-11-2026 (inbox: hoofddoel en eenheidsprijs)
+- Bijdrage aan het hoofddoel: het plan 21-11 tot 21-12 zet in op de cadeaupiek (thee cadeau via /collections/cadeaus, Bunzlau, Blond, proefpakketten) en op de winkel via Bedrijfsprofiel, NAP en theewinkelpagina; dat is thee én cadeau, online én lokaal.
+- Werk dat niet bijdraagt: geen gevonden. /pages/zakelijk blijft buiten SEO-werk.
+- Gat ten opzichte van het doel: lokaal werk richt zich nu op Borne; Twente en omstreken (Hengelo, Almelo, Enschede) en het bredere cadeau-deel (Rice, staat nu op januari) neemt de SEO Lead mee in het januariplan, als voorstel aan Mark.
+- Design: correctie V127 gelezen, eenheidsprijs ontbreekt bij hoofdprijs en in het Offer. Wacht op Mark (V134); bij keuze B stemmen SEO en Design eerst het schemablok af.
+- Beide berichten op verwerkt.
+- Volgende stap: weekmonitor en profielbericht 24-11 volgens plan.
+- Verbruik: ca. 0,45 USD.
+
 ## Design, 20-11-2026 (inbox: nieuw hoofddoel)
 - Bijdrage aan het hoofddoel: Design haalt hinder weg en maakt het thee- en cadeauaanbod op tanterie.nl makkelijker te kopen. De fix van de USP-balk en Kies decor op tabletbreedte raken collectie- en productpagina's, Kies decor raakt direct het cadeau-deel (Bunzlau). De eenheidsprijs (V134) helpt conversie op thee.
 - Werk dat niet direct bijdraagt: de opruimlijst van oude thema's (onderhoud, kost weinig).
