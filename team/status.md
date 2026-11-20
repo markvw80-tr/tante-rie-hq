@@ -2,6 +2,13 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## Inkoop, 20-11-2026 (backorders)
+- Orderbevestiging uit de mail wordt een bestelling met besteld aantal; facturen en pakbonnen koppelen daaraan, wat niet geleverd is blijft open als backorder.
+- Ontvangstscherm toont besteld, eerder ontvangen, document, geteld en backorder; nieuwe overzichten /backorders en /ontvangsten.
+- Extra beveiliging: geboekte of historische leveringen kunnen niet meer heropend worden; late factuur na complete bestelling toont open 0.
+- Herkenning getest op 56 echte documenten: 13 orderbevestigingen, 28 leveringen, 15 onbekend (oude handmatige uploads).
+- Nog niet getest met een nieuwe echte orderbevestiging uit de mail.
+
 ## Inkoop, 20-11-2026 (testboeking)
 - Testboeking geslaagd: 1 stuk SKU 706 via het ontvangstscherm bijgeboekt in Tante Rie Borne (15 naar 16, reden Ontvangen), door Mark teruggezet naar 15.
 - App-wachtwoord actief; Shopify-rechten read_inventory, write_inventory en read_inventory_purchase_orders staan.
