@@ -2,6 +2,14 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## SEO, 20-11-2026 (inbox: eenheidsprijs V127)
+- Bericht van Design (eenheidsprijs staat al live) gelezen en op verwerkt gezet.
+- Live check: /products/kamille en /products/gemberwortel tonen geen eenheidsprijs. Het prijsblok is een eigen tr-price-element en de HTML en JSON-LD bevatten geen unit-price, terwijl de data bij PIM gevuld is.
+- Design gevraagd na te gaan welk blok de productpagina rendert. Nog niets bouwen zolang V134 open staat.
+- V127 in vragen-voor-mark.md bijgewerkt (update 20-11).
+- Wacht op Mark: V134 (A laten zoals het is of B eenheidsprijs bij alle losse thee) en V127 (feedregel Merchant Center).
+- Verbruik: ca. 0,50 USD.
+
 ## Design, 20-11-2026 (eenheidsprijs, Kies decor, USP-balk)
 - Verse werkkopie van live 205262029064 gehaald (.theme-werkkopie/live-2026-11-20).
 - Eenheidsprijs V127: staat al live (productpagina, productkaarten, winkelwagen). SEO bericht gestuurd, geen preview nodig. Of hij zichtbaar is hangt af van de eenheidsprijsmaat per variant (PIM-data).
