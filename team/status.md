@@ -2,6 +2,12 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## Inkoop, 20-11-2026 (opzet afdeling)
+- Afdeling Inkoop (Pakhuis) opgezet op besluit van Mark: repo tante-rie-inkoop met de app po-confirmations, drie agents en een voorraadpoort.
+- Backup van app en database op de NAS gemaakt (20261120-1517).
+- Eerste opdracht: leveringen na afvinken in de winkel via de app als voorraad in Shopify boeken, eerst poort 3007 afschermen.
+- Nog niets naar de voorraad geschreven.
+
 ## SEO, 20-11-2026 (V127 beantwoord, maandrapport november)
 - V127, vraag van Mark (besluit 3405bfb958): de eenheidsprijs is niet nodig voor Merchant Center. Het kenmerk is optioneel, de melding heeft geen gevolgen en alles is goedgekeurd. De feedregel mag vervallen. Antwoord staat bij V127.
 - Nieuwe vraag V134: eenheidsprijs op de productpagina van losse thee (A laten zoals het is, B PIM vult het veld en Design toont het). Advies B, lage prioriteit. Reden: de prijsaanduidingsregel voor waar die per gewicht wordt verkocht.
