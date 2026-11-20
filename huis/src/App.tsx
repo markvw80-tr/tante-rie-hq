@@ -146,7 +146,7 @@ export function App() {
             </button>
           )}
           {team ? (
-            <TeamPaneel team={team} agenda={huis.agenda} drempel={huis.drempelDagen} bijgewerkt={bijgewerkt} runs={huis.runs ?? []} onTerug={() => setGekozen("toonbank")} />
+            <TeamPaneel team={team} agenda={huis.agenda} drempel={huis.drempelDagen} bijgewerkt={bijgewerkt} runs={huis.runs ?? []} onTerug={() => setGekozen("toonbank")} pakhuis={huis.pakhuis} />
           ) : (
             <ToonbankPaneel huis={huis} onGewijzigd={ververs} />
           )}

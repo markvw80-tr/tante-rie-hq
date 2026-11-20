@@ -77,4 +77,41 @@ for t in TEAMS:
         print(f"- {t}: {(vandaag - d).days} dagen geleden, {kop}")
     else:
         print(f"- {t}: geen statusblok")
+
+def pakhuis_stand():
+    """Stand uit de inkoop-app via huis/.env (HUIS_PAKHUIS_URL, HUIS_PAKHUIS_TOKEN). Alleen lezen."""
+    import urllib.request
+    instellingen = {}
+    env = HQ / "huis" / ".env"
+    if env.is_file():
+        for regel in env.read_text().splitlines():
+            if "=" in regel and not regel.lstrip().startswith("#"):
+                k, v = regel.split("=", 1)
+                instellingen[k.strip()] = v.strip()
+    url, sleutel = instellingen.get("HUIS_PAKHUIS_URL"), instellingen.get("HUIS_PAKHUIS_TOKEN")
+    if not url or not sleutel:
+        return None, "niet ingesteld (huis/.env)"
+    try:
+        verzoek = urllib.request.Request(url, headers={"x-pakhuis-token": sleutel})
+        with urllib.request.urlopen(verzoek, timeout=6) as antwoord:
+            return json.loads(antwoord.read().decode("utf-8")), None
+    except Exception as fout:
+        return None, f"niet bereikbaar ({type(fout).__name__})"
+
+
+print("\nPakhuis (inkoop-app):")
+stand, fout = pakhuis_stand()
+if fout:
+    print(f"- {fout}")
+else:
+    wachtend = stand.get("wachtend", [])
+    oud = [w for w in wachtend if w.get("dagen", 0) >= DREMPEL]
+    print(f"- {len(wachtend)} leveringen wachten op afvinken" + (f"  ACHTERSTAND {len(oud)} (≥ {DREMPEL} dagen)" if oud else ""))
+    for w in wachtend[:5]:
+        print(f"    {w.get('leverancier')} {w.get('document')}: {w.get('dagen')} dagen")
+    bo = stand.get("backorder", {})
+    oudste = bo.get("oudste")
+    print(f"- backorder: {bo.get('stuks', 0)} stuks in {bo.get('bestellingen', 0)} bestellingen"
+          + (f", oudste {oudste['poNumber']} ({oudste['leverancier']}) {oudste['dagen']} dagen" if oudste else ""))
+
 print("\nGedeelde doelen: team/doelen.md")

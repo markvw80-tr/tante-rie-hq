@@ -1,7 +1,10 @@
 import type { Bron } from "./bron.ts";
 import type { TeamConfig } from "./config.ts";
 import { besluitBericht } from "./besluiten.ts";
-import { bouwHuis } from "./huis.ts";
+import { bouwHuis, stemmingVoor } from "./huis.ts";
+import { DREMPEL_DAGEN } from "./config.ts";
+import { pakhuisSignalen, type PakhuisBron } from "./pakhuis.ts";
+import type { HuisStand } from "../shared/types.ts";
 import type { Postbode } from "./postbode.ts";
 import { archiveer, haalTerug, type ArchiefOpslag } from "./archief.ts";
 import type { Ophaler } from "./ophaler.ts";
@@ -32,6 +35,7 @@ export interface Omgeving {
   readonly ophaler?: Ophaler;
   readonly automaat?: Automaat;
   readonly opAfstand?: string | null;
+  readonly pakhuis?: PakhuisBron;
 }
 
 const NIET_GEVONDEN: Antwoord = { status: 404, body: { fout: "Niet gevonden" } };
@@ -56,7 +60,7 @@ const ofNietGevonden = (body: unknown): Antwoord => (body === null ? NIET_GEVOND
 export async function behandel(pad: string, params: URLSearchParams, omg: Omgeving): Promise<Antwoord> {
   try {
     if (pad === "/api/huis") {
-      const huis = await bouwHuis(omg.bron, omg.hq, omg.teams, omg.vandaag, omg.mailbox);
+      const huis = await metPakhuis(await bouwHuis(omg.bron, omg.hq, omg.teams, omg.vandaag, omg.mailbox), omg.pakhuis);
       return { status: 200, body: { ...huis, runs: omg.regie?.lijst().slice(0, 20) ?? [], post: omg.ophaler?.stand(), automaat: omg.automaat?.stand(), kosten: omg.regie ? kostenOverzicht(omg.regie.lijst(), new Date()) : undefined, autoGoedkeuring: omg.regie?.autoGoedkeuring(), opAfstand: omg.opAfstand ?? null } };
     }
     if (omg.regie && pad.startsWith("/api/runs")) {
@@ -182,4 +186,17 @@ async function archiefActie(body: unknown, omg: Omgeving): Promise<Antwoord> {
       : archiveer(huidig, bouwGesprekken(await alleBerichten(omg.bron, omg.mailbox, omg.vandaag)), ids, new Date().toISOString());
   omg.archief.schrijf(uitkomst.archief);
   return { status: 200, body: { aantal: uitkomst.aantal } };
+}
+
+/** Voegt de stand uit de inkoop-app toe en zet de signalen ervan bij de kamer Inkoop (die kunnen de stemming kleuren). */
+export async function metPakhuis(huis: HuisStand, bron: PakhuisBron | undefined): Promise<HuisStand> {
+  if (!bron) return { ...huis, pakhuis: null };
+  const { stand, bereikbaar } = await bron.stand();
+  const extra = pakhuisSignalen(stand, DREMPEL_DAGEN, bereikbaar);
+  const teams = huis.teams.map((t) => {
+    if (t.id !== "inkoop" || extra.length === 0) return t;
+    const signalen = [...t.signalen, ...extra];
+    return { ...t, signalen, stemming: stemmingVoor(signalen, t.statusLeeftijdDagen) };
+  });
+  return { ...huis, teams, pakhuis: stand };
 }

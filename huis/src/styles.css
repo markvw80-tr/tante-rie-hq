@@ -391,3 +391,7 @@ button.schap.actief { border-color: var(--kleur-pim); background: var(--white); 
 @keyframes lamp-puls { 0%, 100% { opacity: 0.55; } 50% { opacity: 1; } }
 @keyframes lamp-knipper { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
 @media (prefers-reduced-motion: reduce) { .lamp-werkt .lamp-gloed, .lamp-mark .lamp-gloed, .lamp-mark .lamp-peer { animation: none; } }
+
+/* Pakhuis: lijst met wachtende leveringen en ontvangsten */
+.pakhuis-lijst { margin: 6px 0 0; padding-left: 1.1rem; display: grid; gap: 4px; }
+.pakhuis-lijst a { color: var(--kleur-inkoop); font-weight: 600; }

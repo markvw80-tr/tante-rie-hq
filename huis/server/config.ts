@@ -47,3 +47,7 @@ export function mailboxMap(hq: string): string {
   const main = path.join(hq, ".git", "mailbox-main", "team", "mailbox");
   return existsSync(main) ? main : path.join(hq, "team", "mailbox");
 }
+
+/** Inkoop-app (po-confirmations): adres van /api/pakhuis en de gedeelde sleutel, uit huis/.env. Leeg = uit. */
+export const PAKHUIS_URL = process.env.HUIS_PAKHUIS_URL ?? "";
+export const PAKHUIS_TOKEN = process.env.HUIS_PAKHUIS_TOKEN ?? "";

@@ -4,3 +4,5 @@ coverage/
 runs/
 *.tsbuildinfo
 data/
+.env
+node_modules

@@ -5,7 +5,8 @@ import { fileURLToPath } from "node:url";
 import { magLezen, magSchrijven, MAX_BODY } from "./beveiliging.ts";
 import { TailscaleWacht } from "./tailscale.ts";
 import { schijfBron } from "./bron.ts";
-import { API_PORT, GEEN_GIT, HOST, HQ, mailboxMap, TEAMS, WEB_PORT } from "./config.ts";
+import { API_PORT, GEEN_GIT, HOST, HQ, mailboxMap, PAKHUIS_TOKEN, PAKHUIS_URL, TEAMS, WEB_PORT } from "./config.ts";
+import { httpPakhuis } from "./pakhuis.ts";
 import { vandaagIso } from "./parsers/datum.ts";
 import { mailboxPostbode } from "./postbode.ts";
 import { schijfArchief } from "./archief.ts";
@@ -63,7 +64,9 @@ regie.on("wijziging", (r: { status?: string }) => {
   if (r && ["klaar", "fout", "gestopt"].includes(String(r.status))) void automaat.controleer().catch((e) => console.error("[huis] automaat na run mislukt:", e));
 });
 
-const omgeving = (): Omgeving => ({ bron: schijfBron, hq: HQ, mailbox: mailboxMap(HQ), teams: TEAMS, vandaag: vandaagIso(), postbode, regie, archief, ophaler, automaat, opAfstand: tailscale.opAfstand() });
+const pakhuis = PAKHUIS_URL && PAKHUIS_TOKEN ? httpPakhuis(PAKHUIS_URL, PAKHUIS_TOKEN) : undefined;
+if (!pakhuis) console.log("[huis] Pakhuis-stand uit: HUIS_PAKHUIS_URL of HUIS_PAKHUIS_TOKEN ontbreekt in huis/.env");
+const omgeving = (): Omgeving => ({ bron: schijfBron, hq: HQ, mailbox: mailboxMap(HQ), teams: TEAMS, vandaag: vandaagIso(), postbode, regie, archief, ophaler, automaat, opAfstand: tailscale.opAfstand(), pakhuis });
 
 function json(res: ServerResponse, status: number, body: unknown): void {
   res.writeHead(status, { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store" });

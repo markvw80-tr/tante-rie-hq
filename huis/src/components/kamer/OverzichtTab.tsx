@@ -1,9 +1,10 @@
-import type { Agenda, TeamStand } from "../../../shared/types.ts";
+import type { Agenda, PakhuisStand, TeamStand } from "../../../shared/types.ts";
 import { korteDatum } from "../../teamKleur.ts";
 import { AgendaKaart } from "../AgendaKaart.tsx";
 import { Kelder } from "./Kelder.tsx";
+import { PakhuisKaart } from "./PakhuisKaart.tsx";
 
-export function OverzichtTab({ team, agenda }: { readonly team: TeamStand; readonly agenda: Agenda | null }) {
+export function OverzichtTab({ team, agenda, pakhuis }: { readonly team: TeamStand; readonly agenda: Agenda | null; readonly pakhuis?: PakhuisStand | null }) {
   const meldingen = [...team.signalen, ...team.fouten];
   return (
     <>
@@ -21,6 +22,7 @@ export function OverzichtTab({ team, agenda }: { readonly team: TeamStand; reado
       </section>
 
       {team.pipeline && <Kelder fases={team.pipeline} />}
+      {team.id === "inkoop" && <PakhuisKaart stand={pakhuis} />}
       {team.id === "directie" && agenda && <AgendaKaart agenda={agenda} />}
 
       {team.statusHistorie.length > 0 && (

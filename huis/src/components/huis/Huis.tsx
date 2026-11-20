@@ -57,7 +57,12 @@ export function Huis({ huis, gekozen, onKies }: Props) {
           {t.id === "design" && <AtelierDecor />}
           {t.id === "seo" && <EtalageDecor />}
           {t.id === "pim" && t.pipeline && <KelderDecor fases={t.pipeline} />}
-          {t.id === "inkoop" && <PakhuisDecor dozen={t.mailbox?.inbox.length ?? 0} />}
+          {t.id === "inkoop" && (
+            <PakhuisDecor
+              dozen={huis.pakhuis ? huis.pakhuis.wachtend.length : 0}
+              bordje={huis.pakhuis ? `${huis.pakhuis.wachtend.length} wachten · ${huis.pakhuis.backorder.stuks} backorder` : undefined}
+            />
+          )}
         </TeamKamer>
       ))}
       <Kamer

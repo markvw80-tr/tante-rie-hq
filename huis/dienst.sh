@@ -5,7 +5,14 @@
 set -e
 cd "${0:A:h}"
 export HUIS_PORT=5310
-if [[ ! -f dist/index.html ]]; then
+# Lokale instellingen (o.a. adres en sleutel van de inkoop-app); staat niet in git.
+if [[ -f .env ]]; then
+  set -a
+  source ./.env
+  set +a
+fi
+# Frontend opnieuw bouwen als er nog geen build is of als de bronnen nieuwer zijn dan de build.
+if [[ ! -f dist/index.html ]] || [[ -n "$(find src shared index.html -newer dist/index.html -print -quit)" ]]; then
   npm run build
 fi
 exec npm start

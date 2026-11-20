@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { Agenda, MailboxTeam, RunSamenvatting, TeamStand } from "../../../shared/types.ts";
+import type { Agenda, MailboxTeam, PakhuisStand, RunSamenvatting, TeamStand } from "../../../shared/types.ts";
 import { useSchrijven } from "../../schrijven/SchrijfContext.tsx";
 import { TEAM_KLEUR, dagenTekst } from "../../teamKleur.ts";
 import { useTeamWerk } from "../../useTeamWerk.ts";
@@ -15,11 +15,12 @@ interface Props {
   readonly bijgewerkt: Date | null;
   readonly runs: readonly RunSamenvatting[];
   readonly onTerug: () => void;
+  readonly pakhuis?: PakhuisStand | null;
 }
 
 type Tab = "overzicht" | "post" | "werk" | "agents";
 
-export function TeamPaneel({ team, agenda, drempel, bijgewerkt, runs, onTerug }: Props) {
+export function TeamPaneel({ team, agenda, drempel, bijgewerkt, runs, onTerug, pakhuis }: Props) {
   const [tab, setTab] = useState<Tab>("overzicht");
   const { open: schrijf } = useSchrijven();
   const { werk, fout, opnieuw } = useTeamWerk(team.id, bijgewerkt);
@@ -63,7 +64,7 @@ export function TeamPaneel({ team, agenda, drempel, bijgewerkt, runs, onTerug }:
       </section>
 
       {fout && tab !== "overzicht" && tab !== "agents" && <p className="signaal">Werk van dit team laden mislukt: {fout}</p>}
-      {tab === "overzicht" && <OverzichtTab team={team} agenda={agenda} />}
+      {tab === "overzicht" && <OverzichtTab team={team} agenda={agenda} pakhuis={pakhuis} />}
       {tab === "post" && <PostTab gesprekken={werk?.gesprekken ?? null} team={team.id} drempel={drempel} onGewijzigd={opnieuw} />}
       {tab === "werk" && <WerkTab werk={werk} />}
       {tab === "agents" && <AgentsTab team={team} runs={runs} />}

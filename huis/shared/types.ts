@@ -107,6 +107,26 @@ export interface TeamStand {
   readonly fouten: readonly string[];
 }
 
+/** Stand van het Pakhuis, opgehaald uit de inkoop-app (po-confirmations op de NAS). */
+export interface PakhuisWachtend {
+  readonly id: string;
+  readonly leverancier: string;
+  readonly document: string;
+  readonly soort: string;
+  readonly binnen: string;
+  readonly dagen: number;
+  readonly regels: number;
+}
+
+export interface PakhuisStand {
+  readonly bijgewerkt: string;
+  readonly wachtend: readonly PakhuisWachtend[];
+  readonly backorder: { readonly bestellingen: number; readonly stuks: number; readonly oudste: { readonly poNumber: string; readonly leverancier: string; readonly dagen: number } | null };
+  readonly ontvangsten: ReadonlyArray<{ readonly wanneer: string; readonly leverancier: string; readonly document: string; readonly stuks: number }>;
+  /** Basisadres van de app, voor links naar het ontvangstscherm. */
+  readonly appUrl: string;
+}
+
 export interface HuisStand {
   readonly vandaag: string;
   readonly drempelDagen: number;
@@ -123,6 +143,8 @@ export interface HuisStand {
   readonly autoGoedkeuring?: boolean;
   /** Het Tailscale-adres waarop het huis ook buiten de deur te openen is, als tailscale serve aanstaat. */
   readonly opAfstand?: string | null;
+  /** Stand van het Pakhuis uit de inkoop-app; null als die niet bereikbaar of niet ingesteld is. */
+  readonly pakhuis?: PakhuisStand | null;
 }
 
 /** Het huis start zelf de lead van een team als er nieuwe post in de inbox ligt. */

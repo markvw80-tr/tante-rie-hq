@@ -55,8 +55,8 @@ const DOOS_PLEKKEN: ReadonlyArray<readonly [number, number, number]> = [
   [0, 1, 34], [38, 1, 30], [72, 1, 34], [0, 0, 30], [34, 0, 36], [74, 0, 28],
 ];
 
-/** Pakhuis: stelling met een doos per bericht in de inbox, een pakbon aan de spijker en een weegschaal. */
-export function PakhuisDecor({ dozen }: { readonly dozen: number }) {
+/** Pakhuis: stelling met een doos per wachtende levering, een bordje met de stand, een pakbon aan de spijker en een weegschaal. */
+export function PakhuisDecor({ dozen, bordje }: { readonly dozen: number; readonly bordje?: string }) {
   const { x, y, w, h } = KAMERS.inkoop;
   const sx = x + w - 122;
   const vloer = y + h - 8;
@@ -78,6 +78,14 @@ export function PakhuisDecor({ dozen }: { readonly dozen: number }) {
           </g>
         );
       })}
+      {bordje && (
+        <g>
+          <rect x={sx - 4} y={y + 40} width={120} height={16} rx={3} fill="#fff" stroke={DOOS_RAND} strokeWidth={1} />
+          <text x={sx + 56} y={y + 51.5} fontSize={9.5} textAnchor="middle" fill="#4e3622">
+            {bordje}
+          </text>
+        </g>
+      )}
       <circle cx={x + 34} cy={y + 64} r={2} fill="#6b6152" />
       <g transform={`rotate(4 ${x + 34} ${y + 64})`}>
         <rect x={x + 22} y={y + 66} width={24} height={32} fill="#faf8f2" stroke="#c8c4b8" />
