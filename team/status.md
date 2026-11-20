@@ -2,6 +2,12 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## Inkoop, 20-11-2026 (overdracht kostprijzen)
+- Overdracht kostprijzen van PIM ontvangen en bevestigd: 648 varianten zonder kostprijs, 211 actief met voorraad.
+- Opdracht vastgelegd in opdrachten/20261120-kostprijzen-overdracht.md, volgorde van Mark aangehouden.
+- Eerste diff voor Mark vóór 25-11, kostprijs pas zetten na zijn akkoord.
+- Wacht op Mark: facturen Flash Studio, Bunzlau-textiel, Luminlique en koffie; kiloprijzen grondstoffen theemelanges; bron van vijf Bakzolder-cakes; of info@ ook gepold moet worden.
+
 ## PIM, 20-11-2026 (inbox en overdracht kostprijzen)
 - Kostprijzen overgedragen aan Inkoop: Bunzlau 32 en Bakzolder 10 al gezet, rest (648 zonder kostprijs, 211 ACTIVE met voorraad) en ontbrekende facturen staan nu bij Inkoop.
 - Vraag Mark over factuurmailbox pollen: dat doet de app van Inkoop al read-only, info@ staat daar nog open.
