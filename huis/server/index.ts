@@ -58,6 +58,10 @@ const automaat = new Automaat({
   },
 });
 ophaler.naOphalen(() => automaat.controleer());
+// Is een run klaar, dan meteen kijken of er post ligt die tijdens die run binnenkwam (bijvoorbeeld een besluit van Mark).
+regie.on("wijziging", (r: { status?: string }) => {
+  if (r && ["klaar", "fout", "gestopt"].includes(String(r.status))) void automaat.controleer().catch((e) => console.error("[huis] automaat na run mislukt:", e));
+});
 
 const omgeving = (): Omgeving => ({ bron: schijfBron, hq: HQ, mailbox: mailboxMap(HQ), teams: TEAMS, vandaag: vandaagIso(), postbode, regie, archief, ophaler, automaat, opAfstand: tailscale.opAfstand() });
 

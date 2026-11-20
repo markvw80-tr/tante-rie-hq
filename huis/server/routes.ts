@@ -104,6 +104,7 @@ export async function behandelPost(pad: string, body: unknown, omg: Omgeving): P
         if (!bestaat) throw new OngeldigVerzoek("Het bericht waarop je antwoordt bestaat niet");
       }
       const { bestand } = await omg.postbode.stuur(verzending);
+      meldPost(omg);
       return { status: 201, body: { bestand, aan: verzending.aan } };
     }
     if (pad === "/api/besluit") {
@@ -115,6 +116,7 @@ export async function behandelPost(pad: string, body: unknown, omg: Omgeving): P
       if (!team) throw new OngeldigVerzoek("Kies naar welk team dit besluit gaat");
       const { onderwerp, tekst } = besluitBericht(besluit, verzoek.keuze, verzoek.toelichting);
       const { bestand } = await omg.postbode.stuur({ aan: team, onderwerp, tekst, prioriteit: "hoog", antwoordOp: null });
+      meldPost(omg);
       return { status: 201, body: { bestand, aan: team } };
     }
     if (omg.regie && pad.startsWith("/api/runs")) {
@@ -147,6 +149,11 @@ function automaatActie(body: unknown, automaat: Automaat): Antwoord {
   const stand = automaat.zet(aan, budget, limiet);
   if (aan) void automaat.controleer().catch((e) => console.error("[huis] automaat mislukt:", e));
   return { status: 200, body: stand };
+}
+
+/** Na een bericht van Mark kijkt de automaat meteen in de inboxen, in plaats van te wachten op de volgende ronde post ophalen. */
+function meldPost(omg: Omgeving): void {
+  void omg.automaat?.controleer().catch((e) => console.error("[huis] automaat na bericht van Mark mislukt:", e));
 }
 
 /** Toestemmingsvragen automatisch goedkeuren aan of uit. Live acties blijven altijd op Mark wachten. */

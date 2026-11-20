@@ -12,13 +12,24 @@ interface Props {
   readonly ariaLabel: string;
   readonly badge?: string;
   readonly stilBordje?: string;
+  /** Muurlampje: uit, post, post van Mark of aan het werk. */
+  readonly lamp?: LampStand;
   readonly onKies: () => void;
   readonly children?: ReactNode;
 }
 
 const MUUR = "#fbf6ea";
 
-export function Kamer({ vlak, titel, ondertitel, kleur, stemming, gekozen, ariaLabel, badge, stilBordje, onKies, children }: Props) {
+export type LampStand = "uit" | "post" | "mark" | "werkt";
+
+const LAMP: Record<LampStand, { readonly kleur: string; readonly tekst: string }> = {
+  uit: { kleur: "#c8c4b8", tekst: "Lampje uit: geen post" },
+  post: { kleur: "#f2b233", tekst: "Lampje amber: er ligt post" },
+  mark: { kleur: "#e8590c", tekst: "Lampje oranje: er ligt post van Mark die nog niet is opgepakt" },
+  werkt: { kleur: "#3fa34d", tekst: "Lampje groen: het team is aan het werk" },
+};
+
+export function Kamer({ vlak, titel, ondertitel, kleur, stemming, gekozen, ariaLabel, badge, stilBordje, lamp, onKies, children }: Props) {
   const { x, y, w, h } = vlak;
   const toets = (e: KeyboardEvent) => {
     if (e.key === "Enter" || e.key === " ") {
@@ -46,9 +57,33 @@ export function Kamer({ vlak, titel, ondertitel, kleur, stemming, gekozen, ariaL
         </text>
       </g>
 
+      {lamp && <Muurlamp x={x + 12 + bordjeBreedte + 22} y={y + 14} stand={lamp} id={titel} />}
       {badge && <Badge x={x + w - 12} y={y + 14} tekst={badge} kleur={kleur} />}
       {stilBordje && <StilBordje x={x + w - 12} y={y + (badge ? 46 : 14)} tekst={stilBordje} />}
       <rect className="kamer-rand" x={x} y={y} width={w} height={h} fill="none" stroke="transparent" rx={2} />
+    </g>
+  );
+}
+
+/** Wandlampje naast het naambordje. Brandt als er post ligt en pulseert als het team werkt. */
+function Muurlamp({ x, y, stand, id }: { readonly x: number; readonly y: number; readonly stand: LampStand; readonly id: string }) {
+  const { kleur, tekst } = LAMP[stand];
+  const gloedId = `lamp-gloed-${id.replace(/\W+/g, "-")}`;
+  const aan = stand !== "uit";
+  return (
+    <g className={`muurlamp lamp-${stand}`} transform={`translate(${x} ${y}) scale(1.5)`} aria-label={tekst}>
+      <title>{tekst}</title>
+      <defs>
+        <radialGradient id={gloedId}>
+          <stop offset="0%" stopColor={kleur} stopOpacity={0.75} />
+          <stop offset="100%" stopColor={kleur} stopOpacity={0} />
+        </radialGradient>
+      </defs>
+      {aan && <circle className="lamp-gloed" cx={0} cy={22} r={24} fill={`url(#${gloedId})`} />}
+      <rect x={-5} y={0} width={10} height={4} rx={1.5} fill="#6b4c30" />
+      <line x1={0} y1={4} x2={0} y2={11} stroke="#6b4c30" strokeWidth={1.6} />
+      <path d="M-9 11 h18 l-4 9 h-10 Z" fill="#6b4c30" />
+      <circle className="lamp-peer" cx={0} cy={23} r={4.5} fill={kleur} stroke={aan ? "#fff" : "#a39d8f"} strokeWidth={1} />
     </g>
   );
 }

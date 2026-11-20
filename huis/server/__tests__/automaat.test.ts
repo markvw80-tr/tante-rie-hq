@@ -89,6 +89,24 @@ describe("automaat", () => {
     expect(starts).toHaveLength(1);
   });
 
+  test("post van Mark slaat de rustperiode over: het team start meteen", async () => {
+    const vorige = { team: "seo" as const, tijd: new Date(NU.getTime() - 20 * 60_000).toISOString(), runId: "oud" };
+    const { automaat, starts } = opzet({ seo: [bericht("akkoord.md", "mark")] }, { starts: [vorige] });
+    await automaat.controleer();
+    expect(starts.map((s) => s.team)).toEqual(["seo"]);
+    expect(starts[0].opdracht).toContain("Er ligt post van Mark zelf");
+  });
+
+  test("post van Mark start niet als het team al werkt, en ook niet boven de daglimiet", async () => {
+    const bezig = opzet({ seo: [bericht("akkoord.md", "mark")] }, {}, [run("seo")]);
+    await bezig.automaat.controleer();
+    expect(bezig.starts).toHaveLength(0);
+    const vol = Array.from({ length: MAX_PER_DAG }, (_, i) => ({ team: "design" as const, tijd: new Date(NU.getTime() - (i + 2) * 60 * 60_000).toISOString(), runId: `d${i}` }));
+    const limiet = opzet({ seo: [bericht("akkoord.md", "mark")] }, { starts: vol });
+    await limiet.automaat.controleer();
+    expect(limiet.starts).toHaveLength(0);
+  });
+
   test("daglimiet: na acht automatische starts in 24 uur stopt het huis", async () => {
     const oud = Array.from({ length: MAX_PER_DAG }, (_, i) => ({ team: "design" as const, tijd: new Date(NU.getTime() - (i + 2) * 60 * 60_000).toISOString(), runId: `d${i}` }));
     const { automaat, starts } = opzet({ seo: [bericht("a.md")] }, { starts: oud });
@@ -197,5 +215,17 @@ describe("automaat in het huis", () => {
     expect(await behandelPost("/api/automaat", { aan: true, budgetUsd: 1 }, omg)).toMatchObject({ status: 200, body: { maxPerDag: 12 } });
     await new Promise((r) => setTimeout(r, 0));
     expect(starts.map((s) => s.team)).toEqual(["design"]);
+  });
+
+  test("een bericht van Mark vanuit het huis laat de automaat meteen kijken", async () => {
+    let gekeken = 0;
+    const omg = {
+      postbode: { stuur: async () => ({ bestand: "2026-11-20-x.md" }), ophalen: async () => undefined },
+      automaat: { controleer: async () => void gekeken++ },
+    } as unknown as Omgeving;
+    const r = await behandelPost("/api/opdracht", { aan: "design", onderwerp: "Verder met de punten", tekst: "Pak punt 2 en 3 op.", prioriteit: "normaal" }, omg);
+    expect(r.status).toBe(201);
+    await new Promise((x) => setTimeout(x, 0));
+    expect(gekeken).toBe(1);
   });
 });

@@ -382,3 +382,11 @@ button.schap.actief { border-color: var(--kleur-pim); background: var(--white); 
 .poort-wijziging pre { margin: 0; max-height: 320px; overflow: auto; background: var(--white); border: 1px solid var(--cream-dark); border-radius: var(--r-sm); padding: 8px 10px; font: 12.5px/1.45 ui-monospace, Menlo, monospace; white-space: pre-wrap; overflow-wrap: anywhere; }
 .poort-wijziging .weg { display: block; background: var(--error-bg); color: var(--error); }
 .poort-wijziging .erbij { display: block; background: var(--success-bg); color: var(--success); }
+
+/* Muurlampje per kamer */
+.muurlamp .lamp-gloed { transform-box: fill-box; transform-origin: center; }
+.lamp-werkt .lamp-gloed { animation: lamp-puls 2.4s ease-in-out infinite; }
+.lamp-mark .lamp-gloed, .lamp-mark .lamp-peer { animation: lamp-knipper 1.6s ease-in-out infinite; }
+@keyframes lamp-puls { 0%, 100% { opacity: 0.55; } 50% { opacity: 1; } }
+@keyframes lamp-knipper { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+@media (prefers-reduced-motion: reduce) { .lamp-werkt .lamp-gloed, .lamp-mark .lamp-gloed, .lamp-mark .lamp-peer { animation: none; } }

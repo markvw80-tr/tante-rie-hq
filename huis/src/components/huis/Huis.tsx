@@ -3,7 +3,7 @@ import { TEAM_HEX } from "../../teamKleur.ts";
 import { Buitenkant, Buizenpost } from "./Buitenkant.tsx";
 import { AtelierDecor, EtalageDecor, KantoorDecor, KelderDecor, ToonbankDecor } from "./Decor.tsx";
 import { Figuurtjes } from "./Figuurtjes.tsx";
-import { Kamer } from "./Kamer.tsx";
+import { Kamer, type LampStand } from "./Kamer.tsx";
 import { KAMERS, VIEWBOX, type Plek } from "./maten.ts";
 
 interface Props {
@@ -80,12 +80,14 @@ function TeamKamer({ team, gekozen, drempel, werk, onKies, children }: TeamKamer
   const vlak = KAMERS[team.id];
   const kleur = TEAM_HEX[team.id];
   const ongelezen = team.mailbox?.inbox.length ?? 0;
+  const lamp: LampStand = werk.size > 0 ? "werkt" : team.mailbox?.inbox.some((b) => b.van === "mark") ? "mark" : ongelezen > 0 ? "post" : "uit";
   const ruimte = LOOPRUIMTE[team.id];
   const stil = team.statusLeeftijdDagen !== null && team.statusLeeftijdDagen >= drempel ? `${team.statusLeeftijdDagen} dagen stil` : undefined;
   const label = [
     `${team.kamer}, team ${team.naam}`,
     `${team.agents.length} agents`,
     team.mailbox ? `${ongelezen} ongelezen berichten` : null,
+    lamp === "werkt" ? "aan het werk" : lamp === "mark" ? "post van Mark wacht" : null,
     team.signalen.join(". ") || null,
   ]
     .filter(Boolean)
@@ -102,6 +104,7 @@ function TeamKamer({ team, gekozen, drempel, werk, onKies, children }: TeamKamer
       ariaLabel={label}
       badge={ongelezen > 0 ? `${ongelezen} post` : undefined}
       stilBordje={stil}
+      lamp={lamp}
       onKies={onKies}
     >
       {children}
