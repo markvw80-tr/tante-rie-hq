@@ -2,6 +2,13 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## Inkoop, 20-11-2026 (beveiliging en ontvangst)
+- Lek gedicht: eigen pagina's van de app (o.a. artikelen aanmaken) waren via de Tailscale Funnel publiek zonder login; nu achter wachtwoord uit .env.
+- Ontvangstscherm en bijboeken in Shopify gebouwd en uitgerold (33 tests), dubbel boeken geblokkeerd met Receipt en idempotentiesleutel.
+- 54 oude bevestigingen op historisch; poller leunt niet meer op ongelezen en kijkt ook in Leveranciers/*.
+- Wacht op Mark: INKOOP_WACHTWOORD in .env, Shopify-rechten read_inventory, write_inventory en read_inventory_purchase_orders.
+- Nog niets naar de voorraad geschreven.
+
 ## Inkoop, 20-11-2026 (opzet afdeling)
 - Afdeling Inkoop (Pakhuis) opgezet op besluit van Mark: repo tante-rie-inkoop met de app po-confirmations, drie agents en een voorraadpoort.
 - Backup van app en database op de NAS gemaakt (20261120-1517).
