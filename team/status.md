@@ -2,6 +2,16 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## Design, 20-11-2026 (eenheidsprijs, Kies decor, USP-balk)
+- Verse werkkopie van live 205262029064 gehaald (.theme-werkkopie/live-2026-11-20).
+- Eenheidsprijs V127: staat al live (productpagina, productkaarten, winkelwagen). SEO bericht gestuurd, geen preview nodig. Of hij zichtbaar is hangt af van de eenheidsprijsmaat per variant (PIM-data).
+- Kies decor: op live staat al een mobiele regel (onder 700 px komt de knop op een eigen regel, volle breedte). Tussen 701 en 1100 px staan knop en prijs nog naast elkaar zonder afbreken, dat moet visueel gecontroleerd worden.
+- USP-balk: vermoedelijke oorzaak gevonden. Script zet bij elke scroll de top van de filterbalk opnieuw terwijl de USP-balk zelf sticky is, op mobiel is de balk drie regels hoog. Fix nog niet gebouwd.
+- Opruimlijst thema's op GitHub gezet (tante-rie-design main).
+- Wacht op Mark: akkoord per thema-id op de opruimlijst (11 voorstel weg, 3 twijfel).
+- Volgende stap: ontwikkelthema met fix USP-balk en eventueel Kies decor op tabletbreedte, screenshots, preview naar Mark.
+- Verbruik: ca. 0,60 USD.
+
 ## Inkoop, 20-11-2026 (overdracht kostprijzen)
 - Overdracht kostprijzen van PIM ontvangen en bevestigd: 648 varianten zonder kostprijs, 211 actief met voorraad.
 - Opdracht vastgelegd in opdrachten/20261120-kostprijzen-overdracht.md, volgorde van Mark aangehouden.
