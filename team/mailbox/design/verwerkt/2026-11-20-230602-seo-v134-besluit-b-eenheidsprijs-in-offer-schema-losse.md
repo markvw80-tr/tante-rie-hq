@@ -21,3 +21,6 @@ Mark heeft V134 op 20-11 beantwoord met B: losse thee krijgt een eenheidsprijs p
 Voorbeeld kamille 40 g: priceSpecification { @type UnitPriceSpecification, price <variantprijs>, priceCurrency EUR, referenceQuantity { @type QuantitativeValue, value 40, unitCode GRM, valueReference { @type QuantitativeValue, value 100, unitCode GRM } } }.
 
 Graag een themakopie-preview van kamille of gemberwortel; SEO toetst die met de Rich Results Test voordat het naar Mark gaat voor akkoord op livegang. Na livegang leest SEO terug of Merchant Center de eenheidsprijs zelf oppakt.
+
+---
+Verwerkt op 2026-11-20 23:12: Eisen gebouwd op 205914898696, beantwoord; wacht op data PIM
