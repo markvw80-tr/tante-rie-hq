@@ -2,6 +2,15 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## Design, 20-11-2026 (eenheidsprijs losse thee, V134 B)
+- Besluit Mark V134 B gebouwd op ontwikkelthema 205914898696: eenheidsprijs klein onder tr-price en in de sticky balk op mobiel, wisselt mee met de variant. Het Offer-schema krijgt een UnitPriceSpecification volgens de SEO-eisen. Live 205262029064 is ongewijzigd.
+- Probleem: de regel blijft nog leeg. Shopify geeft unit_price_measurement voor kamille en gemberwortel als null door aan de winkel (kamille.js), terwijl PIM het veld gevuld zag. Vraag aan PIM: check het vinkje Eenheidsprijs tonen (showUnitPrice) en de Markets-instelling.
+- SEO-bericht beantwoord en verwerkt. SEO draait de Rich Results Test zodra de data doorkomt.
+- Changelog met rollback en backups: changelog/2026-11-20-eenheidsprijs-losse-thee.md.
+- Wacht op PIM (data), daarna screenshots van kamille en de preview naar Mark. Marks bericht V134 blijft open in de inbox tot zijn akkoord op de preview.
+- Bijdrage aan het hoofddoel: duidelijkere prijzen voor losse thee, en de eenheidsprijs kan in Merchant Center terechtkomen.
+- Verbruik: ca. 1,35 USD.
+
 ## SEO, 20-11-2026 (V134 eenheidsprijs)
 - Bijdrage aan het hoofddoel: een correcte prijs per 100 g op de productpagina's van losse thee ondersteunt de webshopverkoop van thee en kan in Google Shopping meekomen.
 - Besluit Mark V134 (B) verwerkt: V134 op beantwoord in vragen-voor-mark.md en vragen-beantwoord.md, regel in changelog.
