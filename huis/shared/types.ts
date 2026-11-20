@@ -160,6 +160,28 @@ export interface HuisStand {
   readonly ik?: Persoon;
   /** Stand van het Pakhuis uit de inkoop-app; null als die niet bereikbaar of niet ingesteld is. */
   readonly pakhuis?: PakhuisStand | null;
+  /** De meterkast: of het huis en de agents gezond zijn (systeembeheer). */
+  readonly gezondheid?: GezondheidStand | null;
+}
+
+export type MeterKleur = "groen" | "oranje" | "rood";
+
+/** Eén controle in de meterkast. */
+export interface Meting {
+  readonly id: string;
+  readonly naam: string;
+  readonly kleur: MeterKleur;
+  /** Wat er aan de hand is, in gewone taal. */
+  readonly tekst: string;
+  /** Losse punten, bijvoorbeeld per team of per bestand. */
+  readonly details: readonly string[];
+}
+
+export interface GezondheidStand {
+  readonly bijgewerkt: string;
+  readonly metingen: readonly Meting[];
+  /** Laatste nieuws van de systeembeheerder: gestart, of waarom niet. */
+  readonly melding: string | null;
 }
 
 /** Het huis start zelf de lead van een team als er nieuwe post in de inbox ligt. */
@@ -309,4 +331,6 @@ export const PERSOON_NAAM: Readonly<Record<Persoon, string>> = { mark: "Mark", n
 export interface RunDetail extends RunSamenvatting {
   readonly regels: readonly RunRegel[];
   readonly resultaat: string | null;
+  /** De tools die de agent bij de start van de run had (uit het init-bericht van de SDK). */
+  readonly gereedschap?: readonly string[];
 }

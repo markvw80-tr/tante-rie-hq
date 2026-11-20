@@ -74,6 +74,13 @@ export class RunBeheer extends EventEmitter {
     return this.runs.get(id)?.run ?? null;
   }
 
+  /** De tools die de nieuwste run van dit team bij de start had (voor de meterkast). */
+  laatsteGereedschap(team: TeamId): readonly string[] | null {
+    const runs = [...this.runs.values()].map((l) => l.run).filter((r) => r.team === team && r.gereedschap?.length);
+    runs.sort((a, b) => b.gestart.localeCompare(a.gestart));
+    return runs[0]?.gereedschap ?? null;
+  }
+
   start(v: StartVerzoek): RunSamenvatting {
     const actief = this.actief();
     if (actief.length >= MAX_ACTIEF) throw new RegieFout(`Er draaien al ${MAX_ACTIEF} agents. Wacht tot er één klaar is.`);
@@ -98,7 +105,7 @@ export class RunBeheer extends EventEmitter {
     };
     const lopend: Lopend = { run, stop: new AbortController(), wachtend: null, rij: Promise.resolve() };
     this.runs.set(run.id, lopend);
-    const kop = v.bron === "huis" ? `Automatisch gestart door het Huis (nieuwe post) voor ${v.agent}` : `Opdracht van ${PERSOON_NAAM[v.bron ?? "mark"]} aan ${v.agent}`;
+    const kop = v.bron === "huis" ? `Automatisch gestart door het Huis (${v.agent === "systeembeheerder" ? "meterkast" : "nieuwe post"}) voor ${v.agent}` : `Opdracht van ${PERSOON_NAAM[v.bron ?? "mark"]} aan ${v.agent}`;
     this.voegToe(lopend, [{ t: nu, soort: "systeem", tekst: `${kop}: ${v.opdracht}` }]);
     void this.draai(lopend, v);
     return samenvat(run);
@@ -143,7 +150,8 @@ export class RunBeheer extends EventEmitter {
     try {
       const berichten = this.starter.start({ repo: v.repo, agent: v.agent, opdracht: v.opdracht, budgetUsd: v.budgetUsd, toestemming: this.toestemmingVoor(l, v.repo), signal: l.stop.signal });
       for await (const bericht of berichten) {
-        const { regels, afloop } = vertaal(bericht, this.klok().toISOString());
+        const { regels, afloop, gereedschap } = vertaal(bericht, this.klok().toISOString());
+        if (gereedschap) this.zet(l, { gereedschap });
         this.voegToe(l, regels);
         if (afloop) {
           this.zet(l, { status: afloop.gelukt ? "klaar" : "fout", kostenUsd: afloop.kostenUsd, resultaat: afloop.resultaat, budgetOp: afloop.budgetOp, geeindigd: this.klok().toISOString() });
@@ -248,6 +256,6 @@ export class RunBeheer extends EventEmitter {
 }
 
 function samenvat(r: RunDetail): RunSamenvatting {
-  const { regels: _r, resultaat: _res, ...rest } = r;
+  const { regels: _r, resultaat: _res, gereedschap: _g, ...rest } = r;
   return rest;
 }

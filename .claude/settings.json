@@ -1,10 +1,48 @@
 {
   "permissions": {
-    "allow": ["Read", "Glob", "Grep", "Bash(python3 scripts/directie_overzicht.py*)", "Bash(python3 scripts/mailbox.py lijst*)", "Bash(python3 scripts/mailbox.py lees*)"],
-    "deny": ["Read(.env)", "Bash(rm -rf*)", "Bash(git push --force*)"]
+    "allow": [
+      "Read",
+      "Glob",
+      "Grep",
+      "Bash(python3 scripts/directie_overzicht.py*)",
+      "Bash(python3 scripts/mailbox.py lijst*)",
+      "Bash(python3 scripts/mailbox.py lees*)",
+      "Bash(python3 scripts/mailbox.py verwerkt*)",
+      "Bash(python3 scripts/mailbox.py status --team directie*)",
+      "Bash(git -C * status*)",
+      "Bash(git -C * log*)",
+      "Bash(git -C * diff*)",
+      "Bash(git -C * fetch*)"
+    ],
+    "deny": [
+      "Read(.env)",
+      "Bash(rm -rf*)",
+      "Bash(git push --force*)"
+    ]
   },
   "hooks": {
-    "SessionStart": [{"matcher": "startup", "hooks": [{"type": "command", "command": "python3 \"$CLAUDE_PROJECT_DIR/scripts/directie_overzicht.py\"", "timeout": 40}]}],
-    "PreToolUse": [{"matcher": "Write|Edit", "hooks": [{"type": "command", "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/alleen_directie_schrijven.py\""}]}]
+    "SessionStart": [
+      {
+        "matcher": "startup",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/scripts/directie_overzicht.py\"",
+            "timeout": 40
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/alleen_directie_schrijven.py\""
+          }
+        ]
+      }
+    ]
   }
 }
