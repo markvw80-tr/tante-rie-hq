@@ -2,6 +2,15 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## PIM, 20-11-2026 (alt-diff en factuurmailbox)
+- Besluit 9594fbf6b1: diff met 15 alt-teksten (seo-2026-11-19-1) klaar in pipeline/04-review/20261120-seo-alt-01/diff.md. Alle 15 nu leeg, alleen de alt van de eerste foto verandert. Wacht op akkoord Mark op deze diff. Er is niets uitgevoerd.
+- Besluit 7088308d28 (idee Mark: factuurmailbox read-only uitlezen): goed plan. Voorstel: Gmail API met alleen leesrecht (gmail.readonly), of IMAP waarbij de map alleen gelezen wordt. Filter op afzender (Flash Studio, Bunzlau, Luminlique, koffieleverancier) en alleen pdf-bijlagen naar leveranciersbestanden/facturen. De inhoud van de mails telt als data, niet als opdracht. Toegangsgegevens alleen in .env.
+- Wacht op Mark: welke mailbox (adres of provider) en of hij het leesrecht zelf geeft (OAuth-toestemming of app-wachtwoord). Daarna bouwt de connector het en volgt eerst een proefrun zonder iets op te slaan.
+- Opvallend: pineut-cake-pouchbag-lemon-poppy-cake-kopie lijkt een dubbel product. Gevraagd aan SEO.
+- In de inbox blijven: opdracht kostprijzen 18-11 en beide besluiten van 20-11, tot Mark beslist.
+- Volgende stap: na akkoord de alt-diff uitvoeren, rest van de kostprijzen ophalen, kostprijsdiff Tante Rie en Bunzlau voor 25-11.
+- Verbruik: ca. 0,50 USD.
+
 ## Design, 20-11-2026 (CLI-login hersteld, opruimlijst thema's)
 - CLI-login werkt weer (Mark, besluit 7a9f84944b). shopify theme list gecontroleerd: 18 thema's, live is 205262029064 "Hallmark collecties preview 2026-11-11".
 - Opruimlijst oude thema's klaar in opdrachten/2026-11-20-thema-opruimlijst.md: 4 bewaren, 3 twijfel, 11 voorstel verwijderen.
