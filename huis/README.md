@@ -118,6 +118,17 @@ Productie: `npm run build && npm start` (alles op http://127.0.0.1:4310).
 
 Andere teammappen: zet `HUIS_SEO`, `HUIS_DESIGN` of `HUIS_PIM`. Andere poort: `HUIS_PORT`.
 
+## Als vaste dienst op de Mac (launchd)
+
+Het huis draait als achtergronddienst `nl.tanterie.huis`: het start bij het inloggen, start vanzelf opnieuw na een crash en draait los van de Claude-app. Productie op poort 5310 (`HUIS_PORT=5310`), dus dezelfde adressen als in ontwikkeling, ook via Tailscale. Logboek: `~/Library/Logs/tante-rie-huis/`.
+
+```bash
+cp huis/nl.tanterie.huis.plist ~/Library/LaunchAgents/
+launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/nl.tanterie.huis.plist
+```
+
+Na een codewijziging: `npm --prefix huis run build` en dan `launchctl kickstart -k gui/$(id -u)/nl.tanterie.huis` (onderbreekt een lopende agent, dus eerst kijken of er een draait). Stoppen: `launchctl bootout gui/$(id -u)/nl.tanterie.huis`. Wil je weer `npm run dev` gebruiken, stop dan eerst de dienst.
+
 ## Testen
 
 ```bash

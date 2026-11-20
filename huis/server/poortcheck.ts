@@ -15,7 +15,8 @@ function isBezet(poort: number): Promise<boolean> {
  * Draait vóór `npm run dev`. Zo start het huis nooit half: als de server of de webpagina al draait,
  * stopt alles meteen met een duidelijke melding in plaats van een tweede, kapot exemplaar.
  */
-const bezet = (await Promise.all([API_PORT, WEB_PORT].map(async (p) => ((await isBezet(p)) ? p : null)))).filter((p) => p !== null);
+// In productie kunnen API en web op dezelfde poort draaien (HUIS_PORT=5310): die poort maar één keer proberen.
+const bezet = (await Promise.all([...new Set([API_PORT, WEB_PORT])].map(async (p) => ((await isBezet(p)) ? p : null)))).filter((p) => p !== null);
 
 if (bezet.length > 0) {
   const wat = bezet.length > 1 ? `Poorten ${bezet.join(" en ")} zijn` : `Poort ${bezet[0]} is`;
