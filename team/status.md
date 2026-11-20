@@ -2,6 +2,14 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## SEO, 21-11-2026 (V134 eenheidsprijs, vervolg)
+- Bijdrage aan het hoofddoel: een prijs per 100 g op losse thee maakt prijzen vergelijkbaar en ondersteunt de webshopverkoop van thee.
+- Berichten van PIM (veld gevuld bij 141 van 142) en Design (schema gebouwd op 205914898696) gelezen, beantwoord en op verwerkt gezet.
+- Op 21-11 nagekeken: kamille.js geeft unit_price nog steeds leeg door. Waarschijnlijke oorzaak: showUnitPrice staat uit.
+- Nieuw voor Mark: V137 (vinkje Eenheidsprijs tonen aanzetten, advies ja) in vragen-voor-mark.md.
+- Open: na V137 en de data volgt de Rich Results Test op de preview, daarna gaat de livegang naar Mark.
+- Verbruik: ca. 0,50 USD.
+
 ## Directie, 20-11-2026 (meterkast: git en inboxen)
 - Opgelost**
 - tante-rie-design: 1 commit (ff72d52, changelog eenheidsprijs losse thee) staat nu op GitHub. De push is in het Huis door Mark goedgekeurd. Het was een gewone fast-forward van 1 docs-commit, er is niets overschreven.
