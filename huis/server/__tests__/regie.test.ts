@@ -52,6 +52,7 @@ describe("vertaal", () => {
   test("tekst, tool, resultaat en afloop", () => {
     const nu = "2026-11-16T20:00:00.000Z";
     expect(vertaal({ type: "system", subtype: "init", model: "claude-opus-5-5" }, nu).regels[0].tekst).toContain("claude-opus-5-5");
+    expect(vertaal({ type: "system", subtype: "init", model: "m", tools: ["Read", "mcp__x__y", 3] }, nu).gereedschap).toEqual(["Read", "mcp__x__y"]);
     const a = vertaal({ type: "assistant", message: { content: [{ type: "text", text: "Ik kijk." }, { type: "tool_use", name: "Read", input: { file_path: "x" } }] } }, nu);
     expect(a.regels.map((r) => r.soort)).toEqual(["tekst", "tool"]);
     const u = vertaal({ type: "user", message: { content: [{ type: "tool_result", is_error: true, content: [{ type: "text", text: "nee" }] }] } }, nu);
@@ -114,6 +115,21 @@ describe("RunBeheer", () => {
     const klaar = beheer.detail(run.id)!;
     expect(klaar.status).toBe("klaar");
     expect(klaar.regels.some((r) => r.soort === "besluit" && r.tekst.startsWith("Geweigerd"))).toBe(true);
+  });
+
+  test("tools uit het init-bericht worden onthouden per team, maar niet in de samenvatting", async () => {
+    const beheer = new RunBeheer(
+      nepStarter(async function* () {
+        yield { type: "system", subtype: "init", model: "m", tools: ["Read", "mcp__shop__graphql_query"] };
+        yield { type: "result", subtype: "success", is_error: false, total_cost_usd: 0.01, result: "" };
+      }),
+      geheugenOpslag(),
+    );
+    beheer.start(verzoek);
+    await wacht();
+    expect(beheer.laatsteGereedschap("pim")).toEqual(["Read", "mcp__shop__graphql_query"]);
+    expect(beheer.laatsteGereedschap("seo")).toBeNull();
+    expect("gereedschap" in beheer.lijst()[0]).toBe(false);
   });
 
   test("run die op budget stopt krijgt de vlag budgetOp", async () => {

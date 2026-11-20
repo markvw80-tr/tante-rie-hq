@@ -23,6 +23,9 @@ import { schijfGoedkeuring } from "./regie/goedkeuring.ts";
 import { schijfOpslag } from "./regie/opslag.ts";
 import { runId } from "./regie/routes.ts";
 import { sdkStarter } from "./regie/sdkStarter.ts";
+import { CONTROLE_MS, schijfBeheer, Systeembeheer } from "./gezondheid.ts";
+import { leesAgentTools, leesInboxen, leesLogin, leesRepos, leesSchijfVrijGb } from "./gezondheidBronnen.ts";
+import { MAIL_TEAMS } from "../shared/types.ts";
 import type { MailboxTeam, RunRegel, RunSamenvatting } from "../shared/types.ts";
 
 const DIST = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "dist");
@@ -79,7 +82,23 @@ const meldAanPim = () =>
     .then((n) => n && console.log(`[huis] ${n} nieuw(e) artikel(en) gemeld aan PIM`))
     .catch((e) => console.error("[huis] melden nieuwe artikelen aan PIM mislukt:", e));
 const toegang = schijfToegang(path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "data", "toegang.json"));
-const omgeving = (persoon: Persoon = "mark"): Omgeving => ({ persoon, bron: schijfBron, hq: HQ, mailbox: mailboxMap(HQ), teams: TEAMS, vandaag: vandaagIso(), postbode, regie, archief, ophaler, automaat, opAfstand: tailscale.opAfstand(), pakhuis });
+// De meterkast: elke 10 minuten controleren of het huis en de agents gezond zijn; bij nieuwe problemen start de systeembeheerder.
+const systeembeheer = new Systeembeheer(
+  {
+    login: leesLogin,
+    runs: () => regie.lijst(),
+    gereedschap: (team) => regie.laatsteGereedschap(team),
+    agentTools: () => leesAgentTools(schijfBron, TEAMS),
+    repos: () => leesRepos(TEAMS),
+    inbox: () => leesInboxen(schijfBron, mailboxMap(HQ), MAIL_TEAMS),
+    ...(pakhuis ? { pakhuis: async () => (await pakhuis.stand()).bereikbaar } : {}),
+    schijfVrijGb: () => leesSchijfVrijGb(),
+  },
+  { regie, repo: HQ, opslag: schijfBeheer(path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "data", "systeembeheer.json")) },
+);
+const controleerGezondheid = () => void systeembeheer.controleer().catch((e) => console.error("[huis] meterkast mislukt:", e));
+
+const omgeving = (persoon: Persoon = "mark"): Omgeving => ({ persoon, bron: schijfBron, hq: HQ, mailbox: mailboxMap(HQ), teams: TEAMS, vandaag: vandaagIso(), postbode, regie, archief, ophaler, automaat, opAfstand: tailscale.opAfstand(), pakhuis, systeembeheer });
 
 function json(res: ServerResponse, status: number, body: unknown): void {
   res.writeHead(status, { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store" });
@@ -192,6 +211,10 @@ server.listen(API_PORT, HOST, () => {
   if (pimMelder) {
     meldAanPim();
     setInterval(meldAanPim, MELD_INTERVAL_MS).unref();
+  }
+  if (!GEEN_GIT) {
+    controleerGezondheid();
+    setInterval(controleerGezondheid, CONTROLE_MS).unref();
   }
   console.log(`[huis] luistert op http://${HOST}:${API_PORT} (alleen deze Mac)`);
   console.log(`[huis] hq: ${HQ}, post uit ${mailboxMap(HQ)}${GEEN_GIT ? ", zandbak zonder git" : ""}`);

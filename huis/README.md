@@ -90,7 +90,8 @@ Op de toonbank staat de kaart **Post automatisch laten oppakken**, standaard uit
 - **Grenzen:** geen start als dat team al werkt; nooit meer dan 3 agents tegelijk; hooguit 8 automatische starts per 24 uur; per team minstens 60 minuten tussen twee automatische starts. Het budget per run kies je op de kaart ($0,50 tot $5).
 - **Geen herhaling:** post die na een run in de inbox blijft staan (bijvoorbeeld omdat hij op Mark wacht), start het team geen tweede keer. Alleen nieuwe berichten doen dat.
 - **De poort blijft:** live acties en acties die toestemming vragen wachten ook bij een automatische run op jou. Zo'n run staat in de regie met het label *automatisch*.
-- Instelling en geschiedenis staan in `huis/data/automaat.json` (niet in git). In de zandbak (`HUIS_GEEN_GIT=1`) wordt er niet automatisch opgehaald, dus ook niet automatisch gestart.
+- Instelling en geschiedenis staan in `huis/data/automaat.json` (niet in git).
+- Meterkast en systeembeheerder: zie de README in de hoofdmap. Wat al gemeld is en wanneer de beheerder startte, staat in `huis/data/systeembeheer.json` (niet in git). In de zandbak (`HUIS_GEEN_GIT=1`) wordt er niet automatisch opgehaald, dus ook niet automatisch gestart.
 
 ## Buiten de deur via Tailscale
 

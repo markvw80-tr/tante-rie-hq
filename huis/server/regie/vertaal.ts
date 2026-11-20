@@ -13,12 +13,13 @@ export interface Afloop {
 }
 
 /** Zet een bericht uit de Agent SDK om naar logregels. Onbekende soorten worden overgeslagen. */
-export function vertaal(bericht: unknown, nu: string): { regels: RunRegel[]; afloop: Afloop | null } {
+export function vertaal(bericht: unknown, nu: string): { regels: RunRegel[]; afloop: Afloop | null; gereedschap?: string[] } {
   if (!isObj(bericht)) return { regels: [], afloop: null };
   const regel = (soort: RunRegel["soort"], tekst: string): RunRegel => ({ t: nu, soort, tekst: kort(tekst) });
 
   if (bericht.type === "system" && bericht.subtype === "init") {
-    return { regels: [regel("systeem", `Gestart met ${String(bericht.model ?? "model onbekend")}`)], afloop: null };
+    const gereedschap = Array.isArray(bericht.tools) ? bericht.tools.filter((t): t is string => typeof t === "string") : undefined;
+    return { regels: [regel("systeem", `Gestart met ${String(bericht.model ?? "model onbekend")}`)], afloop: null, gereedschap };
   }
   if ((bericht.type === "assistant" || bericht.type === "user") && isObj(bericht.message) && Array.isArray(bericht.message.content)) {
     const regels = bericht.message.content.flatMap((blok: unknown): RunRegel[] => {
