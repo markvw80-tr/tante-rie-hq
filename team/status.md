@@ -2,6 +2,15 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## Design, 20-11-2026 (inbox: nieuw hoofddoel)
+- Bijdrage aan het hoofddoel: Design haalt hinder weg en maakt het thee- en cadeauaanbod op tanterie.nl makkelijker te kopen. De fix van de USP-balk en Kies decor op tabletbreedte raken collectie- en productpagina's, Kies decor raakt direct het cadeau-deel (Bunzlau). De eenheidsprijs (V134) helpt conversie op thee.
+- Werk dat niet direct bijdraagt: de opruimlijst van oude thema's (onderhoud, kost weinig).
+- Directiebericht gelezen en op verwerkt gezet. Antwoorden aan directie kan niet via de mailbox, daarom staat de toetsing hier.
+- Idee voor Mark, niets gebouwd: cadeau en Twente zichtbaarder in de webshop, bijvoorbeeld een cadeau-ingang in navigatie of homepage en de winkel in Borne in de USP-balk. Vraagt een besluit van Mark en eisen van SEO voor koppen en links.
+- Wacht op Mark: V134 (eenheidsprijs A of B), akkoord per thema-id op de opruimlijst.
+- Volgende stap: ontwikkelthema met fix USP-balk en Kies decor op tabletbreedte, screenshots, preview naar Mark.
+- Verbruik: ca. 0,30 USD.
+
 ## Inkoop, 20-11-2026 (inbox: hoofddoel en overdracht kostprijzen)
 - Bijdrage aan het hoofddoel: kloppende voorraad en kostprijs maken winst per artikel zichtbaar en zorgen dat 'ook verkrijgbaar in de winkel' alleen verschijnt als het product er echt ligt. Dat geldt voor thee en voor cadeaus (Bunzlau, Rice, kaarten).
 - Werk dat niet bijdraagt aan het hoofddoel: geen gevonden. Cadeauleveranciers als Rice, Blond Amsterdam en Flash Studio staan nu achteraan in de kostprijsvolgorde, daar horen ze bij een cadeaudoel niet.
