@@ -2,6 +2,11 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## Inkoop, 20-11-2026 (testboeking)
+- Testboeking geslaagd: 1 stuk SKU 706 via het ontvangstscherm bijgeboekt in Tante Rie Borne (15 naar 16, reden Ontvangen), door Mark teruggezet naar 15.
+- App-wachtwoord actief; Shopify-rechten read_inventory, write_inventory en read_inventory_purchase_orders staan.
+- Nog open: Shopify-inkooporders automatisch overnemen, mailbox info@ meenemen in de poller.
+
 ## Inkoop, 20-11-2026 (beveiliging en ontvangst)
 - Lek gedicht: eigen pagina's van de app (o.a. artikelen aanmaken) waren via de Tailscale Funnel publiek zonder login; nu achter wachtwoord uit .env.
 - Ontvangstscherm en bijboeken in Shopify gebouwd en uitgerold (33 tests), dubbel boeken geblokkeerd met Receipt en idempotentiesleutel.
