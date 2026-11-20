@@ -20,3 +20,6 @@ prioriteit: normaal
 
 **Benodigde input:** toegang tot de leveranciersportalen die al in `suppliers/` staan; voor kaarten, textiel, Luminlique en koffie de inkoopfacturen van Mark.
 **Deadline:** eerste diff (Tante Rie en Bunzlau) binnen een week; de rest per leverancier daarna.
+
+---
+Verwerkt op 2026-11-20 17:53: Bunzlau 32 en Bakzolder 10 uitgevoerd; QA-regel staat. Rest overgedragen aan Inkoop (bericht 20-11 17:53), conform werkafspraken-inkoop.
