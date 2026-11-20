@@ -20,12 +20,19 @@ describe("mailboxPostbode met het echte mailbox.py (zonder git)", () => {
     const { bestand } = await postbode.stuur({ aan: "pim", onderwerp: "Test vanuit het huis", tekst, prioriteit: "hoog", antwoordOp: null });
 
     const inbox = path.join(zandbak, "team/mailbox/pim/inbox");
-    expect(readdirSync(inbox)).toEqual([bestand]);
+    expect(readdirSync(inbox)).toContain(bestand);
     const inhoud = readFileSync(path.join(inbox, bestand), "utf8");
     expect(inhoud).toContain("van: mark\naan: pim");
     expect(inhoud).toContain("prioriteit: hoog");
     expect(inhoud).toContain(tekst);
     await expect(postbode.ophalen()).resolves.toBeUndefined();
+  });
+
+  test("schrijft een automatische melding van inkoop", async () => {
+    const postbode = mailboxPostbode(zandbak, true);
+    const { bestand } = await postbode.stuur({ van: "inkoop", aan: "pim", onderwerp: "1 nieuw artikel aanmaken (Geels)", tekst: "| GE-1 |", prioriteit: "normaal", antwoordOp: null });
+    const inhoud = readFileSync(path.join(zandbak, "team/mailbox/pim/inbox", bestand), "utf8");
+    expect(inhoud).toContain("van: inkoop\naan: pim");
   });
 
   test("mailbox.py weigert --van mark buiten het huis", () => {

@@ -7,6 +7,7 @@ import { TailscaleWacht } from "./tailscale.ts";
 import { schijfBron } from "./bron.ts";
 import { API_PORT, GEEN_GIT, HOST, HQ, mailboxMap, PAKHUIS_TOKEN, PAKHUIS_URL, TEAMS, WEB_PORT } from "./config.ts";
 import { httpPakhuis } from "./pakhuis.ts";
+import { MELD_INTERVAL_MS, PimMelder, schijfMelderOpslag } from "./pimMelder.ts";
 import { vandaagIso } from "./parsers/datum.ts";
 import { mailboxPostbode } from "./postbode.ts";
 import { schijfArchief } from "./archief.ts";
@@ -66,6 +67,15 @@ regie.on("wijziging", (r: { status?: string }) => {
 
 const pakhuis = PAKHUIS_URL && PAKHUIS_TOKEN ? httpPakhuis(PAKHUIS_URL, PAKHUIS_TOKEN) : undefined;
 if (!pakhuis) console.log("[huis] Pakhuis-stand uit: HUIS_PAKHUIS_URL of HUIS_PAKHUIS_TOKEN ontbreekt in huis/.env");
+// Artikelen op een inkooporder die niet in Shopify staan: één keer melden aan PIM (bericht van Inkoop).
+const pimMelder = pakhuis
+  ? new PimMelder({ pakhuis, postbode, opslag: schijfMelderOpslag(path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "data", "pim-meldingen.json")) })
+  : null;
+const meldAanPim = () =>
+  void pimMelder
+    ?.controleer()
+    .then((n) => n && console.log(`[huis] ${n} nieuw(e) artikel(en) gemeld aan PIM`))
+    .catch((e) => console.error("[huis] melden nieuwe artikelen aan PIM mislukt:", e));
 const omgeving = (): Omgeving => ({ bron: schijfBron, hq: HQ, mailbox: mailboxMap(HQ), teams: TEAMS, vandaag: vandaagIso(), postbode, regie, archief, ophaler, automaat, opAfstand: tailscale.opAfstand(), pakhuis });
 
 function json(res: ServerResponse, status: number, body: unknown): void {
@@ -175,6 +185,10 @@ server.on("error", (e: NodeJS.ErrnoException) => {
 server.listen(API_PORT, HOST, () => {
   ophaler.start();
   tailscale.start();
+  if (pimMelder) {
+    meldAanPim();
+    setInterval(meldAanPim, MELD_INTERVAL_MS).unref();
+  }
   console.log(`[huis] luistert op http://${HOST}:${API_PORT} (alleen deze Mac)`);
   console.log(`[huis] hq: ${HQ}, post uit ${mailboxMap(HQ)}${GEEN_GIT ? ", zandbak zonder git" : ""}`);
 });
