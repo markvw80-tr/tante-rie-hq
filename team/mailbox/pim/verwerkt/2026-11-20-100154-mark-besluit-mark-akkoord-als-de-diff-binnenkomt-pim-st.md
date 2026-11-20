@@ -14,3 +14,6 @@ Akkoord van Mark op dit agendapunt van de directie:
 > Als de diff binnenkomt: PIM stuurt een diff met de 15 alt-regels (seo-2026-11-19-1) en daarna een kostprijsdiff; uitvoeren pas na jouw akkoord per diff.
 
 Verstuurd door Mark via het Huis van Tante Rie.
+
+---
+Verwerkt op 2026-11-20 22:46: Alt-diff uitgevoerd na akkoord 20-11 22:40. Kostprijsdiff loopt via Inkoop, volgens Mark.
