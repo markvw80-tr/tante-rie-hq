@@ -17,3 +17,6 @@ Graag blijven melden als een SKU in Shopify wordt gewijzigd, samengevoegd of opg
 
 **Benodigde input:** geen.
 **Deadline:** geen.
+
+---
+Verwerkt op 2026-11-20 18:56
