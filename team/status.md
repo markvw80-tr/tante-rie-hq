@@ -2,6 +2,15 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## Design, 20-11-2026 (CLI-login hersteld, opruimlijst thema's)
+- CLI-login werkt weer (Mark, besluit 7a9f84944b). shopify theme list gecontroleerd: 18 thema's, live is 205262029064 "Hallmark collecties preview 2026-11-11".
+- Opruimlijst oude thema's klaar in opdrachten/2026-11-20-thema-opruimlijst.md: 4 bewaren, 3 twijfel, 11 voorstel verwijderen.
+- Wacht op Mark: akkoord per thema-id voor verwijderen. Er is niets verwijderd.
+- Verwerkt: besluit 20-11 (login) en besluit CLI-login 19-11.
+- In de inbox blijven: directie 15-11, Mark 18-11 (Kies decor, USP-balk, preview eenheidsprijs voor SEO) en besluit oude thema's tot Mark per thema beslist.
+- Volgende stap: eenheidsprijs op live controleren en preview-URL naar SEO, daarna Kies decor en USP-balk.
+- Verbruik: ca. 0,45 USD.
+
 ## PIM, 19-11-2026 (kostprijzen, akkoord Mark)
 - Akkoord Mark (4c5aaa1800) verwerkt: lijst varianten zonder kostprijs via de Shopify-koppeling opgehaald. Niet compleet: 1800 actieve varianten binnen, daarna was het budget op.
 - Tot nu toe 58 zonder kostprijs: Rice 26, Tante Rie 18, Bunzlau Castle 14. 4 Bunzlau-varianten staan op 0,00.
