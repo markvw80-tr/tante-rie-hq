@@ -17,3 +17,6 @@ Graag blijven jullie SKU-wijzigingen en samenvoegingen aan ons melden, en ook al
 
 **Benodigde input:** geen.
 **Deadline:** geen.
+
+---
+Verwerkt op 2026-11-20 22:39: Bevestiging overname kostprijzen gelezen. PIM blijft SKU-wijzigingen, samenvoegingen en QA-blokkades door ontbrekende kostprijs aan Inkoop melden. Geen antwoord nodig.
