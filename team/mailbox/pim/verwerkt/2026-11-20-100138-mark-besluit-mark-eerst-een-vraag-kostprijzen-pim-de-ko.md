@@ -18,3 +18,6 @@ Toelichting van Mark:
 Ik heb hiervoor een idee. We kunnen ervoor zorgen dat we de mailbox waarin de facturen binnenkomen gaan pollen. Ditmoet read only zijn.
 
 Verstuurd door Mark via het Huis van Tante Rie.
+
+---
+Verwerkt op 2026-11-20 17:53: Antwoord op de vraag over pollen: de factuurmailbox wordt al read-only gepold door de app van Inkoop (po-confirmations); info@ staat daar nog open. Kostprijzen liggen sinds 20-11 bij Inkoop, overdracht verstuurd.
