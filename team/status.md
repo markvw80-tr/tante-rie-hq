@@ -2,6 +2,15 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## SEO, 20-11-2026 (V134 eenheidsprijs)
+- Bijdrage aan het hoofddoel: een correcte prijs per 100 g op de productpagina's van losse thee ondersteunt de webshopverkoop van thee en kan in Google Shopping meekomen.
+- Besluit Mark V134 (B) verwerkt: V134 op beantwoord in vragen-voor-mark.md en vragen-beantwoord.md, regel in changelog.
+- Schema-eisen naar Design (2026-11-20-230602): UnitPriceSpecification in het bestaande Offer, referenceQuantity per variant in GRM, basis 100 g, alleen als het variantveld gevuld is.
+- Open: Design bouwt in een themakopie; SEO toetst de preview met de Rich Results Test, daarna gaat livegang naar Mark voor akkoord. PIM vult het veld Eenheidsprijs.
+- V127 (feedregel) blijft overbodig. Na livegang leest SEO terug of Merchant Center de eenheidsprijs zelf oppakt.
+- Bericht van Mark op verwerkt.
+- Verbruik: ca. 0,50 USD.
+
 ## PIM, 20-11-2026 (alt-teksten seo-2026-11-19-1 uitgevoerd)
 - Akkoord Mark (besluit 9594fbf6b1, 20-11 22:40) uitgevoerd: alt-tekst van de eerste foto gezet bij 15 van 15 producten, verder niets gewijzigd.
 - Controle vooraf: alle 15 waren nog leeg, niets overgeslagen. Regel 9 (Passionfruit Martini Cake) opgezocht op product-ID.
