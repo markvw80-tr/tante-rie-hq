@@ -25,7 +25,7 @@ import subprocess
 import sys
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-TEAMS = ("seo", "pim", "design")
+TEAMS = ("seo", "pim", "design", "inkoop")
 SENDERS = TEAMS + ("directie", "mark")  # mark: besluit of opdracht van Mark zelf, via het Huis
 BRANCH = "main"
 ROOT = REPO  # wordt de werkkopie van main zodra git gebruikt wordt
@@ -157,7 +157,7 @@ def cmd_verwerkt(a):
     print("Verplaatst naar " + os.path.relpath(doel, ROOT))
 
 
-STATUS_LABEL = {"seo": "SEO", "pim": "PIM", "design": "Design", "directie": "Directie"}
+STATUS_LABEL = {"seo": "SEO", "pim": "PIM", "design": "Design", "inkoop": "Inkoop", "directie": "Directie"}
 MAX_STATUSREGELS = 10
 
 

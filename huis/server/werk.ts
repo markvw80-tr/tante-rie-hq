@@ -1,5 +1,6 @@
+import { MAIL_TEAMS } from "../shared/types.ts";
 import path from "node:path";
-import type { BatchInhoud, Bericht, DocInfo, DocumentInhoud, MailboxTeam, TeamWerk, WerkBronInfo } from "../shared/types.ts";
+import type { BatchInhoud, Bericht, DocInfo, DocumentInhoud, TeamWerk, WerkBronInfo } from "../shared/types.ts";
 import type { Bron } from "./bron.ts";
 import { pasArchiefToe, type Archief } from "./archief.ts";
 import { PIPELINE_FASES, type TeamConfig } from "./config.ts";
@@ -8,7 +9,6 @@ import { bouwGesprekken } from "./parsers/gesprekken.ts";
 import { parseBericht } from "./parsers/mailbox.ts";
 import { MAX_DOCUMENTEN, MAX_TEKENS, WERKBRONNEN, type WerkBronConfig } from "./werkbronnen.ts";
 
-const MAIL_TEAMS: readonly MailboxTeam[] = ["seo", "pim", "design"];
 const MAPPEN: readonly Bericht["map"][] = ["inbox", "verwerkt"];
 const AGENT_NAAM = /^[a-z0-9][a-z0-9-]*$/;
 

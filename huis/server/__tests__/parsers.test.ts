@@ -85,6 +85,10 @@ describe("status", () => {
     expect(seo.regels).toEqual(["Gedaan: alt-audit.", "Volgende stap: rapport."]);
     expect(design.regels).toEqual(["Live gezet. vervolgregel"]);
   });
+  test("herkent statusblokken van Inkoop", () => {
+    const [blok] = parseStatus("## Inkoop, 20-11-2026 (opzet)\n- Pakhuis ingericht.");
+    expect([blok.team, blok.datum, blok.titel, blok.regels]).toEqual(["inkoop", "2026-11-20", "opzet", ["Pakhuis ingericht."]]);
+  });
 });
 
 describe("mailbox", () => {

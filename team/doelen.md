@@ -1,6 +1,6 @@
 # Gedeelde doelen Tante Rie
 
-Eén bron voor wat de drie teams samen bereiken. Elk team verwijst hiernaar en schrijft zijn eigen werk daaraan vast. Wijzigingen alleen met akkoord van Mark. Bij elk punt staat waar het vandaan komt.
+Eén bron voor wat de vier teams samen bereiken. Elk team verwijst hiernaar en schrijft zijn eigen werk daaraan vast. Wijzigingen alleen met akkoord van Mark. Bij elk punt staat waar het vandaan komt.
 
 ## Bedrijfsdoel
 
@@ -21,6 +21,7 @@ Search Console-klikken, acties in het Bedrijfsprofiel en waar mogelijk kassaomze
 - SEO: onderzoekt en adviseert, levert opdrachten aan PIM en Design, meet het effect (werkafspraken-seo.md).
 - PIM: zorgt dat productinformatie gecontroleerd binnenkomt, in de merkstem staat en als concept in Shopify komt; niets live zonder Mark (CLAUDE.md van tante-rie-pim).
 - Design: laat tanterie.nl er beter uitzien, beter werken en beter converteren binnen de merkstijl (CLAUDE.md van tante-rie-design).
+- Inkoop: zorgt dat leveringen kloppend als voorraad en kostprijs in Shopify komen, na fysiek afvinken in de winkel; een agent boekt nooit zelf voorraad (besluit Mark 20-11-2026, werkafspraken-inkoop.md).
 
 ## Gedeelde regels
 

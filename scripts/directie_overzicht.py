@@ -15,7 +15,7 @@ import sys
 from pathlib import Path
 
 HQ = Path(__file__).resolve().parent.parent
-TEAMS = ("seo", "pim", "design")
+TEAMS = ("seo", "pim", "design", "inkoop")
 DREMPEL = 3
 vandaag = datetime.date.today()
 
@@ -65,7 +65,7 @@ for naam in ("seo-naar-pim", "pim-naar-seo"):
 print("\nLaatste statusblok per team:")
 laatste = {}
 for regel in (HQ / "team/status.md").read_text().splitlines():
-    m = re.match(r"## (SEO|PIM|Design), (\d{2})-(\d{2})-(\d{4})", regel)
+    m = re.match(r"## (SEO|PIM|Design|Inkoop), (\d{2})-(\d{2})-(\d{4})", regel)
     if m:
         team = m.group(1).lower()
         d = datetime.date(int(m.group(4)), int(m.group(3)), int(m.group(2)))

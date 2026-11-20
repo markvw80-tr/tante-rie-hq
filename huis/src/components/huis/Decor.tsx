@@ -22,24 +22,74 @@ export function KantoorDecor({ heeftAgenda }: { readonly heeftAgenda: boolean })
   );
 }
 
-/** Atelier: ezel met schilderij en een kleurenwaaier aan de muur. */
+/** Atelier: ezel met schilderij, een kleurenwaaier en een ontwerpbord aan de muur. */
 export function AtelierDecor() {
   const { x, y, w } = KAMERS.design;
-  const ex = x + w - 215;
+  const ex = x + w - 62;
+  const wx = x + 24;
+  const bx = x + 190;
+  const by = y + 62;
   return (
     <g pointerEvents="none">
       {["#3b5240", "#e9efea", "#6b4c30", "#c44f1c", "#faf8f2", "#2c5f8a"].map((c, i) => (
-        <rect key={c} x={x + w - 420 + i * 15} y={y + 30} width={13} height={34} rx={3} fill={c} stroke="#e0dbd0" transform={`rotate(${(i - 2.5) * 6} ${x + w - 380} ${y + 80})`} />
+        <rect key={c} x={wx + i * 15} y={y + 70} width={13} height={34} rx={3} fill={c} stroke="#e0dbd0" transform={`rotate(${(i - 2.5) * 6} ${wx + 40} ${y + 120})`} />
       ))}
       <path d={`M${ex} ${y + 166} L${ex + 30} ${y + 44} L${ex + 60} ${y + 166} M${ex + 30} ${y + 44} L${ex + 30} ${y + 166}`} stroke="#6b4c30" strokeWidth={3} fill="none" />
       <rect x={ex + 2} y={y + 58} width={56} height={46} fill="#fff" stroke="#6b4c30" strokeWidth={2} />
       <path d={`M${ex + 8} ${y + 96} q12 -22 22 -8 q10 -18 22 4`} fill="none" stroke="#3b5240" strokeWidth={2} />
       <circle cx={ex + 44} cy={y + 70} r={5} fill="#c44f1c" />
-      <rect x={x + 120} y={y + 26} width={150} height={60} rx={4} fill="#e9efea" stroke="#c8c4b8" />
-      <rect x={x + 130} y={y + 36} width={60} height={40} rx={2} fill="#faf8f2" />
-      <rect x={x + 198} y={y + 36} width={62} height={8} rx={2} fill="#3b5240" />
-      <rect x={x + 198} y={y + 50} width={44} height={5} rx={2} fill="#c8c4b8" />
-      <rect x={x + 198} y={y + 60} width={34} height={12} rx={6} fill="#1c1c14" />
+      <rect x={bx} y={by} width={150} height={60} rx={4} fill="#e9efea" stroke="#c8c4b8" />
+      <rect x={bx + 10} y={by + 10} width={60} height={40} rx={2} fill="#faf8f2" />
+      <rect x={bx + 78} y={by + 10} width={62} height={8} rx={2} fill="#3b5240" />
+      <rect x={bx + 78} y={by + 24} width={44} height={5} rx={2} fill="#c8c4b8" />
+      <rect x={bx + 78} y={by + 34} width={34} height={12} rx={6} fill="#1c1c14" />
+    </g>
+  );
+}
+
+const DOOS = "#c9a46a";
+const DOOS_RAND = "#8a6420";
+const MAX_DOZEN = 6;
+/** Plek per doos op de stelling: [x-verschuiving, plank (0 boven, 1 onder), breedte]. */
+const DOOS_PLEKKEN: ReadonlyArray<readonly [number, number, number]> = [
+  [0, 1, 34], [38, 1, 30], [72, 1, 34], [0, 0, 30], [34, 0, 36], [74, 0, 28],
+];
+
+/** Pakhuis: stelling met een doos per bericht in de inbox, een pakbon aan de spijker en een weegschaal. */
+export function PakhuisDecor({ dozen }: { readonly dozen: number }) {
+  const { x, y, w, h } = KAMERS.inkoop;
+  const sx = x + w - 122;
+  const vloer = y + h - 8;
+  const aantal = Math.min(Math.max(dozen, 0), MAX_DOZEN);
+  return (
+    <g pointerEvents="none">
+      {[0, 1, 2].map((p) => (
+        <rect key={p} x={sx} y={y + 84 + p * 42} width={112} height={4} fill="#6b4c30" />
+      ))}
+      <rect x={sx} y={y + 60} width={4} height={vloer - y - 60} fill="#6b4c30" />
+      <rect x={sx + 108} y={y + 60} width={4} height={vloer - y - 60} fill="#6b4c30" />
+      {DOOS_PLEKKEN.slice(0, aantal).map(([dx, plank, bw], i) => {
+        const bh = 22 + (i % 2) * 6;
+        const bodem = y + 84 + (plank + 1) * 42;
+        return (
+          <g key={i}>
+            <rect x={sx + 6 + dx} y={bodem - bh} width={bw} height={bh} rx={1.5} fill={DOOS} stroke={DOOS_RAND} strokeWidth={1} />
+            <line x1={sx + 6 + dx} y1={bodem - bh + 6} x2={sx + 6 + dx + bw} y2={bodem - bh + 6} stroke={DOOS_RAND} strokeWidth={0.8} />
+          </g>
+        );
+      })}
+      <circle cx={x + 34} cy={y + 64} r={2} fill="#6b6152" />
+      <g transform={`rotate(4 ${x + 34} ${y + 64})`}>
+        <rect x={x + 22} y={y + 66} width={24} height={32} fill="#faf8f2" stroke="#c8c4b8" />
+        {[74, 80, 86, 92].map((d) => (
+          <line key={d} x1={x + 26} y1={y + d} x2={x + 42} y2={y + d} stroke="#c8c4b8" strokeWidth={1.2} />
+        ))}
+      </g>
+      <rect x={x + 112} y={vloer - 6} width={36} height={6} rx={2} fill="#6b6152" />
+      <rect x={x + 127} y={vloer - 24} width={6} height={18} fill="#6b6152" />
+      <rect x={x + 114} y={vloer - 28} width={32} height={5} rx={2} fill="#8c8270" />
+      <circle cx={x + 130} cy={vloer - 14} r={6} fill="#faf8f2" stroke="#6b6152" strokeWidth={1.2} />
+      <line x1={x + 130} y1={vloer - 14} x2={x + 133} y2={vloer - 18} stroke="#c0392b" strokeWidth={1} />
     </g>
   );
 }

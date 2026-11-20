@@ -42,8 +42,11 @@ describe("kostenOverzicht", () => {
     expect(o.weekUsd).toBe(0);
   });
 
-  test("teams in vaste volgorde: directie, SEO, PIM, Design", () => {
-    const o = kostenOverzicht([run("design", "2026-11-17T08:00:00", 1), run("seo", "2026-11-17T08:00:00", 1), run("pim", "2026-11-17T08:00:00", 1)], NU);
-    expect(o.teams.map((t) => t.team)).toEqual(["seo", "pim", "design"]);
+  test("teams in vaste volgorde: directie, SEO, PIM, Design, Inkoop", () => {
+    const o = kostenOverzicht(
+      [run("inkoop", "2026-11-17T08:00:00", 1), run("design", "2026-11-17T08:00:00", 1), run("seo", "2026-11-17T08:00:00", 1), run("pim", "2026-11-17T08:00:00", 1)],
+      NU,
+    );
+    expect(o.teams.map((t) => t.team)).toEqual(["seo", "pim", "design", "inkoop"]);
   });
 });

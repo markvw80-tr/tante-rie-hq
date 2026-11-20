@@ -5,6 +5,7 @@ export const TEAM_KLEUR: Record<TeamId, string> = {
   seo: "var(--kleur-seo)",
   design: "var(--kleur-design)",
   pim: "var(--kleur-pim)",
+  inkoop: "var(--kleur-inkoop)",
 };
 
 /** Hex-varianten voor SVG-vullingen die met transparantie werken. */
@@ -13,9 +14,10 @@ export const TEAM_HEX: Record<TeamId, string> = {
   seo: "#3b5240",
   design: "#c44f1c",
   pim: "#2c5f8a",
+  inkoop: "#8a6420",
 };
 
-export const TEAM_LABEL: Record<TeamId, string> = { directie: "Directie", seo: "SEO", design: "Design", pim: "PIM" };
+export const TEAM_LABEL: Record<TeamId, string> = { directie: "Directie", seo: "SEO", design: "Design", pim: "PIM", inkoop: "Inkoop" };
 
 export function initialen(naam: string): string {
   return naam

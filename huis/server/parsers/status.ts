@@ -1,8 +1,9 @@
 import type { MailboxTeam, StatusBlok } from "../../shared/types.ts";
 import { nlNaarIso } from "./datum.ts";
 
-const KOP = /^## (SEO|PIM|Design), (\d{2}-\d{2}-\d{4})(?: \((.*)\))?\s*$/;
-const TEAM: Record<string, MailboxTeam> = { SEO: "seo", PIM: "pim", Design: "design" };
+/** Teamnaam zoals in de kop van een statusblok (STATUS_LABEL in scripts/mailbox.py). */
+const TEAM: Readonly<Record<string, MailboxTeam>> = { SEO: "seo", PIM: "pim", Design: "design", Inkoop: "inkoop" };
+const KOP = new RegExp(`^## (${Object.keys(TEAM).join("|")}), (\\d{2}-\\d{2}-\\d{4})(?: \\((.*)\\))?\\s*$`);
 
 interface Bezig {
   readonly team: MailboxTeam;

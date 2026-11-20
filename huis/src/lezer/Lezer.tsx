@@ -3,11 +3,10 @@ import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import type { Components } from "react-markdown";
 import type { DocumentInhoud } from "../../shared/types.ts";
-import type { MailboxTeam } from "../../shared/types.ts";
+import { isMailboxTeam, type MailboxTeam } from "../../shared/types.ts";
 import { useSchrijven } from "../schrijven/SchrijfContext.tsx";
 import { haalJson, urlVoor, type Verwijzing } from "./verwijzing.ts";
 
-const MAIL_TEAMS = new Set(["seo", "pim", "design"]);
 
 interface Props {
   readonly verwijzing: Verwijzing;
@@ -72,7 +71,7 @@ export function Lezer({ verwijzing, onSluit }: Props) {
     if (verwijzing.soort !== "bericht" || !doc) return;
     const van = String(ruweKop.van ?? "");
     const aan = String(ruweKop.aan ?? "");
-    const ontvanger = (MAIL_TEAMS.has(van) ? van : MAIL_TEAMS.has(aan) ? aan : null) as MailboxTeam | null;
+    const ontvanger: MailboxTeam | null = isMailboxTeam(van) ? van : isMailboxTeam(aan) ? aan : null;
     onSluit();
     schrijf({ aan: ontvanger, onderwerp: `Re: ${doc.titel.replace(/^(Re:\s*)+/i, "")}`.slice(0, 110), antwoordOp: verwijzing.bestand });
   };

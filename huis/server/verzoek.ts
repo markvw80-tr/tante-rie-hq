@@ -1,10 +1,10 @@
+import { MAIL_TEAMS } from "../shared/types.ts";
 import type { BesluitKeuze, MailboxTeam } from "../shared/types.ts";
 import { KEUZES } from "./besluiten.ts";
 import { isVeiligeNaam } from "./parsers/documenten.ts";
 import type { Verzending } from "./postbode.ts";
 import { OngeldigVerzoek } from "./werk.ts";
 
-const TEAMS: readonly MailboxTeam[] = ["seo", "pim", "design"];
 const PRIORITEITEN = ["hoog", "normaal", "laag"] as const;
 export const GRENZEN = { onderwerp: [3, 110], tekst: [1, 8000], toelichting: [0, 4000] } as const;
 
@@ -20,7 +20,7 @@ function tekstVeld(body: Record<string, unknown>, veld: string, [min, max]: read
 }
 
 export function valideerTeam(waarde: unknown): MailboxTeam {
-  const team = TEAMS.find((t) => t === waarde);
+  const team = MAIL_TEAMS.find((t) => t === waarde);
   if (!team) throw new OngeldigVerzoek("Kies SEO, PIM of Design als ontvanger");
   return team;
 }

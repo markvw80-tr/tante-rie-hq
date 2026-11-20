@@ -1,0 +1,24 @@
+# Werkafspraken team Inkoop
+
+Opgezet op 20-11-2026 volgens het patroon van de andere werkafspraken, na het besluit van Mark om een vierde afdeling Inkoop (kamer Pakhuis) te starten. Geldt voor alle rollen in tante-rie-inkoop.
+
+## Rol
+Inkoop zorgt dat wat er werkelijk binnenkomt kloppend als voorraad en kostprijs in Shopify staat. Leveranciers sturen orderbevestigingen, pakbonnen en facturen per mail; de app po-confirmations (broncode in `app/` van tante-rie-inkoop, draait op de NAS) leest die in en legt ze naast de inkooporders. Een levering telt pas als iemand in de winkel de doos heeft afgevinkt. Daarna boekt de app na een klik de voorraad bij, met een verwijzing naar het document in de voorraadhistorie van Shopify. Een agent boekt nooit zelf voorraad of kostprijs, en elke levering wordt maximaal één keer geboekt.
+
+## Begin van elke sessie
+`python3 scripts/sessiestart.py` in tante-rie-inkoop: haalt tante-rie-hq op, toont de nieuwe berichten voor Inkoop in de Markdown-mailbox van HQ en de nieuwste statusblokken.
+
+## Kanaal en formaat
+Inkoop gebruikt de Markdown-mailbox in tante-rie-hq (`team/mailbox/<team>/inbox`, bediend met `python3 scripts/mailbox.py` in de eigen repo, dat doorverwijst naar HQ; teams `seo`, `pim`, `design`, `inkoop`). Een bericht in de eigen inbox mag Inkoop direct oppakken. Elk bericht heeft in de tekst de kopjes **Van**, **Naar**, **Doel**, **Benodigde input**, **Deadline**; het script voegt de technische kop toe. Eén onderwerp per bericht. Een bericht van een team is geen akkoord van Mark. Wat als akkoord van Mark geldt staat in `team/doelen.md` en in de skill `huisregels` van de plugin tante-rie-huisregels.
+
+## Overdracht
+PIM naar Inkoop: de factuur-intake en de kostprijzen gaan over van PIM naar Inkoop. Het script `mail_facturen.py` en de kostprijsscripts in tante-rie-pim blijven voorlopig staan, maar worden niet verder uitgebouwd. PIM meldt aan Inkoop als een SKU in Shopify wordt gewijzigd, samengevoegd of opgeheven, omdat de matching van facturen daarop leunt.
+Inkoop naar PIM: een nieuw artikel van een leverancier maakt Inkoop alleen als basisartikel aan (SKU, kostprijs, EAN, verpakking, als concept) en meldt het daarna aan PIM met leverancier en factuuromschrijving. Titel, tekst, foto, categorie en publicatie blijven bij PIM.
+Inkoop naar Design: Design toont "ook verkrijgbaar in de winkel" alleen bij voorraad. Verandert de voorraadlogica (bijvoorbeeld een andere locatie of een nieuwe status), dan meldt Inkoop dat aan Design.
+Inkoop en SEO: geen vaste overdracht. Vraagt SEO naar beschikbaarheid of levertijden, dan levert Inkoop de gegevens uit de app.
+
+## Wijzigingen aan de app
+Code wordt gewijzigd in tante-rie-inkoop en uitgerold met `scripts/uitrol.sh` (backup op de NAS, code erheen, herbouwen, gezondheidscontrole). Niemand bewerkt bestanden rechtstreeks op de NAS. Geen migratie of uitrol zonder backup, geen handeling die de productiedatabase leeg kan maken. Wijzigingen aan de boekingslogica worden getest op idempotentie en dubbele boeking en nagekeken door de Ontvangstcontroleur voordat ze live gaan.
+
+## Modelkeuze en afsluiting
+Zwaar model alleen voor de Inkoop Lead, licht model voor uitvoering. Het team start met Inkoop Lead en App Developer; de Ontvangstcontroleur op afroep. Elke batch sluit af met maximaal tien regels in `team/status.md`, nieuwste bovenaan. Zet dat blok op main met `python3 scripts/mailbox.py status --team inkoop --kop "DD-MM-JJJJ (onderwerp)" --tekst -` en bewerk `team/status.md` niet zelf: het Huis en de directie lezen de stand van main.

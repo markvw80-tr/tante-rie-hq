@@ -36,6 +36,9 @@ describe("valideerOpdracht", () => {
   test("accepteert een nette opdracht en vult standaarden in", () => {
     expect(valideerOpdracht(goed)).toEqual({ ...goed, prioriteit: "normaal", antwoordOp: null });
   });
+  test("accepteert een opdracht aan Inkoop", () => {
+    expect(valideerOpdracht({ ...goed, aan: "inkoop" }).aan).toBe("inkoop");
+  });
   test.each([
     ["geen object", "tekst"],
     ["onbekend team", { ...goed, aan: "directie" }],

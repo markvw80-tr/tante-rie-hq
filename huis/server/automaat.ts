@@ -1,11 +1,12 @@
+import { MAIL_TEAMS } from "../shared/types.ts";
 import { mkdirSync, readFileSync, renameSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import type { AutomaatStand, Bericht, MailboxTeam, RunSamenvatting } from "../shared/types.ts";
 import { MAX_ACTIEF, RegieFout, type StartVerzoek } from "./regie/beheer.ts";
 
 /** De lead per team: die leest de inbox en verdeelt het werk binnen het team. */
-export const POST_LEADS: Readonly<Record<MailboxTeam, string>> = { seo: "seo-lead", design: "design-lead", pim: "pim-orchestrator" };
-export const POST_TEAMS: readonly MailboxTeam[] = ["seo", "pim", "design"];
+export const POST_LEADS: Readonly<Record<MailboxTeam, string>> = { seo: "seo-lead", design: "design-lead", pim: "pim-orchestrator", inkoop: "inkoop-lead" };
+export const POST_TEAMS: readonly MailboxTeam[] = MAIL_TEAMS;
 export const MAX_PER_DAG = 8;
 /** Keuzes voor het maximale aantal automatische starts per 24 uur. */
 export const DAGLIMIETEN = [4, 8, 12, 20] as const;
@@ -13,7 +14,7 @@ export const RUST_MINUTEN = 60;
 export const STANDAARD_BUDGET = 1;
 const DAG_MS = 24 * 60 * 60_000;
 const MAX_IN_OPDRACHT = 10;
-const TEAMNAAM: Readonly<Record<MailboxTeam, string>> = { seo: "SEO", pim: "PIM", design: "Design" };
+const TEAMNAAM: Readonly<Record<MailboxTeam, string>> = { seo: "SEO", pim: "PIM", design: "Design", inkoop: "Inkoop" };
 
 export interface AutoStart {
   readonly team: MailboxTeam;

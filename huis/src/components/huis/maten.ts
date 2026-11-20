@@ -15,7 +15,8 @@ export const BUIS_X = 892;
 
 export const KAMERS: Record<Plek, Vlak> = {
   directie: { x: 340, y: 168, w: 320, h: 88 },
-  design: { x: 140, y: 270, w: 720, h: 178 },
+  design: { x: 140, y: 270, w: 430, h: 178 },
+  inkoop: { x: 580, y: 270, w: 280, h: 178 },
   seo: { x: 140, y: 462, w: 430, h: 188 },
   toonbank: { x: 580, y: 462, w: 280, h: 188 },
   pim: { x: 140, y: 682, w: 720, h: 228 },

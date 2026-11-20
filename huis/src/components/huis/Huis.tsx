@@ -1,7 +1,7 @@
 import type { HuisStand, MailboxTeam, RunStatus, TeamStand } from "../../../shared/types.ts";
 import { TEAM_HEX } from "../../teamKleur.ts";
 import { Buitenkant, Buizenpost } from "./Buitenkant.tsx";
-import { AtelierDecor, EtalageDecor, KantoorDecor, KelderDecor, ToonbankDecor } from "./Decor.tsx";
+import { AtelierDecor, EtalageDecor, KantoorDecor, KelderDecor, PakhuisDecor, ToonbankDecor } from "./Decor.tsx";
 import { Figuurtjes } from "./Figuurtjes.tsx";
 import { Kamer, type LampStand } from "./Kamer.tsx";
 import { KAMERS, VIEWBOX, type Plek } from "./maten.ts";
@@ -12,12 +12,14 @@ interface Props {
   readonly onKies: (plek: Plek) => void;
 }
 
-const MAIL_TEAMS: readonly MailboxTeam[] = ["design", "seo", "pim"];
+/** Volgorde van de kokers in de buizenpost: van boven naar beneden, links naar rechts. */
+const KOKER_VOLGORDE: readonly MailboxTeam[] = ["design", "inkoop", "seo", "pim"];
 const KOKER_STAP = 26;
 /** Hoe breed de figuurtjes per kamer mogen staan, zodat ze niet over het decor lopen. */
 const LOOPRUIMTE: Record<TeamStand["id"], { readonly links: number; readonly breedte: number }> = {
   directie: { links: 14, breedte: 160 },
-  design: { links: 290, breedte: 200 },
+  design: { links: 110, breedte: 230 },
+  inkoop: { links: 14, breedte: 96 },
   seo: { links: 14, breedte: 160 },
   pim: { links: 30, breedte: 660 },
 };
@@ -29,15 +31,22 @@ export function Huis({ huis, gekozen, onKies }: Props) {
   const werkVoor = (id: TeamStand["id"]) =>
     new Map((huis.runs ?? []).filter((r) => r.team === id && (r.status === "bezig" || r.status === "wacht")).map((r) => [r.agent, r.status] as const));
 
-  const kokers = MAIL_TEAMS.flatMap((id) => {
-    const vlak = KAMERS[id];
-    return (team(id)?.mailbox?.inbox ?? []).map((b, i) => ({
-      sleutel: b.bestand,
-      y: vlak.y + 40 + i * KOKER_STAP,
-      oud: (b.leeftijdDagen ?? 0) >= huis.drempelDagen,
-      kleur: TEAM_HEX[id],
-    }));
+  // Kamers op dezelfde verdieping delen één aftakking; hun kokers stapelen door.
+  const opVerdieping = new Map<number, number>();
+  const kokers = KOKER_VOLGORDE.flatMap((id) => {
+    const vloer = KAMERS[id].y;
+    return (team(id)?.mailbox?.inbox ?? []).map((b) => {
+      const plek = opVerdieping.get(vloer) ?? 0;
+      opVerdieping.set(vloer, plek + 1);
+      return {
+        sleutel: b.bestand,
+        y: vloer + 40 + plek * KOKER_STAP,
+        oud: (b.leeftijdDagen ?? 0) >= huis.drempelDagen,
+        kleur: TEAM_HEX[id],
+      };
+    });
   });
+  const aftakkingen = [...new Set(KOKER_VOLGORDE.map((id) => KAMERS[id].y + 26))];
 
   return (
     <svg className="huis-svg" viewBox={`0 0 ${VIEWBOX.w} ${VIEWBOX.h}`} role="group" aria-label="Het huis van Tante Rie met alle afdelingen">
@@ -48,6 +57,7 @@ export function Huis({ huis, gekozen, onKies }: Props) {
           {t.id === "design" && <AtelierDecor />}
           {t.id === "seo" && <EtalageDecor />}
           {t.id === "pim" && t.pipeline && <KelderDecor fases={t.pipeline} />}
+          {t.id === "inkoop" && <PakhuisDecor dozen={t.mailbox?.inbox.length ?? 0} />}
         </TeamKamer>
       ))}
       <Kamer
@@ -62,7 +72,7 @@ export function Huis({ huis, gekozen, onKies }: Props) {
       >
         <ToonbankDecor besluiten={openBesluiten} />
       </Kamer>
-      <Buizenpost kokers={kokers} aftakkingen={MAIL_TEAMS.map((id) => KAMERS[id].y + 26)} />
+      <Buizenpost kokers={kokers} aftakkingen={aftakkingen} />
     </svg>
   );
 }

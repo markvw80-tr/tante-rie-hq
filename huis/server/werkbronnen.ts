@@ -33,6 +33,10 @@ export const WERKBRONNEN: Record<TeamId, readonly WerkBronConfig[]> = {
     { id: "stijlgids", label: "Stijlgids", map: "stijlgids/tante-rie", bestand: "stijlgids.md" },
   ],
   pim: [{ id: "logboek", label: "Logboek", map: "logs" }],
+  inkoop: [
+    { id: "opdrachten", label: "Opdrachten", map: "opdrachten" },
+    { id: "app", label: "Over de app", map: "app", bestand: "README.md" },
+  ],
 };
 
 export const MAX_DOCUMENTEN = 40;

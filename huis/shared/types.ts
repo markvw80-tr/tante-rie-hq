@@ -1,5 +1,9 @@
-export type TeamId = "directie" | "seo" | "pim" | "design";
-export type MailboxTeam = Exclude<TeamId, "directie">;
+/** Alle teams met een eigen mailbox. Enige bron voor server en frontend; volgorde is de volgorde in lijsten. */
+export const MAIL_TEAMS = ["seo", "pim", "design", "inkoop"] as const;
+export type MailboxTeam = (typeof MAIL_TEAMS)[number];
+export type TeamId = "directie" | MailboxTeam;
+
+export const isMailboxTeam = (waarde: unknown): waarde is MailboxTeam => MAIL_TEAMS.some((t) => t === waarde);
 
 export interface Agent {
   readonly naam: string;

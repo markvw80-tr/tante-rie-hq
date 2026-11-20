@@ -1,7 +1,7 @@
-import type { KostenOverzicht, KostenTeam, RunSamenvatting, TeamId } from "../../shared/types.ts";
+import { MAIL_TEAMS, type KostenOverzicht, type KostenTeam, type RunSamenvatting, type TeamId } from "../../shared/types.ts";
 
 const WEEK_MS = 7 * 86_400_000;
-const VOLGORDE: readonly TeamId[] = ["directie", "seo", "pim", "design"];
+const VOLGORDE: readonly TeamId[] = ["directie", ...MAIL_TEAMS];
 const centen = (usd: number) => Math.round(usd * 100) / 100;
 
 /**
