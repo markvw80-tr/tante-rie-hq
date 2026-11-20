@@ -96,7 +96,7 @@ def zoek(bestand):
 
 def cmd_lijst(a):
     inbox = os.path.join(MAILBOX, a.team, "inbox")
-    namen = sorted(n for n in os.listdir(inbox) if n.endswith(".md"))
+    namen = sorted(n for n in os.listdir(inbox) if n.endswith(".md")) if os.path.isdir(inbox) else []
     if not namen:
         print("Geen nieuwe berichten voor " + a.team + ".")
         return
