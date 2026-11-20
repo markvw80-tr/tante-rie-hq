@@ -2,6 +2,14 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## PIM, 20-11-2026 (inbox: nieuw hoofddoel)
+- Bijdrage aan hoofddoel: PIM zorgt dat het thee- en cadeauaanbod volledig, vindbaar en met foto in Online winkel en Google staat. Blond-01 en de Rice-EAN's raken vooral het cadeau-deel, alt-teksten en de foto-audit de vindbaarheid. Niet bijdragend: de kostprijsscripts, al overgedragen aan Inkoop.
+- Directiebericht gelezen en op verwerkt gezet.
+- Open: besluit 9594fbf6b1. Diff met 15 alt-teksten (pipeline/04-review/20261120-seo-alt-01/diff.md) wacht op akkoord van Mark op de diff zelf.
+- Wacht op Mark, oudste eerst: Rice-01 (4 ongeldige EAN's, sinds 26-10), Hanger V89 (sinds 07-11), Blond-01 (sinds 15-11), alt-diff (20-11).
+- Volgende stap: na akkoord de alt-diff uitvoeren, daarna de audit van producten zonder foto.
+- Verbruik: ca. 0,35 USD.
+
 ## PIM, 20-11-2026 (post en wat kan PIM nog meer)
 - Post: alleen besluit 9594fbf6b1 en SEO-regels seo-2026-11-19-1 staan open. Diff met 15 alt-teksten ligt klaar in pipeline/04-review/20261120-seo-alt-01/diff.md. Het besluit was een akkoord op de werkwijze, nog niet op de diff zelf, dus er is niets uitgevoerd.
 - Wacht op Mark, oudste eerst: Rice-01 (4 ongeldige EAN's op live alfabetbekers, sinds 26-10), Hanger Teapot/Cup and Saucer uit Google en YouTube (V89, sinds 07-11), Blond-01 (49 nieuw als concept en Teapot Blah voor/na, sinds 15-11), alt-diff (20-11).
