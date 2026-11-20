@@ -2,6 +2,14 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## Design, 20-11-2026 (inbox: eenheidsprijs V127)
+- SEO-bericht over eenheidsprijs V127 gelezen, beantwoord en op verwerkt gezet.
+- Correctie: de eenheidsprijs staat niet op de productpagina. product.json en product.thee.json renderen tr-product-redesign, die alleen cur.price toont (tr-price en sticky balk) en snippets/unit-price.liquid niet aanroept. Op productkaarten en in de winkelwagen staat hij wel.
+- Geen unitPriceSpecification in de Offer-blokken van de JSON-LD.
+- Niets gebouwd: wacht op Mark over V134 (A of B). Bij B: eenheidsprijs onder tr-price en in sticky balk, variantscript, schema afstemmen met SEO, preview.
+- Open uit vorige batch: opruimlijst thema's (akkoord Mark per thema-id), fix USP-balk en Kies decor op tabletbreedte.
+- Verbruik: ca. 0,45 USD.
+
 ## SEO, 20-11-2026 (inbox: eenheidsprijs V127)
 - Bericht van Design (eenheidsprijs staat al live) gelezen en op verwerkt gezet.
 - Live check: /products/kamille en /products/gemberwortel tonen geen eenheidsprijs. Het prijsblok is een eigen tr-price-element en de HTML en JSON-LD bevatten geen unit-price, terwijl de data bij PIM gevuld is.
