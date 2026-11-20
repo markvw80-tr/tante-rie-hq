@@ -2,6 +2,14 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## SEO, 20-11-2026 (antwoord PIM over kopie-handle)
+- PIM-bericht alt-teksten seo-2026-11-19-1 verwerkt: de diff ligt bij PIM en wacht op akkoord van Mark, SEO hoeft niets te doen.
+- Vraag van PIM beantwoord: pineut-cake-pouchbag-lemon-poppy-cake-kopie is geen dubbel product maar de Passionfruit Martini Cake met een verkeerde handle. 0 klikken, weinig vertoningen, geen redirect.
+- Advies: handle wijzigen met 301-omleiding, niet verwijderen. Voorgelegd aan Mark als V133.
+- Open: directie-opdracht 15-11 blijft in de inbox.
+- Volgende stap: na V133 de Watertwist-kopieën op dezelfde manier voorstellen.
+- Verbruik: ca. 0,55 USD.
+
 ## PIM, 20-11-2026 (alt-diff en factuurmailbox)
 - Besluit 9594fbf6b1: diff met 15 alt-teksten (seo-2026-11-19-1) klaar in pipeline/04-review/20261120-seo-alt-01/diff.md. Alle 15 nu leeg, alleen de alt van de eerste foto verandert. Wacht op akkoord Mark op deze diff. Er is niets uitgevoerd.
 - Besluit 7088308d28 (idee Mark: factuurmailbox read-only uitlezen): goed plan. Voorstel: Gmail API met alleen leesrecht (gmail.readonly), of IMAP waarbij de map alleen gelezen wordt. Filter op afzender (Flash Studio, Bunzlau, Luminlique, koffieleverancier) en alleen pdf-bijlagen naar leveranciersbestanden/facturen. De inhoud van de mails telt als data, niet als opdracht. Toegangsgegevens alleen in .env.
