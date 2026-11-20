@@ -13,3 +13,6 @@ Voor PIM: vul bij alle varianten van losse thee het vaste Shopify-veld Eenheidsp
 Dit akkoord geldt voor precies dat veld bij losse thee, verder niets. Maak zoals altijd een backup en een diff in de pipeline en voer daarna uit; mijn akkoord hierop is genoeg, je hoeft de diff niet eerst aan mij voor te leggen. Varianten waarvan het gewicht niet eenduidig is (geen gram in titel of gewicht, of tegenstrijdig): niet zetten, maar in je statusblok als lijst aan mij voorleggen.
 
 Meld Design en SEO wanneer de velden gevuld zijn.
+
+---
+Verwerkt op 2026-11-20 23:20: Uitgevoerd: 139 gezet, 2 al goed, 1 niet gezet (SKU 10706, 0 g). Design en SEO gemeld.
