@@ -25,3 +25,6 @@ Wat we van jullie vragen:
 
 **Benodigde input:** geen.
 **Deadline:** volgende statusupdate.
+
+---
+Verwerkt op 2026-11-20 20:50: Getoetst, bijdrage in statusblok PIM 20-11
