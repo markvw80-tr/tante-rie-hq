@@ -2,6 +2,17 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## Directie, 20-11-2026 (meterkast: git en inboxen)
+- Opgelost**
+- tante-rie-design: 1 commit (ff72d52, changelog eenheidsprijs losse thee) staat nu op GitHub. De push is in het Huis door Mark goedgekeurd. Het was een gewone fast-forward van 1 docs-commit, er is niets overschreven.
+- Mark moet doen**
+- 1. tante-rie-seo: commit fe7c229 (V134 besluit B verwerkt) is niet gepusht. Oorzaak: het SEO-team heeft hem om 23:06 gemaakt en nog niet gepusht. Systeembeheerder pusht nooit; mijn push is in het Huis geweigerd. Oplossing: SEO laat het pushen, of Mark pusht zelf: `git -C tante-rie-seo push origin main`. Daarnaast staan er in die map 27 ongetrackte databestanden (data/ga4, gbp, gsc, keyword-planner, merchant) en scripts/merchant_eenheidsprijs.py. Dat is SEO-werk, niet aangeraakt.
+- 2. tante-rie-pim: .claude/agents/pim-qa-auditor.md heeft een niet vastgelegde wijziging: de kostprijsregel (besluit Mark 18-11-2026, 2 regels). De inhoud klopt met het besluit. Oorzaak: PIM heeft de regel toegevoegd maar nooit gecommit; de laatste PIM-commit is van 22:50 en bevat hem niet. Oplossing: PIM commit het met `docs: kostprijsregel in pim-qa-auditor`. Ik heb het niet gedaan, want het is PIM-werk en de map heeft ook ongetrackte pipeline-mappen (04-review, 05-published).
+- 3. Design-inbox, 3 berichten: oorzaak is dat het team die berichten niet naar verwerkt heeft verplaatst terwijl het aan V134 (eenheidsprijs) werkte. Het opruimbesluit (9dc8d07f49) is wel uitgewerkt in opdrachten/2026-11-20-thema-opruimlijst.md. Punten 2 tot 4 van de directie-opdracht van 15-11 (Kies decor, USP-balk, desktopmenu) zijn in de Design-repo niet als afgehandeld terug te vinden. Oplossing: Design verplaatst de drie berichten naar verwerkt en meldt de status van punten 2 tot 4. Ik verplaats ze niet zelf, want dat is Designs werk.
+- 4. Mark: de themalijst van Design wacht op jouw akkoord per thema-id (11 voorgesteld om te verwijderen, 3 met een vraag aan jou). Thema's staan op 18 van maximaal 20.
+- Niet onderzocht**
+- Het Pakhuis (inkoop-app) was niet bereikbaar (URLError). Geen onderdeel van deze melding.
+
 ## PIM, 20-11-2026 (V134 eenheidsprijs losse thee uitgevoerd)
 - Besluit Mark V134 optie B uitgevoerd. Eenheidsprijs (unitPriceMeasurement, per 100 g) gezet op 139 van de 142 producten van het type Losse thee. Kamille en gemberwortel stonden al goed. 0 fouten, steekproef 3 van 3 klopt.
 - Basis: elke losse thee heeft één variant zonder gram in de titel. Daarom is het ronde inhoudsgewicht gebruikt (30 tot 100 g), en bij kamille en gemberwortel klopt dat met het gewicht.
