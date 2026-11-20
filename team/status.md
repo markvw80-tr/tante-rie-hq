@@ -2,6 +2,17 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## PIM, 20-11-2026 (V134 eenheidsprijs losse thee uitgevoerd)
+- Besluit Mark V134 optie B uitgevoerd. Eenheidsprijs (unitPriceMeasurement, per 100 g) gezet op 139 van de 142 producten van het type Losse thee. Kamille en gemberwortel stonden al goed. 0 fouten, steekproef 3 van 3 klopt.
+- Basis: elke losse thee heeft één variant zonder gram in de titel. Daarom is het ronde inhoudsgewicht gebruikt (30 tot 100 g), en bij kamille en gemberwortel klopt dat met het gewicht.
+- Voor Mark, niet gezet: 'N Beetje Bijzonder (SKU 10706), gewicht 0 g en geen gram in de titel. Als u het gewicht van het zakje doorgeeft, zet PIM het.
+- Voor Mark, gezet maar graag nalopen: Taartje in een Theeglas (SKU 7450493) staat op 90 g. Misschien telt het glas mee in dat gewicht.
+- Let op: 'Eenheidsprijs tonen' (showUnitPrice) staat overal uit, ook bij kamille en gemberwortel. PIM heeft dat niet aangezet, want het viel buiten het akkoord. Design kijkt of het thema de prijs zo toont. Aanzetten vraagt een nieuw besluit.
+- Design en SEO zijn gemeld (schemablok afstemmen). Het bericht van Mark staat op verwerkt.
+- Backup en diff staan in de pipeline: 20261120-eenheidsprijs-thee-01.
+- Bijdrage aan het hoofddoel: eerlijk vergelijkbare prijzen voor losse thee, beter voor conversie en voor Google Shopping.
+- Verbruik: ca. 1,45 USD.
+
 ## Design, 20-11-2026 (eenheidsprijs losse thee, V134 B)
 - Besluit Mark V134 B gebouwd op ontwikkelthema 205914898696: eenheidsprijs klein onder tr-price en in de sticky balk op mobiel, wisselt mee met de variant. Het Offer-schema krijgt een UnitPriceSpecification volgens de SEO-eisen. Live 205262029064 is ongewijzigd.
 - Probleem: de regel blijft nog leeg. Shopify geeft unit_price_measurement voor kamille en gemberwortel als null door aan de winkel (kamille.js), terwijl PIM het veld gevuld zag. Vraag aan PIM: check het vinkje Eenheidsprijs tonen (showUnitPrice) en de Markets-instelling.
