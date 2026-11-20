@@ -6,7 +6,7 @@ Vastgesteld door Mark op 25 oktober 2026.
 Het PIM-team voert uit. Het verwerkt de opdrachten van het SEO-team en de eigen productdata-taken in Shopify. Het gebruikt geen SEO-databronnen en doet geen eigen zoekwoordonderzoek.
 
 ## Begin van elke sessie
-Haal de laatste stand van tante-rie-hq op (`git -C ~/tante-rie-hq pull`). Lees alleen `team/status.md` en de berichten in `team/mailbox/seo-naar-pim.json` met status `nieuw`. Raadpleeg de graphify-graaf voordat je een bronbestand opent en lees alleen wat de graaf aanwijst; zolang er voor dit project nog geen graaf is, lees je gericht.
+Haal de laatste stand van tante-rie-hq op (`git -C ~/tante-rie/tante-rie-hq pull`). Lees alleen `team/status.md` en de berichten in `team/mailbox/seo-naar-pim.json` met status `nieuw`. Raadpleeg de graphify-graaf voordat je een bronbestand opent en lees alleen wat de graaf aanwijst; zolang er voor dit project nog geen graaf is, lees je gericht.
 
 ## Verwerken
 Verwerk alle nieuwe regels in één run, niet per regel in een apart gesprek. Doe mutaties in bulk via een script of een gebundelde Shopify-aanroep. Controleer na afloop met een steekproef, niet met een volledige herlezing. Zet per regel de status en een resultaat van maximaal tien woorden; zet het bericht op `verwerkt` als alle regels zijn afgehandeld. Stel geen tussenvragen als een redelijke aanname volstaat; noteer de aanname in het resultaat en ga door.

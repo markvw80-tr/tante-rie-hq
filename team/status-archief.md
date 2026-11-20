@@ -49,7 +49,7 @@ Blokken ouder dan 14 dagen uit team/status.md, nieuwste bovenaan.
 - Verbruik: niet gemeten.
 
 ## Design, 28-10-2026 (opzet team en test)
-- Team Design opgezet in ~/Tante Rie Design (CLAUDE.md, stijlgids, vijf agents; start met Design Lead en Theme Developer). Nog geen GitHub-repo.
+- Team Design opgezet in ~/tante-rie/tante-rie-design (CLAUDE.md, stijlgids, vijf agents; start met Design Lead en Theme Developer). Nog geen GitHub-repo.
 - Mailbox: team design toegevoegd aan scripts/mailbox.py (branch design-team-mailbox in tante-rie-seo, nog te mergen) en mailbox/design/ op main.
 - Test: H2 boven productraster /collections/zwarte-thee op ontwikkelthema 204337217800; live 204204900616 ongewijzigd. SEO-eis gesimuleerd; echte SEO-bevestiging nodig.
 - Open: 10 open punten in stijlgids/tante-rie/stijlgids.md (o.a. Inter tegenover DM Sans, knopstijlen).

@@ -25,9 +25,9 @@ const thuis = (map: string) => path.join(os.homedir(), map);
 
 export const TEAMS: readonly TeamConfig[] = [
   { id: "directie", naam: "Directie", kamer: "Kantoortje boven", repo: HQ, heeftPipeline: false },
-  { id: "seo", naam: "SEO", kamer: "Etalage", repo: process.env.HUIS_SEO ?? thuis("Tante Rie SEO"), heeftPipeline: false },
-  { id: "design", naam: "Design", kamer: "Atelier", repo: process.env.HUIS_DESIGN ?? thuis("Tante Rie Design"), heeftPipeline: false },
-  { id: "pim", naam: "PIM", kamer: "Theekelder", repo: process.env.HUIS_PIM ?? thuis("Tante Rie PIM"), heeftPipeline: true },
+  { id: "seo", naam: "SEO", kamer: "Etalage", repo: process.env.HUIS_SEO ?? thuis("tante-rie/tante-rie-seo"), heeftPipeline: false },
+  { id: "design", naam: "Design", kamer: "Atelier", repo: process.env.HUIS_DESIGN ?? thuis("tante-rie/tante-rie-design"), heeftPipeline: false },
+  { id: "pim", naam: "PIM", kamer: "Theekelder", repo: process.env.HUIS_PIM ?? thuis("tante-rie/tante-rie-pim"), heeftPipeline: true },
 ];
 
 export const PIPELINE_FASES: ReadonlyArray<readonly [string, string]> = [

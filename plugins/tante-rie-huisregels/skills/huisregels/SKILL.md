@@ -5,7 +5,7 @@ description: Gedeelde werkwijze van alle teams van Tante Rie (SEO, PIM, Design, 
 
 # Huisregels Tante Rie
 
-Eén plek voor wat in elk team hetzelfde is. De doelen en de gedeelde regels zelf staan in `~/tante-rie-hq/team/doelen.md`; dat bestand gaat voor. Wat per team anders is, staat in de CLAUDE.md en de werkafspraken van dat team.
+Eén plek voor wat in elk team hetzelfde is. De doelen en de gedeelde regels zelf staan in `~/tante-rie/tante-rie-hq/team/doelen.md`; dat bestand gaat voor. Wat per team anders is, staat in de CLAUDE.md en de werkafspraken van dat team.
 
 ## Akkoord van Mark
 

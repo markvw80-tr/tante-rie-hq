@@ -7,9 +7,9 @@
   <array>
     <string>/bin/zsh</string>
     <string>-l</string>
-    <string>/Users/markvanwijk/tante-rie-hq/huis/dienst.sh</string>
+    <string>/Users/markvanwijk/tante-rie/tante-rie-hq/huis/dienst.sh</string>
   </array>
-  <key>WorkingDirectory</key><string>/Users/markvanwijk/tante-rie-hq/huis</string>
+  <key>WorkingDirectory</key><string>/Users/markvanwijk/tante-rie/tante-rie-hq/huis</string>
   <key>RunAtLoad</key><true/>
   <key>KeepAlive</key><true/>
   <key>ThrottleInterval</key><integer>30</integer>

@@ -5,9 +5,9 @@ Lokale frontend boven de teams van Tante Rie. Elke afdeling is een kamer in het 
 | Kamer | Team | Bron |
 |---|---|---|
 | Kantoortje boven | Directie | `team/directie/agenda-*.md`, `.claude/agents/` |
-| Atelier | Design | `~/Tante Rie Design/.claude/agents/`, mailbox `team/mailbox/design/` |
-| Etalage | SEO | `~/Tante Rie SEO/.claude/agents/`, mailbox `team/mailbox/seo/` |
-| Theekelder | PIM | `~/Tante Rie PIM/.claude/agents/`, `pipeline/01-raw` t/m `05-published` |
+| Atelier | Design | `~/tante-rie/tante-rie-design/.claude/agents/`, mailbox `team/mailbox/design/` |
+| Etalage | SEO | `~/tante-rie/tante-rie-seo/.claude/agents/`, mailbox `team/mailbox/seo/` |
+| Theekelder | PIM | `~/tante-rie/tante-rie-pim/.claude/agents/`, `pipeline/01-raw` t/m `05-published` |
 | Toonbank | Mark | sectie "Mark: besluiten nodig" in de nieuwste agenda |
 
 Statusblokken komen uit `team/status.md`, de doelen uit `team/doelen.md`. Achterstand vanaf 3 dagen, net als `scripts/directie_overzicht.py`.
