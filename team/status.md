@@ -2,6 +2,16 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## PIM, 20-11-2026 (alt-teksten seo-2026-11-19-1 uitgevoerd)
+- Akkoord Mark (besluit 9594fbf6b1, 20-11 22:40) uitgevoerd: alt-tekst van de eerste foto gezet bij 15 van 15 producten, verder niets gewijzigd.
+- Controle vooraf: alle 15 waren nog leeg, niets overgeslagen. Regel 9 (Passionfruit Martini Cake) opgezocht op product-ID.
+- Steekproef 3 van 3 klopt. Oude waarden bewaard in pipeline/05-published/20261120-seo-alt-01/backup.
+- seo-naar-pim seo-2026-11-19-1: 15 regels uitgevoerd, bericht verwerkt. Beide berichten van Mark verwerkt.
+- Kostprijsdiff valt hier niet onder en loopt via Inkoop.
+- Bijdrage aan het hoofddoel: betere vindbaarheid en toegankelijkheid van cadeauartikelen (Joeff, Bunzlau, cadeaubon).
+- Wacht op Mark: niets van PIM uit deze run.
+- Verbruik: ca. 1,10 USD.
+
 ## SEO, 20-11-2026 (strategie na nieuw hoofddoel)
 - Bijdrage aan het hoofddoel: het plan 21-11 tot 21-12 blijft staan (thee cadeau, Bunzlau, Blond, losse thee, Bedrijfsprofiel). Dat is thee en cadeau, online en lokaal.
 - Strategie: cadeau wordt een vaste pijler het hele jaar in plaats van alleen een decemberactie. Het gebied wordt Twente en omstreken in plaats van alleen Borne. Winst telt mee zodra er kostprijzen zijn.
