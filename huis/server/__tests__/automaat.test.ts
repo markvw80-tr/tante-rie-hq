@@ -126,6 +126,7 @@ describe("automaat", () => {
   test("onbekende daglimiet in het bestand valt terug op de standaard", () => {
     expect(geldigeInstelling({ aan: true, maxPerDag: 7 }).maxPerDag).toBe(MAX_PER_DAG);
     expect(geldigeInstelling({ aan: true, maxPerDag: 20 }).maxPerDag).toBe(20);
+    expect(geldigeInstelling({ aan: true, maxPerDag: 50 }).maxPerDag).toBe(50);
   });
 
   test("berichten die het team zelf verstuurde tellen niet, en afgehandelde namen worden opgeruimd", async () => {

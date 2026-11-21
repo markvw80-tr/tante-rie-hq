@@ -9,7 +9,7 @@ export const POST_LEADS: Readonly<Record<MailboxTeam, string>> = { seo: "seo-lea
 export const POST_TEAMS: readonly MailboxTeam[] = MAIL_TEAMS;
 export const MAX_PER_DAG = 8;
 /** Keuzes voor het maximale aantal automatische starts per 24 uur. */
-export const DAGLIMIETEN = [4, 8, 12, 20] as const;
+export const DAGLIMIETEN = [4, 8, 12, 20, 30, 40, 50] as const;
 export const RUST_MINUTEN = 60;
 export const STANDAARD_BUDGET = 1;
 const DAG_MS = 24 * 60 * 60_000;

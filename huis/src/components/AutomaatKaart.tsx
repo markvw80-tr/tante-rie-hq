@@ -2,7 +2,7 @@ import { useState } from "react";
 import type { AutomaatStand } from "../../shared/types.ts";
 import { BUDGETTEN } from "../regie/api.ts";
 
-const DAGLIMIETEN = [4, 8, 12, 20] as const;
+const DAGLIMIETEN = [4, 8, 12, 20, 30, 40, 50] as const;
 import { zetAutomaat } from "../schrijven/api.ts";
 
 type Props = {
