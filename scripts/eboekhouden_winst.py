@@ -15,6 +15,7 @@ import calendar
 import datetime
 import json
 import os
+import ssl
 import subprocess
 import sys
 import urllib.error
@@ -23,6 +24,12 @@ import urllib.request
 API = "https://api.e-boekhouden.nl"
 DIENST = "tante-rie-e-boekhouden"
 BRON = "TanteRie"
+# Python van python.org (ook die van de Huis-dienst) heeft geen eigen certificatenbundel: dan die van macOS.
+# De verificatie blijft altijd aan.
+MACOS_CA = "/etc/ssl/cert.pem"
+SSL_CONTEXT = (ssl.create_default_context(cafile=MACOS_CA)
+               if not ssl.get_default_verify_paths().cafile and os.path.exists(MACOS_CA)
+               else ssl.create_default_context())
 # Indeling naar het eerste cijfer van de grootboekcode (gangbare Nederlandse indeling).
 GROEP = {"8": "omzet", "7": "kostprijs_omzet", "4": "bedrijfskosten", "9": "financieel_en_overig"}
 
@@ -43,7 +50,7 @@ def vraag(methode, pad, token=None, body=None):
     if token:
         req.add_header("Authorization", token)
     try:
-        with urllib.request.urlopen(req, timeout=30) as r:
+        with urllib.request.urlopen(req, timeout=30, context=SSL_CONTEXT) as r:
             tekst = r.read().decode()
             return json.loads(tekst) if tekst else {}
     except urllib.error.HTTPError as e:
