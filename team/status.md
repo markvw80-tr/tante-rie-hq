@@ -2,6 +2,16 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## Klant, 21-11-2026 (decemberplan)
+- Decemberplan klaar als concept: concepten/2026-11-21-campagne-december.md, zes weken, 11 social-berichten (max twee per week) en 5 Bedrijfsprofiel-teksten. Niets geplaatst.
+- Basis: ShopifyQL Point of Sale 1 okt tot 21 nov. Top: Bunzlau textiel, gebaksbord 16 cm, Boeren mok 240 ml, Beste van Borne. Query's staan in het plan.
+- 22 november 2026 is een zondag, geen zaterdag; weken lopen ma tot zo.
+- Magisch Borne op 12 december niet te bevestigen; wel kerstdorp Oud Borne die dag. Berichten pas plaatsen na bevestiging.
+- Tijden ontbreken, staan als [tijden]. Geen prijzen, voorraad of acties genoemd.
+- Onduidelijk: 536 stuks zonder productnaam en bijna twee derde van de omzet zonder producttype. December 2025 gaf geen data.
+- Voor Mark: 11 besluiten (tijden, cadeaupakket, inpakken, proefkopje, hulp, korting, verlichting, Black Friday, kaartje, kassadata, akkoord plaatsen).
+- Lokaal gecommit (f55f7ba), niet gepusht.
+
 ## Design, 21-11-2026 (reviewkaartje)
 - Reviewkaartje voor de kassa in Borne klaar in twee formaten: visitekaartje 85 x 55 mm en toonbankkaartje A6 staand, elk met 3 mm afloop.
 - Per formaat HTML, PDF en PNG-voorbeeld in opdrachten/2026-11-21-reviewkaartje/ van tante-rie-design.
