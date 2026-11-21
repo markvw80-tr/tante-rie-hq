@@ -15,3 +15,6 @@ Besluit van Mark (21-11-2026): OpenSEO gebruiken op credits, zonder betaald abon
 Nulmeting raster 21-11-2026, "theewinkel": 7 van 9 punten plek 1, zuid (richting Hengelo-centrum) plek 2 na Kaldi Hengelo, zuidoost plek 4 met Holland & Barrett bovenaan. Gemiddeld 1,44. Volgende meting: februari 2027.
 
 Graag opnemen in docs/databronnen.md en de rastermeting in je kwartaalplanning.
+
+---
+Verwerkt op 2026-11-21 14:48
