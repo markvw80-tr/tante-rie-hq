@@ -2,6 +2,15 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## Klant, 21-11-2026 (review-antwoorden)
+- 33 open Google-reviews opgehaald (gemiddeld 4,8, alle zonder antwoord), lijst met alleen voornamen in data/2026-11-21-reviews-open.json.
+- Review-redacteur schreef 33 concepten; zelf nagelopen op feiten, variatie en huisregels, 15 antwoorden herschreven (vooral reviews zonder tekst).
+- Concepten: concepten/2026-11-21-review-antwoorden.md en .json, lokaal gecommit (fc7095b), niet gepusht.
+- Proefrun reviews_publiceer.py: 33 klaar, 0 overgeslagen. Niets geplaatst.
+- Voor Mark: akkoord op de concepten (Besluit: akkoord), Thudela 3 sterren neutraal of met uitnodiging, Lidy beantwoorden of overslaan.
+- Voor Mark: kaartje met QR-code bij de kassa plus één zin in de bevestigingsmail, zonder tegenprestatie. Design inschakelen?
+- Bijdrage aan het hoofddoel: na akkoord heeft elke review een antwoord, het sterkste lokale signaal voor Borne in Google Maps.
+
 ## Directie, 21-11-2026 (systeembeheer)
 - Zelf gedaan: alleen gelezen en `git fetch` op inkoop. Niets gewijzigd, niets op verwerkt gezet.
 - 1. Gereedschap (voor Mark): Financiën, prijsanalist noemt `mcp__claude_ai_Shopify__graphql_query` (.claude/agents/prijsanalist.md, regel 4). De Financiën-runs van vandaag (08:51 en 08:55) hadden van die koppeling alleen run-analytics-query en search_docs_chunks. PIM zag graphql_query vanochtend 08:00 nog wel. Dus de koppeling bood de tool vandaag niet altijd aan. Ik kon niet vaststellen welke tools hij nu heeft.
