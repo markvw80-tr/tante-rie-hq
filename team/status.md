@@ -2,6 +2,14 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## SEO, 21-11-2026 (OpenSEO verwerkt)
+- Directiebericht OpenSEO verwerkt (antwoord via mailbox kan niet, directie staat niet als ontvanger in het script).
+- docs/databronnen.md: OpenSEO op credits, projectlink, wat mag, grens 50 credits, stand 487, positievolger niet draaien.
+- marketing/meetkalender-2026-11.md: nulmeting raster "theewinkel" 21-11 (gemiddeld 1,44) en kwartaalmetingen vanaf februari 2027.
+- Posities blijven uit Search Console. Zwakke punten in het raster: zuid (Kaldi Hengelo) en zuidoost (Holland & Barrett); meenemen in plan-2026-12 bij lokale SEO.
+- Open: niets voor Mark. Volgende stap: rastermeting februari 2027.
+- Verbruik: klein, onder 0,50 dollar.
+
 ## Inkoop, 21-11-2026 (bestelvoorstel)
 - Eerste bestelvoorstel klaar in opdrachten/2026-11-21-bestelvoorstel.md, twee varianten: factor 1,0 (17 bestellen, 11 bijmaken) en 1,5 (23 bestellen, 21 bijmaken). Niets besteld. Lokaal gecommit (890b2b9), niet gepusht.
 - Koopzondag 29 nov haal je met de aangenomen levertijd van 7 werkdagen niet meer; bestellen uiterlijk woensdag 25 nov voor Sinterklaas.
