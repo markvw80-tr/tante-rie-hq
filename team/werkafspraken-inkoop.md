@@ -17,6 +17,9 @@ Inkoop naar PIM: staat er op een inkooporder, orderbevestiging of levering een a
 Inkoop naar Design: Design toont "ook verkrijgbaar in de winkel" alleen bij voorraad. Verandert de voorraadlogica (bijvoorbeeld een andere locatie of een nieuwe status), dan meldt Inkoop dat aan Design.
 Inkoop en SEO: geen vaste overdracht. Vraagt SEO naar beschikbaarheid of levertijden, dan levert Inkoop de gegevens uit de app.
 
+## Bestelvoorstel
+Sinds 21-11-2026 maakt de `inkoopadviseur` (sonnet) elke week een bestelvoorstel per leverancier uit de verkoop van 8 weken, de voorraad in Shopify, de open leveringen in het Pakhuis en de levertijden in `leveranciers.json` (rekenwerk in `scripts/bestelvoorstel.py`, met tests). Hij bestelt nooit en boekt geen voorraad; Mark bestelt. Artikelen met negatieve voorraad of zonder leverancier meldt hij apart. De tellingen (te bestellen, bij te maken, negatieve voorraad, langzame lopers) staan op de doelenkaart in het Huis.
+
 ## Wijzigingen aan de app
 Code wordt gewijzigd in tante-rie-inkoop en uitgerold met `scripts/uitrol.sh` (backup op de NAS, code erheen, herbouwen, gezondheidscontrole). Niemand bewerkt bestanden rechtstreeks op de NAS. Geen migratie of uitrol zonder backup, geen handeling die de productiedatabase leeg kan maken. Wijzigingen aan de boekingslogica worden getest op idempotentie en dubbele boeking en nagekeken door de Ontvangstcontroleur voordat ze live gaan.
 

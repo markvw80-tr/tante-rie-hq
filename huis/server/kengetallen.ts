@@ -4,7 +4,7 @@ import type { Bron } from "./bron.ts";
 import type { TeamConfig } from "./config.ts";
 
 /** Teams die data/kengetallen.json bijhouden, in de volgorde van de kaart op de toonbank. */
-export const KENGETAL_TEAMS: readonly MailboxTeam[] = ["financien", "klant", "seo"];
+export const KENGETAL_TEAMS: readonly MailboxTeam[] = ["financien", "inkoop", "klant", "seo"];
 const BESTAND = path.join("data", "kengetallen.json");
 const MAX_CIJFERS = 12;
 const MAX_TEKST = 120;
