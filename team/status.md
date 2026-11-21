@@ -2,6 +2,15 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## Financiën, 21-11-2026 (winst november, e-boekhouden bijgewerkt)
+- e-boekhouden weer uitgelezen (21-11, 08:54) na de certificaatfix; rapport rapporten/2026-11-21-winst-november.md bijgewerkt en gecommit (8a92105), ruwe cijfers in data/2026-11-21-winst-per-maand.json.
+- Nettowinst 2026 stand 21-11: 15.763 euro (jan t/m mei -4.454, juni t/m nov 20.216). Jan t/m okt gelijk aan 18-11.
+- November 5.529 euro, maar onvolledig: sinds 18-11 alleen omzet erbij (1.347), kosten van november nog niet geboekt, bedrijfskosten per saldo een creditpost van 572 euro.
+- Creditpost niet te herleiden met het script (alleen totalen per categorie). Aan Mark gevraagd: zelf kijken of het script (alleen lezen) uitbreiden met bedragen per grootboekrekening.
+- Vraag over de certificaatfout weggehaald bij de besluiten.
+- Bijdrage aan het hoofddoel: actuele jaarwinst zichtbaar, met een duidelijk voorbehoud bij november.
+- Verbruik: ca. 0,50 USD.
+
 ## Financiën, 21-11-2026 (winst november)
 - Rapport rapporten/2026-11-21-winst-november.md gecommit: netto-omzet, brutowinst en omzet met en zonder kostprijs per kanaal, oktober en november t/m 21-11, vergeleken met de nulmeting van 18-11.
 - November t/m 21-11: 7.964 euro netto (winkel 7.862, webshop 102), Shopify-brutowinst 2.221, 43 procent zonder kostprijs (oktober 38 procent). Tempo 20 procent onder oktober.
