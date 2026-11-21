@@ -2,6 +2,15 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## Design, 21-11-2026 (reviewkaartje)
+- Reviewkaartje voor de kassa in Borne klaar in twee formaten: visitekaartje 85 x 55 mm en toonbankkaartje A6 staand, elk met 3 mm afloop.
+- Per formaat HTML, PDF en PNG-voorbeeld in opdrachten/2026-11-21-reviewkaartje/ van tante-rie-design.
+- DM Sans, crème #faf8f2, tekst en QR in #1c1c14. Alleen de goedgekeurde tekst, geen tegenprestatie.
+- QR ongewijzigd, 27 mm en 50 mm breed. Alle drie de versies openen dezelfde Google-reviewlink.
+- Niets naar Shopify of het thema. Lokaal gecommit (1cba030), niet gepusht.
+- Voor Mark: akkoord op het ontwerp? Is er een vectorlogo? Het logo van de site is te klein voor drukwerk, dus de naam staat er nu als tekst op.
+- Volgende stap: na akkoord naar de drukker, papier en afwerking kiest Mark.
+
 ## Klant, 21-11-2026 (review-antwoorden geplaatst)
 - Op besluit van Mark 7 antwoorden geplaatst: 7 geplaatst, 0 overgeslagen.
 - Controle met reviews.py: alle 7 hebben nu een antwoord. 26 van de 33 staan nog open: Lidy en de 25 van vóór 2024, bewust.
