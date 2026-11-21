@@ -25,6 +25,8 @@ import { runId } from "./regie/routes.ts";
 import { sdkStarter } from "./regie/sdkStarter.ts";
 import { CONTROLE_MS, schijfBeheer, Systeembeheer } from "./gezondheid.ts";
 import { leesAgentTools, leesInboxen, leesLogin, leesRepos, leesSchijfVrijGb } from "./gezondheidBronnen.ts";
+import { Dagverslag, schijfVerslagen, TIK_MS } from "./dagverslag.ts";
+import { curlMailer, mailInstelling, verzamelFeiten } from "./dagverslagBronnen.ts";
 import { MAIL_TEAMS } from "../shared/types.ts";
 import type { MailboxTeam, RunRegel, RunSamenvatting } from "../shared/types.ts";
 
@@ -96,9 +98,21 @@ const systeembeheer = new Systeembeheer(
   },
   { regie, repo: HQ, opslag: schijfBeheer(path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "data", "systeembeheer.json")) },
 );
+// Het dagverslag: elke avond om 20.00 uur per afdeling een verslag in gewone taal, op de toonbank en per mail.
+const mail = mailInstelling(process.env);
+if (!mail) console.log("[huis] Dagverslag alleen in het huis: mail is niet ingesteld (scripts/zet-mail.sh)");
+const dagverslag = new Dagverslag({
+  regie,
+  repo: HQ,
+  feiten: (datum) => verzamelFeiten(datum, TEAMS, HQ, () => regie.lijst(), (id) => regie.detail(id)),
+  mailer: mail ? curlMailer(mail) : null,
+  opslag: schijfVerslagen(path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "data", "dagverslag.json")),
+});
+const tikDagverslag = () => void dagverslag.tik().catch((e) => console.error("[huis] dagverslag mislukt:", e));
+
 const controleerGezondheid = () => void systeembeheer.controleer().catch((e) => console.error("[huis] meterkast mislukt:", e));
 
-const omgeving = (persoon: Persoon = "mark"): Omgeving => ({ persoon, bron: schijfBron, hq: HQ, mailbox: mailboxMap(HQ), teams: TEAMS, vandaag: vandaagIso(), postbode, regie, archief, ophaler, automaat, opAfstand: tailscale.opAfstand(), pakhuis, systeembeheer });
+const omgeving = (persoon: Persoon = "mark"): Omgeving => ({ persoon, bron: schijfBron, hq: HQ, mailbox: mailboxMap(HQ), teams: TEAMS, vandaag: vandaagIso(), postbode, regie, archief, ophaler, automaat, opAfstand: tailscale.opAfstand(), pakhuis, systeembeheer, dagverslag });
 
 function json(res: ServerResponse, status: number, body: unknown): void {
   res.writeHead(status, { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store" });
@@ -215,6 +229,8 @@ server.listen(API_PORT, HOST, () => {
   if (!GEEN_GIT) {
     controleerGezondheid();
     setInterval(controleerGezondheid, CONTROLE_MS).unref();
+    tikDagverslag();
+    setInterval(tikDagverslag, TIK_MS).unref();
   }
   console.log(`[huis] luistert op http://${HOST}:${API_PORT} (alleen deze Mac)`);
   console.log(`[huis] hq: ${HQ}, post uit ${mailboxMap(HQ)}${GEEN_GIT ? ", zandbak zonder git" : ""}`);

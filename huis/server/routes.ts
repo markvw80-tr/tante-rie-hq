@@ -5,6 +5,8 @@ import { bouwHuis, stemmingVoor } from "./huis.ts";
 import { DREMPEL_DAGEN } from "./config.ts";
 import { pakhuisSignalen, type PakhuisBron } from "./pakhuis.ts";
 import type { Systeembeheer } from "./gezondheid.ts";
+import type { Dagverslag } from "./dagverslag.ts";
+import { RegieFout } from "./regie/beheer.ts";
 import type { GezondheidStand, HuisStand, Persoon } from "../shared/types.ts";
 import type { Postbode } from "./postbode.ts";
 import { archiveer, haalTerug, type ArchiefOpslag } from "./archief.ts";
@@ -38,6 +40,7 @@ export interface Omgeving {
   readonly opAfstand?: string | null;
   readonly pakhuis?: PakhuisBron;
   readonly systeembeheer?: Systeembeheer;
+  readonly dagverslag?: Dagverslag;
   /** Wie dit verzoek doet. Ontbreekt: Mark (de Mac zelf). Alleen Marks berichten gelden als zijn akkoord. */
   readonly persoon?: Persoon;
 }
@@ -65,7 +68,7 @@ export async function behandel(pad: string, params: URLSearchParams, omg: Omgevi
   try {
     if (pad === "/api/huis") {
       const huis = metGezondheid(await metPakhuis(await bouwHuis(omg.bron, omg.hq, omg.teams, omg.vandaag, omg.mailbox), omg.pakhuis), omg.systeembeheer?.stand() ?? null);
-      return { status: 200, body: { ...huis, runs: omg.regie?.lijst().slice(0, 20) ?? [], post: omg.ophaler?.stand(), automaat: omg.automaat?.stand(), kosten: omg.regie ? kostenOverzicht(omg.regie.lijst(), new Date()) : undefined, autoGoedkeuring: omg.regie?.autoGoedkeuring(), opAfstand: omg.opAfstand ?? null, ik: omg.persoon ?? "mark" } };
+      return { status: 200, body: { ...huis, dagverslag: omg.dagverslag?.stand() ?? null, runs: omg.regie?.lijst().slice(0, 20) ?? [], post: omg.ophaler?.stand(), automaat: omg.automaat?.stand(), kosten: omg.regie ? kostenOverzicht(omg.regie.lijst(), new Date()) : undefined, autoGoedkeuring: omg.regie?.autoGoedkeuring(), opAfstand: omg.opAfstand ?? null, ik: omg.persoon ?? "mark" } };
     }
     if (omg.regie && pad.startsWith("/api/runs")) {
       const antwoord = behandelRunGet(pad, omg.regie);
@@ -135,6 +138,7 @@ export async function behandelPost(pad: string, body: unknown, omg: Omgeving): P
     if (pad === "/api/archief") return await archiefActie(body, omg);
     if (pad === "/api/automaat" && omg.automaat) return automaatActie(body, omg.automaat);
     if (pad === "/api/regie/goedkeuring" && omg.regie) return goedkeuringActie(body, omg.regie);
+    if (pad === "/api/dagverslag" && omg.dagverslag) return await dagverslagActie(omg.dagverslag, omg.persoon ?? "mark");
     if (pad === "/api/post-ophalen") {
       await (omg.ophaler ? omg.ophaler.haalNu() : omg.postbode.ophalen());
       return { status: 200, body: { ok: true } };
@@ -158,6 +162,18 @@ function automaatActie(body: unknown, automaat: Automaat): Antwoord {
   const stand = automaat.zet(aan, budget, limiet);
   if (aan) void automaat.controleer().catch((e) => console.error("[huis] automaat mislukt:", e));
   return { status: 200, body: stand };
+}
+
+/** Met de hand een tussendoorverslag van vandaag laten schrijven. Kost een run, dus alleen Mark. */
+async function dagverslagActie(dagverslag: Dagverslag, persoon: Persoon): Promise<Antwoord> {
+  if (persoon !== "mark") return { status: 403, body: { fout: "Alleen Mark kan een verslag laten maken." } };
+  try {
+    await dagverslag.maakNu();
+  } catch (e) {
+    if (e instanceof RegieFout) return { status: 409, body: { fout: e.message } };
+    throw e;
+  }
+  return { status: 202, body: dagverslag.stand() };
 }
 
 /** Na een bericht van Mark kijkt de automaat meteen in de inboxen, in plaats van te wachten op de volgende ronde post ophalen. */

@@ -1,4 +1,4 @@
-import type { AutomaatStand, BesluitKeuze, MailboxTeam } from "../../shared/types.ts";
+import type { AutomaatStand, BesluitKeuze, DagverslagStand, MailboxTeam } from "../../shared/types.ts";
 
 export interface Concept {
   readonly aan: MailboxTeam | null;
@@ -47,4 +47,5 @@ export const TEAMS: ReadonlyArray<readonly [MailboxTeam, string]> = [
 export const archiefActie = (actie: "archiveer" | "terug", ids: readonly string[]) => post<{ aantal: number }>("/api/archief", { actie, ids });
 
 export const zetAutomaat = (aan: boolean, budgetUsd: number, maxPerDag?: number) => post<AutomaatStand>("/api/automaat", { aan, budgetUsd, maxPerDag });
+export const maakDagverslag = () => post<DagverslagStand>("/api/dagverslag", {});
 export const zetGoedkeuring = (aan: boolean) => post<{ aan: boolean }>("/api/regie/goedkeuring", { aan });

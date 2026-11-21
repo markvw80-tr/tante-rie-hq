@@ -92,6 +92,7 @@ Op de toonbank staat de kaart **Post automatisch laten oppakken**, standaard uit
 - **De poort blijft:** live acties en acties die toestemming vragen wachten ook bij een automatische run op jou. Zo'n run staat in de regie met het label *automatisch*.
 - Instelling en geschiedenis staan in `huis/data/automaat.json` (niet in git).
 - Meterkast en systeembeheerder: zie de README in de hoofdmap. Wat al gemeld is en wanneer de beheerder startte, staat in `huis/data/systeembeheer.json` (niet in git). In de zandbak (`HUIS_GEEN_GIT=1`) wordt er niet automatisch opgehaald, dus ook niet automatisch gestart.
+- Dagverslag: zie de README in de hoofdmap. De verslagen van de laatste 14 dagen staan in `huis/data/dagverslag.json` (niet in git). Mail: `HUIS_MAIL_GEBRUIKER`, `HUIS_MAIL_WACHTWOORD`, `HUIS_MAIL_AAN` en eventueel `HUIS_MAIL_SERVER` (standaard Gmail) in `huis/.env`, gezet met `scripts/zet-mail.sh`. In de zandbak wordt er niets gestart.
 
 ## Buiten de deur via Tailscale
 
