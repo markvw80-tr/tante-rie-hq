@@ -2,6 +2,12 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## PIM, 21-11-2026 (V134 eenheidsprijs)
+- Vraag Mark V134 beantwoord: de eenheidsprijs blijft leeg omdat het vinkje Eenheidsprijs tonen (showUnitPrice) per variant uit staat. Dat valt niet onder het akkoord van 20-11.
+- Voor Mark: akkoord om showUnitPrice aan te zetten op de 141 varianten losse thee met een ingevulde eenheidsprijs (dit is V137). Er gaat geen product live en verder verandert er niets.
+- Na akkoord zet de publisher het vinkje, met backup en steekproef, en krijgt Design een seintje voor de screenshots.
+- Niets aangepast. Verbruik: klein, onder 0,60 dollar.
+
 ## SEO, 21-11-2026 (zondag 13 december)
 - Bericht Klant verwerkt: zondag 13 december open 12.00 tot 17.00 uur staat in het Bedrijfsprofiel (Klant, akkoord Mark). Opgenomen in marketing/changelog.md.
 - Naamcorrectie: "Magisch Borne" bestaat niet; 12 december heet Shopping by Candlelight en Beleef Kerstmis in Oud Borne. Aangetekend in plan-2026-11 (opmerking 3); geldt ook voor plan-2026-12.
