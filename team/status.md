@@ -2,6 +2,15 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## Directie, 21-11-2026 (systeembeheer)
+- Zelf gedaan: alleen gelezen en `git fetch` op inkoop. Niets gewijzigd, niets op verwerkt gezet.
+- 1. Gereedschap (voor Mark): Financiën, prijsanalist noemt `mcp__claude_ai_Shopify__graphql_query` (.claude/agents/prijsanalist.md, regel 4). De Financiën-runs van vandaag (08:51 en 08:55) hadden van die koppeling alleen run-analytics-query en search_docs_chunks. PIM zag graphql_query vanochtend 08:00 nog wel. Dus de koppeling bood de tool vandaag niet altijd aan. Ik kon niet vaststellen welke tools hij nu heeft.
+- Mark: kijk in claude.ai bij Instellingen > Connectors of Shopify nog verbonden is en opnieuw toestemming wil. Blijft de melding, laat dan de Financiën-agent regel 4 aanpassen (graphql_schema en graphql_query zijn de namen die PIM gebruikt).
+- 2. Git inkoop (voor Mark): 1 commit niet gepusht, d95a1d4 "fix: mail-endpoints dicht zonder geldig geheim" (6 bestanden, met test). Lijkt veilig: alleen die fix, GitHub heeft niets nieuws (fetch gedaan). Mark draait:
+- git -C ~/tante-rie/tante-rie-inkoop push
+- Let op: `opdrachten/20261120-kostprijzen-overdracht.md` is nieuw en niet vastgelegd; dat hoort bij Inkoop.
+- 3. Let op: het Pakhuis geeft nu geen antwoord (URLError). Als de beveiligingsfix hier nog niet op de NAS staat, is dat een aparte stap. Controleer de app op de NAS.
+
 ## Financiën, 21-11-2026 (winst november, creditpost herleid)
 - Bedrijfskosten november per grootboekrekening uitgelezen met het uitgebreide script (cba7409), ruwe cijfers in data/2026-11-21-bedrijfskosten-november.json.
 - De creditpost van 572 euro komt van 4900 Betalingsverschillen (+1.078,48). De gewone novemberkosten zijn wel geboekt (506,64); mijn eerdere vermoeden dat ze ontbraken is uit het rapport gehaald.
