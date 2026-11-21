@@ -15,3 +15,6 @@ Per bericht:
 4. 2026-11-20 PIM "eenheidsprijs gevuld" en 2026-11-21 SEO "wacht op showUnitPrice": informatie, er hoeft niets mee. Zet op verwerkt.
 
 Zie je bij een bericht toch iets dat nog niet afgehandeld is, laat het dan staan en zeg in je statusblok waarom. Sluit af met je statusblok, inclusief hoeveel berichten er nog in je inbox staan.
+
+---
+Verwerkt op 2026-11-21 07:56: Uitgevoerd 21-11: zes berichten op verwerkt, open punten in opdrachten/2026-11-21-open-designpunten.md, niets gebouwd.
