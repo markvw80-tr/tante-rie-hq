@@ -9,7 +9,7 @@ import { parseAgent } from "./parsers/agents.ts";
 import { dagenTussen, datumUitNaam } from "./parsers/datum.ts";
 import { parseBericht, parseJsonMailbox } from "./parsers/mailbox.ts";
 import { besluitenUitAgenda, parseMarkdown } from "./parsers/markdown.ts";
-import { metAntwoorden, zoekBesluitAntwoorden } from "./besluiten.ts";
+import { eersteVermelding, metAntwoorden, metSinds, zoekBesluitAntwoorden } from "./besluiten.ts";
 import { parseStatus } from "./parsers/status.ts";
 
 const RECENT_VERWERKT = 6;
@@ -34,12 +34,13 @@ export async function bouwHuis(
   // Status, agenda en doelen uit dezelfde stand als de post: teams en de directie-routine zetten ze op main.
   const gedeeld = path.resolve(mailbox, "..", "..");
   const ctx: Context = { bron, hq, gedeeld, mailbox, vandaag };
-  const [statusTekst, agenda, doelen, jsonMailbox, antwoorden] = await Promise.all([
+  const [statusTekst, agenda, doelen, jsonMailbox, antwoorden, eerdereAgendas] = await Promise.all([
     bron.lees(path.join(gedeeld, "team/status.md")),
     leesAgenda(ctx),
     leesDoc(ctx, "team/doelen.md"),
     Promise.all(["seo-naar-pim", "pim-naar-seo"].map((n) => leesJsonMailbox(ctx, n))),
     zoekBesluitAntwoorden(bron, mailbox, vandaag),
+    leesAgendaBesluiten(ctx),
   ]);
   const status = statusTekst ? parseStatus(statusTekst) : [];
   const standen = await Promise.all(teams.map((t) => bouwTeam(ctx, t, status, agenda)));
@@ -50,7 +51,7 @@ export async function bouwHuis(
     teams: standen,
     agenda,
     doelen,
-    besluiten: agenda ? metAntwoorden(besluitenUitAgenda(agenda), antwoorden) : [],
+    besluiten: agenda ? metSinds(metAntwoorden(besluitenUitAgenda(agenda), antwoorden), eersteVermelding(eerdereAgendas), agenda.datum) : [],
     jsonMailbox,
   };
 }
@@ -151,6 +152,19 @@ async function leesAgenda(ctx: Context): Promise<Agenda | null> {
   const datum = datumUitNaam(laatste.replace(/^agenda-/, ""));
   if (tekst === null || !datum) return null;
   return { ...parseMarkdown(tekst), datum, bestand: laatste };
+}
+
+/** De besluitregels van alle agenda's, om te zien sinds wanneer een onderwerp openstaat. */
+async function leesAgendaBesluiten(ctx: Context): Promise<{ datum: string; besluiten: string[] }[]> {
+  const map = path.join(ctx.gedeeld, "team/directie");
+  const namen = (await ctx.bron.bestanden(map, ".md")).filter((n) => n.startsWith("agenda-"));
+  const uit: { datum: string; besluiten: string[] }[] = [];
+  for (const naam of namen) {
+    const datum = datumUitNaam(naam.replace(/^agenda-/, ""));
+    const tekst = datum ? await ctx.bron.lees(path.join(map, naam)) : null;
+    if (datum && tekst !== null) uit.push({ datum, besluiten: besluitenUitAgenda(parseMarkdown(tekst)).map((b) => b.tekst) });
+  }
+  return uit;
 }
 
 async function leesDoc(ctx: Context, relatief: string): Promise<MdDocument | null> {

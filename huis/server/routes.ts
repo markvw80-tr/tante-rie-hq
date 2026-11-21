@@ -20,6 +20,7 @@ import { behandelRunGet, behandelRunPost } from "./regie/routes.ts";
 import { valideerBesluit, valideerOpdracht } from "./verzoek.ts";
 import { alleBerichten, batchInhoud, leesAgent, leesBatchDocument, leesBericht, leesWerkDocument, OngeldigVerzoek, teamWerk } from "./werk.ts";
 import { kostenOverzicht } from "./regie/kosten.ts";
+import { leesKengetallen } from "./kengetallen.ts";
 
 export interface Antwoord {
   readonly status: number;
@@ -68,7 +69,7 @@ export async function behandel(pad: string, params: URLSearchParams, omg: Omgevi
   try {
     if (pad === "/api/huis") {
       const huis = metGezondheid(await metPakhuis(await bouwHuis(omg.bron, omg.hq, omg.teams, omg.vandaag, omg.mailbox), omg.pakhuis), omg.systeembeheer?.stand() ?? null);
-      return { status: 200, body: { ...huis, dagverslag: omg.dagverslag?.stand() ?? null, runs: omg.regie?.lijst().slice(0, 20) ?? [], post: omg.ophaler?.stand(), automaat: omg.automaat?.stand(), kosten: omg.regie ? kostenOverzicht(omg.regie.lijst(), new Date()) : undefined, autoGoedkeuring: omg.regie?.autoGoedkeuring(), opAfstand: omg.opAfstand ?? null, ik: omg.persoon ?? "mark" } };
+      return { status: 200, body: { ...huis, dagverslag: omg.dagverslag?.stand() ?? null, runs: omg.regie?.lijst().slice(0, 20) ?? [], post: omg.ophaler?.stand(), automaat: omg.automaat?.stand(), kosten: omg.regie ? kostenOverzicht(omg.regie.lijst(), new Date()) : undefined, kengetallen: await leesKengetallen(omg.bron, omg.teams), autoGoedkeuring: omg.regie?.autoGoedkeuring(), opAfstand: omg.opAfstand ?? null, ik: omg.persoon ?? "mark" } };
     }
     if (omg.regie && pad.startsWith("/api/runs")) {
       const antwoord = behandelRunGet(pad, omg.regie);

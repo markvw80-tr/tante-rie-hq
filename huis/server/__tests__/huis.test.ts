@@ -76,7 +76,7 @@ describe("bouwHuis", () => {
   test("pakt de nieuwste agenda en haalt besluiten eruit", async () => {
     const huis = await bouwHuis(bron, HQ, TEAMS, "2026-11-16");
     expect(huis.agenda?.datum).toBe("2026-11-16");
-    expect(huis.besluiten).toEqual([{ id: expect.stringMatching(/^[a-f0-9]{10}$/), tekst: "Thema publiceren", team: "pim", antwoord: null }]);
+    expect(huis.besluiten).toEqual([{ id: expect.stringMatching(/^[a-f0-9]{10}$/), tekst: "Thema publiceren", team: "pim", antwoord: null, sinds: "2026-11-16" }]);
     expect(huis.doelen?.titel).toBe("Gedeelde doelen");
     expect(huis.jsonMailbox.map((j) => [j.naam, j.leesbaar])).toEqual([["seo-naar-pim", true], ["pim-naar-seo", false]]);
   });

@@ -8,7 +8,16 @@ import { useIk } from "../ik.ts";
 const KEUZE_LABEL: Record<BesluitKeuze, string> = { akkoord: "Akkoord", afgewezen: "Niet akkoord", vraag: "Vraag terug" };
 const KEUZE_KLASSE: Record<BesluitKeuze, string> = { akkoord: "goed", afgewezen: "nee", vraag: "vraag" };
 
-export function BesluitKaart({ besluit, nummer }: { readonly besluit: Besluit; readonly nummer: number }) {
+const DAG_MS = 86_400_000;
+
+/** Hoe lang een open besluit al op de agenda staat; rood vanaf de drempel van het huis. */
+function OpenSinds({ sinds, vandaag, drempel }: { readonly sinds: string; readonly vandaag: string; readonly drempel: number }) {
+  const dagen = Math.max(0, Math.round((Date.parse(vandaag) - Date.parse(sinds)) / DAG_MS));
+  const tekst = dagen === 0 ? "nieuw vandaag" : `open sinds ${korteDatum(sinds)}, ${dagen} ${dagen === 1 ? "dag" : "dagen"}`;
+  return <p className={`open-sinds${dagen >= drempel ? " oud" : ""}`}>{tekst}</p>;
+}
+
+export function BesluitKaart({ besluit, nummer, vandaag, drempel }: { readonly besluit: Besluit; readonly nummer: number; readonly vandaag?: string; readonly drempel?: number }) {
   const ik = useIk();
   const [keuze, setKeuze] = useState<BesluitKeuze | null>(null);
   const [toelichting, setToelichting] = useState("");
@@ -47,6 +56,7 @@ export function BesluitKaart({ besluit, nummer }: { readonly besluit: Besluit; r
           </span>
         )}
         <p>{besluit.tekst}</p>
+        {!besluit.antwoord && besluit.sinds && vandaag && <OpenSinds sinds={besluit.sinds} vandaag={vandaag} drempel={drempel ?? 3} />}
 
         {besluit.antwoord && (
           <p className={`stempel ${KEUZE_KLASSE[besluit.antwoord.keuze]}`}>

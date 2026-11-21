@@ -18,6 +18,42 @@ export function besluitId(tekst: string): string {
   return createHash("sha1").update(tekst.trim()).digest("hex").slice(0, 10);
 }
 
+const VRAAGNUMMER = /\bV(\d{2,4})\b/;
+const MAX_KOP = 60;
+
+/**
+ * Onderwerp van een besluit, zodat hetzelfde besluit herkend wordt als de directie de tekst elke dag anders
+ * formuleert: een vraagnummer (V127) als dat erin staat, anders de korte kop voor de eerste dubbele punt.
+ */
+export function besluitOnderwerp(tekst: string): string | null {
+  const v = VRAAGNUMMER.exec(tekst);
+  if (v) return `v${v[1]}`;
+  const dubbelepunt = tekst.indexOf(":");
+  if (dubbelepunt <= 0) return null;
+  const kop = tekst.slice(0, dubbelepunt).replace(/[*_`]/g, "").trim().toLowerCase();
+  return kop && kop.length <= MAX_KOP ? kop : null;
+}
+
+/** Per onderwerp de datum van de oudste agenda waarin het als besluit voor Mark stond. */
+export function eersteVermelding(agendas: readonly { readonly datum: string; readonly besluiten: readonly string[] }[]): Map<string, string> {
+  const eerste = new Map<string, string>();
+  for (const a of [...agendas].sort((x, y) => x.datum.localeCompare(y.datum))) {
+    for (const tekst of a.besluiten) {
+      const o = besluitOnderwerp(tekst);
+      if (o && !eerste.has(o)) eerste.set(o, a.datum);
+    }
+  }
+  return eerste;
+}
+
+/** Zet bij elk besluit sinds wanneer het openstaat; zonder herkenbaar onderwerp de datum van de huidige agenda. */
+export function metSinds(besluiten: readonly Besluit[], eerste: ReadonlyMap<string, string>, agendaDatum: string): Besluit[] {
+  return besluiten.map((b) => {
+    const o = besluitOnderwerp(b.tekst);
+    return { ...b, sinds: (o && eerste.get(o)) ?? agendaDatum };
+  });
+}
+
 export function metAntwoorden(besluiten: readonly AgendaBesluit[], antwoorden: ReadonlyMap<string, BesluitAntwoord>): Besluit[] {
   return besluiten.map((b) => {
     const id = besluitId(b.tekst);

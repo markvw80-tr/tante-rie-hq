@@ -89,6 +89,8 @@ export interface Besluit {
   readonly tekst: string;
   readonly team: TeamId | null;
   readonly antwoord: BesluitAntwoord | null;
+  /** Datum van de eerste agenda waarop dit onderwerp stond (zie besluitOnderwerp). */
+  readonly sinds?: string;
 }
 
 export type Stemming = "bezig" | "stil" | "achterstand";
@@ -140,6 +142,27 @@ export interface PakhuisStand {
   readonly appUrl: string;
 }
 
+/** Eén meetpunt op de doelenkaart, uit data/kengetallen.json van een team. */
+export interface Kengetal {
+  readonly id: string;
+  readonly label: string;
+  /** null: (nog) niet gemeten. */
+  readonly waarde: number | null;
+  readonly vorige: number | null;
+  readonly periode: string;
+  readonly bron: string;
+  /** Is een hogere of een lagere waarde beter? */
+  readonly beter: "hoger" | "lager";
+  readonly eenheid: string;
+}
+
+export interface TeamKengetallen {
+  readonly team: MailboxTeam;
+  readonly bijgewerkt: string;
+  readonly cijfers: readonly Kengetal[];
+  readonly fouten: readonly string[];
+}
+
 export interface HuisStand {
   readonly vandaag: string;
   readonly drempelDagen: number;
@@ -152,6 +175,8 @@ export interface HuisStand {
   readonly post?: PostStand;
   readonly automaat?: AutomaatStand;
   readonly kosten?: KostenOverzicht;
+  /** Kengetallen van de teams voor de doelenkaart op de toonbank. */
+  readonly kengetallen?: readonly TeamKengetallen[];
   /** Toestemmingsvragen van agents automatisch goedkeuren (live acties nooit). */
   readonly autoGoedkeuring?: boolean;
   /** Het Tailscale-adres waarop het huis ook buiten de deur te openen is, als tailscale serve aanstaat. */

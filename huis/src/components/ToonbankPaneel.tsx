@@ -9,6 +9,7 @@ import { AutomaatKaart } from "./AutomaatKaart.tsx";
 import { GoedkeuringKaart } from "./GoedkeuringKaart.tsx";
 import { KostenKaart } from "./KostenKaart.tsx";
 import { DagverslagKaart } from "./DagverslagKaart.tsx";
+import { DoelenKaart } from "./DoelenKaart.tsx";
 import { MeterkastKaart } from "./MeterkastKaart.tsx";
 
 export function ToonbankPaneel({ huis, onGewijzigd }: { readonly huis: HuisStand; readonly onGewijzigd: () => void }) {
@@ -32,9 +33,11 @@ export function ToonbankPaneel({ huis, onGewijzigd }: { readonly huis: HuisStand
         </p>
         {open.length === 0 && <p className="rustig">Er wachten geen besluiten op je.</p>}
         {[...open, ...beantwoord].map((b) => (
-          <BesluitKaart key={b.id} besluit={b} nummer={huis.besluiten.indexOf(b) + 1} />
+          <BesluitKaart key={b.id} besluit={b} nummer={huis.besluiten.indexOf(b) + 1} vandaag={huis.vandaag} drempel={huis.drempelDagen} />
         ))}
       </section>
+
+      {huis.kengetallen && <DoelenKaart teams={huis.kengetallen} vandaag={huis.vandaag} />}
 
       <section className="kaart keukentafel-kaart">
         <h3>Keukentafel</h3>

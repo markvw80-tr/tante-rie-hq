@@ -6,6 +6,8 @@ Geldt in elk team waar de plugin aanstaat:
   uitroeptekens, geen vulwoorden. Tabelregels, citaten en codeblokken worden overgeslagen.
 - JSON in pipeline/03-enriched/ en pipeline/04-review/ (PIM): dezelfde regels op de productvelden,
   plus lengtegrenzen en geen lijsten in de beschrijving.
+- Klant: het veld "antwoord" in concepten/*review-antwoorden*.json en de berichtteksten (citaatregels
+  die met > beginnen) in concepten/*campagne*.md.
 De regels staan in ../schrijfregels.json. Bij problemen exit 2: de melding gaat terug naar de agent.
 Een fout in de hook zelf blokkeert niets (exit 0 met een melding op stderr).
 """
@@ -78,6 +80,24 @@ def productjson(pad):
     return fouten
 
 
+def reviewjson(pad):
+    data = json.loads(pad.read_text())
+    regels = data.get("antwoorden", data) if isinstance(data, dict) else data
+    fouten = []
+    for i, r in enumerate(regels if isinstance(regels, list) else []):
+        if isinstance(r, dict) and isinstance(r.get("antwoord"), str):
+            fouten += tekstfouten(f"antwoord {r.get('voornaam') or i + 1}", r["antwoord"])
+    return fouten
+
+
+def campagne(pad):
+    fouten = []
+    for nr, regel in enumerate(pad.read_text().split("\n"), 1):
+        if regel.lstrip().startswith(">"):
+            fouten += tekstfouten(f"bericht regel {nr}", regel.lstrip()[1:])
+    return fouten
+
+
 def main():
     data = json.load(sys.stdin)
     pad = data.get("tool_input", {}).get("file_path", "")
@@ -93,6 +113,10 @@ def main():
         fouten = markdown(bestand)
     elif re.match(r"pipeline/0[34]-[^/]+/.+\.json$", rel):
         fouten = productjson(bestand)
+    elif re.match(r"concepten/[^/]*review-antwoorden[^/]*\.json$", rel):
+        fouten = reviewjson(bestand)
+    elif re.match(r"concepten/[^/]*campagne[^/]*\.md$", rel):
+        fouten = campagne(bestand)
     else:
         return 0
     if not fouten:
