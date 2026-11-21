@@ -47,8 +47,8 @@ export interface GezondheidDeps {
   /** null: de login kon niet gelezen worden. */
   login(): Promise<LoginStand | null>;
   runs(): readonly RunSamenvatting[];
-  /** Tools die de laatste run van dit team bij de start had; null als onbekend. */
-  gereedschap(team: TeamId): readonly string[] | null;
+  /** Tools die de laatste run van deze agent bij de start had; null als onbekend. */
+  gereedschap(team: TeamId, agent: string): readonly string[] | null;
   agentTools(): Promise<readonly AgentTools[]>;
   repos(): Promise<readonly RepoStand[]>;
   inbox(): Promise<readonly InboxBericht[]>;
@@ -95,13 +95,14 @@ export function meetRuns(runs: readonly RunSamenvatting[], nu: Date): Meting {
 const KOPPELING = /^mcp__(.+)__([^_].*)$/;
 
 /**
- * Noemt een agent een tool van een koppeling die in de laatste run wel aanwezig was, maar zonder die tool?
+ * Noemt een agent een tool van een koppeling die in zijn eigen laatste run wel aanwezig was, maar zonder die tool?
+ * Per agent: een run ziet alleen de tools van die agent, dus de run van een teamgenoot zegt hier niets over.
  * Tools van een koppeling die er helemaal niet was, tellen niet: agents noemen vaak twee namen van dezelfde koppeling.
  */
-export function meetGereedschap(agents: readonly AgentTools[], gereedschap: (team: TeamId) => readonly string[] | null): Meting {
+export function meetGereedschap(agents: readonly AgentTools[], gereedschap: (team: TeamId, agent: string) => readonly string[] | null): Meting {
   const missend: string[] = [];
   for (const a of agents) {
-    const sessie = gereedschap(a.team);
+    const sessie = gereedschap(a.team, a.agent);
     if (!sessie) continue;
     const aanwezig = new Set(sessie);
     const koppelingen = new Set(sessie.map((t) => KOPPELING.exec(t)?.[1]).filter(Boolean));

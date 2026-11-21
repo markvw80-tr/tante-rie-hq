@@ -69,6 +69,25 @@ describe("meetGereedschap", () => {
   test("zonder bekende sessie geen oordeel", () => {
     expect(meetGereedschap([{ team: "seo", agent: "s", tools: ["mcp__x__y"] }], () => null).kleur).toBe("groen");
   });
+  test("vergelijkt per agent: de run van een andere agent van hetzelfde team telt niet", () => {
+    const runs: Record<string, readonly string[]> = { controller: ["Read", "mcp__claude_ai_Shopify__run-analytics-query"] };
+    const m = meetGereedschap(
+      [
+        { team: "financien", agent: "controller", tools: ["mcp__claude_ai_Shopify__run-analytics-query"] },
+        { team: "financien", agent: "prijsanalist", tools: ["mcp__claude_ai_Shopify__run-analytics-query", "mcp__claude_ai_Shopify__graphql_query"] },
+      ],
+      (_team, agent) => runs[agent] ?? null,
+    );
+    expect(m.kleur).toBe("groen");
+  });
+  test("meldt een tool die in de eigen run van die agent ontbreekt", () => {
+    const runs: Record<string, readonly string[]> = { prijsanalist: ["mcp__claude_ai_Shopify__run-analytics-query"] };
+    const m = meetGereedschap(
+      [{ team: "financien", agent: "prijsanalist", tools: ["mcp__claude_ai_Shopify__run-analytics-query", "mcp__claude_ai_Shopify__graphql_query"] }],
+      (_team, agent) => runs[agent] ?? null,
+    );
+    expect(m.details).toEqual(["Financiën, prijsanalist: graphql_query (claude_ai_Shopify) bestaat niet"]);
+  });
 });
 
 describe("meetRepos", () => {

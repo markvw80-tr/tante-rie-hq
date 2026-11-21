@@ -89,7 +89,7 @@ const systeembeheer = new Systeembeheer(
   {
     login: leesLogin,
     runs: () => regie.lijst(),
-    gereedschap: (team) => regie.laatsteGereedschap(team),
+    gereedschap: (team, agent) => regie.laatsteGereedschap(team, agent),
     agentTools: () => leesAgentTools(schijfBron, TEAMS),
     repos: () => leesRepos(TEAMS),
     inbox: () => leesInboxen(schijfBron, mailboxMap(HQ), MAIL_TEAMS),

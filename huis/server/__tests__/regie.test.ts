@@ -117,7 +117,7 @@ describe("RunBeheer", () => {
     expect(klaar.regels.some((r) => r.soort === "besluit" && r.tekst.startsWith("Geweigerd"))).toBe(true);
   });
 
-  test("tools uit het init-bericht worden onthouden per team, maar niet in de samenvatting", async () => {
+  test("tools uit het init-bericht worden onthouden per agent, maar niet in de samenvatting", async () => {
     const beheer = new RunBeheer(
       nepStarter(async function* () {
         yield { type: "system", subtype: "init", model: "m", tools: ["Read", "mcp__shop__graphql_query"] };
@@ -127,8 +127,9 @@ describe("RunBeheer", () => {
     );
     beheer.start(verzoek);
     await wacht();
-    expect(beheer.laatsteGereedschap("pim")).toEqual(["Read", "mcp__shop__graphql_query"]);
-    expect(beheer.laatsteGereedschap("seo")).toBeNull();
+    expect(beheer.laatsteGereedschap("pim", verzoek.agent)).toEqual(["Read", "mcp__shop__graphql_query"]);
+    expect(beheer.laatsteGereedschap("pim", "andere-agent")).toBeNull();
+    expect(beheer.laatsteGereedschap("seo", verzoek.agent)).toBeNull();
     expect("gereedschap" in beheer.lijst()[0]).toBe(false);
   });
 

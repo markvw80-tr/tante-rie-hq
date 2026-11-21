@@ -74,9 +74,9 @@ export class RunBeheer extends EventEmitter {
     return this.runs.get(id)?.run ?? null;
   }
 
-  /** De tools die de nieuwste run van dit team bij de start had (voor de meterkast). */
-  laatsteGereedschap(team: TeamId): readonly string[] | null {
-    const runs = [...this.runs.values()].map((l) => l.run).filter((r) => r.team === team && r.gereedschap?.length);
+  /** De tools die de nieuwste run van deze agent bij de start had (voor de meterkast). */
+  laatsteGereedschap(team: TeamId, agent: string): readonly string[] | null {
+    const runs = [...this.runs.values()].map((l) => l.run).filter((r) => r.team === team && r.agent === agent && r.gereedschap?.length);
     runs.sort((a, b) => b.gestart.localeCompare(a.gestart));
     return runs[0]?.gereedschap ?? null;
   }
