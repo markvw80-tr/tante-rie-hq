@@ -30,6 +30,7 @@ export const TEAMS: readonly TeamConfig[] = [
   { id: "pim", naam: "PIM", kamer: "Theekelder", repo: process.env.HUIS_PIM ?? thuis("tante-rie/tante-rie-pim"), heeftPipeline: true },
   { id: "inkoop", naam: "Inkoop", kamer: "Pakhuis", repo: process.env.HUIS_INKOOP ?? thuis("tante-rie/tante-rie-inkoop"), heeftPipeline: false },
   { id: "financien", naam: "Financiën", kamer: "Kluis", repo: process.env.HUIS_FINANCIEN ?? thuis("tante-rie/tante-rie-financien"), heeftPipeline: false },
+  { id: "klant", naam: "Klant", kamer: "Theesalon", repo: process.env.HUIS_KLANT ?? thuis("tante-rie/tante-rie-klant"), heeftPipeline: false },
 ];
 
 export const PIPELINE_FASES: ReadonlyArray<readonly [string, string]> = [

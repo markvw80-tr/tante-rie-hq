@@ -1,7 +1,7 @@
 import type { HuisStand, MailboxTeam, RunStatus, TeamStand } from "../../../shared/types.ts";
 import { TEAM_HEX } from "../../teamKleur.ts";
 import { Buitenkant, Buizenpost } from "./Buitenkant.tsx";
-import { AtelierDecor, EtalageDecor, KantoorDecor, KelderDecor, KluisDecor, PakhuisDecor, ToonbankDecor } from "./Decor.tsx";
+import { AtelierDecor, EtalageDecor, KantoorDecor, KelderDecor, KluisDecor, PakhuisDecor, TheesalonDecor, ToonbankDecor } from "./Decor.tsx";
 import { Figuurtjes } from "./Figuurtjes.tsx";
 import { Kamer, type LampStand } from "./Kamer.tsx";
 import { KAMERS, VIEWBOX, type Plek } from "./maten.ts";
@@ -13,7 +13,7 @@ interface Props {
 }
 
 /** Volgorde van de kokers in de buizenpost: van boven naar beneden, links naar rechts. */
-const KOKER_VOLGORDE: readonly MailboxTeam[] = ["design", "inkoop", "seo", "pim", "financien"];
+const KOKER_VOLGORDE: readonly MailboxTeam[] = ["design", "inkoop", "seo", "pim", "financien", "klant"];
 const KOKER_STAP = 26;
 /** Hoe breed de figuurtjes per kamer mogen staan, zodat ze niet over het decor lopen. */
 const LOOPRUIMTE: Record<TeamStand["id"], { readonly links: number; readonly breedte: number }> = {
@@ -23,6 +23,7 @@ const LOOPRUIMTE: Record<TeamStand["id"], { readonly links: number; readonly bre
   seo: { links: 14, breedte: 160 },
   pim: { links: 30, breedte: 420 },
   financien: { links: 14, breedte: 90 },
+  klant: { links: 8, breedte: 56 },
 };
 
 export function Huis({ huis, gekozen, onKies }: Props) {
@@ -59,6 +60,7 @@ export function Huis({ huis, gekozen, onKies }: Props) {
           {t.id === "seo" && <EtalageDecor />}
           {t.id === "pim" && t.pipeline && <KelderDecor fases={t.pipeline} />}
           {t.id === "financien" && <KluisDecor />}
+          {t.id === "klant" && <TheesalonDecor />}
           {t.id === "inkoop" && (
             <PakhuisDecor
               dozen={huis.pakhuis ? huis.pakhuis.wachtend.length : 0}

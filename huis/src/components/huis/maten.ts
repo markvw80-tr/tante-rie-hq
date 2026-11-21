@@ -21,4 +21,6 @@ export const KAMERS: Record<Plek, Vlak> = {
   toonbank: { x: 580, y: 462, w: 280, h: 188 },
   pim: { x: 140, y: 682, w: 480, h: 228 },
   financien: { x: 630, y: 682, w: 230, h: 228 },
+  /** Serre links tegen het huis, op de begane grond. */
+  klant: { x: 4, y: 486, w: 120, h: 164 },
 };

@@ -41,6 +41,10 @@ export const WERKBRONNEN: Record<TeamId, readonly WerkBronConfig[]> = {
     { id: "rapporten", label: "Rapporten", map: "rapporten" },
     { id: "opdrachten", label: "Opdrachten", map: "opdrachten" },
   ],
+  klant: [
+    { id: "concepten", label: "Concepten", map: "concepten" },
+    { id: "opdrachten", label: "Opdrachten", map: "opdrachten" },
+  ],
 };
 
 export const MAX_DOCUMENTEN = 40;

@@ -1,6 +1,6 @@
 # Mailbox van de teams (tante-rie-hq)
 
-Deze map in tante-rie-hq is het enige communicatiekanaal tussen het SEO-team (tante-rie-seo), het PIM-team (tante-rie-pim), het Design-team (tante-rie-design) het Inkoop-team (tante-rie-inkoop) en het Financiën-team (tante-rie-financien). Elk team heeft een eigen inbox. Berichten zijn gewone Markdown-bestanden, dus Mark kan alles meelezen op GitHub.
+Deze map in tante-rie-hq is het enige communicatiekanaal tussen het SEO-team (tante-rie-seo), het PIM-team (tante-rie-pim), het Design-team (tante-rie-design) het Inkoop-team (tante-rie-inkoop) het Financiën-team (tante-rie-financien) en het Klant-team (tante-rie-klant). Elk team heeft een eigen inbox. Berichten zijn gewone Markdown-bestanden, dus Mark kan alles meelezen op GitHub.
 
 | Map | Inhoud |
 |---|---|
@@ -14,10 +14,12 @@ Deze map in tante-rie-hq is het enige communicatiekanaal tussen het SEO-team (ta
 | `inkoop/verwerkt/` | Berichten die het Inkoop-team heeft afgehandeld |
 | `financien/inbox/` | Nieuwe berichten voor het Financiën-team |
 | `financien/verwerkt/` | Berichten die het Financiën-team heeft afgehandeld |
+| `klant/inbox/` | Nieuwe berichten voor het Klant-team |
+| `klant/verwerkt/` | Berichten die het Klant-team heeft afgehandeld |
 
 ## Werkwijze
 
-1. Begin elke opdracht met het lezen van de eigen inbox: `python3 scripts/mailbox.py lijst <team>` (`seo`, `pim`, `design`, `inkoop` of `financien`; in elke teamrepo verwijst `scripts/mailbox.py` door naar tante-rie-hq). Het script haalt eerst de laatste stand op.
+1. Begin elke opdracht met het lezen van de eigen inbox: `python3 scripts/mailbox.py lijst <team>` (`seo`, `pim`, `design`, `inkoop`, `financien` of `klant`; in elke teamrepo verwijst `scripts/mailbox.py` door naar tante-rie-hq). Het script haalt eerst de laatste stand op.
 2. Een bericht sturen: `python3 scripts/mailbox.py stuur --van seo --aan pim --onderwerp "..." --tekst "..."`. Voor lange tekst gebruik je `--tekst -` en geef je de tekst via stdin. Het script zet het bericht direct op `main` en pusht het.
 3. Antwoorden: stuur een nieuw bericht met `--antwoord-op <bestandsnaam>` zodat de draad te volgen is.
 4. Afhandelen: `python3 scripts/mailbox.py verwerkt <bestandsnaam> --notitie "wat er mee gedaan is"`. Het bericht verhuist naar `verwerkt/`.

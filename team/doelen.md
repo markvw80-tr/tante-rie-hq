@@ -1,6 +1,6 @@
 # Gedeelde doelen Tante Rie
 
-Eén bron voor wat de vijf teams samen bereiken. Elk team verwijst hiernaar en schrijft zijn eigen werk daaraan vast. Wijzigingen alleen met akkoord van Mark. Bij elk punt staat waar het vandaan komt.
+Eén bron voor wat de zes teams samen bereiken. Elk team verwijst hiernaar en schrijft zijn eigen werk daaraan vast. Wijzigingen alleen met akkoord van Mark. Bij elk punt staat waar het vandaan komt.
 
 ## Hoofddoel
 
@@ -27,6 +27,7 @@ Alle teams werken naar het hoofddoel: dé thee- en cadeauwinkel van Twente en om
 - Design: laat tanterie.nl er beter uitzien, beter werken en beter converteren binnen de merkstijl (CLAUDE.md van tante-rie-design).
 - Inkoop: zorgt dat leveringen kloppend als voorraad en kostprijs in Shopify komen, na fysiek afvinken in de winkel; een agent boekt nooit zelf voorraad (besluit Mark 20-11-2026, werkafspraken-inkoop.md).
 - Financiën: maakt de maat van het hoofddoel zichtbaar: winst per maand, marge per kanaal, leverancier en categorie, omzet zonder kostprijs; stelt prijsregels en streefwaarden voor, Mark besluit; leest alleen (besluit Mark 21-11-2026, werkafspraken-financien.md).
+- Klant: elke Google-review binnen een week een persoonlijk antwoord, eerlijk meer reviews en klantvragen die niet blijven liggen; alles naar buiten pas na akkoord van Mark (besluit Mark 21-11-2026, werkafspraken-klant.md).
 
 ## Gedeelde regels
 

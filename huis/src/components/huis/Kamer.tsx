@@ -29,6 +29,10 @@ const LAMP: Record<LampStand, { readonly kleur: string; readonly tekst: string }
   werkt: { kleur: "#3fa34d", tekst: "Lampje groen: het team is aan het werk" },
 };
 
+/** Ruimte die de muurlamp naast het bordje nodig heeft. */
+const LAMP_RUIMTE = 40;
+const SMAL_MARGE = 6;
+
 export function Kamer({ vlak, titel, ondertitel, kleur, stemming, gekozen, ariaLabel, badge, stilBordje, lamp, onKies, children }: Props) {
   const { x, y, w, h } = vlak;
   const toets = (e: KeyboardEvent) => {
@@ -37,7 +41,11 @@ export function Kamer({ vlak, titel, ondertitel, kleur, stemming, gekozen, ariaL
       onKies();
     }
   };
-  const bordjeBreedte = Math.max(titel.length, ondertitel.length) * 7.4 + 24;
+  const ruimBordje = Math.max(titel.length, ondertitel.length) * 7.4 + 24;
+  // Smalle kamer (zoals de serre): compact bordje binnen de kamer en de lamp eronder, zodat niets over de buurkamer valt.
+  const smal = ruimBordje + LAMP_RUIMTE > w;
+  const bordjeBreedte = smal ? w - 2 * SMAL_MARGE : ruimBordje;
+  const marge = smal ? SMAL_MARGE : 12;
 
   return (
     <g className={`kamer${gekozen ? " gekozen" : ""}`} role="button" tabIndex={0} aria-label={ariaLabel} aria-pressed={gekozen} onClick={onKies} onKeyDown={toets}>
@@ -47,17 +55,17 @@ export function Kamer({ vlak, titel, ondertitel, kleur, stemming, gekozen, ariaL
       {children}
       {stemming === "achterstand" && <Stof vlak={vlak} />}
 
-      <g transform={`translate(${x + 12} ${y + 14})`}>
+      <g transform={`translate(${x + marge} ${y + 14})`}>
         <rect width={bordjeBreedte} height={40} rx={8} fill="#ffffff" stroke={kleur} strokeOpacity={0.35} />
-        <text className="bordje" x={12} y={18} fontSize={15} fill="#1c1c14">
+        <text className="bordje" x={smal ? 8 : 12} y={18} fontSize={smal ? 13 : 15} fill="#1c1c14">
           {titel}
         </text>
-        <text x={12} y={33} fontSize={10.5} fill={kleur} fontWeight={600} letterSpacing={0.6}>
+        <text x={smal ? 8 : 12} y={33} fontSize={smal ? 8.5 : 10.5} fill={kleur} fontWeight={600} letterSpacing={smal ? 0.2 : 0.6}>
           {ondertitel.toUpperCase()}
         </text>
       </g>
 
-      {lamp && <Muurlamp x={x + 12 + bordjeBreedte + 22} y={y + 14} stand={lamp} id={titel} />}
+      {lamp && <Muurlamp x={smal ? x + w - 16 : x + 12 + bordjeBreedte + 22} y={smal ? y + 60 : y + 14} stand={lamp} id={titel} />}
       {badge && <Badge x={x + w - 12} y={y + 14} tekst={badge} kleur={kleur} />}
       {stilBordje && <StilBordje x={x + w - 12} y={y + (badge ? 46 : 14)} tekst={stilBordje} />}
       <rect className="kamer-rand" x={x} y={y} width={w} height={h} fill="none" stroke="transparent" rx={2} />

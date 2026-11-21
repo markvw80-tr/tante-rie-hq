@@ -1,6 +1,6 @@
 ---
 name: huisregels
-description: Gedeelde werkwijze van alle teams van Tante Rie (SEO, PIM, Design, Inkoop, Financiën, directie). Gebruik bij elk bericht aan een ander team, bij elk statusblok, bij alles wat akkoord van Mark nodig heeft en bij het schrijven of controleren van Nederlandse klanttekst.
+description: Gedeelde werkwijze van alle teams van Tante Rie (SEO, PIM, Design, Inkoop, Financiën, Klant, directie). Gebruik bij elk bericht aan een ander team, bij elk statusblok, bij alles wat akkoord van Mark nodig heeft en bij het schrijven of controleren van Nederlandse klanttekst.
 ---
 
 # Huisregels Tante Rie
@@ -20,7 +20,7 @@ Eén plek voor wat in elk team hetzelfde is. Hoofddoel van alle teams (Mark, 20-
 
 Alles via de mailbox in tante-rie-hq, met `python3 scripts/mailbox.py` (in elke teamrepo verwijst dat script door naar tante-rie-hq):
 
-- Inbox lezen: `python3 scripts/mailbox.py lijst <seo|pim|design|inkoop|financien>`, daarna `lees <bestand>`.
+- Inbox lezen: `python3 scripts/mailbox.py lijst <seo|pim|design|inkoop|financien|klant>`, daarna `lees <bestand>`.
 - Versturen: `python3 scripts/mailbox.py stuur --van <team> --aan <team> --onderwerp "..." --tekst -` met de tekst via stdin. In de tekst de kopjes **Van**, **Naar**, **Doel**, **Benodigde input**, **Deadline**. Eén onderwerp per bericht; `--prioriteit hoog` alleen als het andere team erop wacht; antwoorden met `--antwoord-op <bestand>`.
 - Afhandelen: `python3 scripts/mailbox.py verwerkt <bestand> --notitie "wat ermee gedaan is"`.
 - Nooit wachtwoorden, tokens of klantgegevens in een bericht.
@@ -31,7 +31,7 @@ Productveld-regels tussen SEO en PIM blijven in de JSON-mailboxen (`seo-naar-pim
 
 Elke batch eindigt met maximaal tien regels: wat gedaan of verstuurd is, wat open staat, de volgende stap en het verbruik (de kosten per run staan ook op de toonbank van het Huis).
 
-`python3 scripts/mailbox.py status --team <seo|pim|design|inkoop|financien|directie> --kop "DD-MM-JJJJ (onderwerp)" --tekst -`
+`python3 scripts/mailbox.py status --team <seo|pim|design|inkoop|financien|klant|directie> --kop "DD-MM-JJJJ (onderwerp)" --tekst -`
 
 Dat zet het blok bovenaan `team/status.md` op main. Bewerk dat bestand nooit zelf: het Huis en de directie-routine lezen de stand van main.
 

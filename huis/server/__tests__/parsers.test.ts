@@ -93,6 +93,10 @@ describe("status", () => {
     const [blok] = parseStatus("## Financiën, 21-11-2026 (opzet)\n- Kluis ingericht.");
     expect([blok.team, blok.datum, blok.titel, blok.regels]).toEqual(["financien", "2026-11-21", "opzet", ["Kluis ingericht."]]);
   });
+  test("herkent statusblokken van Klant", () => {
+    const [blok] = parseStatus("## Klant, 21-11-2026 (reviews)\n- 33 reviews open.");
+    expect([blok.team, blok.datum, blok.titel, blok.regels]).toEqual(["klant", "2026-11-21", "reviews", ["33 reviews open."]]);
+  });
 });
 
 describe("mailbox", () => {

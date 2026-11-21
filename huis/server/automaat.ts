@@ -5,7 +5,7 @@ import type { AutomaatStand, Bericht, MailboxTeam, RunSamenvatting } from "../sh
 import { MAX_ACTIEF, RegieFout, type StartVerzoek } from "./regie/beheer.ts";
 
 /** De lead per team: die leest de inbox en verdeelt het werk binnen het team. */
-export const POST_LEADS: Readonly<Record<MailboxTeam, string>> = { seo: "seo-lead", design: "design-lead", pim: "pim-orchestrator", inkoop: "inkoop-lead", financien: "controller" };
+export const POST_LEADS: Readonly<Record<MailboxTeam, string>> = { seo: "seo-lead", design: "design-lead", pim: "pim-orchestrator", inkoop: "inkoop-lead", financien: "controller", klant: "klant-lead" };
 export const POST_TEAMS: readonly MailboxTeam[] = MAIL_TEAMS;
 export const MAX_PER_DAG = 8;
 /** Keuzes voor het maximale aantal automatische starts per 24 uur. */
@@ -14,7 +14,7 @@ export const RUST_MINUTEN = 60;
 export const STANDAARD_BUDGET = 1;
 const DAG_MS = 24 * 60 * 60_000;
 const MAX_IN_OPDRACHT = 10;
-const TEAMNAAM: Readonly<Record<MailboxTeam, string>> = { seo: "SEO", pim: "PIM", design: "Design", inkoop: "Inkoop", financien: "Financiën" };
+const TEAMNAAM: Readonly<Record<MailboxTeam, string>> = { seo: "SEO", pim: "PIM", design: "Design", inkoop: "Inkoop", financien: "Financiën", klant: "Klant" };
 
 export interface AutoStart {
   readonly team: MailboxTeam;

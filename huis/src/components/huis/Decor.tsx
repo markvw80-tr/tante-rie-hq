@@ -223,3 +223,31 @@ export function KluisDecor() {
     </g>
   );
 }
+
+/** Theesalon: serre tegen de linkergevel met een glazen dak, een tafeltje met theepot en kopjes en een bordje met vijf sterren. */
+export function TheesalonDecor() {
+  const { x, y, w, h } = KAMERS.klant;
+  const vloer = y + h - 8;
+  const tx = x + w - 52;
+  return (
+    <g pointerEvents="none">
+      <path d={`M${x - 4} ${y} L${x + w + 8} ${y - 26} L${x + w + 8} ${y} Z`} fill="#dbe8ea" stroke="#6b8a8f" strokeWidth={1.5} opacity={0.9} />
+      {[0.25, 0.5, 0.75].map((f) => (
+        <line key={f} x1={x - 4 + f * (w + 12)} y1={y - 26 * f} x2={x - 4 + f * (w + 12)} y2={y} stroke="#6b8a8f" strokeWidth={1} />
+      ))}
+      <rect x={x + 6} y={y + 44} width={w - 12} height={34} rx={2} fill="#eef5f6" stroke="#b6cdd0" strokeWidth={1} />
+      <line x1={x + w / 2} y1={y + 44} x2={x + w / 2} y2={y + 78} stroke="#b6cdd0" strokeWidth={1} />
+      <rect x={x + 10} y={y + 84} width={44} height={14} rx={3} fill="#fff" stroke="#a0466b" strokeWidth={1} />
+      {[0, 1, 2, 3, 4].map((s) => (
+        <path key={s} d={`M${x + 16 + s * 8} ${y + 87} l1.6 3.4 3.7 0.4 -2.8 2.5 0.8 3.6 -3.3 -1.9 -3.3 1.9 0.8 -3.6 -2.8 -2.5 3.7 -0.4 Z`} fill="#d4a017" />
+      ))}
+      <rect x={tx + 20} y={vloer - 28} width={4} height={28} fill="#6b4c30" />
+      <ellipse cx={tx + 22} cy={vloer - 28} rx={24} ry={4} fill="#8a6a48" />
+      <path d={`M${tx + 12} ${vloer - 32} q0 -12 10 -12 q10 0 10 12 Z`} fill="#a0466b" />
+      <path d={`M${tx + 32} ${vloer - 40} q7 2 5 8`} fill="none" stroke="#a0466b" strokeWidth={2} />
+      <rect x={tx + 19} y={vloer - 47} width={6} height={3} rx={1} fill="#7a3352" />
+      <rect x={tx - 2} y={vloer - 35} width={8} height={5} rx={1.5} fill="#faf8f2" stroke="#c8c4b8" strokeWidth={0.8} />
+      <rect x={tx + 38} y={vloer - 35} width={8} height={5} rx={1.5} fill="#faf8f2" stroke="#c8c4b8" strokeWidth={0.8} />
+    </g>
+  );
+}

@@ -1,6 +1,6 @@
 # tante-rie-huisregels
 
-Gedeelde plugin voor de teams van Tante Rie (SEO, PIM, Design, Inkoop, Financiën en directie).
+Gedeelde plugin voor de teams van Tante Rie (SEO, PIM, Design, Inkoop, Financiën, Klant en directie).
 
 - `skills/huisregels`: de werkwijze die in elk team gelijk is (akkoord van Mark, mailbox, statusblok, klanttekst, veilig werken).
 - `hooks/hooks.json` en `scripts/tekstlint.py`: controleert klanttekst direct na het schrijven.
