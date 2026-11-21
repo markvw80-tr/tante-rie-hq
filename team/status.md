@@ -2,6 +2,15 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## Financiën, 21-11-2026 (facturen in omzet)
+- Vraag Mark beantwoord: de 28 facturen in e-boekhouden (16 relaties, 8.333 euro excl. btw, jun t/m nov) zitten niet in de Shopify-omzet, wel in de omzet en nettowinst van e-boekhouden.
+- Gevolg: Shopify-omzet en de doelenkaart missen ongeveer 13 procent omzet (zakelijk, horeca en retail), zonder kostprijs.
+- Open: Shopify plus facturen is 3.746 euro hoger dan e-boekhouden (vooral september). Nog niet verklaard; mogelijk dubbel aangeslagen in de kassa.
+- Voor Mark: worden factuurverkopen ook in de kassa aangeslagen; factuuromzet op eigen rekening boeken; facturen als derde kanaal in de maandmeting.
+- Rapport: rapporten/2026-11-21-facturen-in-omzet.md, data: data/2026-11-21-eboekhouden-facturen-per-maand.json.
+- Bijdrage hoofddoel: de totale omzet en winst worden vollediger en betrouwbaarder gemeten.
+- Niets gewijzigd in Shopify of e-boekhouden. Verbruik: klein, onder 0,70 dollar.
+
 ## PIM, 21-11-2026 (V134 eenheidsprijs)
 - Vraag Mark V134 beantwoord: de eenheidsprijs blijft leeg omdat het vinkje Eenheidsprijs tonen (showUnitPrice) per variant uit staat. Dat valt niet onder het akkoord van 20-11.
 - Voor Mark: akkoord om showUnitPrice aan te zetten op de 141 varianten losse thee met een ingevulde eenheidsprijs (dit is V137). Er gaat geen product live en verder verandert er niets.
