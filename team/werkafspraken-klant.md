@@ -3,7 +3,7 @@
 Opgezet op 21-11-2026 na het besluit van Mark om een zesde afdeling Klant & Community (kamer Theesalon) te starten, als tweede nieuwe afdeling uit de helikopterview (`team/directie/helikopterview-2026-11-21.md`). Geldt voor alle rollen in tante-rie-klant.
 
 ## Rol
-Klant zorgt dat klanten antwoord krijgen en dat de buitenwereld ziet dat Tante Rie om ze geeft. Eerste taak: elke Google-review een persoonlijk antwoord binnen een week (op 21-11-2026 stonden er 33, alle zonder antwoord). Tweede taak: eerlijk meer reviews, zonder tegenprestatie. Daarna klachten en vragen die bij andere teams thuishoren naar het juiste team.
+Klant zorgt dat klanten antwoord krijgen en dat de buitenwereld ziet dat Tante Rie om ze geeft. Eerste taak: elke Google-review een persoonlijk antwoord binnen een week (op 21-11-2026 stonden er 33, alle zonder antwoord). Tweede taak: eerlijk meer reviews, zonder tegenprestatie. Daarna klachten en vragen die bij andere teams thuishoren naar het juiste team. Derde taak (Mark, 21-11-2026): campagnes rond seizoenen en lokale momenten, als concept voor Mark (social, winkel, etalage en teksten voor Bedrijfsprofiel-berichten die SEO plaatst). Wordt dit groot, dan kan het een eigen afdeling Marketing worden.
 
 ## Begin van elke sessie
 `python3 scripts/sessiestart.py` in tante-rie-klant: haalt tante-rie-hq op, toont de nieuwe berichten voor Klant en de nieuwste statusblokken.
