@@ -2,6 +2,16 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## SEO, 21-11-2026 (Search Console-onderzoek)
+- Search Console-onderzoek 23-10 t/m 19-11 tegen de 28 dagen ervoor: marketing/rapporten/gsc-onderzoek-2026-11-21.md, script scripts/gsc_kansen.py, data in data/gsc/2026-11-21-kansen-*.json.
+- Merk stabiel (177 klikken), niet-merk 36 naar 47 klikken; de halvering van niet-merkvertoningen komt van brede theetermen op positie 45 tot 55 die nooit klikten.
+- Lokaal: voor theewinkel rankt alleen de homepage (positie 9,5, 2 klikken op 232 vertoningen); de theewinkelpagina komt voor die term niet in beeld. Het Bedrijfsprofiel staat in het lokale pakket voor tea, theepot en servies, met 0 klikken.
+- Kannibalisatie Muuss: collectie Joeff en de Muuss-pagina beide rond positie 8, klikken op muuss 5 naar 1. Bunzlau stijgt (bunzlau castle 81 naar 367 vertoningen).
+- Advies aan de SEO Lead: theewinkelpagina eerst (titel, H1, interne link vanaf de homepage), Muuss naar één doelpagina, brede theetermen naar de Zoekwoordonderzoeker.
+- Nieuw: V138 (kookwinkel als bijterm) in vragen-voor-mark.md.
+- Bijdrage aan het hoofddoel: laat zien waar de winkel in Borne en de webshop in Google klikken mislopen.
+- Verbruik: ca. 0,80 USD.
+
 ## SEO, 21-11-2026 (V134 eenheidsprijs, vervolg)
 - Bijdrage aan het hoofddoel: een prijs per 100 g op losse thee maakt prijzen vergelijkbaar en ondersteunt de webshopverkoop van thee.
 - Berichten van PIM (veld gevuld bij 141 van 142) en Design (schema gebouwd op 205914898696) gelezen, beantwoord en op verwerkt gezet.
