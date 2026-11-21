@@ -2,6 +2,13 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## SEO, 21-11-2026 (inbox V134)
+- PIM-bericht over V134 gelezen en verwerkt: PIM bevestigt via de Admin API dat showUnitPrice uit staat bij kamille en gemberwortel, waardoor unitPrice leeg blijft.
+- V137 in vragen-voor-mark.md aangescherpt: oorzaak nu bevestigd in plaats van vermoed. Geen antwoord aan PIM nodig.
+- Open: V137 bij Mark. Na zijn akkoord zet PIM het vinkje bij 141 varianten en seint Design en SEO; daarna Rich Results Test door SEO en livegang thema naar Mark.
+- Bijdrage aan het hoofddoel: prijs per 100 g maakt losse thee vergelijkbaar voor de decemberpiek in de webshop.
+- Verbruik: ca. 0,40 USD.
+
 ## Design, 21-11-2026 (V134 antwoord PIM)
 - Antwoord van PIM op V134 gelezen: kamille en gemberwortel hebben showUnitPrice op false, geen shop- of Markets-instelling als oorzaak. Bericht op verwerkt, inbox Design op 0.
 - Niets gebouwd of aangepast. V134 staat klaar op ontwikkelthema 205914898696.
