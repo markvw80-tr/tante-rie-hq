@@ -2,6 +2,14 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## Klant, 21-11-2026 (review-antwoorden geplaatst)
+- Op besluit van Mark 7 antwoorden geplaatst: 7 geplaatst, 0 overgeslagen.
+- Controle met reviews.py: alle 7 hebben nu een antwoord. 26 van de 33 staan nog open: Lidy en de 25 van vóór 2024, bewust.
+- Thudela zonder naam. Vlak voor het plaatsen stond de ondertekening "Tante Rie" weer in de JSON en zo is het ook geplaatst.
+- Lidy (moeder van de eigenaar) blijft onbeantwoord, staat zo in de .md.
+- Lokaal gecommit (0eba12c), niet gepusht.
+- Open voor Mark: kaartje en zin bij het afrekenen (concepten/2026-11-21-reviewkaartje.md), Design erbij halen?
+
 ## Klant, 21-11-2026 (review-antwoorden v2)
 - Versie 2 op aanwijzing van Mark: alleen reviews van 2024 tot nu, 7 antwoorden in concepten/2026-11-21-review-antwoorden-v2.json en .md.
 - Bij reviews van vóór 2026 niets wat zegt dat het huidige team er toen al stond. Cindy herschreven, Thudela kort bedankt.
