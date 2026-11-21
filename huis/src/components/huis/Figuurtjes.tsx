@@ -1,4 +1,5 @@
 import type { Agent, RunStatus, Stemming } from "../../../shared/types.ts";
+import { figuurStap } from "./maten.ts";
 
 interface Props {
   readonly agents: readonly Agent[];
@@ -10,13 +11,11 @@ interface Props {
   readonly werk: ReadonlyMap<string, RunStatus>;
 }
 
-const MAX_STAP = 54;
-const MIN_STAP = 30;
 
 /** Agents als figuurtjes op de vloer van een kamer. Bezig: wiebelen. Stil: theepauze. Achterstand: ingedut. */
 export function Figuurtjes({ agents, x, breedte, vloerY, kleur, stemming, werk }: Props) {
   if (agents.length === 0) return null;
-  const stap = Math.max(MIN_STAP, Math.min(MAX_STAP, breedte / agents.length));
+  const stap = figuurStap(agents.length, breedte);
   const start = x + (breedte - stap * (agents.length - 1)) / 2;
 
   return (

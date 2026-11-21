@@ -80,8 +80,8 @@ export function PakhuisDecor({ dozen, bordje }: { readonly dozen: number; readon
       })}
       {bordje && (
         <g>
-          <rect x={sx - 4} y={y + 40} width={120} height={16} rx={3} fill="#fff" stroke={DOOS_RAND} strokeWidth={1} />
-          <text x={sx + 56} y={y + 51.5} fontSize={9.5} textAnchor="middle" fill="#4e3622">
+          <rect x={sx - 4} y={y + 62} width={120} height={16} rx={3} fill="#fff" stroke={DOOS_RAND} strokeWidth={1} />
+          <text x={sx + 56} y={y + 73.5} fontSize={9.5} textAnchor="middle" fill="#4e3622">
             {bordje}
           </text>
         </g>
@@ -162,13 +162,13 @@ export function ToonbankDecor({ besluiten }: { readonly besluiten: number }) {
 /** Theekelder: de PIM-pipeline als vijf stellingen, batches als theeblikken. */
 export function KelderDecor({ fases }: { readonly fases: readonly PipelineFase[] }) {
   const { x, y, w } = KAMERS.pim;
-  const kol = (w - 60) / Math.max(fases.length, 1);
+  const kol = (w - 40) / Math.max(fases.length, 1);
   // Smalle kolommen (kelder gedeeld met de Kluis): kleinere letters, zodat de fasenamen elkaar niet raken.
-  const letter = kol < 100 ? 9 : 11;
+  const letter = kol < 85 ? 8 : kol < 100 ? 9 : 11;
   return (
     <g pointerEvents="none">
       {fases.map((f, i) => {
-        const sx = x + 30 + i * kol;
+        const sx = x + 20 + i * kol;
         const blikken = Math.min(f.batches.length, MAX_BLIKKEN);
         return (
           <g key={f.fase}>
@@ -217,7 +217,7 @@ export function KluisDecor() {
       <rect x={x + 26} y={vloer - 68} width={22} height={14} fill="#faf8f2" stroke="#c8c4b8" transform={`rotate(8 ${x + 37} ${vloer - 61})`} />
       {[0, 1, 2].map((s) =>
         Array.from({ length: 3 + s * 2 }, (_, m) => (
-          <ellipse key={`${s}-${m}`} cx={x + 70 + s * 18} cy={vloer - 3 - m * 4} rx={7} ry={2.5} fill="#d4b04c" stroke="#9a7a24" strokeWidth={0.8} />
+          <ellipse key={`${s}-${m}`} cx={kx - 46 + s * 18} cy={vloer - 3 - m * 4} rx={7} ry={2.5} fill="#d4b04c" stroke="#9a7a24" strokeWidth={0.8} />
         )),
       )}
     </g>
