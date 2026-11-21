@@ -30,6 +30,7 @@ export const AFDELINGEN: readonly Afdeling[] = [
   { id: "pim", naam: "PIM" },
   { id: "design", naam: "Design" },
   { id: "inkoop", naam: "Inkoop" },
+  { id: "financien", naam: "Financiën" },
   { id: "directie", naam: "Directie" },
 ];
 

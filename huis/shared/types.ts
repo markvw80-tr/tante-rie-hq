@@ -1,5 +1,5 @@
 /** Alle teams met een eigen mailbox. Enige bron voor server en frontend; volgorde is de volgorde in lijsten. */
-export const MAIL_TEAMS = ["seo", "pim", "design", "inkoop"] as const;
+export const MAIL_TEAMS = ["seo", "pim", "design", "inkoop", "financien"] as const;
 export type MailboxTeam = (typeof MAIL_TEAMS)[number];
 export type TeamId = "directie" | MailboxTeam;
 

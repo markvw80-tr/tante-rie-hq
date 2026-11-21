@@ -39,6 +39,9 @@ describe("valideerOpdracht", () => {
   test("accepteert een opdracht aan Inkoop", () => {
     expect(valideerOpdracht({ ...goed, aan: "inkoop" }).aan).toBe("inkoop");
   });
+  test("accepteert een opdracht aan Financiën", () => {
+    expect(valideerOpdracht({ ...goed, aan: "financien" }).aan).toBe("financien");
+  });
   test.each([
     ["geen object", "tekst"],
     ["onbekend team", { ...goed, aan: "directie" }],

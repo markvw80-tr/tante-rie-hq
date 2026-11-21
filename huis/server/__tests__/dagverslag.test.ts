@@ -115,7 +115,7 @@ describe("Dagverslag", () => {
     expect(o.starts).toHaveLength(0);
   });
 
-  test("om 20.00 uur één run, daarna vijf verslagen die apart gemaild worden", async () => {
+  test("om 20.00 uur één run, daarna een verslag per afdeling dat apart gemaild worden", async () => {
     const mails: string[] = [];
     const o = opzet({ uur: 20, mailer: { stuur: async (onderwerp) => void mails.push(onderwerp) } });
     await o.verslag.tik();
@@ -135,7 +135,7 @@ describe("Dagverslag", () => {
     o.zetTijd(om(21));
     await o.verslag.tik();
     expect(o.starts).toHaveLength(1);
-    expect(mails).toHaveLength(5);
+    expect(mails).toHaveLength(AFDELINGEN.length);
   });
 
   test("ontbrekende afdeling krijgt een noodverslag; mislukte run alleen noodverslagen", async () => {
@@ -145,7 +145,7 @@ describe("Dagverslag", () => {
     await o.verslag.tik();
     const s = o.verslag.stand();
     expect(s.verslagen.find((v) => v.team === "seo")?.door).toBe("verslaggever");
-    expect(s.verslagen.filter((v) => v.door === "nood")).toHaveLength(4);
+    expect(s.verslagen.filter((v) => v.door === "nood")).toHaveLength(AFDELINGEN.length - 1);
 
     const p = opzet({ uur: 20 });
     await p.verslag.tik();
@@ -162,7 +162,7 @@ describe("Dagverslag", () => {
     expect(o.verslag.stand().verslagen).toHaveLength(0);
     o.zetTijd(om(23, 5));
     await o.verslag.tik();
-    expect(o.verslag.stand().verslagen.map((v) => v.door)).toEqual(Array(5).fill("nood"));
+    expect(o.verslag.stand().verslagen.map((v) => v.door)).toEqual(Array(AFDELINGEN.length).fill("nood"));
   });
 
   test("tussendoor telt niet als avondverslag", async () => {
@@ -191,7 +191,7 @@ describe("Dagverslag", () => {
     await o.verslag.tik();
     o.klaar("run1", goedAntwoord);
     for (let i = 0; i < 5; i++) await o.verslag.tik();
-    expect(pogingen).toBe(15);
+    expect(pogingen).toBe(AFDELINGEN.length * 3);
     expect(o.verslag.stand().verslagen.every((v) => !v.gemaild)).toBe(true);
     expect(o.verslag.stand().melding).toMatch(/Mailen/);
   });

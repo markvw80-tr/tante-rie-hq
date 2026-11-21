@@ -19,5 +19,6 @@ export const KAMERS: Record<Plek, Vlak> = {
   inkoop: { x: 580, y: 270, w: 280, h: 178 },
   seo: { x: 140, y: 462, w: 430, h: 188 },
   toonbank: { x: 580, y: 462, w: 280, h: 188 },
-  pim: { x: 140, y: 682, w: 720, h: 228 },
+  pim: { x: 140, y: 682, w: 480, h: 228 },
+  financien: { x: 630, y: 682, w: 230, h: 228 },
 };

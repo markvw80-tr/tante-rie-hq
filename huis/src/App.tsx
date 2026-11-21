@@ -105,7 +105,7 @@ export function App() {
         </div>
         <div className="tellers">
           {huis.ik === "nikkie" && <span className="tag ik-tag">Ingelogd als Nikkie</span>}
-          <span className="tag">{agents} agents in 4 kamers</span>
+          <span className="tag">{agents} agents in {huis.teams.length} kamers</span>
           <span className="tag">{ongelezen} berichten onderweg</span>
           <span className="tag">{huis.besluiten.filter((b) => !b.antwoord).length} besluiten voor jou</span>
           {aanHetWerk > 0 && <span className="tag werkt">{aanHetWerk} aan het werk</span>}

@@ -89,6 +89,10 @@ describe("status", () => {
     const [blok] = parseStatus("## Inkoop, 20-11-2026 (opzet)\n- Pakhuis ingericht.");
     expect([blok.team, blok.datum, blok.titel, blok.regels]).toEqual(["inkoop", "2026-11-20", "opzet", ["Pakhuis ingericht."]]);
   });
+  test("herkent statusblokken van Financiën (met trema)", () => {
+    const [blok] = parseStatus("## Financiën, 21-11-2026 (opzet)\n- Kluis ingericht.");
+    expect([blok.team, blok.datum, blok.titel, blok.regels]).toEqual(["financien", "2026-11-21", "opzet", ["Kluis ingericht."]]);
+  });
 });
 
 describe("mailbox", () => {

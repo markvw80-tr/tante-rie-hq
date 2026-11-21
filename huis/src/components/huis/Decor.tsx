@@ -163,6 +163,8 @@ export function ToonbankDecor({ besluiten }: { readonly besluiten: number }) {
 export function KelderDecor({ fases }: { readonly fases: readonly PipelineFase[] }) {
   const { x, y, w } = KAMERS.pim;
   const kol = (w - 60) / Math.max(fases.length, 1);
+  // Smalle kolommen (kelder gedeeld met de Kluis): kleinere letters, zodat de fasenamen elkaar niet raken.
+  const letter = kol < 100 ? 9 : 11;
   return (
     <g pointerEvents="none">
       {fases.map((f, i) => {
@@ -178,16 +180,46 @@ export function KelderDecor({ fases }: { readonly fases: readonly PipelineFase[]
               const pos = b % 7;
               return <rect key={b} x={sx + 12 + pos * ((kol - 24) / 7)} y={y + 82 + plank * 40} width={(kol - 24) / 7 - 3} height={22} rx={2} fill={BLIK_KLEUREN[(i + b) % BLIK_KLEUREN.length]} />;
             })}
-            <text x={sx + kol / 2} y={y + 166} fontSize={11} textAnchor="middle" fill="#1c1c14" fontWeight={600}>
+            <text x={sx + kol / 2} y={y + 166} fontSize={letter} textAnchor="middle" fill="#1c1c14" fontWeight={600}>
               {f.label}
             </text>
-            <text x={sx + kol / 2} y={y + 180} fontSize={10.5} textAnchor="middle" fill="#6b6152">
+            <text x={sx + kol / 2} y={y + 180} fontSize={letter - 0.5} textAnchor="middle" fill="#6b6152">
               {f.batches.length} {f.batches.length === 1 ? "batch" : "batches"}
             </text>
             {i < fases.length - 1 && <path d={`M${sx + kol - 4} ${y + 160} l8 0 m-3 -3 l3 3 l-3 3`} stroke="#c8c4b8" strokeWidth={1.4} fill="none" />}
           </g>
         );
       })}
+    </g>
+  );
+}
+
+/** Kluis: een kluisdeur met draaiknop en hendel, een opengeslagen kasboek op een lessenaar en drie stapels munten. */
+export function KluisDecor() {
+  const { x, y, w, h } = KAMERS.financien;
+  const vloer = y + h - 8;
+  const kx = x + w - 104;
+  const ky = y + 58;
+  return (
+    <g pointerEvents="none">
+      <rect x={kx} y={ky} width={92} height={vloer - ky} rx={6} fill="#4a4d55" stroke="#2f3137" strokeWidth={2} />
+      <rect x={kx + 8} y={ky + 8} width={76} height={vloer - ky - 16} rx={4} fill="#5b5f68" stroke="#3a3c42" strokeWidth={1.2} />
+      <circle cx={kx + 46} cy={ky + 58} r={20} fill="#c9b37a" stroke="#8a7440" strokeWidth={2} />
+      <circle cx={kx + 46} cy={ky + 58} r={6} fill="#8a7440" />
+      {[0, 45, 90, 135, 180, 225, 270, 315].map((hoek) => (
+        <line key={hoek} x1={kx + 46} y1={ky + 41} x2={kx + 46} y2={ky + 45} stroke="#5b4a22" strokeWidth={1.5} transform={`rotate(${hoek} ${kx + 46} ${ky + 58})`} />
+      ))}
+      <rect x={kx + 66} y={ky + 96} width={8} height={30} rx={3} fill="#c9b37a" stroke="#8a7440" />
+      <rect x={kx + 30} y={ky + 98} width={32} height={6} rx={2} fill="#3a3c42" />
+      <rect x={x + 24} y={vloer - 52} width={4} height={52} fill="#6b4c30" />
+      <path d={`M${x + 8} ${vloer - 52} l20 -10 l20 10 Z`} fill="#6b4c30" />
+      <rect x={x + 6} y={vloer - 66} width={22} height={14} fill="#faf8f2" stroke="#c8c4b8" transform={`rotate(-8 ${x + 17} ${vloer - 59})`} />
+      <rect x={x + 26} y={vloer - 68} width={22} height={14} fill="#faf8f2" stroke="#c8c4b8" transform={`rotate(8 ${x + 37} ${vloer - 61})`} />
+      {[0, 1, 2].map((s) =>
+        Array.from({ length: 3 + s * 2 }, (_, m) => (
+          <ellipse key={`${s}-${m}`} cx={x + 70 + s * 18} cy={vloer - 3 - m * 4} rx={7} ry={2.5} fill="#d4b04c" stroke="#9a7a24" strokeWidth={0.8} />
+        )),
+      )}
     </g>
   );
 }

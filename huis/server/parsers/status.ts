@@ -2,7 +2,7 @@ import type { MailboxTeam, StatusBlok } from "../../shared/types.ts";
 import { nlNaarIso } from "./datum.ts";
 
 /** Teamnaam zoals in de kop van een statusblok (STATUS_LABEL in scripts/mailbox.py). */
-const TEAM: Readonly<Record<string, MailboxTeam>> = { SEO: "seo", PIM: "pim", Design: "design", Inkoop: "inkoop" };
+const TEAM: Readonly<Record<string, MailboxTeam>> = { SEO: "seo", PIM: "pim", Design: "design", Inkoop: "inkoop", "Financiën": "financien" };
 const KOP = new RegExp(`^## (${Object.keys(TEAM).join("|")}), (\\d{2}-\\d{2}-\\d{4})(?: \\((.*)\\))?\\s*$`);
 
 interface Bezig {

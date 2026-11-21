@@ -19,7 +19,7 @@ const DAG_MS = 24 * UUR_MS;
 const MAX_DETAILS = 12;
 const MAX_GEMELD = 500;
 
-const TEAMNAAM: Readonly<Record<TeamId, string>> = { directie: "Directie", seo: "SEO", pim: "PIM", design: "Design", inkoop: "Inkoop" };
+const TEAMNAAM: Readonly<Record<TeamId, string>> = { directie: "Directie", seo: "SEO", pim: "PIM", design: "Design", inkoop: "Inkoop", financien: "Financiën" };
 
 export interface LoginStand {
   readonly ingelogd: boolean;
