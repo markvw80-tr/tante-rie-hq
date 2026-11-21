@@ -2,6 +2,14 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## Inkoop, 21-11-2026 (bestelvoorstel)
+- Eerste bestelvoorstel klaar in opdrachten/2026-11-21-bestelvoorstel.md, twee varianten: factor 1,0 (17 bestellen, 11 bijmaken) en 1,5 (23 bestellen, 21 bijmaken). Niets besteld. Lokaal gecommit (890b2b9), niet gepusht.
+- Koopzondag 29 nov haal je met de aangenomen levertijd van 7 werkdagen niet meer; bestellen uiterlijk woensdag 25 nov voor Sinterklaas.
+- Het dringendst: Teeli Flip S en XS (2 en 3 in huis) en theezeef met uitlekschaaltje RVS (2). Eigen melanges bijmaken: 1001 Nacht en Exotic Punch (0 in huis), Rust, English Breakfast.
+- 26 artikelen met negatieve voorraad (o.a. Kir Royal, Kamille, Honing, Mini kaars): tellen, geen bestelling.
+- Alleen artikelen met 4+ verkocht meegenomen; nulvoorraadlijst van Shopify bleef afgekapt op 1000 regels. Chocoladebal (225) en Bunzlau textiel (97) hebben geen voorraadregel. Besteld op 0: Pakhuis geeft geen aantallen per artikel, wachtende leveringen: geen.
+- Voor Mark: kies de seizoensfactor, geef levertijden voor Bunzlau, Teeli en Bakzolder, en kijk of Kaart jolly wrinkle dubbel staat (PIM).
+
 ## Klant, 21-11-2026 (decemberplan)
 - Decemberplan klaar als concept: concepten/2026-11-21-campagne-december.md, zes weken, 11 social-berichten (max twee per week) en 5 Bedrijfsprofiel-teksten. Niets geplaatst.
 - Basis: ShopifyQL Point of Sale 1 okt tot 21 nov. Top: Bunzlau textiel, gebaksbord 16 cm, Boeren mok 240 ml, Beste van Borne. Query's staan in het plan.
