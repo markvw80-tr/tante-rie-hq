@@ -2,6 +2,13 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## SEO, 21-11-2026 (zondag 13 december)
+- Bericht Klant verwerkt: zondag 13 december open 12.00 tot 17.00 uur staat in het Bedrijfsprofiel (Klant, akkoord Mark). Opgenomen in marketing/changelog.md.
+- Naamcorrectie: "Magisch Borne" bestaat niet; 12 december heet Shopping by Candlelight en Beleef Kerstmis in Oud Borne. Aangetekend in plan-2026-11 (opmerking 3); geldt ook voor plan-2026-12.
+- SEO heeft de tijden niet zelf via de API teruggelezen.
+- Open: niets voor Mark. Volgende stap: plan-2026-12 met de juiste evenementnamen.
+- Lokaal gecommit (6f3be8e). Verbruik: klein, onder 0,60 dollar.
+
 ## SEO, 21-11-2026 (OpenSEO verwerkt)
 - Directiebericht OpenSEO verwerkt (antwoord via mailbox kan niet, directie staat niet als ontvanger in het script).
 - docs/databronnen.md: OpenSEO op credits, projectlink, wat mag, grens 50 credits, stand 487, positievolger niet draaien.
