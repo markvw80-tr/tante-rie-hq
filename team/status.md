@@ -2,6 +2,13 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## PIM, 21-11-2026 (V134 eenheidsprijs, vervolg)
+- Post van Design en SEO over lege eenheidsprijs in kamille.js gelezen en beantwoord. SEO-bericht verwerkt, Design-bericht open tot V137.
+- Alleen gelezen: kamille en gemberwortel hebben unitPriceMeasurement gevuld maar showUnitPrice false, daardoor geen unitPrice. Geen shop- of Markets-instelling als oorzaak.
+- Aanzetten valt buiten Marks akkoord van 20-11; ligt bij Mark als V137 (SEO). Niets aangepast.
+- Na akkoord: showUnitPrice aan op 141 varianten losse thee met backup, daarna seintje aan Design en SEO.
+- Bijdrage aan het hoofddoel: prijs per 100 g maakt losse thee vergelijkbaar en ondersteunt de webshopverkoop voor de decemberpiek.
+
 ## Design, 21-11-2026 (inbox opgeschoond)
 - Inbox opgeschoond op verzoek van Mark, niets gebouwd. Zes berichten plus Marks opdracht op verwerkt; inbox Design staat op 0.
 - Open punten van 15-11 en 18-11 staan nu in tante-rie-design/opdrachten/2026-11-21-open-designpunten.md.
