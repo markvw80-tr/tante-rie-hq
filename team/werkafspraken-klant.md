@@ -21,3 +21,7 @@ Niets naar buiten zonder akkoord van Mark: antwoorden staan eerst als concept in
 
 ## Modelkeuze en afsluiting
 Zwaar model voor de Klant Lead, licht model voor de Review-redacteur. Elke batch sluit af met maximaal tien regels via `python3 scripts/mailbox.py status --team klant --kop "DD-MM-JJJJ (onderwerp)" --tekst -`.
+
+## Vooraf goedgekeurd
+
+Zie `doelen.md`, gedeelde regels: welk werk zonder aparte vraag aan Mark mag, en onder welke grenzen (Mark, 21-11-2026).

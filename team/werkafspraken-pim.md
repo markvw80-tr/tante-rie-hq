@@ -26,3 +26,7 @@ Een lichter model voor teksten, veldvulling en bulkcontroles; een zwaarder model
 
 ## Vaste regels uit de mailbox
 Een product komt pas in de Online winkel als het minstens één foto heeft (verzoek SEO-team, 25-10-2026).
+
+## Vooraf goedgekeurd
+
+Zie `doelen.md`, gedeelde regels: welk werk zonder aparte vraag aan Mark mag, en onder welke grenzen (Mark, 21-11-2026).

@@ -39,3 +39,7 @@ Een lichter model voor het opstellen van de regels, een zwaarder model alleen vo
 }
 ```
 PIM zet de status per regel op `in_behandeling`, `uitgevoerd` of `afgewezen`, en het bericht op `verwerkt` als alle regels zijn afgehandeld.
+
+## Vooraf goedgekeurd
+
+Zie `doelen.md`, gedeelde regels: welk werk zonder aparte vraag aan Mark mag, en onder welke grenzen (Mark, 21-11-2026).
