@@ -16,3 +16,6 @@ prioriteit: hoog
 4. Desktopmenu klapt niet goed open. De fix van 1 nov staat alleen op de themakopie. Leg die aan Mark voor voor live.
 5. Design review incl. mobiel afmaken. Oude thema's opruimen. Design-repo pushen naar GitHub (tante-rie-design).
 **Deadline:** geen vaste datum. Begin bij punt 1 en meld de voortgang in team/status.md.
+
+---
+Verwerkt op 2026-11-21 07:55: Stand per punt vastgelegd in tante-rie-design/opdrachten/2026-11-21-open-designpunten.md. Afgehandeld: 1 (SEO-berichten), 4 (desktopmenu live), repo gepusht. Open en daar gepland: Kies decor op tabletbreedte, USP-balk bij scrollen, rest designreview (punt 7 en 8). Themalijst wacht op akkoord Mark per thema-id.
