@@ -2,6 +2,15 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## Klant, 21-11-2026 (review-antwoorden v2)
+- Versie 2 op aanwijzing van Mark: alleen reviews van 2024 tot nu, 7 antwoorden in concepten/2026-11-21-review-antwoorden-v2.json en .md.
+- Bij reviews van vóór 2026 niets wat zegt dat het huidige team er toen al stond. Cindy herschreven, Thudela kort bedankt.
+- Lidy staat niet in de JSON maar als open vraag in de .md: hoort zij bij de zaak?
+- Proefrun: 7 klaar, 0 overgeslagen. Niets geplaatst.
+- Kaartjestekst en zin voor bij het afrekenen in concepten/2026-11-21-reviewkaartje.md, zonder tegenprestatie.
+- Voor Mark: Besluit: akkoord op v2? Beslissen over Lidy. Design vragen voor het kaartje?
+- Lokaal gecommit (6e1e11c), niet gepusht.
+
 ## Klant, 21-11-2026 (review-antwoorden)
 - 33 open Google-reviews opgehaald (gemiddeld 4,8, alle zonder antwoord), lijst met alleen voornamen in data/2026-11-21-reviews-open.json.
 - Review-redacteur schreef 33 concepten; zelf nagelopen op feiten, variatie en huisregels, 15 antwoorden herschreven (vooral reviews zonder tekst).
