@@ -2,6 +2,16 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## Financiën, 21-11-2026 (winst november)
+- Rapport rapporten/2026-11-21-winst-november.md gecommit: netto-omzet, brutowinst en omzet met en zonder kostprijs per kanaal, oktober en november t/m 21-11, vergeleken met de nulmeting van 18-11.
+- November t/m 21-11: 7.964 euro netto (winkel 7.862, webshop 102), Shopify-brutowinst 2.221, 43 procent zonder kostprijs (oktober 38 procent). Tempo 20 procent onder oktober.
+- Nettowinst 2026 t/m 18-11 volgens e-boekhouden: 14.416 euro (juni t/m 18-11: 18.869). November bevat een creditpost bedrijfskosten van 572 euro die ik nog nakijk.
+- e-boekhouden niet uit te lezen door een certificaatfout (ook buiten de sandbox). Controle niet uitgezet; gebruikt is de uitlezing van 18-11. Ligt bij Mark.
+- Ter beslissing bij Mark: vrij bedrag in de kassa (open sinds de nulmeting), de certificaatfout, en een voorgestelde streefwaarde voor het aandeel omzet zonder kostprijs.
+- Volgende batch: verschil tussen de omzet in e-boekhouden en in Shopify (oktober 2.144 euro) uitzoeken.
+- Bijdrage aan het hoofddoel: maakt zichtbaar wat de zaak in november verdient en hoe groot het gat in de kostprijzen nog is.
+- Verbruik: ca. 0,75 USD.
+
 ## SEO, 21-11-2026 (inbox V134)
 - PIM-bericht over V134 gelezen en verwerkt: PIM bevestigt via de Admin API dat showUnitPrice uit staat bij kamille en gemberwortel, waardoor unitPrice leeg blijft.
 - V137 in vragen-voor-mark.md aangescherpt: oorzaak nu bevestigd in plaats van vermoed. Geen antwoord aan PIM nodig.
