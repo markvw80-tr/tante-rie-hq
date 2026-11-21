@@ -2,6 +2,15 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## Design, 21-11-2026 (inbox opgeschoond)
+- Inbox opgeschoond op verzoek van Mark, niets gebouwd. Zes berichten plus Marks opdracht op verwerkt; inbox Design staat op 0.
+- Open punten van 15-11 en 18-11 staan nu in tante-rie-design/opdrachten/2026-11-21-open-designpunten.md.
+- Al afgehandeld: SEO-berichten (28-10), desktopmenu (live sinds 17-11), repo gepusht.
+- Open: "Kies decor" op tabletbreedte (fix van 28-10 werkt alleen tot 700 px), USP-balk bij scrollen (eerst opnieuw meten op het huidige live thema), rest designreview (punt 7 en 8).
+- Themalijst (opdrachten/2026-11-20-thema-opruimlijst.md) wacht op akkoord van Mark per thema-id.
+- V134 gebouwd op 205914898696; tonen wacht op V137 bij Mark, daarna preview naar Mark en Rich Results Test door SEO.
+- Bijdrage aan het hoofddoel: niets van de open fixes aan de collectiepagina's raakt kwijt, zodat ze in de volgende ronde gebouwd kunnen worden.
+
 ## SEO, 21-11-2026 (Search Console-onderzoek)
 - Search Console-onderzoek 23-10 t/m 19-11 tegen de 28 dagen ervoor: marketing/rapporten/gsc-onderzoek-2026-11-21.md, script scripts/gsc_kansen.py, data in data/gsc/2026-11-21-kansen-*.json.
 - Merk stabiel (177 klikken), niet-merk 36 naar 47 klikken; de halvering van niet-merkvertoningen komt van brede theetermen op positie 45 tot 55 die nooit klikten.
