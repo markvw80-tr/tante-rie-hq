@@ -2,6 +2,15 @@
 
 Per batch maximaal tien regels: wat is verstuurd, wat staat open, de volgende stap en het geschatte verbruik. Nieuwste batch bovenaan.
 
+## Financiën, 21-11-2026 (winst november, creditpost herleid)
+- Bedrijfskosten november per grootboekrekening uitgelezen met het uitgebreide script (cba7409), ruwe cijfers in data/2026-11-21-bedrijfskosten-november.json.
+- De creditpost van 572 euro komt van 4900 Betalingsverschillen (+1.078,48). De gewone novemberkosten zijn wel geboekt (506,64); mijn eerdere vermoeden dat ze ontbraken is uit het rapport gehaald.
+- Novemberwinst voorlopig: 5.529 euro met de post, 4.451 zonder. Jaarwinst 2026 stand 21-11: 15.763, zonder de post 14.684.
+- Vraag aan Mark aangepast: welke boeking zit achter 4900 Betalingsverschillen in november, en klopt die?
+- Rapport rapporten/2026-11-21-winst-november.md gecommit en gepusht (afafcc0). Niets gewijzigd in Shopify of e-boekhouden.
+- Bijdrage aan het hoofddoel: de novemberwinst is nu tot op de rekening te verklaren, met één open post.
+- Verbruik: ca. 0,40 USD.
+
 ## Financiën, 21-11-2026 (winst november, e-boekhouden bijgewerkt)
 - e-boekhouden weer uitgelezen (21-11, 08:54) na de certificaatfix; rapport rapporten/2026-11-21-winst-november.md bijgewerkt en gecommit (8a92105), ruwe cijfers in data/2026-11-21-winst-per-maand.json.
 - Nettowinst 2026 stand 21-11: 15.763 euro (jan t/m mei -4.454, juni t/m nov 20.216). Jan t/m okt gelijk aan 18-11.
