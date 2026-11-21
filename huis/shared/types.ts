@@ -162,6 +162,33 @@ export interface HuisStand {
   readonly pakhuis?: PakhuisStand | null;
   /** De meterkast: of het huis en de agents gezond zijn (systeembeheer). */
   readonly gezondheid?: GezondheidStand | null;
+  /** Het dagverslag van elke afdeling (elke avond om 20.00 uur). */
+  readonly dagverslag?: DagverslagStand | null;
+}
+
+/** Eén verslag van één afdeling over één dag, in gewone taal. */
+export interface Verslag {
+  readonly datum: string;
+  readonly team: TeamId;
+  readonly naam: string;
+  readonly tekst: string;
+  /** avond: het vaste verslag van 20.00 uur; tussendoor: met de hand gemaakt. */
+  readonly soort: "avond" | "tussendoor";
+  /** Geschreven door de verslaggever, of een kaal noodverslag uit de feiten als dat niet lukte. */
+  readonly door: "verslaggever" | "nood";
+  readonly gemaild: boolean;
+  readonly gemaakt: string;
+}
+
+export interface DagverslagStand {
+  /** Tijd van het vaste verslag, Nederlandse tijd. */
+  readonly tijd: string;
+  readonly mailIngesteld: boolean;
+  /** De verslaggever is nu aan het schrijven. */
+  readonly bezig: boolean;
+  /** De verslagen van de laatste dag waarvoor er verslagen zijn. */
+  readonly verslagen: readonly Verslag[];
+  readonly melding: string | null;
 }
 
 export type MeterKleur = "groen" | "oranje" | "rood";

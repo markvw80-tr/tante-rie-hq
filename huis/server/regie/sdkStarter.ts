@@ -1,5 +1,6 @@
 import { query } from "@anthropic-ai/claude-agent-sdk";
 import type { Starter } from "./beheer.ts";
+import { agentInstructies } from "./agentPrompt.ts";
 import { gitVuilIn, POORT_HOOK_TIMEOUT_S, poortHook } from "./poortHook.ts";
 
 const VOETTEKST = [
@@ -29,11 +30,14 @@ export const sdkStarter: Starter = {
       // Stond in Marks gebruikersinstellingen; blijft zo nu die niet meer geladen worden.
       CLAUDE_CODE_DISABLE_AUTO_MEMORY: "1",
     };
+    // De instructies van de agent zelf, als aanvulling op de prompt van Claude Code (zie agentPrompt.ts).
+    const instructies = agentInstructies(repo, agent);
     return query({
       prompt: opdracht + VOETTEKST,
       options: {
         cwd: repo,
         agent,
+        ...(instructies ? { systemPrompt: { type: "preset" as const, preset: "claude_code" as const, append: instructies } } : {}),
         settingSources: ["project", "local"],
         permissionMode: "default",
         permissionPrompts: "host",

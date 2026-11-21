@@ -8,6 +8,7 @@ import { AgendaKaart } from "./AgendaKaart.tsx";
 import { AutomaatKaart } from "./AutomaatKaart.tsx";
 import { GoedkeuringKaart } from "./GoedkeuringKaart.tsx";
 import { KostenKaart } from "./KostenKaart.tsx";
+import { DagverslagKaart } from "./DagverslagKaart.tsx";
 import { MeterkastKaart } from "./MeterkastKaart.tsx";
 
 export function ToonbankPaneel({ huis, onGewijzigd }: { readonly huis: HuisStand; readonly onGewijzigd: () => void }) {
@@ -42,6 +43,8 @@ export function ToonbankPaneel({ huis, onGewijzigd }: { readonly huis: HuisStand
           Opdracht geven
         </button>
       </section>
+
+      {huis.dagverslag && <DagverslagKaart stand={huis.dagverslag} onGewijzigd={onGewijzigd} />}
 
       {huis.gezondheid && <MeterkastKaart stand={huis.gezondheid} />}
 
