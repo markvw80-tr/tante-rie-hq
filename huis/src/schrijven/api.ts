@@ -6,6 +6,8 @@ export interface Concept {
   readonly tekst: string;
   readonly prioriteit: "hoog" | "normaal" | "laag";
   readonly antwoordOp: string | null;
+  /** Agent in het team die het moet oppakken; null: het hele team. */
+  readonly voor: string | null;
 }
 
 export interface Verstuurd {

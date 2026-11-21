@@ -128,7 +128,7 @@ export async function behandelPost(pad: string, body: unknown, omg: Omgeving): P
       if (!team) throw new OngeldigVerzoek("Kies naar welk team dit besluit gaat");
       const door = omg.persoon ?? "mark";
       const { onderwerp, tekst } = besluitBericht(besluit, verzoek.keuze, verzoek.toelichting, door);
-      const { bestand } = await omg.postbode.stuur({ van: door, aan: team, onderwerp, tekst, prioriteit: door === "mark" ? "hoog" : "normaal", antwoordOp: null });
+      const { bestand } = await omg.postbode.stuur({ van: door, aan: team, onderwerp, tekst, prioriteit: door === "mark" ? "hoog" : "normaal", antwoordOp: null, voor: besluit.team === team ? besluit.agent ?? null : null });
       meldPost(omg);
       return { status: 201, body: { bestand, aan: team } };
     }

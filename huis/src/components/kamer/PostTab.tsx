@@ -121,9 +121,11 @@ function GesprekRij({ gesprek: g, team, drempel, open, bezig, onActie }: RijProp
             <li key={b.bestand} className={b.van === team ? "uit" : "in"}>
               <button className="ballon" style={{ ["--c" as string]: kleurVan(b.van) }} onClick={() => lees({ soort: "bericht", bestand: b.bestand })}>
                 <span className="ballon-meta">
-                  {b.van} aan {b.aan} · {dagenTekst(b.leeftijdDagen)}
+                  {b.van}
+                  {b.door && <> ({b.door})</>} aan {b.aan} · {dagenTekst(b.leeftijdDagen)}
                   {b.prioriteit === "hoog" && <strong> · hoog</strong>}
                 </span>
+                {b.voor && <span className="agent-label">voor {b.voor}</span>}
                 <span>{b.onderwerp}</span>
                 <span className={oud ? "ballon-status oud" : "ballon-status"}>{b.map === "inbox" ? (oud ? "ongelezen, ligt te lang" : "ongelezen") : "verwerkt"}</span>
               </button>

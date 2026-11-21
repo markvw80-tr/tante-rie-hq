@@ -151,8 +151,8 @@ describe("markdown en agenda", () => {
   });
   test("haalt besluiten van Mark eruit met team uit de staart", () => {
     expect(besluitenUitAgenda(parseMarkdown(agenda))).toEqual([
-      { tekst: "Themakopie publiceren, ja of nee", team: "pim" },
-      { tekst: "Antwoord op V128 en V129.", team: null },
+      { tekst: "Themakopie publiceren, ja of nee", team: "pim", agent: null },
+      { tekst: "Antwoord op V128 en V129.", team: null, agent: null },
     ]);
   });
   test("zonder Mark-sectie geen besluiten", () => {

@@ -3,10 +3,12 @@ import type { MdDocument, MdSectie, TeamId } from "../../shared/types.ts";
 export interface AgendaBesluit {
   readonly tekst: string;
   readonly team: TeamId | null;
+  /** Agent die het oppakt, als de directie die achter het team zet: "(PIM, content-enricher)". */
+  readonly agent: string | null;
 }
 
 const ITEM = /^(?:\d+\.|-)\s+(.*)$/;
-const TEAM_STAART = /\s*\((PIM|SEO|Design|Directie)\)\.?\s*$/i;
+const TEAM_STAART = /\s*\((PIM|SEO|Design|Directie|Inkoop|Financi[eë]n|Klant)(?:\s*[,:]\s*([a-z0-9][a-z0-9-]{1,59}))?\)\.?\s*$/i;
 
 interface Sectie {
   readonly titel: string;
@@ -48,7 +50,8 @@ export function besluitenUitAgenda(agenda: MdDocument): AgendaBesluit[] {
     const m = TEAM_STAART.exec(item);
     return {
       tekst: m ? item.slice(0, m.index).trim() : item,
-      team: m ? (m[1].toLowerCase() as TeamId) : null,
+      team: m ? (m[1].toLowerCase().replace("ë", "e") as TeamId) : null,
+      agent: m?.[2] ?? null,
     };
   });
 }

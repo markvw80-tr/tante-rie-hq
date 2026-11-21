@@ -1,4 +1,4 @@
-import { MAIL_TEAMS } from "../shared/types.ts";
+import { AGENT_NAAM, MAIL_TEAMS } from "../shared/types.ts";
 import type { BesluitKeuze, MailboxTeam } from "../shared/types.ts";
 import { KEUZES } from "./besluiten.ts";
 import { isVeiligeNaam } from "./parsers/documenten.ts";
@@ -36,12 +36,17 @@ export function valideerOpdracht(body: unknown): Verzending {
   if (antwoordOp !== null && (typeof antwoordOp !== "string" || !isVeiligeNaam(antwoordOp, ".md"))) {
     throw new OngeldigVerzoek("Ongeldig bericht om op te antwoorden");
   }
+  const voor = body.voor ?? null;
+  if (voor !== null && (typeof voor !== "string" || !AGENT_NAAM.test(voor))) {
+    throw new OngeldigVerzoek("Ongeldige agent; kies een agent uit de lijst of het hele team");
+  }
   return {
     aan: valideerTeam(body.aan),
     onderwerp,
     tekst: tekstVeld(body, "tekst", GRENZEN.tekst),
     prioriteit,
     antwoordOp: antwoordOp as string | null,
+    voor: voor as string | null,
   };
 }
 

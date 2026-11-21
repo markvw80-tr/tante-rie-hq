@@ -53,6 +53,7 @@ export function BesluitKaart({ besluit, nummer, vandaag, drempel }: { readonly b
         {besluit.team && (
           <span className="team" style={{ ["--c" as string]: TEAM_KLEUR[besluit.team] }}>
             {TEAM_LABEL[besluit.team]}
+            {besluit.agent && <> · {besluit.agent}</>}
           </span>
         )}
         <p>{besluit.tekst}</p>

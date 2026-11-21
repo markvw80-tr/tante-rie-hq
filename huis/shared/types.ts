@@ -30,7 +30,14 @@ export interface Bericht {
   readonly prioriteit: "hoog" | "normaal" | "laag";
   readonly antwoordOp: string | null;
   readonly leeftijdDagen: number | null;
+  /** Agent in het ontvangende team die het moet oppakken; null of afwezig: het team. */
+  readonly voor?: string | null;
+  /** Agent die het bericht stuurde; null of afwezig bij Mark, Nikkie en oude berichten. */
+  readonly door?: string | null;
 }
+
+/** Zo ziet een agentnaam eruit (bestandsnaam in .claude/agents zonder .md). */
+export const AGENT_NAAM = /^[a-z0-9][a-z0-9-]{1,59}$/;
 
 export interface MailboxStand {
   readonly inbox: readonly Bericht[];
@@ -88,6 +95,8 @@ export interface Besluit {
   readonly id: string;
   readonly tekst: string;
   readonly team: TeamId | null;
+  /** Agent die het oppakt (uit de agenda); null: het team. */
+  readonly agent?: string | null;
   readonly antwoord: BesluitAntwoord | null;
   /** Datum van de eerste agenda waarop dit onderwerp stond (zie besluitOnderwerp). */
   readonly sinds?: string;

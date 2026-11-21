@@ -10,7 +10,8 @@ werkt niet verandert, en zet verzonden of verwerkte berichten direct op main.
 Gebruik:
   python3 scripts/mailbox.py lijst seo                 # ongelezen berichten voor het SEO-team (ook pim, design)
   python3 scripts/mailbox.py lees <bestand>            # één bericht tonen
-  python3 scripts/mailbox.py stuur --van seo --aan pim --onderwerp "..." --tekst "..."
+  python3 scripts/mailbox.py stuur --van seo --door zoekwoord-onderzoeker --aan pim --voor content-enricher --onderwerp "..." --tekst "..."
+                                                       # --door: jouw agentnaam; --voor: de agent die het moet oppakken (beide optioneel)
                                                        # --van mark: bericht van Mark zelf (akkoord of opdracht)
                                                        # --van nikkie: bericht van Nikkie via het Huis (geen akkoord van Mark)
         [--antwoord-op <bestand>] [--prioriteit hoog|normaal|laag]
@@ -29,8 +30,11 @@ REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEAMS = ("seo", "pim", "design", "inkoop", "financien", "klant")
 SENDERS = TEAMS + ("directie", "mark", "nikkie")  # mark en nikkie: alleen via het Huis; alleen mark geldt als akkoord van Mark
 BRANCH = "main"
-ROOT = REPO  # wordt de werkkopie van main zodra git gebruikt wordt
+ROOT = os.environ.get("MAILBOX_TEST_ROOT") or REPO  # wordt de werkkopie van main zodra git gebruikt wordt
 MAILBOX = os.path.join(ROOT, "team", "mailbox")
+# Map met de teamrepo's (tante-rie-seo, tante-rie-pim, ...); daar staan de agents in .claude/agents/.
+TEAMS_MAP = os.path.dirname(os.path.realpath(REPO))
+AGENT_NAAM = re.compile(r"^[a-z0-9][a-z0-9-]{1,59}$")
 
 
 def git(*args, check=True, cwd=None):
@@ -63,6 +67,21 @@ def vastleggen(paden, bericht):
         git("fetch", "origin", BRANCH)
         git("rebase", "origin/" + BRANCH, check=False)
     raise RuntimeError("push naar " + BRANCH + " mislukt; probeer later opnieuw")
+
+
+def agent_van_team(naam, team):
+    """Controleer een agentnaam voor --voor of --door. Staat de agentmap van het team er, dan moet de agent erin staan."""
+    if not naam:
+        return None
+    if not AGENT_NAAM.match(naam):
+        sys.exit("Ongeldige agentnaam: %r (alleen kleine letters, cijfers en streepjes)." % naam)
+    repo = "tante-rie-hq" if team == "directie" else "tante-rie-" + team
+    agents = os.path.join(TEAMS_MAP, repo, ".claude", "agents")
+    if os.path.isdir(agents):
+        bekend = sorted(n[:-3] for n in os.listdir(agents) if n.endswith(".md"))
+        if naam not in bekend:
+            sys.exit("Agent %s bestaat niet bij %s. Kies uit: %s" % (naam, team, ", ".join(bekend)))
+    return naam
 
 
 def slug(tekst):
@@ -103,8 +122,9 @@ def cmd_lijst(a):
         return
     for n in namen:
         k = kop(os.path.join(inbox, n))
-        print("%s  [%s] van %s: %s" % (n, k.get("prioriteit", "normaal"),
-                                      k.get("van", "?"), k.get("onderwerp", "")))
+        van = k.get("van", "?") + (" (" + k["door"] + ")" if k.get("door") else "")
+        voor = " voor " + k["voor"] if k.get("voor") else ""
+        print("%s  [%s] van %s%s: %s" % (n, k.get("prioriteit", "normaal"), van, voor, k.get("onderwerp", "")))
 
 
 def cmd_lees(a):
@@ -118,6 +138,10 @@ def cmd_stuur(a):
                  "Een team of de directie verstuurt nooit namens Mark of Nikkie." % (a.van, a.van.capitalize()))
     if a.van == a.aan:
         sys.exit("Afzender en ontvanger zijn hetzelfde team.")
+    if a.door and a.van in ("mark", "nikkie"):
+        sys.exit("--door is voor een agent; %s is een persoon." % a.van.capitalize())
+    voor = agent_van_team(a.voor, a.aan)
+    door = agent_van_team(a.door, a.van)
     tekst = a.tekst
     if tekst == "-":
         tekst = sys.stdin.read()
@@ -126,10 +150,14 @@ def cmd_stuur(a):
     pad = os.path.join(MAILBOX, a.aan, "inbox", naam)
     kopregels = ["---",
                  "van: " + a.van,
-                 "aan: " + a.aan,
-                 "datum: " + nu.strftime("%Y-%m-%d %H:%M"),
-                 "onderwerp: " + a.onderwerp,
-                 "prioriteit: " + a.prioriteit]
+                 "aan: " + a.aan]
+    if voor:
+        kopregels.append("voor: " + voor)
+    if door:
+        kopregels.append("door: " + door)
+    kopregels += ["datum: " + nu.strftime("%Y-%m-%d %H:%M"),
+                  "onderwerp: " + a.onderwerp,
+                  "prioriteit: " + a.prioriteit]
     if a.antwoord_op:
         kopregels.append("antwoord-op: " + os.path.basename(a.antwoord_op))
     kopregels.append("---")
@@ -264,6 +292,8 @@ def main():
     s.add_argument("--tekst", required=True, help="berichttekst, of - om van stdin te lezen")
     s.add_argument("--antwoord-op")
     s.add_argument("--prioriteit", default="normaal", choices=("hoog", "normaal", "laag"))
+    s.add_argument("--voor", help="agent in het ontvangende team die het moet oppakken (optioneel)")
+    s.add_argument("--door", help="jouw eigen agentnaam als afzender (teams en directie)")
     s.set_defaults(fn=cmd_stuur)
 
     s = sub.add_parser("status", help="statusblok bovenaan team/status.md op main zetten")

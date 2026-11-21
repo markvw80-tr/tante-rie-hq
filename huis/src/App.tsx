@@ -87,12 +87,13 @@ export function App() {
   const ongelezen = huis.teams.reduce((n, t) => n + (t.mailbox?.inbox.length ?? 0), 0);
   const achterstand = huis.teams.filter((t) => t.stemming === "achterstand");
   const agents = huis.teams.reduce((n, t) => n + t.agents.length, 0);
+  const agentsPerTeam = Object.fromEntries(huis.teams.map((t) => [t.id, t.agents.map((a) => a.bestand)]));
   const aanHetWerk = (huis.runs ?? []).filter((r) => r.status === "bezig").length;
   const wachtOpJou = (huis.runs ?? []).filter((r) => r.status === "wacht").length;
 
   return (
     <IkContext.Provider value={huis.ik ?? "mark"}>
-    <SchrijfProvider onVerstuurd={naVersturen}>
+    <SchrijfProvider onVerstuurd={naVersturen} agents={agentsPerTeam}>
     <RegieProvider>
     <LezerProvider>
     <main className={volledig ? "app volledig" : "app"}>

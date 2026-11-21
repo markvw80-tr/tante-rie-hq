@@ -90,6 +90,7 @@ function TeamKamer({ team, gekozen, drempel, werk, onKies, children }: TeamKamer
   const ongelezen = team.mailbox?.inbox.length ?? 0;
   const lamp: LampStand = werk.size > 0 ? "werkt" : team.mailbox?.inbox.some((b) => b.van === "mark") ? "mark" : ongelezen > 0 ? "post" : "uit";
   const ruimte = LOOPRUIMTE[team.id];
+  const post = new Set((team.mailbox?.inbox ?? []).flatMap((b) => (b.voor ? [b.voor] : [])));
   const stil = team.statusLeeftijdDagen !== null && team.statusLeeftijdDagen >= drempel ? `${team.statusLeeftijdDagen} dagen stil` : undefined;
   const label = [
     `${team.kamer}, team ${team.naam}`,
@@ -116,7 +117,7 @@ function TeamKamer({ team, gekozen, drempel, werk, onKies, children }: TeamKamer
       onKies={onKies}
     >
       {children}
-      <Figuurtjes agents={team.agents} x={vlak.x + ruimte.links} breedte={ruimte.breedte} vloerY={vlak.y + vlak.h - 8} kleur={kleur} stemming={team.stemming} werk={werk} />
+      <Figuurtjes agents={team.agents} x={vlak.x + ruimte.links} breedte={ruimte.breedte} vloerY={vlak.y + vlak.h - 8} kleur={kleur} stemming={team.stemming} werk={werk} post={post} />
     </Kamer>
   );
 }

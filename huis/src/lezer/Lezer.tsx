@@ -3,7 +3,7 @@ import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import type { Components } from "react-markdown";
 import type { DocumentInhoud } from "../../shared/types.ts";
-import { isMailboxTeam, type MailboxTeam } from "../../shared/types.ts";
+import { AGENT_NAAM, isMailboxTeam, type MailboxTeam } from "../../shared/types.ts";
 import { useSchrijven } from "../schrijven/SchrijfContext.tsx";
 import { haalJson, urlVoor, type Verwijzing } from "./verwijzing.ts";
 
@@ -72,8 +72,15 @@ export function Lezer({ verwijzing, onSluit }: Props) {
     const van = String(ruweKop.van ?? "");
     const aan = String(ruweKop.aan ?? "");
     const ontvanger: MailboxTeam | null = isMailboxTeam(van) ? van : isMailboxTeam(aan) ? aan : null;
+    // Antwoord op een bericht van een team gaat terug naar de agent die het stuurde; anders naar wie het moest oppakken.
+    const agent = String((isMailboxTeam(van) ? ruweKop.door : ruweKop.voor) ?? "");
     onSluit();
-    schrijf({ aan: ontvanger, onderwerp: `Re: ${doc.titel.replace(/^(Re:\s*)+/i, "")}`.slice(0, 110), antwoordOp: verwijzing.bestand });
+    schrijf({
+      aan: ontvanger,
+      onderwerp: `Re: ${doc.titel.replace(/^(Re:\s*)+/i, "")}`.slice(0, 110),
+      antwoordOp: verwijzing.bestand,
+      voor: AGENT_NAAM.test(agent) ? agent : null,
+    });
   };
 
   return (

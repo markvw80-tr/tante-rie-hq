@@ -34,7 +34,7 @@ function opzet(extra: Record<string, string> = {}) {
 describe("valideerOpdracht", () => {
   const goed = { aan: "pim", onderwerp: "Blond-diff graag vandaag", tekst: "Zet de diff klaar." };
   test("accepteert een nette opdracht en vult standaarden in", () => {
-    expect(valideerOpdracht(goed)).toEqual({ ...goed, prioriteit: "normaal", antwoordOp: null });
+    expect(valideerOpdracht(goed)).toEqual({ ...goed, prioriteit: "normaal", antwoordOp: null, voor: null });
   });
   test("accepteert een opdracht aan Inkoop", () => {
     expect(valideerOpdracht({ ...goed, aan: "inkoop" }).aan).toBe("inkoop");

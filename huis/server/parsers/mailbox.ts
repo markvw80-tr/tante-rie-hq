@@ -1,9 +1,11 @@
+import { AGENT_NAAM } from "../../shared/types.ts";
 import type { Bericht, JsonMailbox, JsonMailboxOpen } from "../../shared/types.ts";
 import { dagenTussen, datumUitNaam } from "./datum.ts";
 import { parseFrontmatter } from "./frontmatter.ts";
 
 const PRIORITEITEN = ["hoog", "normaal", "laag"] as const;
 const OPEN_REGEL = new Set(["nieuw", "in_behandeling"]);
+const agent = (x: string | undefined): string | null => (x && AGENT_NAAM.test(x) ? x : null);
 
 export function parseBericht(bestand: string, tekst: string, map: Bericht["map"], vandaag: string): Bericht {
   const { velden } = parseFrontmatter(tekst);
@@ -18,6 +20,8 @@ export function parseBericht(bestand: string, tekst: string, map: Bericht["map"]
     prioriteit: prio,
     antwoordOp: velden["antwoord-op"] || null,
     leeftijdDagen: dagenTussen(datumUitNaam(bestand), vandaag),
+    voor: agent(velden.voor),
+    door: agent(velden.door),
   };
 }
 

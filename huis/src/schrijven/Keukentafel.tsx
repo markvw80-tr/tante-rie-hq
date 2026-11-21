@@ -5,6 +5,7 @@ import { TEAMS, stuurOpdracht, type Concept, type Verstuurd } from "./api.ts";
 
 interface Props {
   readonly begin: Concept;
+  readonly agents: Partial<Record<MailboxTeam, readonly string[]>>;
   readonly onKlaar: (v: Verstuurd) => void;
   readonly onAnnuleer: () => void;
 }
@@ -13,7 +14,7 @@ const MAX_ONDERWERP = 110;
 const MAX_TEKST = 8000;
 
 /** Opdracht of antwoord van Mark aan een team. Eerst schrijven, dan controleren, dan pas versturen. */
-export function Keukentafel({ begin, onKlaar, onAnnuleer }: Props) {
+export function Keukentafel({ begin, agents, onKlaar, onAnnuleer }: Props) {
   const ik = useIk();
   const [concept, setConcept] = useState<Concept>(begin);
   const [stap, setStap] = useState<"schrijven" | "controleren">("schrijven");
@@ -51,6 +52,7 @@ export function Keukentafel({ begin, onKlaar, onAnnuleer }: Props) {
   };
 
   const teamNaam = TEAMS.find(([id]) => id === concept.aan)?.[1] ?? "";
+  const teamAgents = concept.aan ? agents[concept.aan] ?? [] : [];
 
   if (stap === "controleren") {
     return (
@@ -60,6 +62,7 @@ export function Keukentafel({ begin, onKlaar, onAnnuleer }: Props) {
         <dl className="lezer-meta">
           <div><dt>van</dt><dd>mark</dd></div>
           <div><dt>aan</dt><dd>{teamNaam}</dd></div>
+          <div><dt>voor</dt><dd>{concept.voor ?? "het hele team"}</dd></div>
           <div><dt>prioriteit</dt><dd>{concept.prioriteit}</dd></div>
           {concept.antwoordOp && <div><dt>antwoord op</dt><dd>{concept.antwoordOp}</dd></div>}
         </dl>
@@ -86,7 +89,7 @@ export function Keukentafel({ begin, onKlaar, onAnnuleer }: Props) {
       <h2>{`${concept.antwoordOp ? "Antwoord" : "Opdracht"} van ${PERSOON_NAAM[ik]}`}</h2>
       <label>
         Aan
-        <select ref={eerste} value={concept.aan ?? ""} onChange={(e) => zet("aan", (e.target.value || null) as MailboxTeam | null)} required>
+        <select ref={eerste} value={concept.aan ?? ""} onChange={(e) => setConcept((c) => ({ ...c, aan: (e.target.value || null) as MailboxTeam | null, voor: null }))} required>
           <option value="">Kies een team</option>
           {TEAMS.map(([id, naam]) => (
             <option key={id} value={id}>
@@ -95,6 +98,19 @@ export function Keukentafel({ begin, onKlaar, onAnnuleer }: Props) {
           ))}
         </select>
       </label>
+      {teamAgents.length > 0 && (
+        <label>
+          Voor
+          <select value={concept.voor ?? ""} onChange={(e) => zet("voor", e.target.value || null)}>
+            <option value="">Het hele team</option>
+            {teamAgents.map((a) => (
+              <option key={a} value={a}>
+                {a}
+              </option>
+            ))}
+          </select>
+        </label>
+      )}
       <label>
         Onderwerp
         <input value={concept.onderwerp} maxLength={MAX_ONDERWERP} onChange={(e) => zet("onderwerp", e.target.value.replace(/[\r\n]/g, " "))} required />

@@ -13,6 +13,8 @@ export interface Verzending {
   readonly tekst: string;
   readonly prioriteit: "hoog" | "normaal" | "laag";
   readonly antwoordOp: string | null;
+  /** Agent in het ontvangende team; null of afwezig: het hele team. */
+  readonly voor?: string | null;
 }
 
 /** Bezorgt berichten van Mark. De echte postbode gebruikt scripts/mailbox.py, het bestaande transport via git. */
@@ -61,6 +63,7 @@ export function mailboxPostbode(hq: string, geenGit: boolean): Postbode {
       opDeBeurt(async () => {
         const args = [...basis, "stuur", "--van", v.van ?? "mark", "--aan", v.aan, "--onderwerp", v.onderwerp, "--tekst", "-", "--prioriteit", v.prioriteit];
         if (v.antwoordOp) args.push("--antwoord-op", v.antwoordOp);
+        if (v.voor) args.push("--voor", v.voor);
         const r = await draai(args, v.tekst, hq);
         const m = /Verstuurd: (\S+\.md)/.exec(r.uit);
         if (r.code !== 0 || !m) {
